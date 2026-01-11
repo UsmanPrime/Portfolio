@@ -102,8 +102,8 @@ const Projects = () => {
 
                 <p className="text-muted-foreground text-sm mb-6 leading-relaxed">{project.description}</p>
 
-                {/* Tools & Link */}
-                <div className="flex items-center justify-between">
+                {/* Tools & Links */}
+                <div className="flex items-center justify-between gap-3">
                   <div className="flex flex-wrap gap-1.5">
                     {project.tools.slice(0, 3).map((tool) => (
                       <span
@@ -119,29 +119,34 @@ const Projects = () => {
                       </span>
                     )}
                   </div>
-                  {project.githubUrl && (
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="text-primary hover:text-primary hover:bg-primary/10 gap-1"
-                      asChild
-                    >
-                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                        <span>GitHub</span>
-                        <ExternalLink className="w-4 h-4" />
-                      </a>
-                    </Button>
-                  )}
-                  {project.liveUrl && !project.githubUrl && (
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="text-primary hover:text-primary hover:bg-primary/10 gap-1"
-                    >
-                      <span>Live Site</span>
-                      <ExternalLink className="w-4 h-4" />
-                    </Button>
-                  )}
+                  <div className="flex items-center gap-2">
+                    {project.liveUrl && (
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="text-primary hover:text-primary hover:bg-primary/10 gap-1"
+                        asChild
+                      >
+                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                          <span>Live Site</span>
+                          <ExternalLink className="w-4 h-4" />
+                        </a>
+                      </Button>
+                    )}
+                    {project.githubUrl && (
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="text-primary hover:text-primary hover:bg-primary/10 gap-1"
+                        asChild
+                      >
+                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                          <span>GitHub</span>
+                          <ExternalLink className="w-4 h-4" />
+                        </a>
+                      </Button>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}
