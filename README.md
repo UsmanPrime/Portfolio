@@ -1,73 +1,193 @@
-# Welcome to your Lovable project
+# Sentinel Portfolio 🛡️
 
-## Project info
+> A modern, responsive cybersecurity portfolio website showcasing skills, projects, and experience in defensive security operations and threat intelligence.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## 🌐 Overview
 
-## How can I edit this code?
+Sentinel is a professional portfolio website built for Usman Ibrahim, a BS Cybersecurity student at FAST NUCES Islamabad. The site demonstrates expertise in SOC operations, blue team defense, incident response, and security tool proficiency through an interactive and visually engaging platform.
 
-There are several ways of editing your application.
+**Status**: Available for Internships & Opportunities
 
-**Use Lovable**
+## ✨ Features
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+- **Hero Section** - Eye-catching landing page with smooth animations and CTA buttons
+- **About Me** - Detailed bio with focus areas in threat defense, investigation, monitoring, and incident response
+- **Skills Showcase** - Organized skill categories including:
+  - SOC & Blue Team operations
+  - SIEM & Monitoring
+  - Security Tools & Technologies
+  - Technical Foundations (Linux, Networking, DevOps)
+  - Programming & Scripting
+  - Cloud & Infrastructure
+- **Projects Portfolio** - Showcase of full-stack web apps, security projects, and academic work
+- **Experience & Certifications** - Professional journey and credential highlights
+- **Contact Section** - Easy-to-use contact form
+- **Responsive Design** - Mobile-first approach with smooth scrolling navigation
+- **Dark Mode Support** - Theme switching for comfortable viewing
+- **Modern UI Components** - Built with shadcn/ui components
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠️ Tech Stack
 
-**Use your preferred IDE**
+### Frontend
+- **Vite** - Next generation build tool and dev server
+- **React 18** - UI library with hooks
+- **TypeScript** - Static type checking
+- **Tailwind CSS** - Utility-first CSS framework
+- **shadcn/ui** - High-quality React components
+- **Lucide React** - Beautiful icon library
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### State Management & Data
+- **TanStack React Query** - Server state management
+- **React Router** - Client-side routing
+- **Sonner** - Toast notifications
+- **React Hook Form** - Efficient form handling
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Development Tools
+- **ESLint** - Code quality linting
+- **PostCSS** - CSS transformations
+- **Bun** - Package manager
 
-Follow these steps:
+## 🚀 Getting Started
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Prerequisites
+- Node.js 16+ or Bun
+- npm/yarn/bun package manager
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Installation
 
-# Step 3: Install the necessary dependencies.
-npm i
+```bash
+# Clone the repository
+git clone https://github.com/UsmanPrime/sentinel-portfolio.git
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Navigate to project directory
+cd sentinel-portfolio
+
+# Install dependencies
+npm install
+# or
+bun install
+
+# Start development server
 npm run dev
+# or
+bun dev
 ```
 
-**Edit a file directly in GitHub**
+The site will be available at `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Build for Production
 
-**Use GitHub Codespaces**
+```bash
+# Build the project
+npm run build
+# or
+bun run build
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+# Preview the production build
+npm run preview
+# or
+bun run preview
+```
 
-## What technologies are used for this project?
+## 📁 Project Structure
 
-This project is built with:
+```
+src/
+├── components/          # React components
+│   ├── Hero.tsx        # Landing section
+│   ├── About.tsx       # About me section
+│   ├── Skills.tsx      # Skills showcase
+│   ├── Projects.tsx    # Portfolio projects
+│   ├── Experience.tsx  # Work experience
+│   ├── Certifications.tsx # Credentials
+│   ├── Contact.tsx     # Contact form
+│   ├── Resume.tsx      # Resume section
+│   ├── Navbar.tsx      # Navigation bar
+│   ├── Footer.tsx      # Footer
+│   └── ui/            # shadcn/ui components
+├── pages/
+│   ├── Index.tsx      # Main portfolio page
+│   └── NotFound.tsx   # 404 page
+├── hooks/             # Custom React hooks
+├── lib/              # Utility functions
+├── assets/           # Images and media
+├── App.tsx           # Root component
+└── main.tsx          # Entry point
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 🎯 Key Sections
 
-## How can I deploy this project?
+### About
+Detailed introduction focusing on:
+- Cybersecurity expertise at FAST NUCES
+- Specialization in defensive security operations
+- Core competencies in threat monitoring and incident response
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+### Skills
+Organized into 6 categories:
+1. **SOC & Blue Team** - Threat monitoring, alert triage, incident response
+2. **SIEM & Monitoring** - Log analysis, correlation rules, event investigation
+3. **Security Tools** - SIEM platforms, Wireshark, Kali Linux, forensic tools
+4. **Technical Foundations** - Linux, networking, TCP/IP, Git
+5. **Programming** - C++, Python, JavaScript, React, Node.js
+6. **Cloud & Infrastructure** - AWS, Docker, Kubernetes basics
 
-## Can I connect a custom domain to my Lovable project?
+### Projects Featured
+- **Smart Housing Society Website** - MERN stack full-stack application
+- **OSIM** - OOP semester project in C++
+- **SecureShop** - C++ secure shopping platform
+- **Game Projects** - Pygame and other game development
 
-Yes, you can!
+## 🎨 Design Features
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+- **Cyber-themed Design** - Security-focused aesthetic with shield icons and grid backgrounds
+- **Smooth Animations** - Fade-in effects and gradient overlays for visual appeal
+- **Glassmorphism Effects** - Modern card designs with blur effects
+- **Responsive Gradients** - Dynamic background elements
+- **Accessible Components** - Built with accessibility best practices
+- **Smooth Scrolling Navigation** - Section linking with smooth scroll behavior
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## 📱 Responsive Design
+
+The portfolio is fully responsive across all device sizes:
+- **Desktop** - Full multi-column layouts
+- **Tablet** - Optimized grid layouts
+- **Mobile** - Single-column layout with touch-friendly navigation
+
+## 🔗 Links & Resources
+
+- **GitHub Profile**: [UsmanPrime](https://github.com/UsmanPrime)
+- **Email**: Contact via the portfolio website
+- **University**: FAST NUCES Islamabad
+
+## 📝 Scripts
+
+```bash
+npm run dev       # Start development server
+npm run build     # Create production build
+npm run build:dev # Create development build
+npm run lint      # Run ESLint
+npm run preview   # Preview production build
+```
+
+## 🤝 Contributing
+
+This is a personal portfolio project. Feel free to fork and use it as a template for your own portfolio!
+
+## 📄 License
+
+This project is open source and available under the MIT License.
+
+## 🙏 Acknowledgments
+
+- **shadcn/ui** - For excellent React component library
+- **Vite** - For blazingly fast build tooling
+- **Tailwind CSS** - For utility-first styling
+- **Radix UI** - For accessible component primitives
+- **FAST NUCES** - For cybersecurity education
+
+---
+
+**Last Updated**: January 2026
+
+Made with ❤️ by Usman Ibrahim - Cybersecurity Enthusiast & Developer
