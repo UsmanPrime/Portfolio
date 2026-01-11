@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@layer base {
+  :root {
+    --background: 222 47% 5%;
+    --foreground: 210 40% 96%;
+
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 96%;
+
+    --primary: 187 71% 45%;
+    --primary-foreground: 222 47% 5%;
+
+    --secondary: 222 30% 14%;
+    --secondary-foreground: 210 40% 96%;
+
+    --muted: 222 30% 12%;
+    --muted-foreground: 215 20% 55%;
+
+    --accent: 160 60% 45%;
+    --accent-foreground: 222 47% 5%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222 30% 18%;
+    --input: 222 30% 18%;
+    --ring: 187 71% 45%;
+
+    --radius: 0.5rem;
+
+    /* Custom cybersecurity tokens */
+    --cyber-glow: 187 71% 45%;
+    --cyber-green: 160 60% 45%;
+    --cyber-navy: 222 47% 5%;
+    --cyber-navy-light: 222 47% 10%;
+    --cyber-grid: 222 30% 15%;
+    --terminal-bg: 220 30% 6%;
+    --log-highlight: 187 50% 20%;
+
+    --sidebar-background: 222 47% 5%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 187 71% 45%;
+    --sidebar-primary-foreground: 222 47% 5%;
+    --sidebar-accent: 222 30% 14%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 222 30% 18%;
+    --sidebar-ring: 187 71% 45%;
+  }
+
+  .dark {
+    --background: 222 47% 5%;
+    --foreground: 210 40% 96%;
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 96%;
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 187 71% 45%;
+    --primary-foreground: 222 47% 5%;
+    --secondary: 222 30% 14%;
+    --secondary-foreground: 210 40% 96%;
+    --muted: 222 30% 12%;
+    --muted-foreground: 215 20% 55%;
+    --accent: 160 60% 45%;
+    --accent-foreground: 222 47% 5%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 222 30% 18%;
+    --input: 222 30% 18%;
+    --ring: 187 71% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+
+  code, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  .cyber-card {
+    @apply bg-card border border-border rounded-lg p-6 transition-all duration-300;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--card)) 0%,
+      hsl(222 47% 6%) 100%
+    );
+  }
+
+  .cyber-card:hover {
+    @apply border-primary/50;
+    box-shadow: 0 0 20px -5px hsl(var(--primary) / 0.2);
+  }
+
+  .cyber-glow {
+    box-shadow: 0 0 30px -10px hsl(var(--cyber-glow) / 0.4);
+  }
+
+  .cyber-glow-subtle {
+    box-shadow: 0 0 20px -10px hsl(var(--cyber-glow) / 0.2);
+  }
+
+  .terminal-panel {
+    @apply bg-terminal rounded-lg border border-border overflow-hidden;
+    background: hsl(var(--terminal-bg));
+  }
+
+  .terminal-header {
+    @apply flex items-center gap-2 px-4 py-2 bg-muted/50 border-b border-border;
+  }
+
+  .terminal-dot {
+    @apply w-3 h-3 rounded-full;
+  }
+
+  .log-entry {
+    @apply px-4 py-2 border-b border-border/50 hover:bg-muted/30 transition-colors;
+  }
+
+  .skill-tag {
+    @apply px-3 py-1.5 bg-secondary text-sm rounded-md border border-border hover:border-primary/50 transition-colors;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-muted-foreground text-lg mb-12 max-w-2xl;
+  }
+
+  .grid-bg {
+    background-image: 
+      linear-gradient(hsl(var(--cyber-grid) / 0.3) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--cyber-grid) / 0.3) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+
+  .nav-link {
+    @apply text-muted-foreground hover:text-foreground transition-colors relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
