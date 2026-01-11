@@ -19,6 +19,7 @@ const projects: Project[] = [
     description: "NextGen Residency - A comprehensive housing society management system built on the MERN stack. Features role-based portals for Residents, Admins, and Vendors to streamline complaints, facility booking, and community management.",
     tools: ["React", "Node.js", "MongoDB", "Express", "MERN Stack"],
     githubUrl: "https://github.com/UsmanPrime/Smart-Housing-Society-Website",
+    liveUrl: "https://nextgen-residency.vercel.app/",
   },
   {
     icon: Briefcase,
@@ -51,6 +52,7 @@ const projects: Project[] = [
     description: "A themed website project featuring custom CSS animations and styling. Demonstrates proficiency in modern CSS techniques and responsive design principles.",
     tools: ["HTML", "CSS", "Responsive Design"],
     githubUrl: "https://github.com/UsmanPrime/Sonic-Website",
+    liveUrl: "https://usmanprime.github.io/Sonic-Website/",
   },
   {
     icon: Globe,
@@ -58,7 +60,7 @@ const projects: Project[] = [
     category: "React + TypeScript",
     description: "The cybersecurity-themed portfolio you're viewing right now! Built with React, TypeScript, and Tailwind CSS featuring a modern dark theme with cyber aesthetics.",
     tools: ["React", "TypeScript", "Tailwind CSS", "Vite"],
-    liveUrl: "#",
+    liveUrl: "https://usmanprime-portfolio.vercel.app/",
   },
 ];
 

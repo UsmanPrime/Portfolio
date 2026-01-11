@@ -19,7 +19,7 @@ const Footer = () => {
             {/* Social Links */}
             <div className="flex items-center gap-4">
               <a
-                href="https://github.com"
+                href="https://github.com/UsmanPrime"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 text-muted-foreground hover:text-primary transition-colors"
@@ -28,7 +28,7 @@ const Footer = () => {
                 <Github className="w-5 h-5" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/usman-ibrahim-992253276/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 text-muted-foreground hover:text-primary transition-colors"
@@ -37,7 +37,7 @@ const Footer = () => {
                 <Linkedin className="w-5 h-5" />
               </a>
               <a
-                href="mailto:contact@example.com"
+                href="mailto:i242038@isb.nu.edu.pk"
                 className="p-2 text-muted-foreground hover:text-primary transition-colors"
                 aria-label="Email"
               >
@@ -49,7 +49,7 @@ const Footer = () => {
           {/* Copyright */}
           <div className="mt-8 pt-8 border-t border-border text-center">
             <p className="text-sm text-muted-foreground">
-              © {currentYear} SecureDefense Portfolio. All rights reserved.
+              © {currentYear} Usman Ibrahim Portfolio. All rights reserved.
             </p>
           </div>
         </div>
