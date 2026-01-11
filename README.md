@@ -1,10 +1,10 @@
-# Sentinel Portfolio 🛡️
+# My Portfolio 🛡️
 
-> A modern, responsive cybersecurity portfolio website showcasing skills, projects, and experience in defensive security operations and threat intelligence.
+> A modern, responsive cybersecurity portfolio website showcasing my skills, projects, and experience in defensive security operations and threat intelligence.
 
 ## 🌐 Overview
 
-Sentinel is a professional portfolio website built for Usman Ibrahim, a BS Cybersecurity student at FAST NUCES Islamabad. The site demonstrates expertise in SOC operations, blue team defense, incident response, and security tool proficiency through an interactive and visually engaging platform.
+This is my professional portfolio website as a BS Cybersecurity student at FAST NUCES Islamabad. The site demonstrates expertise in SOC operations, blue team defense, incident response, and security tool proficiency through an interactive and visually engaging platform.
 
 **Status**: Available for Internships & Opportunities
 
@@ -47,49 +47,7 @@ Sentinel is a professional portfolio website built for Usman Ibrahim, a BS Cyber
 - **PostCSS** - CSS transformations
 - **Bun** - Package manager
 
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js 16+ or Bun
-- npm/yarn/bun package manager
-
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/UsmanPrime/sentinel-portfolio.git
-
-# Navigate to project directory
-cd sentinel-portfolio
-
-# Install dependencies
-npm install
-# or
-bun install
-
-# Start development server
-npm run dev
-# or
-bun dev
-```
-
-The site will be available at `http://localhost:8080`
-
-### Build for Production
-
-```bash
-# Build the project
-npm run build
-# or
-bun run build
-
-# Preview the production build
-npm run preview
-# or
-bun run preview
-```
-
-## 📁 Project Structure
+##  Project Structure
 
 ```
 src/
@@ -160,16 +118,6 @@ The portfolio is fully responsive across all device sizes:
 - **Email**: Contact via the portfolio website
 - **University**: FAST NUCES Islamabad
 
-## 📝 Scripts
-
-```bash
-npm run dev       # Start development server
-npm run build     # Create production build
-npm run build:dev # Create development build
-npm run lint      # Run ESLint
-npm run preview   # Preview production build
-```
-
 ## 🤝 Contributing
 
 This is a personal portfolio project. Feel free to fork and use it as a template for your own portfolio!
@@ -190,4 +138,4 @@ This project is open source and available under the MIT License.
 
 **Last Updated**: January 2026
 
-Made with ❤️ by Usman Ibrahim - Cybersecurity Enthusiast & Developer
+Built with ❤️ - Cybersecurity Enthusiast & Developer
