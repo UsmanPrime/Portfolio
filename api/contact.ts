@@ -55,6 +55,12 @@ export default async function handler(req: any, res: any) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  // Check if API key is set
+  if (!process.env.RESEND_API_KEY) {
+    console.error('RESEND_API_KEY environment variable is not set');
+    return res.status(500).json({ error: 'Email service is not configured' });
+  }
+
   try {
     const { name, email, subject, message } = req.body as ContactRequest;
 
@@ -91,7 +97,7 @@ Sent from portfolio website`;
 
     if (result.error) {
       console.error('Resend error:', result.error);
-      return res.status(500).json({ error: 'Failed to send email' });
+      return res.status(500).json({ error: 'Failed to send email', details: result.error });
     }
 
     return res.status(200).json({ 
@@ -101,6 +107,6 @@ Sent from portfolio website`;
     });
   } catch (error) {
     console.error('Contact form error:', error);
-    return res.status(500).json({ error: 'Internal server error' });
+    return res.status(500).json({ error: 'Internal server error', details: String(error) });
   }
 }
