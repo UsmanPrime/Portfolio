@@ -27,7 +27,7 @@ const projects: Project[] = [
     category: "OOP Semester Project",
     description: "Organizational Simulation and Internal Management System developed for CS-1004 Object Oriented Programming (Spring 2025). A C++ application demonstrating advanced OOP concepts including inheritance, polymorphism, and encapsulation.",
     tools: ["C++", "OOP", "File Handling", "Data Structures"],
-    githubUrl: "#",
+    githubUrl: "https://github.com/UsmanPrime/OSIM---Organizational-Simulation",
   },
   {
     icon: ShoppingCart,
@@ -35,7 +35,7 @@ const projects: Project[] = [
     category: "Programming Fundamentals",
     description: "A Simulated Secure Shopping Platform built in C++ as a Programming Fundamentals project. Implements secure user authentication, product management, and transaction processing with data validation.",
     tools: ["C++", "File I/O", "Authentication", "Console UI"],
-    githubUrl: "#",
+    githubUrl: "https://github.com/UsmanPrime/SecureShop",
   },
   {
     icon: Gamepad2,
@@ -43,7 +43,7 @@ const projects: Project[] = [
     category: "Data Structures Project",
     description: "Classic Xonix arcade game recreated in C++ using data structure concepts. Features smooth gameplay mechanics, collision detection, and progressive difficulty levels.",
     tools: ["C++", "Data Structures", "Game Logic", "Graphics"],
-    githubUrl: "#",
+    githubUrl: "https://github.com/UsmanPrime/Xonix-Game",
   },
   {
     icon: Code,
