@@ -4,24 +4,24 @@ import { Button } from "@/components/ui/button";
 const Resume = () => {
   const competencies = [
     {
-      icon: Shield,
-      title: "Security Operations",
-      items: ["Threat Monitoring", "Incident Response", "Alert Triage"],
+      icon: GraduationCap,
+      title: "Education",
+      items: ["BS Cyber Security", "FAST NUCES Islamabad", "2024 - 2028"],
     },
     {
       icon: Monitor,
-      title: "SIEM & Analysis",
-      items: ["Log Analysis", "Event Correlation", "Investigation"],
+      title: "Experience",
+      items: ["SOC Analyst Intern", "Tech Hierarchy", "Feb 2026 - Present"],
+    },
+    {
+      icon: Shield,
+      title: "Competitions",
+      items: ["3rd Place - SudoFuzzers CTF", "7th Place - CyberFest 2025", "Forensics & OSINT Focus"],
     },
     {
       icon: Wrench,
-      title: "Technical Skills",
-      items: ["Linux", "Networking", "Python/Bash"],
-    },
-    {
-      icon: GraduationCap,
-      title: "Education",
-      items: ["Cybersecurity Degree", "Certifications", "Continuous Learning"],
+      title: "Core Skills",
+      items: ["SOC Operations & DFIR", "Splunk, Wazuh, Elastic", "Python, C++, JavaScript, Bash"],
     },
   ];
 

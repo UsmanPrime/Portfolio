@@ -5,23 +5,23 @@ const About = () => {
   const focusAreas = [
     {
       icon: ShieldCheck,
-      title: "Threat Defense",
-      description: "Focused on protecting systems from malicious actors through proactive security measures.",
+      title: "SOC Monitoring",
+      description: "Monitored and triaged alerts with SIEM tooling and defined escalation paths.",
     },
     {
       icon: Search,
-      title: "Investigation",
-      description: "Analyzing security events and logs to identify potential threats and vulnerabilities.",
+      title: "Forensics Investigation",
+      description: "Analyzed memory, endpoint, and network artifacts to identify compromise indicators.",
     },
     {
       icon: Activity,
-      title: "Monitoring",
-      description: "Continuous surveillance of systems and networks to detect anomalous behavior.",
+      title: "Detection Engineering",
+      description: "Built SOC labs to simulate attacks and validate detection workflows.",
     },
     {
       icon: Lock,
-      title: "Incident Response",
-      description: "Developing skills to effectively respond to and contain security incidents.",
+      title: "CTF Challenge Design",
+      description: "Designed practical forensics challenges for national cybersecurity events.",
     },
   ];
 
@@ -45,7 +45,7 @@ const About = () => {
             </div>
             <h2 className="section-title">About Me</h2>
             <p className="section-subtitle mx-auto">
-              A dedicated cybersecurity student with a passion for defensive security operations
+              Cybersecurity student and SOC intern building practical blue-team expertise
             </p>
           </div>
 
@@ -55,42 +55,38 @@ const About = () => {
               <div className="cyber-card">
                 <h3 className="text-xl font-semibold mb-4 text-primary">Who I Am</h3>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  I'm Usman Ibrahim, a BS Cyber Security student at FAST NUCES Islamabad with a 
-                  strong focus on practical security, system analysis, and offensive-defensive 
-                  problem solving.
+                  I pursued a BS in Cyber Security at FAST NUCES Islamabad (2024-2028), with a 
+                  focus on defensive operations, incident investigation, and secure system practices.
                 </p>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  I train with a professional security stack including Wireshark, Splunk, Windows 
-                  Event Logs, Sysmon, and the Hack The Box CDSA learning path, where I practice 
-                  threat detection, log analysis, incident investigation, and attacker tracking 
-                  in realistic enterprise-style environments.
+                  As a SOC Analyst Intern at Tech Hierarchy, I monitored and triaged alerts in 
+                  Wazuh and Splunk, analyzed telemetry, and escalated confirmed incidents through 
+                  SOC playbooks.
                 </p>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  I actively participate in Capture-The-Flag (CTF) competitions, with particular 
-                  strength in Digital Forensics and OSINT. I also solve cryptography challenges 
-                  involving encoding, ciphers, and basic cryptanalytic techniques—building my 
-                  ability to reason through incomplete data and identify patterns in adversarial problems.
+                  I authored a hard memory forensics challenge for NASCON 2026 and co-authored 
+                  RDX National CTF challenges in log analysis, network analysis, and artifact 
+                  investigation.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  I'm focused on understanding how systems fail, how attacks operate internally, 
-                  and how to design defenses that hold up against real adversaries. My learning 
-                  is driven by hands-on labs, adversary emulation, and continuous security research.
+                  I built my profile through hands-on labs, competition performance, and practical 
+                  SOC execution aligned with DFIR-focused career goals.
                 </p>
               </div>
 
               {/* Stats */}
               <div className="grid grid-cols-3 gap-4">
                 <div className="cyber-card text-center py-4">
-                  <div className="text-2xl font-bold text-primary">SOC</div>
-                  <div className="text-sm text-muted-foreground">Focus Area</div>
+                  <div className="text-2xl font-bold text-primary">2024-28</div>
+                  <div className="text-sm text-muted-foreground">BS Cyber Security</div>
                 </div>
                 <div className="cyber-card text-center py-4">
-                  <div className="text-2xl font-bold text-accent">Blue</div>
-                  <div className="text-sm text-muted-foreground">Team</div>
+                  <div className="text-2xl font-bold text-accent">SOC</div>
+                  <div className="text-sm text-muted-foreground">Internship</div>
                 </div>
                 <div className="cyber-card text-center py-4">
-                  <div className="text-2xl font-bold text-foreground">24/7</div>
-                  <div className="text-sm text-muted-foreground">Learning</div>
+                  <div className="text-2xl font-bold text-foreground">CTF</div>
+                  <div className="text-sm text-muted-foreground">Podium Finishes</div>
                 </div>
               </div>
             </div>

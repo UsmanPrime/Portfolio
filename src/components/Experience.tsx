@@ -4,64 +4,61 @@ interface ExperienceItem {
   icon: typeof BookOpen;
   type: string;
   title: string;
-  platform?: string;
-  monitored: string;
-  analyzed: string;
-  learned: string;
+  organization: string;
+  location?: string;
+  period: string;
+  highlights: string[];
 }
 
 const experiences: ExperienceItem[] = [
   {
     icon: Target,
-    type: "Practical Lab",
-    title: "TryHackMe SOC Level 1 Path",
-    platform: "TryHackMe",
-    monitored: "Simulated enterprise network with various attack scenarios",
-    analyzed: "Log files, SIEM alerts, and network traffic for threat indicators",
-    learned: "SOC analyst workflow, alert triage, and incident classification",
+    type: "Internship",
+    title: "SOC Analyst Intern",
+    organization: "Tech Hierarchy",
+    period: "Feb 2026 - Present",
+    highlights: [
+      "Monitored and triaged alerts in Wazuh and Splunk.",
+      "Analyzed endpoint, host, and network telemetry for indicators of compromise.",
+      "Built SOC labs to simulate attacks and validate response playbooks.",
+    ],
   },
   {
     icon: Monitor,
-    type: "Blue Team Lab",
-    title: "Hack The Box Sherlocks",
-    platform: "Hack The Box",
-    monitored: "DFIR investigation scenarios with real-world attack artifacts",
-    analyzed: "Memory dumps, event logs, network captures, and malware traces",
-    learned: "Digital forensics methodology, evidence correlation, and incident reconstruction",
+    type: "Challenge Author",
+    title: "NASCON 2026 Forensics Arena",
+    organization: "FAST NUCES",
+    location: "Islamabad",
+    period: "Feb 2026 - Apr 2026",
+    highlights: [
+      "Designed a hard memory forensics challenge simulating fileless credential dumping.",
+      "Mapped behaviors to MITRE ATT&CK T1003.001.",
+      "Required Volatility 3 analysis to detect injection and recover credentials.",
+    ],
   },
   {
     icon: Award,
-    type: "Seasonal Event",
-    title: "Advent of the Relics - HTB Sherlocks",
-    platform: "Hack The Box",
-    monitored: "Holiday-themed DFIR challenges with progressive difficulty",
-    analyzed: "Forensic artifacts across Windows, Linux, and cloud environments",
-    learned: "Advanced timeline analysis, threat hunting, and artifact extraction techniques",
+    type: "Organizer & Author",
+    title: "RDX National CTF",
+    organization: "RDX",
+    period: "2025",
+    highlights: [
+      "Designed and deployed national-level log and network forensics challenges.",
+      "Created suspicious-artifact and embedded-file investigation scenarios.",
+      "Calibrated challenge difficulty across beginner and advanced tracks.",
+    ],
   },
   {
     icon: BookOpen,
-    type: "Academic Project",
-    title: "Network Security Capstone",
-    monitored: "University lab network during controlled penetration test",
-    analyzed: "Real-time alerts, traffic anomalies, and access patterns",
-    learned: "Coordinating with red team, documenting findings, and reporting",
-  },
-  {
-    icon: Award,
     type: "Competition",
-    title: "CTF Competitions",
-    monitored: "3rd place in SudoFuzzers CTF, 7th place in CyberFest '25",
-    analyzed: "Forensics challenges, log puzzles, and incident scenarios under time pressure",
-    learned: "Time-pressured analysis, team collaboration, and creative problem-solving",
-  },
-  {
-    icon: Target,
-    type: "CTF Organizer",
-    title: "RDX CTF 2024 - Challenge Author",
-    platform: "RDX CTF",
-    monitored: "Designed and deployed forensics challenges for participants",
-    analyzed: "Created challenges: Network Security, Log Analysis, PDF Embedded File Analysis",
-    learned: "Challenge design, infrastructure deployment, and difficulty balancing",
+    title: "CTF Achievements",
+    organization: "National Events",
+    period: "2025",
+    highlights: [
+      "3rd Place - SudoFuzzers CTF (Forensics & OSINT).",
+      "7th Place - CyberFest 2025.",
+      "Demonstrated fast incident analysis and strong team coordination under time pressure.",
+    ],
   },
 ];
 
@@ -74,7 +71,7 @@ const Experience = () => {
           <div className="text-center mb-16">
             <h2 className="section-title">Learning & Experience</h2>
             <p className="section-subtitle mx-auto">
-              Hands-on learning through labs, simulations, and practical exercises
+              Professional roles, challenge authoring, and competition achievements
             </p>
           </div>
 
@@ -107,26 +104,23 @@ const Experience = () => {
                             {exp.type}
                           </span>
                           <h3 className="font-semibold">{exp.title}</h3>
-                          {exp.platform && (
-                            <span className="text-xs text-muted-foreground">{exp.platform}</span>
-                          )}
+                          <span className="text-xs text-muted-foreground">{exp.organization}</span>
                         </div>
                       </div>
 
                       {/* Details */}
                       <div className="space-y-3">
-                        <div className="flex items-start gap-2">
-                          <span className="text-xs text-muted-foreground font-medium min-w-[70px]">Monitored:</span>
-                          <span className="text-sm text-foreground/80">{exp.monitored}</span>
+                        <div className="text-xs text-muted-foreground">
+                          {exp.location ? `${exp.location} | ${exp.period}` : exp.period}
                         </div>
-                        <div className="flex items-start gap-2">
-                          <span className="text-xs text-muted-foreground font-medium min-w-[70px]">Analyzed:</span>
-                          <span className="text-sm text-foreground/80">{exp.analyzed}</span>
-                        </div>
-                        <div className="flex items-start gap-2">
-                          <span className="text-xs text-muted-foreground font-medium min-w-[70px]">Learned:</span>
-                          <span className="text-sm text-foreground/80">{exp.learned}</span>
-                        </div>
+                        <ul className="space-y-2">
+                          {exp.highlights.map((item) => (
+                            <li key={item} className="flex items-start gap-2 text-sm text-foreground/80">
+                              <span className="mt-1 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     </div>
                   </div>

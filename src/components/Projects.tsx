@@ -14,53 +14,44 @@ interface Project {
 const projects: Project[] = [
   {
     icon: Building2,
-    title: "Smart Housing Society Website",
+    title: "Smart Housing Society Portal",
     category: "Full Stack Web App",
-    description: "NextGen Residency - A comprehensive housing society management system built on the MERN stack. Features role-based portals for Residents, Admins, and Vendors to streamline complaints, facility booking, and community management.",
-    tools: ["React", "Node.js", "MongoDB", "Express", "MERN Stack"],
+    description: "Built role-based portals for residents, admins, and vendors with secure access controls, complaint workflows, and facility booking.",
+    tools: ["React", "Node.js", "MongoDB", "Express"],
     githubUrl: "https://github.com/UsmanPrime/Smart-Housing-Society-Website",
     liveUrl: "https://nextgen-residency.vercel.app/",
   },
   {
     icon: Briefcase,
     title: "OSIM - Organizational Simulation",
-    category: "OOP Semester Project",
-    description: "Organizational Simulation and Internal Management System developed for CS-1004 Object Oriented Programming (Spring 2025). A C++ application demonstrating advanced OOP concepts including inheritance, polymorphism, and encapsulation.",
-    tools: ["C++", "OOP", "File Handling", "Data Structures"],
+    category: "Enterprise Simulation System",
+    description: "Developed an enterprise-style C++ simulation using inheritance and polymorphism with persistent organizational record handling.",
+    tools: ["C++", "OOP Principles", "File Handling"],
     githubUrl: "https://github.com/UsmanPrime/OSIM---Organizational-Simulation",
   },
   {
     icon: ShoppingCart,
     title: "SecureShop",
-    category: "Programming Fundamentals",
-    description: "A Simulated Secure Shopping Platform built in C++ as a Programming Fundamentals project. Implements secure user authentication, product management, and transaction processing with data validation.",
-    tools: ["C++", "File I/O", "Authentication", "Console UI"],
+    category: "Secure Shopping Platform",
+    description: "Developed a C++ shopping platform with authentication, input validation, and modular inventory and order processing.",
+    tools: ["C++", "File I/O", "Input Validation", "Authentication"],
     githubUrl: "https://github.com/UsmanPrime/SecureShop",
+  },
+  {
+    icon: Globe,
+    title: "Cybersecurity Portfolio",
+    category: "Frontend Portfolio",
+    description: "Designed and deployed a cybersecurity portfolio with responsive UI and type-safe React components.",
+    tools: ["React", "TypeScript", "Tailwind CSS", "Vite"],
+    liveUrl: "https://usmanprime-portfolio.vercel.app/",
   },
   {
     icon: Gamepad2,
     title: "Xonix Game",
-    category: "Data Structures Project",
-    description: "Classic Xonix arcade game recreated in C++ using data structure concepts. Features smooth gameplay mechanics, collision detection, and progressive difficulty levels.",
-    tools: ["C++", "Data Structures", "Game Logic", "Graphics"],
+    category: "Game Development",
+    description: "Recreated the classic arcade game with collision detection, progressive difficulty, and grid-based state tracking.",
+    tools: ["C++", "Data Structures", "Game Physics", "Rendering"],
     githubUrl: "https://github.com/UsmanPrime/Xonix-Game",
-  },
-  {
-    icon: Code,
-    title: "Sonic Website",
-    category: "Frontend Project",
-    description: "A themed website project featuring custom CSS animations and styling. Demonstrates proficiency in modern CSS techniques and responsive design principles.",
-    tools: ["HTML", "CSS", "Responsive Design"],
-    githubUrl: "https://github.com/UsmanPrime/Sonic-Website",
-    liveUrl: "https://usmanprime.github.io/Sonic-Website/",
-  },
-  {
-    icon: Globe,
-    title: "My Portfolio",
-    category: "React + TypeScript",
-    description: "The cybersecurity-themed portfolio you're viewing right now! Built with React, TypeScript, and Tailwind CSS featuring a modern dark theme with cyber aesthetics.",
-    tools: ["React", "TypeScript", "Tailwind CSS", "Vite"],
-    liveUrl: "https://usmanprime-portfolio.vercel.app/",
   },
 ];
 
@@ -73,7 +64,7 @@ const Projects = () => {
           <div className="text-center mb-16">
             <h2 className="section-title">Projects</h2>
             <p className="section-subtitle mx-auto">
-              Academic projects and personal work showcasing programming skills and problem-solving abilities
+              Selected software and cybersecurity projects from coursework and practical work
             </p>
           </div>
 

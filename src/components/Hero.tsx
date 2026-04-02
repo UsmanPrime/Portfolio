@@ -24,7 +24,7 @@ const Hero = () => {
           {/* Status Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/50 border border-border rounded-full mb-8 animate-fade-in-up">
             <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
-            <span className="text-sm text-muted-foreground">Available for Internships & Opportunities</span>
+            <span className="text-sm text-muted-foreground">SOC Analyst Intern at Tech Hierarchy</span>
           </div>
 
           {/* Shield Icon */}
@@ -41,14 +41,13 @@ const Hero = () => {
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
             <span className="text-foreground">Cyber Security Student</span>
             <br />
-            <span className="gradient-text">SOC & Defensive Security</span>
+            <span className="gradient-text">SOC, DFIR & Threat Detection</span>
           </h1>
 
           {/* Subtitle */}
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
-            Dedicated to protecting systems through vigilant monitoring, threat detection, 
-            log analysis, and incident response. Building expertise in blue-team operations 
-            and digital forensics.
+            BS Cyber Security student at FAST NUCES Islamabad with hands-on experience in 
+            SOC monitoring, DFIR workflows, incident response, and CTF challenge authoring.
           </p>
 
           {/* CTA Buttons */}
@@ -97,11 +96,11 @@ const Hero = () => {
                 </div>
                 <div className="flex gap-3 text-muted-foreground mt-1">
                   <span className="text-accent">[OK]</span>
-                  <span>SIEM connection established</span>
+                  <span>Wazuh + Splunk telemetry pipelines active</span>
                 </div>
                 <div className="flex gap-3 text-muted-foreground mt-1">
                   <span className="text-accent">[OK]</span>
-                  <span>Log aggregation active</span>
+                  <span>Alert triage workflow synchronized</span>
                 </div>
                 <div className="flex gap-3 mt-1">
                   <span className="text-primary">[READY]</span>

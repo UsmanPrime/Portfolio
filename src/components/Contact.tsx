@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, Github, Linkedin, Send, Shield } from "lucide-react";
+import { Mail, Github, Linkedin, Send, Shield, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -62,6 +62,12 @@ const Contact = () => {
   };
 
   const socialLinks = [
+    {
+      icon: Phone,
+      label: "Phone",
+      href: "tel:+923342226620",
+      value: "+92 334 2226620",
+    },
     {
       icon: Mail,
       label: "Email",
@@ -214,8 +220,8 @@ const Contact = () => {
                 </div>
 
                 <p className="text-muted-foreground mb-6">
-                  Open to internship opportunities, collaborative projects, and discussions 
-                  about defensive security. I aim to respond within 24-48 hours.
+                  Open to cybersecurity internships, SOC and DFIR opportunities, collaboration,
+                  and challenge authoring work. I aim to respond within 24-48 hours.
                 </p>
 
                 <div className="space-y-4">
