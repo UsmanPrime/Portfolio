@@ -1,4 +1,5 @@
-import { BookOpen, Monitor, Target, Award } from "lucide-react";
+import { BookOpen, Monitor, Target, Award, ExternalLink } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface ExperienceItem {
   icon: typeof BookOpen;
@@ -8,6 +9,8 @@ interface ExperienceItem {
   location?: string;
   period: string;
   highlights: string[];
+  certificateUrl?: string;
+  certificateLabel?: string;
 }
 
 const experiences: ExperienceItem[] = [
@@ -16,12 +19,14 @@ const experiences: ExperienceItem[] = [
     type: "Internship",
     title: "SOC Analyst Intern",
     organization: "Tech Hierarchy",
-    period: "Feb 2026 - Present",
+    period: "1st Mar 2026 - 31st Mar 2026",
     highlights: [
       "Monitored and triaged alerts in Wazuh and Splunk.",
       "Analyzed endpoint, host, and network telemetry for indicators of compromise.",
       "Built SOC labs to simulate attacks and validate response playbooks.",
     ],
+    certificateUrl: "/Tech%20Hierarchy%20Internship%20Certificate.pdf",
+    certificateLabel: "Certificate of Completion",
   },
   {
     icon: Monitor,
@@ -121,6 +126,20 @@ const Experience = () => {
                             </li>
                           ))}
                         </ul>
+
+                        {exp.certificateUrl && (
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="mt-2"
+                            asChild
+                          >
+                            <a href={exp.certificateUrl} target="_blank" rel="noopener noreferrer">
+                              <span>{exp.certificateLabel ?? "View Certificate"}</span>
+                              <ExternalLink className="w-4 h-4" />
+                            </a>
+                          </Button>
+                        )}
                       </div>
                     </div>
                   </div>
