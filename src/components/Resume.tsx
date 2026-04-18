@@ -11,7 +11,7 @@ const Resume = () => {
     {
       icon: Monitor,
       title: "Experience",
-      items: ["SOC Analyst Intern", "Tech Hierarchy", "Feb 2026 - Present"],
+      items: ["SOC Analyst Intern", "Tech Hierarchy", "Mar 2026"],
     },
     {
       icon: Shield,
@@ -21,7 +21,7 @@ const Resume = () => {
     {
       icon: Wrench,
       title: "Core Skills",
-      items: ["SOC Operations & DFIR", "Splunk, Wazuh, Elastic", "Python, C++, JavaScript, Bash"],
+      items: ["SOC Operations & DFIR", "Splunk, Wazuh, Elastic, Wireshark", "Python, C++, JavaScript, Bash"],
     },
   ];
 
