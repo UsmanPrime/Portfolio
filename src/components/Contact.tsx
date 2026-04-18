@@ -5,6 +5,16 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 
+interface ContactErrorDetail {
+  field: string;
+  message: string;
+}
+
+interface ContactApiErrorResponse {
+  error?: string;
+  details?: ContactErrorDetail[];
+}
+
 const Contact = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
@@ -35,7 +45,7 @@ const Contact = () => {
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
+      const data = (await response.json()) as ContactApiErrorResponse;
 
       if (response.ok) {
         toast({
@@ -44,9 +54,14 @@ const Contact = () => {
         });
         setFormData({ name: "", email: "", subject: "", message: "" });
       } else {
+        const validationMessage =
+          Array.isArray(data.details) && data.details.length > 0
+            ? data.details[0].message
+            : undefined;
+
         toast({
           title: "Error",
-          description: data.error || "Failed to send message. Please try again.",
+          description: validationMessage || data.error || "Failed to send message. Please try again.",
           variant: "destructive",
         });
       }
@@ -124,6 +139,8 @@ const Contact = () => {
                       name="name"
                       type="text"
                       required
+                      minLength={2}
+                      maxLength={100}
                       value={formData.name}
                       onChange={handleInputChange}
                       placeholder="Your name"
@@ -162,6 +179,8 @@ const Contact = () => {
                     name="subject"
                     type="text"
                     required
+                    minLength={3}
+                    maxLength={200}
                     value={formData.subject}
                     onChange={handleInputChange}
                     placeholder="What's this about?"
@@ -181,6 +200,8 @@ const Contact = () => {
                     name="message"
                     required
                     rows={5}
+                    minLength={10}
+                    maxLength={5000}
                     value={formData.message}
                     onChange={handleInputChange}
                     placeholder="Your message..."

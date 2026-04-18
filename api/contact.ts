@@ -62,7 +62,10 @@ export default async function handler(req: any, res: any) {
   }
 
   try {
-    const { name, email, subject, message } = req.body as ContactRequest;
+    // Some runtimes can pass req.body as a JSON string; normalize to an object.
+    const parsedBody =
+      typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+    const { name, email, subject, message } = (parsedBody ?? {}) as ContactRequest;
 
     // Server-side validation
     const validationErrors = validateContactForm({ name, email, subject, message });
