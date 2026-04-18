@@ -64,6 +64,8 @@ const experiences: ExperienceItem[] = [
       "7th Place - CyberFest 2025.",
       "Demonstrated fast incident analysis and strong team coordination under time pressure.",
     ],
+    certificateUrl: "/SudoFuzzers%20CTF%20certificate.pdf",
+    certificateLabel: "SudoFuzzers Certificate",
   },
 ];
 
