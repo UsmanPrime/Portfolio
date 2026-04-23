@@ -63,7 +63,7 @@ const Hero = () => {
             {heroSkills.map((skill) => (
               <span
                 key={skill}
-                className="px-3 py-1 text-xs md:text-sm rounded-full border border-primary/40 bg-secondary/60 text-muted-foreground"
+                className="px-3 py-1 text-xs md:text-sm rounded-full border border-primary/40 bg-secondary/60 text-muted-foreground transition-all duration-200 hover:border-primary/70 hover:bg-primary/10 hover:text-foreground hover:-translate-y-0.5 hover:shadow-md hover:shadow-primary/10 cursor-default"
               >
                 {skill}
               </span>
