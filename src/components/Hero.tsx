@@ -1,7 +1,16 @@
-import { Shield, ChevronDown, FileText, Mail, FolderOpen } from "lucide-react";
+import { Shield, ChevronDown, FileText, FolderOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Hero = () => {
+  const heroSkills = [
+    "SOC Operations",
+    "Memory Forensics",
+    "MITRE ATT&CK",
+    "Splunk",
+    "Wazuh",
+    "DFIR",
+  ];
+
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
@@ -10,7 +19,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 md:pt-28">
       {/* Background Grid */}
       <div className="absolute inset-0 grid-bg opacity-50" />
       
@@ -24,28 +33,45 @@ const Hero = () => {
           {/* Status Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/50 border border-border rounded-full mb-8 animate-fade-in-up">
             <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
-            <span className="text-sm text-muted-foreground">Former SOC Analyst Intern | Blue Team | DFIR & Threat Hunting</span>
+            <span className="text-sm text-muted-foreground">Open to SOC Internships</span>
           </div>
 
           {/* Shield Icon */}
           <div className="flex justify-center mb-8 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
             <div className="relative">
-              <div className="absolute inset-0 bg-primary/20 rounded-full blur-2xl" />
-              <div className="relative p-6 bg-secondary/50 border border-primary/30 rounded-full cyber-glow">
-                <Shield className="w-16 h-16 text-primary" />
+              <div className="absolute inset-0 bg-foreground/10 rounded-full blur-2xl" />
+              <div className="relative p-6 bg-secondary/50 border border-border rounded-full">
+                <Shield className="w-16 h-16 text-foreground" />
               </div>
             </div>
           </div>
 
           {/* Main Headline */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-            <span className="text-foreground">Cyber Security Student @ FAST NUCES '28</span>
-            <br />
-            <span className="gradient-text">SOC Operations · Memory Forensics · MITRE ATT&CK · Splunk · Wazuh</span>
+            <span className="text-foreground">Usman Ibrahim</span>
           </h1>
 
+          <h2 className="text-2xl md:text-3xl font-semibold text-foreground/95 mb-3 animate-fade-in-up" style={{ animationDelay: "0.25s" }}>
+            Cyber Security Student @ FAST NUCES '28
+          </h2>
+
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-5 animate-fade-in-up" style={{ animationDelay: "0.28s" }}>
+            Former SOC Analyst Intern | Blue Team | DFIR & Threat Hunting
+          </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-2 mb-10 animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
+            {heroSkills.map((skill) => (
+              <span
+                key={skill}
+                className="px-3 py-1 text-xs md:text-sm rounded-full border border-primary/40 bg-secondary/60 text-muted-foreground"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+
           {/* Subtitle */}
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-in-up" style={{ animationDelay: "0.35s" }}>
             BS Cyber Security student at FAST NUCES Islamabad with hands-on experience in 
             SOC monitoring, DFIR workflows, incident response, and CTF challenge authoring.
           </p>
@@ -54,8 +80,9 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
             <Button
               size="lg"
+              variant="outline"
               onClick={() => scrollToSection("#projects")}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium px-8 gap-2"
+              className="border-primary/40 hover:bg-secondary text-foreground font-medium px-8 gap-2"
             >
               <FolderOpen className="w-5 h-5" />
               View Projects
@@ -64,19 +91,10 @@ const Hero = () => {
               size="lg"
               variant="outline"
               onClick={() => scrollToSection("#resume")}
-              className="border-border hover:bg-secondary hover:border-primary/50 gap-2"
+              className="border-primary/40 hover:bg-secondary gap-2 text-foreground"
             >
               <FileText className="w-5 h-5" />
               Download Resume
-            </Button>
-            <Button
-              size="lg"
-              variant="ghost"
-              onClick={() => scrollToSection("#contact")}
-              className="text-muted-foreground hover:text-foreground gap-2"
-            >
-              <Mail className="w-5 h-5" />
-              Contact
             </Button>
           </div>
 
