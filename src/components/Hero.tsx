@@ -24,7 +24,7 @@ const Hero = () => {
           {/* Status Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/50 border border-border rounded-full mb-8 animate-fade-in-up">
             <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
-            <span className="text-sm text-muted-foreground">SOC Analyst Intern at Tech Hierarchy</span>
+            <span className="text-sm text-muted-foreground">Former SOC Analyst Intern | Blue Team | DFIR & Threat Hunting</span>
           </div>
 
           {/* Shield Icon */}
@@ -39,9 +39,9 @@ const Hero = () => {
 
           {/* Main Headline */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-            <span className="text-foreground">Cyber Security Student</span>
+            <span className="text-foreground">Cyber Security Student @ FAST NUCES '28</span>
             <br />
-            <span className="gradient-text">SOC, DFIR & Threat Detection</span>
+            <span className="gradient-text">SOC Operations · Memory Forensics · MITRE ATT&CK · Splunk · Wazuh</span>
           </h1>
 
           {/* Subtitle */}

@@ -21,9 +21,9 @@ const experiences: ExperienceItem[] = [
     organization: "Tech Hierarchy",
     period: "1st Mar 2026 - 31st Mar 2026",
     highlights: [
-      "Monitored and triaged alerts in Wazuh and Splunk.",
-      "Analyzed endpoint, host, and network telemetry for indicators of compromise.",
-      "Built SOC labs to simulate attacks and validate response playbooks.",
+      "Triaged and investigated 30+ daily security alerts in Wazuh and Splunk, correlating events against MITRE ATT&CK TTPs to classify IOCs, reduce false positives, and escalate confirmed incidents per established SOC runbooks and playbooks.",
+      "Performed in-depth analysis of endpoint telemetry, machine behavior, and network logs to detect indicators of compromise (IOCs), support remediation actions, and document findings in incident reports.",
+      "Deployed a personal SOC lab using Wazuh and ELK Stack to simulate 5+ attack scenarios including lateral movement, privilege escalation, and credential dumping; validated detection rules and refined alert thresholds to improve detection accuracy.",
     ],
     certificateUrl: "/Tech%20Hierarchy%20Internship%20Certificate.pdf",
     certificateLabel: "Certificate of Completion",
@@ -51,6 +51,7 @@ const experiences: ExperienceItem[] = [
       "Designed and deployed national-level log and network forensics challenges.",
       "Created suspicious-artifact and embedded-file investigation scenarios.",
       "Calibrated challenge difficulty across beginner and advanced tracks.",
+      "Calibrated challenge difficulty across beginner and advanced tracks to ensure competitive balance for national-level participants.",
     ],
   },
   {
@@ -62,10 +63,22 @@ const experiences: ExperienceItem[] = [
     highlights: [
       "3rd Place - SudoFuzzers CTF (Forensics & OSINT).",
       "7th Place - CyberFest 2025.",
+      "Star of CyberFest '25 Awardee - individual recognition award at CyberFest 2025.",
       "Demonstrated fast incident analysis and strong team coordination under time pressure.",
     ],
     certificateUrl: "/SudoFuzzers%20CTF%20certificate.pdf",
     certificateLabel: "SudoFuzzers Certificate",
+  },
+  {
+    icon: Monitor,
+    type: "Technical Team Member & Head of Finance",
+    title: "Cyber Space Legion (CSL)",
+    organization: "Cyber Space Legion",
+    period: "Sep 2024 - Present",
+    highlights: [
+      "Contributing to blue-team workshops, CTF events, and technical initiatives focused on threat detection, incident response, and forensic analysis.",
+      "Leading the finance team in budgeting and resource allocation for cybersecurity events, workshops, and society initiatives.",
+    ],
   },
 ];
 

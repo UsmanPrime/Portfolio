@@ -55,13 +55,13 @@ const About = () => {
               <div className="cyber-card">
                 <h3 className="text-xl font-semibold mb-4 text-primary">Who I Am</h3>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  I pursued a BS in Cyber Security at FAST NUCES Islamabad (2024-2028), with a 
-                  focus on defensive operations, incident investigation, and secure system practices.
+                  I am pursuing a BS in Cyber Security at FAST NUCES Islamabad (2024-2028), with a 
+                  focus on defensive operations, threat hunting, incident investigation, and secure system practices.
                 </p>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  As a SOC Analyst Intern at Tech Hierarchy, I monitored and triaged alerts in 
-                  Wazuh and Splunk, analyzed telemetry, and escalated confirmed incidents through 
-                  SOC playbooks.
+                  As a SOC Analyst Intern at Tech Hierarchy, I triaged 30+ daily alerts in Wazuh and 
+                  Splunk, correlated events against MITRE ATT&CK TTPs to classify IOCs, and escalated 
+                  confirmed incidents following established SOC runbooks and playbooks.
                 </p>
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   I authored a hard memory forensics challenge for NASCON 2026 and co-authored 
@@ -82,10 +82,10 @@ const About = () => {
                 </div>
                 <div className="cyber-card text-center py-4">
                   <div className="text-2xl font-bold text-accent">SOC</div>
-                  <div className="text-sm text-muted-foreground">Internship</div>
+                  <div className="text-sm text-muted-foreground">Analyst Intern @ Tech Hierarchy</div>
                 </div>
                 <div className="cyber-card text-center py-4">
-                  <div className="text-2xl font-bold text-foreground">CTF</div>
+                  <div className="text-2xl font-bold text-foreground">3rd & 7th</div>
                   <div className="text-sm text-muted-foreground">Podium Finishes</div>
                 </div>
               </div>
