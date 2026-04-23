@@ -52,7 +52,7 @@ const Hero = () => {
           </h1>
 
           <h2 className="text-2xl md:text-3xl font-semibold text-foreground/95 mb-3 animate-fade-in-up" style={{ animationDelay: "0.25s" }}>
-            Cyber Security Student @ FAST NUCES '28
+            Cyber Security Student FAST NUCES '28
           </h2>
 
           <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-5 animate-fade-in-up" style={{ animationDelay: "0.28s" }}>
