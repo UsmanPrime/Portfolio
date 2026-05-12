@@ -106,7 +106,7 @@ const Skills = () => {
           <div className="text-center mb-16">
             <h2 className="section-title">Technical Skills</h2>
             <p className="section-subtitle mx-auto">
-              Structured competencies across defensive security domains
+              Structured competencies across defensive security, AI solution support, and business development
             </p>
           </div>
 

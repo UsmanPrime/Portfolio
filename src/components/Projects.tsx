@@ -64,7 +64,7 @@ const Projects = () => {
           <div className="text-center mb-16">
             <h2 className="section-title">Projects</h2>
             <p className="section-subtitle mx-auto">
-              Selected software and cybersecurity projects from coursework and practical work
+              Selected software, cybersecurity, and product-focused projects from coursework and practical work
             </p>
           </div>
 

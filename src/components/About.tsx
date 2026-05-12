@@ -6,7 +6,7 @@ const About = () => {
     {
       icon: ShieldCheck,
       title: "SOC Monitoring",
-      description: "Monitored and triaged alerts with SIEM tooling and defined escalation paths.",
+      description: "Monitored and triaged alerts with SIEM tooling, MITRE ATT&CK mapping, and defined escalation paths.",
     },
     {
       icon: Search,
@@ -16,12 +16,12 @@ const About = () => {
     {
       icon: Activity,
       title: "Detection Engineering",
-      description: "Built SOC labs to simulate attacks and validate detection workflows.",
+      description: "Built SOC labs to simulate attacks, validate detection workflows, and tune alert thresholds.",
     },
     {
       icon: Lock,
-      title: "CTF Challenge Design",
-      description: "Designed practical forensics challenges for national cybersecurity events.",
+      title: "AI Solution Support",
+      description: "Supported AI solution discovery, client engagement, and proposal preparation across emerging use cases.",
     },
   ];
 
@@ -45,7 +45,7 @@ const About = () => {
             </div>
             <h2 className="section-title">About Me</h2>
             <p className="section-subtitle mx-auto">
-              Cybersecurity student and SOC intern building practical blue-team expertise
+              Cybersecurity and AI-focused student building practical experience in SOC operations, forensics, and business development
             </p>
           </div>
 
@@ -56,21 +56,16 @@ const About = () => {
                 <h3 className="text-xl font-semibold mb-4 text-primary">Who I Am</h3>
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   I am pursuing a BS in Cyber Security at FAST NUCES Islamabad (2024-2028), with a 
-                  focus on defensive operations, threat hunting, incident investigation, and secure system practices.
+                  focus on defensive operations, threat hunting, incident investigation, secure system practices, and AI solution support.
                 </p>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  As a SOC Analyst Intern at Tech Hierarchy, I triaged 30+ daily alerts in Wazuh and 
-                  Splunk, correlated events against MITRE ATT&CK TTPs to classify IOCs, and escalated 
-                  confirmed incidents following established SOC runbooks and playbooks.
+                  As a Business Development Intern at Intellema, I collaborate on AI opportunity discovery, client engagement, and solution design across RAG, LLMs, Deep Learning, Generative AI, Voice AI, computer vision, Agentic AI, ML Ops, and DevOps.
                 </p>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  I authored a hard memory forensics challenge for NASCON 2026 and co-authored 
-                  RDX National CTF challenges in log analysis, network analysis, and artifact 
-                  investigation.
+                  I also gained hands-on cybersecurity experience as a SOC Analyst Intern at Tech Hierarchy, where I triaged 30+ daily alerts in Wazuh and Splunk, correlated events against MITRE ATT&CK TTPs, and escalated confirmed incidents through SOC playbooks.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  I built my profile through hands-on labs, competition performance, and practical 
-                  SOC execution aligned with DFIR-focused career goals.
+                  I built my profile through hands-on labs, competition performance, proposal work, and practical SOC execution aligned with DFIR and AI-focused career goals.
                 </p>
               </div>
 
@@ -81,12 +76,12 @@ const About = () => {
                   <div className="text-sm text-muted-foreground">BS Cyber Security</div>
                 </div>
                 <div className="cyber-card text-center py-4">
-                  <div className="text-2xl font-bold text-accent">SOC</div>
-                  <div className="text-sm text-muted-foreground">Analyst Intern @ Tech Hierarchy</div>
+                  <div className="text-2xl font-bold text-accent">AI + SOC</div>
+                  <div className="text-sm text-muted-foreground">Internship Experience</div>
                 </div>
                 <div className="cyber-card text-center py-4">
-                  <div className="text-2xl font-bold text-foreground">3rd & 7th</div>
-                  <div className="text-sm text-muted-foreground">Podium Finishes</div>
+                  <div className="text-2xl font-bold text-foreground">Intellema</div>
+                  <div className="text-sm text-muted-foreground">Business Development Intern</div>
                 </div>
               </div>
             </div>

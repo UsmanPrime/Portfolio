@@ -62,7 +62,6 @@ const experiences: ExperienceItem[] = [
     highlights: [
       "Designed and deployed national-level log and network forensics challenges.",
       "Created suspicious-artifact and embedded-file investigation scenarios.",
-      "Calibrated challenge difficulty across beginner and advanced tracks.",
       "Calibrated challenge difficulty across beginner and advanced tracks to ensure competitive balance for national-level participants.",
     ],
   },
@@ -103,7 +102,7 @@ const Experience = () => {
           <div className="text-center mb-16">
             <h2 className="section-title">Learning & Experience</h2>
             <p className="section-subtitle mx-auto">
-              Professional roles, challenge authoring, and competition achievements
+              Professional roles across cybersecurity, AI solution support, challenge authoring, and competition achievements
             </p>
           </div>
 

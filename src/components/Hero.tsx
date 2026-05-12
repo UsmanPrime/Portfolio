@@ -33,7 +33,7 @@ const Hero = () => {
           {/* Status Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/50 border border-border rounded-full mb-8 animate-fade-in-up">
             <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
-            <span className="text-sm text-muted-foreground">Open to SOC Internships</span>
+            <span className="text-sm text-muted-foreground">Open to AI and Cybersecurity Opportunities</span>
           </div>
 
           {/* Shield Icon */}
@@ -52,11 +52,11 @@ const Hero = () => {
           </h1>
 
           <h2 className="text-2xl md:text-3xl font-semibold text-foreground/95 mb-3 animate-fade-in-up" style={{ animationDelay: "0.25s" }}>
-            Cyber Security Student FAST NUCES '28
+            Cyber Security & AI Student FAST NUCES '28
           </h2>
 
           <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-5 animate-fade-in-up" style={{ animationDelay: "0.28s" }}>
-            Former SOC Analyst Intern | Blue Team | DFIR & Threat Hunting
+            Business Development Intern | AI Solutions | Blue Team | DFIR
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-2 mb-10 animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
@@ -73,7 +73,7 @@ const Hero = () => {
           {/* Subtitle */}
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-in-up" style={{ animationDelay: "0.35s" }}>
             BS Cyber Security student at FAST NUCES Islamabad with hands-on experience in 
-            SOC monitoring, DFIR workflows, incident response, and CTF challenge authoring.
+            SOC operations, DFIR workflows, AI solution support, client engagement, and CTF challenge authoring.
           </p>
 
           {/* CTA Buttons */}

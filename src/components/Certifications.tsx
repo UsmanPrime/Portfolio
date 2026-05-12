@@ -95,7 +95,7 @@ const Certifications = () => {
           <div className="text-center mb-16">
             <h2 className="section-title">Certifications</h2>
             <p className="section-subtitle mx-auto">
-              Industry certifications and continuous learning path
+              Industry certifications, business foundations, and continuous learning path
             </p>
           </div>
 

@@ -111,7 +111,7 @@ const Contact = () => {
           <div className="text-center mb-16">
             <h2 className="section-title">Get In Touch</h2>
             <p className="section-subtitle mx-auto">
-              Interested in discussing opportunities or security topics
+              Interested in discussing cybersecurity, AI, business development, or collaboration opportunities
             </p>
           </div>
 
@@ -241,8 +241,8 @@ const Contact = () => {
                 </div>
 
                 <p className="text-muted-foreground mb-6">
-                  Open to cybersecurity internships, SOC and DFIR opportunities, collaboration,
-                  and challenge authoring work. I aim to respond within 24-48 hours.
+                  Open to cybersecurity and AI opportunities, SOC and DFIR roles, collaboration,
+                  and business development work. I aim to respond within 24-48 hours.
                 </p>
 
                 <div className="space-y-4">

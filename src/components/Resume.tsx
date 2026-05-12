@@ -33,13 +33,13 @@ const Resume = () => {
           <div className="text-center mb-16">
             <h2 className="section-title">Resume</h2>
             <p className="section-subtitle mx-auto">
-              Download my full resume or review key competencies below
+              Download my full resume or review key competencies across cybersecurity, AI support, and business development
             </p>
           </div>
 
           {/* Download Card */}
           <div className="cyber-card mb-12 flex flex-col sm:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-4">
+      items: ["SOC Operations & DFIR", "AI Solution Support", "Splunk, Wazuh, Elastic, Wireshark", "Python, C++, JavaScript, Bash"],
               <div className="p-4 bg-primary/10 rounded-lg">
                 <FileText className="w-8 h-8 text-primary" />
               </div>
