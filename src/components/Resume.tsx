@@ -39,7 +39,7 @@ const Resume = () => {
 
           {/* Download Card */}
           <div className="cyber-card mb-12 flex flex-col sm:flex-row items-center justify-between gap-6">
-      items: ["SOC Operations & DFIR", "AI Solution Support", "Splunk, Wazuh, Elastic, Wireshark", "Python, C++, JavaScript, Bash"],
+            <div className="flex items-center gap-4">
               <div className="p-4 bg-primary/10 rounded-lg">
                 <FileText className="w-8 h-8 text-primary" />
               </div>
