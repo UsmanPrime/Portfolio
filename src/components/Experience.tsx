@@ -1,4 +1,4 @@
-import { BookOpen, Monitor, Target, Award, ExternalLink } from "lucide-react";
+import { BookOpen, Monitor, Target, Award, Briefcase, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface ExperienceItem {
@@ -14,6 +14,18 @@ interface ExperienceItem {
 }
 
 const experiences: ExperienceItem[] = [
+  {
+    icon: Briefcase,
+    type: "Internship",
+    title: "Business Development Intern",
+    organization: "Intellema",
+    period: "May 2026 - Present",
+    highlights: [
+      "Collaborate with a multidisciplinary team to identify and pursue business opportunities for advanced AI solutions including Retrieval-Augmented Generation (RAG), Large Language Models (LLM), Deep Learning (DL), Generative AI, and Voice AI.",
+      "Support client engagement and solution design for diverse AI capabilities spanning computer vision, Agentic AI, ML Ops, and DevOps; analyze client requirements and recommend optimal delivery models tailored to business objectives.",
+      "Contribute to business development initiatives and proposal preparation for AI-driven projects, demonstrating understanding of enterprise AI systems, integration approaches, and implementation best practices across industries.",
+    ],
+  },
   {
     icon: Target,
     type: "Internship",

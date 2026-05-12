@@ -11,7 +11,7 @@ const Resume = () => {
     {
       icon: Monitor,
       title: "Experience",
-      items: ["SOC Analyst Intern", "Tech Hierarchy", "Mar 2026"],
+      items: ["Business Development Intern", "Intellema", "May 2026 - Present"],
     },
     {
       icon: Shield,
