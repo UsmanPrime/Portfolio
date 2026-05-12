@@ -12,12 +12,8 @@ const Resume = () => {
       icon: Monitor,
       title: "Experience",
       items: [
-        "Business Development Intern",
-        "Intellema",
-        "May 2026 - Present",
-        "SOC Analyst Intern",
-        "Tech Hierarchy",
-        "Mar 2026",
+        "Business Development Intern — Intellema | May 2026 - Present",
+        "SOC Analyst Intern — Tech Hierarchy | Mar 2026",
       ],
     },
     {
