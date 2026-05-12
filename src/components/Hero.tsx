@@ -33,7 +33,7 @@ const Hero = () => {
           {/* Status Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/50 border border-border rounded-full mb-8 animate-fade-in-up">
             <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
-            <span className="text-sm text-muted-foreground">Open to AI and Cybersecurity Opportunities</span>
+            <span className="text-sm text-muted-foreground">Open to Cybersecurity Opportunities</span>
           </div>
 
           {/* Shield Icon */}
