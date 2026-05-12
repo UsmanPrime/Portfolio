@@ -45,7 +45,7 @@ const About = () => {
             </div>
             <h2 className="section-title">About Me</h2>
             <p className="section-subtitle mx-auto">
-              Cybersecurity and AI-focused student building practical experience in SOC operations, forensics, and business development
+              Cybersecurity and AI-focused student building practical experience across SOC operations, forensics, and business development
             </p>
           </div>
 
@@ -55,8 +55,7 @@ const About = () => {
               <div className="cyber-card">
                 <h3 className="text-xl font-semibold mb-4 text-primary">Who I Am</h3>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  I am pursuing a BS in Cyber Security at FAST NUCES Islamabad (2024-2028), with a 
-                  focus on defensive operations, threat hunting, incident investigation, secure system practices, and AI solution support.
+                  I am pursuing a BS in Cyber Security at FAST NUCES Islamabad (2024-2028), with a focus on defensive operations, threat hunting, incident investigation, secure system practices, and AI solution support.
                 </p>
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   As a Business Development Intern at Intellema, I collaborate on AI opportunity discovery, client engagement, and solution design across RAG, LLMs, Deep Learning, Generative AI, Voice AI, computer vision, Agentic AI, ML Ops, and DevOps.

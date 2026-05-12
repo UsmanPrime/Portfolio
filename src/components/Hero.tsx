@@ -52,11 +52,11 @@ const Hero = () => {
           </h1>
 
           <h2 className="text-2xl md:text-3xl font-semibold text-foreground/95 mb-3 animate-fade-in-up" style={{ animationDelay: "0.25s" }}>
-            Cyber Security & AI Student FAST NUCES '28
+            Cyber Security & AI Student at FAST NUCES '28
           </h2>
 
           <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-5 animate-fade-in-up" style={{ animationDelay: "0.28s" }}>
-            Business Development Intern | AI Solutions | Blue Team | DFIR
+            Business Development Intern at Intellema | AI Solutions | Blue Team | DFIR
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-2 mb-10 animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
@@ -72,8 +72,7 @@ const Hero = () => {
 
           {/* Subtitle */}
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-in-up" style={{ animationDelay: "0.35s" }}>
-            BS Cyber Security student at FAST NUCES Islamabad with hands-on experience in 
-            SOC operations, DFIR workflows, AI solution support, client engagement, and CTF challenge authoring.
+            BS Cyber Security student at FAST NUCES Islamabad with experience across SOC operations, DFIR workflows, AI solution support, client engagement, and CTF challenge authoring.
           </p>
 
           {/* CTA Buttons */}
