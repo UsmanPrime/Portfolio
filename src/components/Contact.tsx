@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Mail, Github, Linkedin, Send, Shield, Phone } from "lucide-react";
+import { Mail, Github, Linkedin, Send, Shield, Phone, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { useScrollReveal } from "@/hooks/useAnimations";
 
 interface ContactErrorDetail {
   field: string;
@@ -17,6 +18,8 @@ interface ContactApiErrorResponse {
 
 const Contact = () => {
   const { toast } = useToast();
+  const { ref: headerRef, isRevealed: headerRevealed } = useScrollReveal();
+  const { ref: formRef, isRevealed: formRevealed } = useScrollReveal();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -101,25 +104,41 @@ const Contact = () => {
       href: "https://www.linkedin.com/in/usman-ibrahim-992253276/",
       value: "linkedin.com/in/usman-ibrahim",
     },
+    {
+      icon: Globe,
+      label: "Portfolio",
+      href: "https://usmanprime-portfolio.vercel.app/",
+      value: "usmanprime-portfolio.vercel.app",
+    },
   ];
 
   return (
-    <section id="contact" className="py-24 relative">
+    <section id="contact" className="py-28 relative">
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16">
+          <div
+            ref={headerRef}
+            className={`text-center mb-16 transition-all duration-700 ${
+              headerRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
             <h2 className="section-title">Get In Touch</h2>
-            <p className="section-subtitle mx-auto">
-              Interested in discussing cybersecurity, AI, business development, or collaboration opportunities
+            <p className="section-subtitle mx-auto mt-6">
+              Interested in discussing cybersecurity, SOC operations, AI solutions, or collaboration opportunities
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div
+            ref={formRef}
+            className={`grid lg:grid-cols-2 gap-12 transition-all duration-700 ${
+              formRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
             {/* Contact Form */}
             <div className="cyber-card">
               <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 bg-primary/10 rounded-lg">
+                <div className="p-2 bg-primary/10 rounded-xl">
                   <Send className="w-5 h-5 text-primary" />
                 </div>
                 <h3 className="text-lg font-semibold">Send a Message</h3>
@@ -144,7 +163,7 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleInputChange}
                       placeholder="Your name"
-                      className="bg-secondary/50 border-border focus:border-primary"
+                      className="bg-secondary/30 border-border focus:border-primary rounded-xl transition-all duration-300 focus:shadow-lg focus:shadow-primary/5"
                     />
                   </div>
                   <div>
@@ -162,7 +181,7 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       placeholder="your@email.com"
-                      className="bg-secondary/50 border-border focus:border-primary"
+                      className="bg-secondary/30 border-border focus:border-primary rounded-xl transition-all duration-300 focus:shadow-lg focus:shadow-primary/5"
                     />
                   </div>
                 </div>
@@ -184,7 +203,7 @@ const Contact = () => {
                     value={formData.subject}
                     onChange={handleInputChange}
                     placeholder="What's this about?"
-                    className="bg-secondary/50 border-border focus:border-primary"
+                    className="bg-secondary/30 border-border focus:border-primary rounded-xl transition-all duration-300 focus:shadow-lg focus:shadow-primary/5"
                   />
                 </div>
 
@@ -205,13 +224,13 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleInputChange}
                     placeholder="Your message..."
-                    className="bg-secondary/50 border-border focus:border-primary resize-none"
+                    className="bg-secondary/30 border-border focus:border-primary resize-none rounded-xl transition-all duration-300 focus:shadow-lg focus:shadow-primary/5"
                   />
                 </div>
 
                 <Button
                   type="submit"
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground gap-2"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground gap-2 magnetic-btn rounded-xl shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 h-11"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
@@ -234,32 +253,37 @@ const Contact = () => {
               {/* Info Card */}
               <div className="cyber-card">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="p-2 bg-primary/10 rounded-lg">
+                  <div className="p-2 bg-primary/10 rounded-xl">
                     <Shield className="w-5 h-5 text-primary" />
                   </div>
                   <h3 className="text-lg font-semibold">Connect With Me</h3>
                 </div>
 
-                <p className="text-muted-foreground mb-6">
-                  Open to cybersecurity and AI opportunities, SOC and DFIR roles, collaboration,
+                <p className="text-muted-foreground mb-6 leading-relaxed">
+                  Seeking a SOC Analyst Internship to apply blue-team expertise. Open to 
+                  cybersecurity roles, AI opportunities, DFIR positions, collaboration, 
                   and business development work. I aim to respond within 24-48 hours.
                 </p>
 
-                <div className="space-y-4">
+                <div className="space-y-3">
                   {socialLinks.map((link) => (
                     <a
                       key={link.label}
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-4 p-3 rounded-lg bg-secondary/50 border border-border hover:border-primary/50 transition-colors group"
+                      className="flex items-center gap-4 p-3 rounded-xl bg-secondary/30 border border-border/50 hover:border-primary/50 transition-all duration-300 group hover:bg-secondary/50 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/5"
                     >
-                      <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
+                      <div className="p-2 bg-primary/10 rounded-xl transition-all duration-500 group-hover:bg-primary/20 group-hover:scale-110">
                         <link.icon className="w-5 h-5 text-primary" />
                       </div>
                       <div>
-                        <div className="text-sm font-medium">{link.label}</div>
-                        <div className="text-sm text-muted-foreground">{link.value}</div>
+                        <div className="text-sm font-medium group-hover:text-primary transition-colors duration-300">
+                          {link.label}
+                        </div>
+                        <div className="text-sm text-muted-foreground">
+                          {link.value}
+                        </div>
                       </div>
                     </a>
                   ))}
@@ -270,16 +294,22 @@ const Contact = () => {
               <div className="terminal-panel">
                 <div className="terminal-header">
                   <div className="terminal-dot bg-accent/70" />
-                  <span className="text-xs text-muted-foreground ml-2 font-mono">secure_contact.log</span>
+                  <span className="text-xs text-muted-foreground ml-2 font-mono">
+                    secure_contact.log
+                  </span>
                 </div>
-                <div className="p-4 font-mono text-sm">
+                <div className="p-4 font-mono text-sm space-y-1">
                   <div className="flex gap-3 text-muted-foreground">
                     <span className="text-accent">[SECURE]</span>
                     <span>All communications are confidential</span>
                   </div>
-                  <div className="flex gap-3 text-muted-foreground mt-1">
+                  <div className="flex gap-3 text-muted-foreground">
                     <span className="text-primary">[RESPONSE]</span>
                     <span>Expected within 24-48 hours</span>
+                  </div>
+                  <div className="flex gap-3 text-muted-foreground">
+                    <span className="text-accent">[STATUS]</span>
+                    <span>Open to SOC Analyst internship opportunities</span>
                   </div>
                 </div>
               </div>

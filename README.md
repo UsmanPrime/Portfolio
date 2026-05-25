@@ -1,141 +1,218 @@
-# My Portfolio 🛡️
+<p align="center">
+  <img src="https://img.shields.io/badge/SOC_Analyst-Cybersecurity-00b4d8?style=for-the-badge&logo=shield&logoColor=white" />
+  <img src="https://img.shields.io/badge/DFIR-Blue_Team-34d399?style=for-the-badge&logo=hackthebox&logoColor=white" />
+  <img src="https://img.shields.io/badge/FAST_NUCES-2024--2028-1e293b?style=for-the-badge&logo=university&logoColor=white" />
+</p>
 
-> A modern, responsive cybersecurity portfolio website showcasing my skills, projects, and experience in defensive security operations and threat intelligence.
+<h1 align="center">🛡️ Usman Ibrahim — Cybersecurity Portfolio</h1>
 
-## 🌐 Overview
+<p align="center">
+  <strong>SOC Analyst · DFIR Specialist · Threat Hunter · Blue Team Operator</strong>
+</p>
 
-This is my professional portfolio website as a BS Cybersecurity student at FAST NUCES Islamabad. The site demonstrates expertise in SOC operations, blue team defense, incident response, and security tool proficiency through an interactive and visually engaging platform.
+<p align="center">
+  <a href="https://usmanprime-portfolio.vercel.app/">🌐 Live Demo</a> ·
+  <a href="https://www.linkedin.com/in/usman-ibrahim-992253276/">LinkedIn</a> ·
+  <a href="mailto:i242038@isb.nu.edu.pk">Email</a>
+</p>
 
-**Status**: Available for Internships & Opportunities
+---
 
-## ✨ Features
+## 📋 Overview
 
-- **Hero Section** - Eye-catching landing page with smooth animations and CTA buttons
-- **About Me** - Detailed bio with focus areas in threat defense, investigation, monitoring, and incident response
-- **Skills Showcase** - Organized skill categories including:
-  - SOC & Blue Team operations
-  - SIEM & Monitoring
-  - Security Tools & Technologies
-  - Technical Foundations (Linux, Networking, DevOps)
-  - Programming & Scripting
-  - Cloud & Infrastructure
-- **Projects Portfolio** - Showcase of full-stack web apps, security projects, and academic work
-- **Experience & Certifications** - Professional journey and credential highlights
-- **Contact Section** - Easy-to-use contact form
-- **Responsive Design** - Mobile-first approach with smooth scrolling navigation
-- **Dark Mode Support** - Theme switching for comfortable viewing
-- **Modern UI Components** - Built with shadcn/ui components
+A **modern, high-performance cybersecurity portfolio** built with React, TypeScript, and Tailwind CSS. Featuring interactive particle backgrounds, scroll-reveal animations, glassmorphism UI, and a cybersecurity-themed dark design — showcasing my skills, projects, certifications, and professional experience in SOC operations, DFIR, and threat detection.
+
+> **Status:** Seeking SOC Analyst Internship — Open to Cybersecurity Opportunities
+
+---
+
+## ✨ Key Features
+
+| Feature | Description |
+|---------|-------------|
+| 🎆 **Interactive Particles** | Canvas-based particle network with mouse repulsion effect |
+| ⌨️ **Typing Terminal** | Animated typewriter effect in the hero terminal panel |
+| 🔄 **Rotating Roles** | Dynamic role titles cycling through SOC Analyst, DFIR Specialist, etc. |
+| 📊 **Animated Count-Up** | Stats that count up when scrolled into view (30+ alerts, 20% reduction) |
+| 👁️ **Scroll Reveal** | IntersectionObserver-based section reveal animations |
+| 🪟 **Glassmorphism Cards** | Backdrop-blur cards with shine sweep on hover |
+| 🎯 **Scroll Spy Navbar** | Active section highlighting as you scroll |
+| 🧲 **Magnetic Buttons** | Radial glow expansion on hover |
+| 🌈 **Gradient Animations** | Animated section title underlines, text gradients |
+| 📱 **Fully Responsive** | Mobile-first design with smooth navigation |
+| 📧 **Contact Form** | Working contact form with API backend |
+| 📄 **Resume Download** | Direct PDF download and online view |
+
+---
 
 ## 🛠️ Tech Stack
 
 ### Frontend
-- **Vite** - Next generation build tool and dev server
-- **React 18** - UI library with hooks
-- **TypeScript** - Static type checking
-- **Tailwind CSS** - Utility-first CSS framework
-- **shadcn/ui** - High-quality React components
-- **Lucide React** - Beautiful icon library
+| Technology | Purpose |
+|-----------|---------|
+| **React 18** | Component-based UI |
+| **TypeScript** | Type-safe development |
+| **Vite** | Lightning-fast build tool |
+| **Tailwind CSS** | Utility-first styling |
+| **shadcn/ui** | Premium component library |
+| **Lucide React** | Icon library |
 
-### State Management & Data
-- **TanStack React Query** - Server state management
-- **React Router** - Client-side routing
-- **Sonner** - Toast notifications
-- **React Hook Form** - Efficient form handling
-
-### Development Tools
-- **ESLint** - Code quality linting
-- **PostCSS** - CSS transformations
-- **Bun** - Package manager
-
-##  Project Structure
-
-```
-src/
-├── components/          # React components
-│   ├── Hero.tsx        # Landing section
-│   ├── About.tsx       # About me section
-│   ├── Skills.tsx      # Skills showcase
-│   ├── Projects.tsx    # Portfolio projects
-│   ├── Experience.tsx  # Work experience
-│   ├── Certifications.tsx # Credentials
-│   ├── Contact.tsx     # Contact form
-│   ├── Resume.tsx      # Resume section
-│   ├── Navbar.tsx      # Navigation bar
-│   ├── Footer.tsx      # Footer
-│   └── ui/            # shadcn/ui components
-├── pages/
-│   ├── Index.tsx      # Main portfolio page
-│   └── NotFound.tsx   # 404 page
-├── hooks/             # Custom React hooks
-├── lib/              # Utility functions
-├── assets/           # Images and media
-├── App.tsx           # Root component
-└── main.tsx          # Entry point
-```
-
-## 🎯 Key Sections
-
-### About
-Detailed introduction focusing on:
-- Cybersecurity expertise at FAST NUCES
-- Specialization in defensive security operations
-- Core competencies in threat monitoring and incident response
-
-### Skills
-Organized into 6 categories:
-1. **SOC & Blue Team** - Threat monitoring, alert triage, incident response
-2. **SIEM & Monitoring** - Log analysis, correlation rules, event investigation
-3. **Security Tools** - SIEM platforms, Wireshark, Kali Linux, forensic tools
-4. **Technical Foundations** - Linux, networking, TCP/IP, Git
-5. **Programming** - C++, Python, JavaScript, React, Node.js
-6. **Cloud & Infrastructure** - AWS, Docker, Kubernetes basics
-
-### Projects Featured
-- **Smart Housing Society Website** - MERN stack full-stack application
-- **OSIM** - OOP semester project in C++
-- **SecureShop** - C++ secure shopping platform
-- **Game Projects** - Pygame and other game development
-
-## 🎨 Design Features
-
-- **Cyber-themed Design** - Security-focused aesthetic with shield icons and grid backgrounds
-- **Smooth Animations** - Fade-in effects and gradient overlays for visual appeal
-- **Glassmorphism Effects** - Modern card designs with blur effects
-- **Responsive Gradients** - Dynamic background elements
-- **Accessible Components** - Built with accessibility best practices
-- **Smooth Scrolling Navigation** - Section linking with smooth scroll behavior
-
-## 📱 Responsive Design
-
-The portfolio is fully responsive across all device sizes:
-- **Desktop** - Full multi-column layouts
-- **Tablet** - Optimized grid layouts
-- **Mobile** - Single-column layout with touch-friendly navigation
-
-## 🔗 Links & Resources
-
-- **GitHub Profile**: [UsmanPrime](https://github.com/UsmanPrime)
-- **Email**: Contact via the portfolio website
-- **University**: FAST NUCES Islamabad
-
-## 🤝 Contributing
-
-This is a personal portfolio project. Feel free to fork and use it as a template for your own portfolio!
-
-## 📄 License
-
-This project is open source and available under the MIT License.
-
-## 🙏 Acknowledgments
-
-- **shadcn/ui** - For excellent React component library
-- **Vite** - For blazingly fast build tooling
-- **Tailwind CSS** - For utility-first styling
-- **Radix UI** - For accessible component primitives
-- **FAST NUCES** - For cybersecurity education
+### Libraries & Tools
+| Library | Purpose |
+|---------|---------|
+| **TanStack React Query** | Server state management |
+| **React Router v6** | Client-side routing |
+| **React Hook Form + Zod** | Form handling & validation |
+| **Sonner** | Toast notifications |
+| **Resend** | Email API for contact form |
+| **Vercel** | Deployment & hosting |
 
 ---
 
-**Last Updated**: January 2026
+## 📁 Project Structure
 
-Built with ❤️ - Cybersecurity Enthusiast & Developer
+```
+src/
+├── components/
+│   ├── Hero.tsx                 # Landing with particles & typing effect
+│   ├── About.tsx                # Bio, photo, animated stats
+│   ├── Skills.tsx               # 6 skill categories from resume
+│   ├── Projects.tsx             # 5 project cards with highlights
+│   ├── Experience.tsx           # Timeline + achievements section
+│   ├── Certifications.tsx       # 7 certs with status badges
+│   ├── Resume.tsx               # Download card + 6 competency panels
+│   ├── Contact.tsx              # Form + social links + terminal
+│   ├── Navbar.tsx               # Scroll spy + glassmorphism
+│   ├── Footer.tsx               # Social links + back-to-top
+│   ├── ParticlesBackground.tsx  # Canvas particle network
+│   └── ui/                      # shadcn/ui base components
+├── hooks/
+│   ├── useAnimations.ts         # Scroll reveal, typing, count-up, parallax
+│   └── use-toast.ts             # Toast notification hook
+├── pages/
+│   ├── Index.tsx                # Main portfolio page
+│   └── NotFound.tsx             # 404 page
+├── lib/                         # Utility functions
+├── assets/                      # Images & media
+├── App.tsx                      # Root with routing
+├── index.css                    # Design system & animations
+└── main.tsx                     # Entry point
+```
+
+---
+
+## 🎯 Portfolio Sections
+
+### 🏠 Hero
+- Interactive particle network background with mouse repulsion
+- Rotating role titles with smooth fade transitions
+- Typing terminal effect showing security monitoring initialization
+- Gradient name text and skill badges with hover micro-animations
+
+### 👤 About
+- Animated profile photo with orbital rings and availability indicator
+- Count-up statistics: **30+** daily alerts, **5+** attack scenarios, **20%** false positive reduction
+- 4 focus area cards: SOC Operations, Digital Forensics, Threat Detection, AI Solution Support
+
+### 🔧 Skills
+6 categories matching resume exactly:
+1. **Security Operations** — SOC, Alert Triage, DFIR, Threat Hunting, IOC Analysis
+2. **SIEM & Security Tools** — Splunk, Wazuh, ELK, Wireshark, Volatility 3, Autopsy, Belkasoft
+3. **Digital Forensics** — Memory, Windows, PCAP, Log Analysis, OSINT
+4. **Frameworks & Standards** — MITRE ATT&CK, ISO/IEC 27001, NIST CSF
+5. **Programming Languages** — Python, Bash, C++, JavaScript, TypeScript
+6. **Core Concepts & Web Tools** — TCP/IP, OOP, React, Node.js, MongoDB
+
+### 💼 Projects
+| Project | Stack | Highlights |
+|---------|-------|------------|
+| Smart Housing Society Portal | React, Node.js, MongoDB | JWT auth, 200+ resident records, 40% faster resolution |
+| OSIM - Organizational Simulation | C++, OOP | 12+ class hierarchies, 1,000+ records, SOLID principles |
+| SecureShop | C++, File I/O | Multi-factor auth, O(log n) search, injection prevention |
+| Cybersecurity Portfolio | React, TypeScript | 95+ Lighthouse score, full responsive design |
+| Xonix Game | C++, Data Structures | 60 FPS physics engine, 35% memory reduction |
+
+### 📜 Experience
+- **Business Development Intern** — Intellema (May 2026 – Present)
+- **SOC Analyst Intern** — Tech Hierarchy (March 2026)
+- **Challenge Author** — NASCON 2026 Forensics Arena
+- **Organizer & Author** — RDX National CTF (100+ participants)
+- **Technical Team & Head of Finance** — Cyber Space Legion (FAST NUCES)
+
+### 🏆 Achievements
+- 🥉 **3rd Place** — SudoFuzzers CTF (top 6% of 50+ teams)
+- 🏅 **7th Place** — CyberFest 2025 National CTF (top 7% of 100+ teams)
+- ⭐ **Star of CyberFest '25** — Individual Recognition Award
+
+### 📜 Certifications
+- CDSA — Hack The Box *(In Progress)*
+- SOC & Network Security — Cisco
+- ISO/IEC 27001:2022 — SkillFront
+- Computer Networks & Network Security — IBM
+- Advanced Digital Forensics Techniques
+- Windows Forensics — Belkasoft (6 CPE Credits)
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 20.x
+- npm or bun
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/UsmanPrime/Portfolio.git
+cd Portfolio
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
+The dev server will start at `http://localhost:8080/`
+
+### Build for Production
+
+```bash
+npm run build
+npm run preview
+```
+
+---
+
+## 🌐 Deployment
+
+This portfolio is deployed on **Vercel** with automatic deployments from the main branch.
+
+**Live URL:** [usmanprime-portfolio.vercel.app](https://usmanprime-portfolio.vercel.app/)
+
+---
+
+## 📞 Contact
+
+| Channel | Link |
+|---------|------|
+| 📧 Email | [i242038@isb.nu.edu.pk](mailto:i242038@isb.nu.edu.pk) |
+| 📱 Phone | +92 334 2226620 |
+| 💼 LinkedIn | [usman-ibrahim](https://www.linkedin.com/in/usman-ibrahim-992253276/) |
+| 🐙 GitHub | [UsmanPrime](https://github.com/UsmanPrime) |
+| 🌐 Portfolio | [usmanprime-portfolio.vercel.app](https://usmanprime-portfolio.vercel.app/) |
+
+---
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+---
+
+<p align="center">
+  <strong>Built with 🛡️ by Usman Ibrahim</strong><br/>
+  <em>SOC Operations · DFIR · Threat Detection · Blue Team</em><br/><br/>
+  <sub>Last Updated: May 2026</sub>
+</p>

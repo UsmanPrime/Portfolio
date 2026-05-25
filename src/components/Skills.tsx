@@ -1,4 +1,5 @@
 import { Shield, Monitor, Wrench, Server, Code, Terminal } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useAnimations";
 
 interface SkillCategory {
   icon: typeof Shield;
@@ -14,125 +15,141 @@ const skillCategories: SkillCategory[] = [
     description: "Core SOC and incident handling capabilities",
     skills: [
       "SOC Operations",
-      "Threat Hunting",
-      "Playbook Execution",
-      "Escalation Procedures",
-      "IOC Analysis",
-      "SOC Tier 1 / Tier 2 Support",
+      "Alert Triage",
       "Incident Response",
       "DFIR",
-      "SIEM Workflows",
-      "Log Analysis",
-      "Security Event Triage",
+      "Threat Hunting",
+      "IOC Analysis",
+      "Vulnerability Assessment",
+      "Playbook Execution",
+      "SOC Tier 1 / Tier 2",
     ],
   },
   {
     icon: Monitor,
-    title: "SIEM & Analysis",
-    description: "Monitoring, correlation, and investigation",
+    title: "SIEM & Security Tools",
+    description: "Monitoring, correlation, and investigation platforms",
     skills: [
       "Splunk",
       "Wazuh",
-      "Elastic",
+      "Elastic Stack (ELK)",
+      "Wireshark",
+      "Volatility 3",
       "Autopsy",
       "Belkasoft",
-      "ELK Stack",
-      "Log Analysis",
-      "Alert Correlation",
-      "Telemetry Review",
-      "Threat Detection",
+      "Linux",
+      "Docker",
+      "Git",
     ],
   },
   {
     icon: Wrench,
-    title: "Security Tooling",
-    description: "Platforms used for operations and investigation",
+    title: "Digital Forensics",
+    description: "Hands-on investigation and forensic analysis",
     skills: [
-      "Wireshark",
-      "Linux",
-      "Docker",
-      "Git",
-      "Volatility 3",
-      "Windows Event Logs",
+      "Memory Forensics",
+      "Windows Forensics",
+      "Network Traffic Analysis (PCAP)",
+      "Log Analysis",
+      "File-Embedded Forensics",
+      "Endpoint Telemetry",
+      "OSINT",
     ],
   },
   {
     icon: Server,
-    title: "Core Concepts",
-    description: "Foundational technical knowledge",
+    title: "Frameworks & Standards",
+    description: "Industry-standard security frameworks",
     skills: [
-      "Network Security",
-      "Digital Forensics",
-      "Data Structures",
-      "Object-Oriented Programming",
-      "Secure System Design",
+      "MITRE ATT&CK",
+      "ISO/IEC 27001",
+      "NIST Cybersecurity Framework",
     ],
   },
   {
     icon: Code,
-    title: "Languages",
-    description: "Programming and scripting stack",
-    skills: [
-      "Python",
-      "C++",
-      "JavaScript",
-      "Bash",
-      "TypeScript",
-    ],
+    title: "Programming Languages",
+    description: "Development and scripting stack",
+    skills: ["Python", "Bash", "C++", "JavaScript", "TypeScript"],
   },
   {
     icon: Terminal,
-    title: "Threat Detection / Forensics",
-    description: "Hands-on detection, investigation, and forensic practices",
+    title: "Core Concepts & Web Tools",
+    description: "Foundational knowledge and development tools",
     skills: [
-      "MITRE ATT&CK",
-      "Network Traffic Analysis (PCAP)",
-      "Windows Event Logs",
-      "Artifact Investigation",
-      "Attack Simulation Labs",
-      "SOC Playbooks",
-      "Challenge Authoring",
-      "Technical Documentation",
+      "TCP/IP",
+      "Network Protocols",
+      "Data Structures",
+      "OOP",
+      "Secure Coding",
+      "React",
+      "Node.js",
+      "MongoDB",
+      "Tailwind CSS",
+      "Vercel",
+      "GitHub",
     ],
   },
 ];
 
 const Skills = () => {
+  const { ref: headerRef, isRevealed: headerRevealed } = useScrollReveal();
+  const { ref: gridRef, isRevealed: gridRevealed } = useScrollReveal({ threshold: 0.05 });
+
   return (
-    <section id="skills" className="py-24 relative bg-secondary/20">
-      <div className="container mx-auto px-4">
+    <section id="skills" className="py-28 relative bg-secondary/20">
+      {/* Background decoration */}
+      <div className="absolute inset-0 grid-bg opacity-10" />
+      
+      <div className="container mx-auto px-4 relative">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16">
+          <div
+            ref={headerRef}
+            className={`text-center mb-16 transition-all duration-700 ${
+              headerRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
             <h2 className="section-title">Technical Skills</h2>
-            <p className="section-subtitle mx-auto">
-              Structured competencies across defensive security, AI solution support, and business development
+            <p className="section-subtitle mx-auto mt-6">
+              Structured competencies across defensive security, digital forensics, AI solution support, and software development
             </p>
           </div>
 
           {/* Skills Grid */}
-          <div className="grid md:grid-cols-2 gap-6">
+          <div
+            ref={gridRef}
+            className={`grid md:grid-cols-2 gap-6 stagger-children ${gridRevealed ? "revealed" : ""}`}
+          >
             {skillCategories.map((category, index) => (
               <div
                 key={category.title}
-                className="cyber-card"
+                className="cyber-card group"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {/* Category Header */}
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="p-3 bg-primary/10 rounded-lg">
+                  <div className="p-3 bg-primary/10 rounded-xl transition-all duration-500 group-hover:bg-primary/20 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-primary/10">
                     <category.icon className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold">{category.title}</h3>
-                    <p className="text-sm text-muted-foreground">{category.description}</p>
+                    <h3 className="text-lg font-semibold group-hover:text-primary transition-colors duration-300">
+                      {category.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      {category.description}
+                    </p>
                   </div>
                 </div>
 
                 {/* Skills Tags */}
                 <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill) => (
-                    <span key={skill} className="skill-tag">
+                  {category.skills.map((skill, i) => (
+                    <span
+                      key={skill}
+                      className="skill-tag"
+                      style={{ transitionDelay: `${i * 30}ms` }}
+                    >
                       {skill}
                     </span>
                   ))}
@@ -143,10 +160,13 @@ const Skills = () => {
 
           {/* Additional Skills Note */}
           <div className="mt-12 text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/50 border border-border rounded-full">
-              <span className="w-2 h-2 bg-primary rounded-full" />
+            <div className="inline-flex items-center gap-3 px-6 py-3 bg-secondary/40 border border-border rounded-full backdrop-blur-sm hover:border-primary/30 transition-all duration-300">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
+              </span>
               <span className="text-sm text-muted-foreground">
-                Continuously expanding knowledge through hands-on labs and certifications
+                Continuously expanding knowledge through hands-on labs, certifications, and CTF competitions
               </span>
             </div>
           </div>

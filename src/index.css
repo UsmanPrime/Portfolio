@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -86,6 +86,7 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Inter', system-ui, sans-serif;
+    scroll-behavior: smooth;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -95,23 +96,65 @@
   code, .font-mono {
     font-family: 'JetBrains Mono', monospace;
   }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.5);
+  }
 }
 
 @layer components {
+  /* ───────── Cyber card with glassmorphism ───────── */
   .cyber-card {
-    @apply bg-card border border-border rounded-lg p-6 transition-all duration-300;
+    @apply bg-card/80 border border-border rounded-xl p-6 transition-all duration-500 relative overflow-hidden;
     background: linear-gradient(
       135deg,
-      hsl(var(--card)) 0%,
-      hsl(222 47% 6%) 100%
+      hsl(var(--card) / 0.9) 0%,
+      hsl(222 47% 6% / 0.8) 100%
     );
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .cyber-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--primary) / 0.03),
+      transparent
+    );
+    transition: left 0.8s ease;
+  }
+
+  .cyber-card:hover::before {
+    left: 100%;
   }
 
   .cyber-card:hover {
     @apply border-primary/50;
-    box-shadow: 0 0 20px -5px hsl(var(--primary) / 0.2);
+    box-shadow: 
+      0 0 30px -5px hsl(var(--primary) / 0.15),
+      0 20px 40px -15px hsl(0 0% 0% / 0.3);
+    transform: translateY(-4px);
   }
 
+  /* ───────── Glow effects ───────── */
   .cyber-glow {
     box-shadow: 0 0 30px -10px hsl(var(--cyber-glow) / 0.4);
   }
@@ -120,35 +163,68 @@
     box-shadow: 0 0 20px -10px hsl(var(--cyber-glow) / 0.2);
   }
 
+  /* ───────── Terminal panels ───────── */
   .terminal-panel {
-    @apply bg-terminal rounded-lg border border-border overflow-hidden;
+    @apply bg-terminal rounded-xl border border-border overflow-hidden;
     background: hsl(var(--terminal-bg));
+    box-shadow: 0 8px 32px -8px hsl(0 0% 0% / 0.4);
   }
 
   .terminal-header {
-    @apply flex items-center gap-2 px-4 py-2 bg-muted/50 border-b border-border;
+    @apply flex items-center gap-2 px-4 py-3 bg-muted/50 border-b border-border;
   }
 
   .terminal-dot {
-    @apply w-3 h-3 rounded-full;
+    @apply w-3 h-3 rounded-full transition-all duration-300;
+  }
+
+  .terminal-panel:hover .terminal-dot {
+    box-shadow: 0 0 8px currentColor;
   }
 
   .log-entry {
     @apply px-4 py-2 border-b border-border/50 hover:bg-muted/30 transition-colors;
   }
 
+  /* ───────── Skill tags with micro-animation ───────── */
   .skill-tag {
-    @apply px-3 py-1.5 bg-secondary text-sm rounded-md border border-border hover:border-primary/50 transition-colors;
+    @apply px-3 py-1.5 bg-secondary/80 text-sm rounded-lg border border-border transition-all duration-300 cursor-default;
+    backdrop-filter: blur(8px);
   }
 
+  .skill-tag:hover {
+    @apply border-primary/60 bg-primary/10 text-foreground;
+    box-shadow: 0 0 15px -5px hsl(var(--primary) / 0.3);
+    transform: translateY(-2px);
+  }
+
+  /* ───────── Section titles with gradient underline ───────── */
   .section-title {
-    @apply text-3xl md:text-4xl font-bold mb-4;
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold mb-4 relative inline-block;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)));
+    border-radius: 4px;
+    transition: width 0.5s ease;
+  }
+
+  .section-title:hover::after {
+    width: 100px;
   }
 
   .section-subtitle {
     @apply text-muted-foreground text-lg mb-12 max-w-2xl;
   }
 
+  /* ───────── Grid background ───────── */
   .grid-bg {
     background-image: 
       linear-gradient(hsl(var(--cyber-grid) / 0.3) 1px, transparent 1px),
@@ -160,22 +236,151 @@
     @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
   }
 
+  /* ───────── Nav link with animated underline ───────── */
   .nav-link {
-    @apply text-muted-foreground hover:text-foreground transition-colors relative;
+    @apply text-muted-foreground hover:text-foreground transition-all duration-300 relative;
   }
 
   .nav-link::after {
     content: '';
-    @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300;
+    @apply absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-500;
+    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)));
+    border-radius: 2px;
   }
 
   .nav-link:hover::after {
     @apply w-full;
   }
+
+  /* ───────── Floating particle background ───────── */
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    background: hsl(var(--primary) / 0.15);
+    animation: float-particle linear infinite;
+  }
+
+  /* ───────── Scroll-triggered reveal animation ───────── */
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal-on-scroll.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ───────── Stagger children animation ───────── */
+  .stagger-children > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .stagger-children.revealed > *:nth-child(1) { transition-delay: 0.05s; opacity: 1; transform: translateY(0); }
+  .stagger-children.revealed > *:nth-child(2) { transition-delay: 0.10s; opacity: 1; transform: translateY(0); }
+  .stagger-children.revealed > *:nth-child(3) { transition-delay: 0.15s; opacity: 1; transform: translateY(0); }
+  .stagger-children.revealed > *:nth-child(4) { transition-delay: 0.20s; opacity: 1; transform: translateY(0); }
+  .stagger-children.revealed > *:nth-child(5) { transition-delay: 0.25s; opacity: 1; transform: translateY(0); }
+  .stagger-children.revealed > *:nth-child(6) { transition-delay: 0.30s; opacity: 1; transform: translateY(0); }
+  .stagger-children.revealed > *:nth-child(7) { transition-delay: 0.35s; opacity: 1; transform: translateY(0); }
+  .stagger-children.revealed > *:nth-child(8) { transition-delay: 0.40s; opacity: 1; transform: translateY(0); }
+  .stagger-children.revealed > *:nth-child(9) { transition-delay: 0.45s; opacity: 1; transform: translateY(0); }
+
+  /* ───────── Magnetic hover button ───────── */
+  .magnetic-btn {
+    @apply relative overflow-hidden transition-all duration-300;
+  }
+
+  .magnetic-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: hsl(var(--primary) / 0.15);
+    border-radius: 50%;
+    transition: width 0.6s ease, height 0.6s ease;
+    transform: translate(-50%, -50%);
+  }
+
+  .magnetic-btn:hover::before {
+    width: 300%;
+    height: 300%;
+  }
+
+  /* ───────── Typing cursor ───────── */
+  .typing-cursor::after {
+    content: '|';
+    animation: blink-cursor 1s step-end infinite;
+    color: hsl(var(--primary));
+    font-weight: 300;
+  }
+
+  /* ───────── Count-up stat ───────── */
+  .stat-number {
+    @apply text-3xl md:text-4xl font-extrabold;
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* ───────── Keyframe animations ───────── */
+@keyframes float-particle {
+  0% {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes scan-line-sweep {
+  0% { top: -2px; opacity: 0; }
+  50% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 6s ease infinite;
+  }
+
+  .animate-shimmer {
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
   }
 }
