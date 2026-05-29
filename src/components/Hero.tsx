@@ -8,18 +8,21 @@ const Hero = () => {
   const heroSkills = [
     "SOC Operations",
     "DFIR",
-    "Memory Forensics",
+    "MERN Stack",
     "MITRE ATT&CK",
     "Splunk",
     "Wazuh",
-    "Threat Hunting",
+    "x86 Assembly",
     "Blue Team",
+    "Threat Hunting",
+    "Network Architecture",
   ];
 
   const roles = [
     "SOC Analyst",
+    "Full-Stack Developer",
     "DFIR Specialist",
-    "Threat Hunter",
+    "Systems Programmer",
     "Blue Team Operator",
   ];
 
@@ -78,7 +81,7 @@ const Hero = () => {
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-accent" />
             </span>
             <span className="text-sm text-muted-foreground font-medium">
-              Seeking SOC Analyst Internship
+              Seeking Internship — Cybersecurity & Software Engineering
             </span>
           </div>
 
@@ -129,14 +132,14 @@ const Hero = () => {
             className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-3 animate-fade-in-up font-medium"
             style={{ animationDelay: "0.28s" }}
           >
-            Cyber Security Student at FAST NUCES '28
+            Cybersecurity & Software Engineering Student at FAST NUCES '28
           </p>
 
           <p
             className="text-sm md:text-base text-muted-foreground/80 max-w-2xl mx-auto mb-6 animate-fade-in-up"
             style={{ animationDelay: "0.3s" }}
           >
-            Business Development Intern at Intellema | SOC Analyst | Blue Team | DFIR
+            Business Development Intern at Intellema | SOC Analyst | MERN Developer | x86 Assembly
           </p>
 
           {/* Skill Badges */}
@@ -160,9 +163,10 @@ const Hero = () => {
             className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in-up"
             style={{ animationDelay: "0.4s" }}
           >
-            Hands-on experience triaging 30+ daily security alerts and conducting real-time 
-            security monitoring using Splunk, Wazuh, and Elastic Stack. Proficient in MITRE 
-            ATT&CK-mapped threat hunting and DFIR workflows.
+            Hands-on experience in SOC operations, full-stack web development, and systems 
+            programming. Proficient in triaging 30+ daily alerts using Splunk & Wazuh, building 
+            production MERN apps with secure authentication, and engineering low-level systems 
+            in x86 Assembly and C++.
           </p>
 
           {/* CTA Buttons */}

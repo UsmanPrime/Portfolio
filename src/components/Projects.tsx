@@ -1,4 +1,4 @@
-import { ExternalLink, Globe, Code, Gamepad2, ShoppingCart, Building2, Briefcase } from "lucide-react";
+import { ExternalLink, Globe, Code, Gamepad2, ShoppingCart, Building2, Briefcase, Network, Cpu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/useAnimations";
 
@@ -17,46 +17,59 @@ interface Project {
 const projects: Project[] = [
   {
     icon: Building2,
-    title: "Smart Housing Society Portal",
-    category: "Full Stack Web App",
+    title: "NextGen Residency — Smart Housing Society",
+    category: "Full-Stack MERN Application",
     description:
-      "Engineered role-based portals for 3 user classes with JWT-based secure access control, cutting average request resolution time by 40%.",
+      "Designed and developed a full-stack MERN web application with triple-portal architecture (Resident, Admin, Vendor), implementing role-based access control (RBAC) and JWT authentication with refresh tokens and token fingerprinting.",
     highlights: [
-      "Admin dashboard managing 200+ resident records with real-time status updates",
-      "Automated notifications and full input validation",
+      "Hardened backend API with Helmet.js security headers, CSRF protection, rate limiting, and NoSQL injection prevention",
+      "Integrated Two-Factor Authentication (TOTP) with backup codes, Google reCAPTCHA v2, and bcrypt password hashing",
+      "Deployed frontend on Vercel and backend on Render with MongoDB Atlas, CI/CD auto-deploy from GitHub",
     ],
-    tools: ["React", "Node.js", "MongoDB", "Express"],
-    year: "2025",
+    tools: ["React 18", "Node.js", "Express.js", "MongoDB", "JWT", "Helmet.js"],
+    year: "2026",
     githubUrl: "https://github.com/UsmanPrime/Smart-Housing-Society-Website",
     liveUrl: "https://nextgen-residency.vercel.app/",
   },
   {
-    icon: Briefcase,
-    title: "OSIM - Organizational Simulation",
-    category: "Enterprise Simulation System",
+    icon: Gamepad2,
+    title: "Xonix Game — Professional Edition",
+    category: "Multiplayer Arcade Game",
     description:
-      "Architected an enterprise-style simulation with 12+ class hierarchies following SOLID principles; persisted 1,000+ records with zero data loss.",
+      "Engineered a multiplayer arcade game in C++11 utilizing SFML for graphics, audio, and physics, supporting single-player AI and local competitive gameplay.",
     highlights: [
-      "Modeled 5 distinct business entity types with complex inter-class relationships",
-      "Accurately reflected real-world corporate structures",
+      "Designed and integrated 10+ custom data structures including Hash Tables for O(1) authentication, AVL Trees for leaderboards, and Min-Heaps for rankings",
+      "Single-player AI and local competitive gameplay modes",
     ],
-    tools: ["C++", "OOP Principles", "File Handling"],
+    tools: ["C++11", "SFML", "CMake", "OOP", "Data Structures"],
     year: "2024",
-    githubUrl: "https://github.com/UsmanPrime/OSIM---Organizational-Simulation",
+    githubUrl: "https://github.com/UsmanPrime/Xonix-Game",
   },
   {
-    icon: ShoppingCart,
-    title: "SecureShop",
-    category: "Secure Shopping Platform",
+    icon: Network,
+    title: "Enterprise Multi-Area Network Architecture",
+    category: "Network Engineering",
     description:
-      "Constructed a secure shopping platform with multi-factor authentication and input-sanitization routines blocking injection-style attacks.",
+      "Engineered a complex enterprise-grade multi-area network topology supporting 11 LANs and 22 WAN links across 19 routers and 11 switches.",
     highlights: [
-      "Protected 50+ simulated user transaction records",
-      "Modular architecture with O(log n) search",
+      "Implemented OSPF, EIGRP, RIPv2 with mutual route redistribution across 3 border routers",
+      "Deployed Static NAT for public IP translation and Extended ACLs for host/subnet-level security",
     ],
-    tools: ["C++", "File I/O", "Input Validation", "Authentication"],
-    year: "2024",
-    githubUrl: "https://github.com/UsmanPrime/SecureShop",
+    tools: ["Cisco Packet Tracer", "OSPF", "EIGRP", "RIPv2", "NAT", "ACLs"],
+    year: "2026",
+  },
+  {
+    icon: Cpu,
+    title: "Dizzy Walk — Maze Adventure Game",
+    category: "x86 Assembly Application",
+    description:
+      "Developed a real-time graphical maze-adventure game entirely in x86 Assembly Language (2,700+ lines of MASM32), featuring a 20×30 obstacle grid rendered through the Windows GDI.",
+    highlights: [
+      "Designed 8 custom data structures, 6 reusable macros, and 35+ procedures using STDCALL calling convention",
+      "Proper stack frame management with Win32 API and GDI rendering",
+    ],
+    tools: ["x86 Assembly", "MASM32", "Win32 API", "GDI"],
+    year: "2026",
   },
   {
     icon: Globe,
@@ -66,25 +79,39 @@ const projects: Project[] = [
       "Architected and launched a portfolio website achieving a 95+ Lighthouse score with full mobile responsiveness across all breakpoints.",
     highlights: [
       "TypeScript for type-safe coding, eliminating runtime errors",
-      "Improved long-term maintainability",
+      "Interactive particle backgrounds, scroll-reveal animations, glassmorphism UI",
     ],
     tools: ["React", "TypeScript", "Tailwind CSS", "Vite"],
     year: "2025",
     liveUrl: "https://usmanprime-portfolio.vercel.app/",
   },
   {
-    icon: Gamepad2,
-    title: "Xonix Game",
-    category: "Game Development",
+    icon: Briefcase,
+    title: "OSIM — Organizational Simulation System",
+    category: "Enterprise Simulation",
     description:
-      "Engineered a physics engine maintaining 60 FPS across 5 difficulty levels; incorporated grid-based data structures reducing memory footprint by 35%.",
+      "Architected an enterprise-style simulation with 12+ class hierarchies following SOLID principles; persisted 1,000+ records with zero data loss.",
     highlights: [
-      "Collision detection and progressive difficulty",
-      "Grid-based state tracking",
+      "Modeled 5 distinct business entity types with complex inter-class relationships",
+      "File-based persistence with modular architecture",
     ],
-    tools: ["C++", "Data Structures", "Game Physics", "Rendering"],
+    tools: ["C++", "OOP", "SOLID", "File I/O"],
     year: "2024",
-    githubUrl: "https://github.com/UsmanPrime/Xonix-Game",
+    githubUrl: "https://github.com/UsmanPrime/OSIM---Organizational-Simulation",
+  },
+  {
+    icon: ShoppingCart,
+    title: "SecureShop",
+    category: "Secure Shopping Platform",
+    description:
+      "Constructed a secure shopping platform with multi-factor authentication and input-sanitization routines blocking injection-style attacks; protected 50+ simulated user transaction records.",
+    highlights: [
+      "Multi-factor authentication with input validation",
+      "Modular architecture with O(log n) search",
+    ],
+    tools: ["C++", "File I/O", "Authentication"],
+    year: "2024",
+    githubUrl: "https://github.com/UsmanPrime/SecureShop",
   },
 ];
 
@@ -94,7 +121,11 @@ const Projects = () => {
 
   return (
     <section id="projects" className="py-28 relative">
-      <div className="container mx-auto px-4">
+      {/* Background blobs */}
+      <div className="blob blob-primary w-[600px] h-[600px] top-0 right-0" />
+      <div className="blob blob-accent w-[400px] h-[400px] bottom-40 -left-40" style={{ animationDelay: '6s' }} />
+
+      <div className="container mx-auto px-4 relative">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div
@@ -105,37 +136,37 @@ const Projects = () => {
           >
             <h2 className="section-title">Projects</h2>
             <p className="section-subtitle mx-auto mt-6">
-              Selected software, cybersecurity, and product-focused projects from coursework and practical work
+              Full-stack web apps, cybersecurity tools, enterprise network design, systems programming, and game development
             </p>
           </div>
 
           {/* Projects Grid */}
           <div
             ref={gridRef}
-            className={`grid lg:grid-cols-2 gap-6 stagger-children ${gridRevealed ? "revealed" : ""}`}
+            className={`grid lg:grid-cols-2 gap-5 stagger-children ${gridRevealed ? "revealed" : ""}`}
           >
             {projects.map((project, index) => (
               <div
                 key={project.title}
-                className="cyber-card group"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="cyber-card group tilt-card"
+                style={{ animationDelay: `${index * 0.08}s` }}
               >
                 {/* Project Header */}
-                <div className="flex items-start justify-between mb-4">
+                <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center gap-3">
                     <div className="p-2.5 bg-primary/10 rounded-xl group-hover:bg-primary/20 transition-all duration-500 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-primary/10">
                       <project.icon className="w-5 h-5 text-primary" />
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="text-xs text-primary font-medium uppercase tracking-wider">
+                        <span className="text-xs text-primary font-semibold uppercase tracking-wider">
                           {project.category}
                         </span>
                         <span className="text-xs text-muted-foreground/60">
                           • {project.year}
                         </span>
                       </div>
-                      <h3 className="text-lg font-semibold group-hover:text-primary transition-colors duration-300">
+                      <h3 className="text-base font-semibold group-hover:text-primary transition-colors duration-300">
                         {project.title}
                       </h3>
                     </div>
@@ -147,7 +178,7 @@ const Projects = () => {
                 </p>
 
                 {/* Highlights */}
-                <ul className="mb-5 space-y-1">
+                <ul className="mb-4 space-y-1.5">
                   {project.highlights.map((h) => (
                     <li
                       key={h}
@@ -160,7 +191,7 @@ const Projects = () => {
                 </ul>
 
                 {/* Tools & Links */}
-                <div className="flex items-center justify-between gap-3 pt-4 border-t border-border/50">
+                <div className="flex items-center justify-between gap-3 pt-3 border-t border-border/50">
                   <div className="flex flex-wrap gap-1.5">
                     {project.tools.map((tool) => (
                       <span
@@ -179,11 +210,7 @@ const Projects = () => {
                         className="text-primary hover:text-primary hover:bg-primary/10 gap-1 transition-all duration-300 hover:scale-105"
                         asChild
                       >
-                        <a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
+                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                           <span>Live</span>
                           <ExternalLink className="w-3.5 h-3.5" />
                         </a>
@@ -196,11 +223,7 @@ const Projects = () => {
                         className="text-primary hover:text-primary hover:bg-primary/10 gap-1 transition-all duration-300 hover:scale-105"
                         asChild
                       >
-                        <a
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
+                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                           <span>GitHub</span>
                           <ExternalLink className="w-3.5 h-3.5" />
                         </a>

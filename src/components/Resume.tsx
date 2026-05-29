@@ -38,29 +38,35 @@ const Resume = () => {
     },
     {
       icon: Shield,
-      title: "Security Operations",
+      title: "Security & Forensics",
       items: [
         "SOC Operations, Alert Triage, Incident Response, DFIR",
-        "Threat Hunting, IOC Analysis, Playbook Execution",
-        "MITRE ATT&CK, ISO/IEC 27001, NIST CSF",
-      ],
-    },
-    {
-      icon: Wrench,
-      title: "SIEM & Forensics Tools",
-      items: [
-        "Splunk, Wazuh, Elastic Stack (ELK)",
-        "Wireshark, Volatility 3, Autopsy, Belkasoft",
-        "Memory Forensics, PCAP Analysis, OSINT",
+        "Splunk, Wazuh, Elastic Stack (ELK), Wireshark, Volatility 3",
+        "MITRE ATT&CK, Memory Forensics, PCAP Analysis, OSINT",
       ],
     },
     {
       icon: Code,
-      title: "Languages & Dev Tools",
+      title: "Programming Languages",
       items: [
-        "Python, Bash, C++, JavaScript, TypeScript",
-        "React, Node.js, MongoDB, Tailwind CSS",
-        "Linux, Docker, Git, Vercel",
+        "Python, C++, x86 Assembly (MASM32)",
+        "JavaScript, TypeScript, Bash",
+      ],
+    },
+    {
+      icon: Wrench,
+      title: "Web & Full-Stack",
+      items: [
+        "React 18, Node.js, Express.js, MongoDB",
+        "REST APIs, JWT Auth, Tailwind CSS, Vercel",
+      ],
+    },
+    {
+      icon: Code,
+      title: "Networking & Tools",
+      items: [
+        "OSPF, EIGRP, RIPv2, VLSM, NAT, ACLs",
+        "Docker, Linux, Git, SFML, CMake, Cisco Packet Tracer",
       ],
     },
   ];
