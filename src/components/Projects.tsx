@@ -57,6 +57,7 @@ const projects: Project[] = [
     ],
     tools: ["Cisco Packet Tracer", "OSPF", "EIGRP", "RIPv2", "NAT", "ACLs"],
     year: "2026",
+    githubUrl: "https://github.com/UsmanPrime/Multi-Area-Network-Design-Implementation",
   },
   {
     icon: Cpu,
@@ -70,6 +71,7 @@ const projects: Project[] = [
     ],
     tools: ["x86 Assembly", "MASM32", "Win32 API", "GDI"],
     year: "2026",
+    githubUrl: "https://github.com/UsmanPrime/Dizzy-Walk",
   },
   {
     icon: Globe,
