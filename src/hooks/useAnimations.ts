@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 
+// ─────────────────────────────────────────────────────────────
+// SCROLL REVEAL — IntersectionObserver-driven visibility toggle
+// ─────────────────────────────────────────────────────────────
 interface UseScrollRevealOptions {
   threshold?: number;
   rootMargin?: string;
@@ -7,7 +10,7 @@ interface UseScrollRevealOptions {
 }
 
 export const useScrollReveal = (options: UseScrollRevealOptions = {}) => {
-  const { threshold = 0.1, rootMargin = "0px 0px -50px 0px", triggerOnce = true } = options;
+  const { threshold = 0.1, rootMargin = "0px 0px -40px 0px", triggerOnce = true } = options;
   const ref = useRef<HTMLDivElement>(null);
   const [isRevealed, setIsRevealed] = useState(false);
 
@@ -19,9 +22,7 @@ export const useScrollReveal = (options: UseScrollRevealOptions = {}) => {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsRevealed(true);
-          if (triggerOnce) {
-            observer.unobserve(element);
-          }
+          if (triggerOnce) observer.unobserve(element);
         } else if (!triggerOnce) {
           setIsRevealed(false);
         }
@@ -36,12 +37,81 @@ export const useScrollReveal = (options: UseScrollRevealOptions = {}) => {
   return { ref, isRevealed };
 };
 
+// ─────────────────────────────────────────────────────────────
+// DECRYPT TEXT — Characters scramble then resolve to final text
+// Mimics a forensic data-decode / intel decryption effect
+// ─────────────────────────────────────────────────────────────
+const CIPHER_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
+
+export const useDecryptText = (
+  finalText: string,
+  options: { speed?: number; startDelay?: number; triggerOnReveal?: boolean } = {}
+) => {
+  const { speed = 30, startDelay = 0, triggerOnReveal = false } = options;
+  const [displayedText, setDisplayedText] = useState("");
+  const [isComplete, setIsComplete] = useState(false);
+  const [hasTriggered, setHasTriggered] = useState(!triggerOnReveal);
+  const ref = useRef<HTMLDivElement>(null);
+
+  // If triggerOnReveal, observe the element
+  useEffect(() => {
+    if (!triggerOnReveal) return;
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasTriggered(true);
+          observer.unobserve(el);
+        }
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(el);
+    return () => observer.unobserve(el);
+  }, [triggerOnReveal]);
+
+  useEffect(() => {
+    if (!hasTriggered) return;
+
+    let timeout: ReturnType<typeof setTimeout>;
+    let resolvedCount = 0;
+
+    const scramble = () => {
+      if (resolvedCount >= finalText.length) {
+        setDisplayedText(finalText);
+        setIsComplete(true);
+        return;
+      }
+
+      const resolved = finalText.slice(0, resolvedCount);
+      const remaining = finalText.length - resolvedCount;
+      const scrambled = Array.from({ length: remaining }, () =>
+        CIPHER_CHARS[Math.floor(Math.random() * CIPHER_CHARS.length)]
+      ).join("");
+
+      setDisplayedText(resolved + scrambled);
+      resolvedCount++;
+      timeout = setTimeout(scramble, speed);
+    };
+
+    timeout = setTimeout(scramble, startDelay);
+    return () => clearTimeout(timeout);
+  }, [finalText, speed, startDelay, hasTriggered]);
+
+  return { displayedText, isComplete, ref };
+};
+
+// ─────────────────────────────────────────────────────────────
+// TYPING EFFECT — Classic terminal character-by-character
+// ─────────────────────────────────────────────────────────────
 export const useTypingEffect = (text: string, speed: number = 50, startDelay: number = 0) => {
   const [displayedText, setDisplayedText] = useState("");
   const [isComplete, setIsComplete] = useState(false);
 
   useEffect(() => {
-    let timeout: NodeJS.Timeout;
+    let timeout: ReturnType<typeof setTimeout>;
     let charIndex = 0;
 
     const startTyping = () => {
@@ -64,6 +134,9 @@ export const useTypingEffect = (text: string, speed: number = 50, startDelay: nu
   return { displayedText, isComplete };
 };
 
+// ─────────────────────────────────────────────────────────────
+// COUNT UP — Numeric counter with eased animation
+// ─────────────────────────────────────────────────────────────
 export const useCountUp = (end: number, duration: number = 2000, startOnReveal: boolean = true) => {
   const [count, setCount] = useState(0);
   const [hasStarted, setHasStarted] = useState(false);
@@ -77,7 +150,6 @@ export const useCountUp = (end: number, duration: number = 2000, startOnReveal: 
     const animate = () => {
       const elapsed = Date.now() - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      // Ease out cubic
       const eased = 1 - Math.pow(1 - progress, 3);
       setCount(Math.round(eased * end));
       if (progress < 1) {
@@ -113,20 +185,35 @@ export const useCountUp = (end: number, duration: number = 2000, startOnReveal: 
   return { count, ref };
 };
 
-export const useParallax = (speed: number = 0.5) => {
+// ─────────────────────────────────────────────────────────────
+// SCAN LINE — Animated scan-line reveal for cards
+// Returns a CSS variable for the scan-line position
+// ─────────────────────────────────────────────────────────────
+export const useScanReveal = (duration: number = 600) => {
   const ref = useRef<HTMLDivElement>(null);
+  const [isScanning, setIsScanning] = useState(false);
+  const [isRevealed, setIsRevealed] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (!ref.current) return;
-      const scrollY = window.scrollY;
-      const offset = scrollY * speed;
-      ref.current.style.transform = `translateY(${offset}px)`;
-    };
+    const el = ref.current;
+    if (!el) return;
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [speed]);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsScanning(true);
+          setTimeout(() => {
+            setIsRevealed(true);
+            setIsScanning(false);
+          }, duration);
+          observer.unobserve(el);
+        }
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(el);
+    return () => observer.unobserve(el);
+  }, [duration]);
 
-  return ref;
+  return { ref, isScanning, isRevealed };
 };

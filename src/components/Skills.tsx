@@ -1,4 +1,4 @@
-import { Shield, Monitor, Wrench, Server, Code, Terminal, Cpu, Network } from "lucide-react";
+import { Shield, Monitor, Code, Terminal, Cpu, Network } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useAnimations";
 
 interface SkillCategory {
@@ -110,80 +110,55 @@ const Skills = () => {
   const { ref: gridRef, isRevealed: gridRevealed } = useScrollReveal({ threshold: 0.05 });
 
   return (
-    <section id="skills" className="py-28 relative bg-secondary/20">
-      {/* Background decoration */}
-      <div className="absolute inset-0 grid-bg opacity-10" />
-      <div className="blob blob-primary w-[500px] h-[500px] top-20 -left-40" />
-      <div className="blob blob-accent w-[400px] h-[400px] bottom-20 -right-40" style={{ animationDelay: '4s' }} />
+    <section id="skills" className="py-24 relative bg-secondary/30">
+      <div className="absolute inset-0 grid-bg opacity-8" />
 
       <div className="container mx-auto px-4 relative">
         <div className="max-w-6xl mx-auto">
-          {/* Section Header */}
+          {/* Header */}
           <div
             ref={headerRef}
-            className={`text-center mb-16 transition-all duration-700 ${
-              headerRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            className={`mb-12 transition-all duration-500 ${
+              headerRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             }`}
           >
             <h2 className="section-title">Technical Skills</h2>
-            <p className="section-subtitle mx-auto mt-6">
+            <p className="section-subtitle mt-4">
               Cross-domain expertise spanning cybersecurity, full-stack development, systems programming, and network architecture
             </p>
           </div>
 
-          {/* Skills Grid */}
+          {/* Grid */}
           <div
             ref={gridRef}
-            className={`grid md:grid-cols-2 lg:grid-cols-3 gap-5 stagger-children ${gridRevealed ? "revealed" : ""}`}
+            className={`grid md:grid-cols-2 lg:grid-cols-3 gap-3 stagger-children ${gridRevealed ? "revealed" : ""}`}
           >
-            {skillCategories.map((category, index) => (
-              <div
-                key={category.title}
-                className="cyber-card group"
-                style={{ animationDelay: `${index * 0.08}s` }}
-              >
-                {/* Category Header */}
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="p-2.5 bg-primary/10 rounded-xl transition-all duration-500 group-hover:bg-primary/20 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-primary/10">
-                    <category.icon className="w-5 h-5 text-primary" />
-                  </div>
+            {skillCategories.map((category) => (
+              <div key={category.title} className="intel-card group">
+                <div className="flex items-center gap-2 mb-3 pb-2.5 border-b border-border/60">
+                  <category.icon className="w-3.5 h-3.5 text-primary" />
                   <div>
-                    <h3 className="text-base font-semibold group-hover:text-primary transition-colors duration-300">
+                    <h3 className="text-sm font-semibold group-hover:text-primary transition-colors duration-150">
                       {category.title}
                     </h3>
-                    <p className="text-xs text-muted-foreground">
-                      {category.description}
-                    </p>
+                    <p className="text-[10px] text-muted-foreground/60">{category.description}</p>
                   </div>
                 </div>
-
-                {/* Skills Tags */}
-                <div className="flex flex-wrap gap-1.5">
-                  {category.skills.map((skill, i) => (
-                    <span
-                      key={skill}
-                      className="skill-tag text-xs"
-                      style={{ transitionDelay: `${i * 25}ms` }}
-                    >
-                      {skill}
-                    </span>
+                <div className="flex flex-wrap gap-1">
+                  {category.skills.map((skill) => (
+                    <span key={skill} className="skill-tag">{skill}</span>
                   ))}
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Additional Skills Note */}
-          <div className="mt-12 text-center">
-            <div className="glass-pill">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
-              </span>
-              <span className="text-sm text-muted-foreground">
-                Continuously expanding knowledge through hands-on labs, certifications, and CTF competitions
-              </span>
-            </div>
+          {/* Status */}
+          <div className="mt-10 flex items-center gap-2 text-xs text-muted-foreground">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+            <span className="font-mono">
+              Continuously expanding through hands-on labs, certifications, and CTF competitions
+            </span>
           </div>
         </div>
       </div>

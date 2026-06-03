@@ -1,6 +1,6 @@
 import { ExternalLink, Globe, Code, Gamepad2, ShoppingCart, Building2, Briefcase, Network, Cpu } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useScrollReveal } from "@/hooks/useAnimations";
+import { useScrollReveal, useScanReveal } from "@/hooks/useAnimations";
 
 interface Project {
   icon: typeof Code;
@@ -81,7 +81,7 @@ const projects: Project[] = [
       "Architected and launched a portfolio website achieving a 95+ Lighthouse score with full mobile responsiveness across all breakpoints.",
     highlights: [
       "TypeScript for type-safe coding, eliminating runtime errors",
-      "Interactive particle backgrounds, scroll-reveal animations, glassmorphism UI",
+      "Interactive particle backgrounds, scroll-reveal animations, bespoke dark UI",
     ],
     tools: ["React", "TypeScript", "Tailwind CSS", "Vite"],
     year: "2025",
@@ -117,123 +117,103 @@ const projects: Project[] = [
   },
 ];
 
-const Projects = () => {
-  const { ref: headerRef, isRevealed: headerRevealed } = useScrollReveal();
-  const { ref: gridRef, isRevealed: gridRevealed } = useScrollReveal({ threshold: 0.05 });
+const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
+  const { ref, isScanning, isRevealed } = useScanReveal(500);
 
   return (
-    <section id="projects" className="py-28 relative">
-      {/* Background blobs */}
-      <div className="blob blob-primary w-[600px] h-[600px] top-0 right-0" />
-      <div className="blob blob-accent w-[400px] h-[400px] bottom-40 -left-40" style={{ animationDelay: '6s' }} />
+    <div
+      ref={ref}
+      className={`intel-card group ${isScanning ? 'scanning' : ''} ${isRevealed ? 'revealed' : ''} transition-opacity duration-400 ${isRevealed || isScanning ? 'opacity-100' : 'opacity-0'}`}
+      style={{ transitionDelay: `${index * 60}ms` }}
+    >
+      {/* Header Row — incident report style */}
+      <div className="flex items-center justify-between mb-3 pb-3 border-b border-border/60">
+        <div className="flex items-center gap-2.5">
+          <project.icon className="w-4 h-4 text-primary" />
+          <div>
+            <span className="data-label">{project.category}</span>
+            <h3 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors duration-150">
+              {project.title}
+            </h3>
+          </div>
+        </div>
+        <span className="font-mono text-[11px] text-muted-foreground tabular-nums">
+          {project.year}
+        </span>
+      </div>
 
-      <div className="container mx-auto px-4 relative">
+      {/* Description */}
+      <p className="text-[13px] text-muted-foreground mb-3 leading-relaxed">
+        {project.description}
+      </p>
+
+      {/* Key Findings — incident report style */}
+      <div className="mb-4 space-y-1.5">
+        {project.highlights.map((h, i) => (
+          <div key={h} className="flex items-start gap-2 text-xs text-muted-foreground/80">
+            <span className="font-mono text-primary/60 select-none mt-px">▸</span>
+            <span className="leading-relaxed">{h}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Footer — Tools & Links */}
+      <div className="flex items-center justify-between gap-3 pt-3 border-t border-border/60">
+        <div className="flex flex-wrap gap-1">
+          {project.tools.map((tool) => (
+            <span
+              key={tool}
+              className="px-1.5 py-0.5 text-[10px] font-mono text-muted-foreground border border-border/60 rounded bg-secondary/40"
+            >
+              {tool}
+            </span>
+          ))}
+        </div>
+        <div className="flex items-center gap-1.5 shrink-0">
+          {project.liveUrl && (
+            <Button variant="ghost" size="sm" className="h-7 px-2 text-primary hover:text-primary hover:bg-primary/8 gap-1 text-xs transition-colors duration-150" asChild>
+              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                Live <ExternalLink className="w-3 h-3" />
+              </a>
+            </Button>
+          )}
+          {project.githubUrl && (
+            <Button variant="ghost" size="sm" className="h-7 px-2 text-primary hover:text-primary hover:bg-primary/8 gap-1 text-xs transition-colors duration-150" asChild>
+              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                Source <ExternalLink className="w-3 h-3" />
+              </a>
+            </Button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const Projects = () => {
+  const { ref: headerRef, isRevealed: headerRevealed } = useScrollReveal();
+
+  return (
+    <section id="projects" className="py-24 relative">
+      <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div
             ref={headerRef}
-            className={`text-center mb-16 transition-all duration-700 ${
-              headerRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            className={`mb-12 transition-all duration-500 ${
+              headerRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             }`}
           >
             <h2 className="section-title">Projects</h2>
-            <p className="section-subtitle mx-auto mt-6">
+            <p className="section-subtitle mt-4">
               Full-stack web apps, cybersecurity tools, enterprise network design, systems programming, and game development
             </p>
           </div>
 
           {/* Projects Grid */}
-          <div
-            ref={gridRef}
-            className={`grid lg:grid-cols-2 gap-5 stagger-children ${gridRevealed ? "revealed" : ""}`}
-          >
+          <div className="grid lg:grid-cols-2 gap-4">
             {projects.map((project, index) => (
-              <div
-                key={project.title}
-                className="cyber-card group tilt-card"
-                style={{ animationDelay: `${index * 0.08}s` }}
-              >
-                {/* Project Header */}
-                <div className="flex items-start justify-between mb-3">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2.5 bg-primary/10 rounded-xl group-hover:bg-primary/20 transition-all duration-500 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-primary/10">
-                      <project.icon className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs text-primary font-semibold uppercase tracking-wider">
-                          {project.category}
-                        </span>
-                        <span className="text-xs text-muted-foreground/60">
-                          • {project.year}
-                        </span>
-                      </div>
-                      <h3 className="text-base font-semibold group-hover:text-primary transition-colors duration-300">
-                        {project.title}
-                      </h3>
-                    </div>
-                  </div>
-                </div>
-
-                <p className="text-muted-foreground text-sm mb-3 leading-relaxed">
-                  {project.description}
-                </p>
-
-                {/* Highlights */}
-                <ul className="mb-4 space-y-1.5">
-                  {project.highlights.map((h) => (
-                    <li
-                      key={h}
-                      className="flex items-start gap-2 text-xs text-muted-foreground/80"
-                    >
-                      <span className="mt-1.5 w-1 h-1 rounded-full bg-primary/60 shrink-0" />
-                      <span>{h}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* Tools & Links */}
-                <div className="flex items-center justify-between gap-3 pt-3 border-t border-border/50">
-                  <div className="flex flex-wrap gap-1.5">
-                    {project.tools.map((tool) => (
-                      <span
-                        key={tool}
-                        className="px-2 py-0.5 bg-secondary/80 text-xs rounded-md text-muted-foreground border border-border/50 transition-all duration-300 hover:border-primary/30 hover:text-foreground"
-                      >
-                        {tool}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex items-center gap-2 shrink-0">
-                    {project.liveUrl && (
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="text-primary hover:text-primary hover:bg-primary/10 gap-1 transition-all duration-300 hover:scale-105"
-                        asChild
-                      >
-                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                          <span>Live</span>
-                          <ExternalLink className="w-3.5 h-3.5" />
-                        </a>
-                      </Button>
-                    )}
-                    {project.githubUrl && (
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="text-primary hover:text-primary hover:bg-primary/10 gap-1 transition-all duration-300 hover:scale-105"
-                        asChild
-                      >
-                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                          <span>GitHub</span>
-                          <ExternalLink className="w-3.5 h-3.5" />
-                        </a>
-                      </Button>
-                    )}
-                  </div>
-                </div>
-              </div>
+              <ProjectCard key={project.title} project={project} index={index} />
             ))}
           </div>
         </div>

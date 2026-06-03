@@ -103,173 +103,150 @@ const Experience = () => {
   const { ref: achieveRef, isRevealed: achieveRevealed } = useScrollReveal();
 
   return (
-    <section id="experience" className="py-28 relative bg-secondary/20">
-      <div className="absolute inset-0 grid-bg opacity-10" />
-      
+    <section id="experience" className="py-24 relative bg-secondary/30">
+      <div className="absolute inset-0 grid-bg opacity-8" />
+
       <div className="container mx-auto px-4 relative">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           {/* Section Header */}
           <div
             ref={headerRef}
-            className={`text-center mb-16 transition-all duration-700 ${
-              headerRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            className={`mb-12 transition-all duration-500 ${
+              headerRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             }`}
           >
             <h2 className="section-title">Experience & Achievements</h2>
-            <p className="section-subtitle mx-auto mt-6">
+            <p className="section-subtitle mt-4">
               Professional roles across cybersecurity SOC operations, AI solution support, challenge authoring, and competition achievements
             </p>
           </div>
 
-          {/* Timeline */}
-          <div ref={timelineRef} className="relative">
-            {/* Vertical Line with gradient */}
-            <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px md:-translate-x-px overflow-hidden">
-              <div
-                className={`w-full h-full transition-all duration-1000 ${
-                  timelineRevealed ? "opacity-100" : "opacity-0"
-                }`}
-                style={{
-                  background: "linear-gradient(to bottom, transparent, hsl(var(--primary) / 0.3), hsl(var(--accent) / 0.3), transparent)",
-                }}
-              />
-            </div>
-
-            <div className="space-y-8">
-              {experiences.map((exp, index) => (
+          {/* Timeline — structured list, not alternating */}
+          <div
+            ref={timelineRef}
+            className="space-y-3"
+          >
+            {experiences.map((exp, index) => {
+              const isCSL = exp.title === "Cyber Space Legion (CSL)";
+              return (
                 <div
                   key={exp.title}
-                  className={`relative flex flex-col md:flex-row gap-8 transition-all duration-700 ${
+                  className={`intel-card transition-all duration-400 ${
                     timelineRevealed
                       ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-8"
-                  } ${
-                    index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                      : "opacity-0 translate-y-4"
                   }`}
-                  style={{ transitionDelay: `${index * 150}ms` }}
+                  style={{ transitionDelay: `${index * 80}ms` }}
                 >
-                  {/* Timeline Dot */}
-                  <div className="absolute left-0 md:left-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background -translate-x-1.5 md:-translate-x-2 z-10 shadow-lg shadow-primary/30">
-                    <div className="absolute inset-0 bg-primary rounded-full animate-ping opacity-20" />
-                  </div>
-
-                  {/* Content Card */}
-                  <div
-                    className={`ml-8 md:ml-0 md:w-1/2 ${
-                      index % 2 === 0 ? "md:pr-12" : "md:pl-12"
-                    }`}
-                  >
-                    <div className="cyber-card">
-                      {/* Header */}
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="p-2 bg-primary/10 rounded-xl group-hover:bg-primary/20 transition-colors">
-                          <exp.icon className="w-5 h-5 text-primary" />
-                        </div>
-                        <div>
-                          <span className="text-xs text-primary font-semibold uppercase tracking-wider">
-                            {exp.type}
-                          </span>
-                          <h3 className="font-semibold">{exp.title}</h3>
-                          <span className="text-xs text-muted-foreground">
-                            {exp.organization}
-                          </span>
-                        </div>
+                  {/* Header — structured like a report entry */}
+                  <div className="flex items-center justify-between mb-3 pb-3 border-b border-border/60">
+                    <div className="flex items-center gap-2.5">
+                      <exp.icon className="w-4 h-4 text-primary" />
+                      <div>
+                        <span className="data-label">{exp.type}</span>
+                        <h3 className="text-sm font-semibold text-foreground">{exp.title}</h3>
                       </div>
-
-                      {/* Details */}
-                      <div className="space-y-3">
-                        <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-secondary/60 rounded-md text-xs text-muted-foreground border border-border/50">
-                          {exp.location
-                            ? `${exp.location} | ${exp.period}`
-                            : exp.period}
-                        </div>
-                        <ul className="space-y-2">
-                          {exp.highlights.map((item) => (
-                            <li
-                              key={item}
-                              className="flex items-start gap-2 text-sm text-foreground/80"
-                            >
-                              <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                              <span className="leading-relaxed">{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-
-                        {exp.certificateUrl && (
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            className="mt-2 gap-1.5 text-primary hover:text-primary hover:bg-primary/10 transition-all duration-300 hover:scale-105"
-                            asChild
-                          >
-                            <a
-                              href={exp.certificateUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <span>
-                                {exp.certificateLabel ?? "View Certificate"}
-                              </span>
-                              <ExternalLink className="w-3.5 h-3.5" />
-                            </a>
-                          </Button>
-                        )}
+                    </div>
+                    <div className="text-right shrink-0">
+                      <div className="font-mono text-[11px] text-muted-foreground tabular-nums">
+                        {exp.period}
+                      </div>
+                      <div className="text-[11px] text-muted-foreground/60">
+                        {exp.organization}
                       </div>
                     </div>
                   </div>
 
-                  {/* Spacer for opposite side */}
-                  <div className="hidden md:block md:w-1/2" />
+                  {/* Body */}
+                  <div className="space-y-1.5">
+                    {exp.highlights.map((item, i) => {
+                      // Special formatting for CSL Head of Finance bullet
+                      const isFinanceBullet = isCSL && item.includes("Head of Finance");
+
+                      return (
+                        <div
+                          key={item}
+                          className={`flex items-start gap-2 text-[13px] ${
+                            isFinanceBullet ? 'text-foreground' : 'text-muted-foreground'
+                          }`}
+                        >
+                          <span className="font-mono text-primary/60 select-none mt-px">▸</span>
+                          <span className="leading-relaxed">
+                            {isFinanceBullet ? (
+                              <>
+                                <span className="font-semibold text-primary">Head of Finance (2025 – Present):</span>
+                                {" "}Directed a cross-functional finance team for flagship events including NASCON and internal competitions.
+                                Managed end-to-end sponsorship acquisition and partner relations, securing funding for society operations.
+                                Oversaw team duty allocation, budgeting workflows, and financial reporting to society leadership.
+                              </>
+                            ) : (
+                              item
+                            )}
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  {exp.certificateUrl && (
+                    <div className="mt-3 pt-3 border-t border-border/40">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="h-7 px-2 text-primary hover:text-primary hover:bg-primary/8 gap-1 text-xs transition-colors duration-150"
+                        asChild
+                      >
+                        <a href={exp.certificateUrl} target="_blank" rel="noopener noreferrer">
+                          {exp.certificateLabel ?? "View Certificate"}
+                          <ExternalLink className="w-3 h-3" />
+                        </a>
+                      </Button>
+                    </div>
+                  )}
                 </div>
-              ))}
-            </div>
+              );
+            })}
           </div>
 
-          {/* Achievements Section */}
+          {/* Achievements */}
           <div
             ref={achieveRef}
-            className={`mt-20 transition-all duration-700 ${
-              achieveRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            className={`mt-16 transition-all duration-500 ${
+              achieveRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             }`}
           >
-            <h3 className="text-2xl font-bold text-center mb-8 gradient-text">
+            <h3 className="text-lg font-semibold mb-6 text-foreground">
+              <span className="text-primary font-mono text-sm mr-2">▎</span>
               Competition Achievements
             </h3>
-            <div className="grid md:grid-cols-3 gap-4">
+            <div className="grid md:grid-cols-3 gap-3">
               {achievements.map((a, i) => (
                 <div
                   key={a.title}
-                  className="cyber-card text-center group"
-                  style={{ transitionDelay: `${i * 100}ms` }}
+                  className="intel-card group"
+                  style={{ transitionDelay: `${i * 80}ms` }}
                 >
-                  <div className="flex justify-center mb-4">
-                    <div className="p-3 bg-primary/10 rounded-xl transition-all duration-500 group-hover:bg-primary/20 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-primary/10">
-                      <a.icon className="w-7 h-7 text-primary" />
-                    </div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <a.icon className="w-4 h-4 text-primary" />
+                    <h4 className="text-sm font-semibold group-hover:text-primary transition-colors duration-150">
+                      {a.title}
+                    </h4>
                   </div>
-                  <h4 className="font-semibold mb-1 group-hover:text-primary transition-colors duration-300">
-                    {a.title}
-                  </h4>
-                  <p className="text-xs text-primary/80 font-medium mb-2">
+                  <p className="text-[11px] font-mono text-primary/70 mb-2">
                     {a.detail}
                   </p>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-xs text-muted-foreground leading-relaxed">
                     {a.description}
                   </p>
                   {a.certificateUrl && (
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="mt-3 text-primary hover:bg-primary/10 gap-1 transition-all duration-300"
+                      className="mt-2 h-6 px-1.5 text-primary hover:bg-primary/8 gap-1 text-[11px] transition-colors duration-150"
                       asChild
                     >
-                      <a
-                        href={a.certificateUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <span>View Certificate</span>
-                        <ExternalLink className="w-3.5 h-3.5" />
+                      <a href={a.certificateUrl} target="_blank" rel="noopener noreferrer">
+                        Certificate <ExternalLink className="w-2.5 h-2.5" />
                       </a>
                     </Button>
                   )}

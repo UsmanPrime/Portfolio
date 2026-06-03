@@ -42,9 +42,7 @@ const Contact = () => {
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
 
@@ -61,7 +59,6 @@ const Contact = () => {
           Array.isArray(data.details) && data.details.length > 0
             ? data.details[0].message
             : undefined;
-
         toast({
           title: "Error",
           description: validationMessage || data.error || "Failed to send message. Please try again.",
@@ -80,208 +77,124 @@ const Contact = () => {
   };
 
   const socialLinks = [
-    {
-      icon: Phone,
-      label: "Phone",
-      href: "tel:+923342226620",
-      value: "+92 334 2226620",
-    },
-    {
-      icon: Mail,
-      label: "Email",
-      href: "mailto:i242038@isb.nu.edu.pk",
-      value: "i242038@isb.nu.edu.pk",
-    },
-    {
-      icon: Github,
-      label: "GitHub",
-      href: "https://github.com/UsmanPrime",
-      value: "github.com/UsmanPrime",
-    },
-    {
-      icon: Linkedin,
-      label: "LinkedIn",
-      href: "https://www.linkedin.com/in/usman-ibrahim-992253276/",
-      value: "linkedin.com/in/usman-ibrahim",
-    },
-    {
-      icon: Globe,
-      label: "Portfolio",
-      href: "https://usmanprime-portfolio.vercel.app/",
-      value: "usmanprime-portfolio.vercel.app",
-    },
+    { icon: Phone, label: "Phone", href: "tel:+923342226620", value: "+92 334 2226620" },
+    { icon: Mail, label: "Email", href: "mailto:i242038@isb.nu.edu.pk", value: "i242038@isb.nu.edu.pk" },
+    { icon: Github, label: "GitHub", href: "https://github.com/UsmanPrime", value: "github.com/UsmanPrime" },
+    { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/usman-ibrahim-992253276/", value: "linkedin.com/in/usman-ibrahim" },
+    { icon: Globe, label: "Portfolio", href: "https://usmanprime-portfolio.vercel.app/", value: "usmanprime-portfolio.vercel.app" },
   ];
 
   return (
-    <section id="contact" className="py-28 relative">
+    <section id="contact" className="py-24 relative">
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
-          {/* Section Header */}
+          {/* Header */}
           <div
             ref={headerRef}
-            className={`text-center mb-16 transition-all duration-700 ${
-              headerRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            className={`mb-12 transition-all duration-500 ${
+              headerRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             }`}
           >
-            <h2 className="section-title">Get In Touch</h2>
-            <p className="section-subtitle mx-auto mt-6">
-              Interested in discussing cybersecurity, SOC operations, AI solutions, or collaboration opportunities
+            <h2 className="section-title">Contact</h2>
+            <p className="section-subtitle mt-4">
+              Open to discussing cybersecurity, SOC operations, AI solutions, or collaboration opportunities
             </p>
           </div>
 
           <div
             ref={formRef}
-            className={`grid lg:grid-cols-2 gap-12 transition-all duration-700 ${
-              formRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            className={`grid lg:grid-cols-2 gap-8 transition-all duration-500 ${
+              formRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            {/* Contact Form */}
-            <div className="cyber-card">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 bg-primary/10 rounded-xl">
-                  <Send className="w-5 h-5 text-primary" />
-                </div>
-                <h3 className="text-lg font-semibold">Send a Message</h3>
+            {/* Form */}
+            <div className="intel-card">
+              <div className="flex items-center gap-2 mb-5 pb-3 border-b border-border/60">
+                <Send className="w-4 h-4 text-primary" />
+                <h3 className="text-sm font-semibold">Send a Message</h3>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid sm:grid-cols-2 gap-4">
+              <form onSubmit={handleSubmit} className="space-y-3">
+                <div className="grid sm:grid-cols-2 gap-3">
                   <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-medium mb-2 text-muted-foreground"
-                    >
-                      Name
-                    </label>
+                    <label htmlFor="name" className="data-label block mb-1.5">Name</label>
                     <Input
-                      id="name"
-                      name="name"
-                      type="text"
-                      required
-                      minLength={2}
-                      maxLength={100}
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      placeholder="Your name"
-                      className="bg-secondary/30 border-border focus:border-primary rounded-xl transition-all duration-300 focus:shadow-lg focus:shadow-primary/5"
+                      id="name" name="name" type="text" required minLength={2} maxLength={100}
+                      value={formData.name} onChange={handleInputChange} placeholder="Your name"
+                      className="bg-secondary/30 border-border focus:border-primary rounded-md text-sm transition-colors duration-150 h-9"
                     />
                   </div>
                   <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium mb-2 text-muted-foreground"
-                    >
-                      Email
-                    </label>
+                    <label htmlFor="email" className="data-label block mb-1.5">Email</label>
                     <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      placeholder="your@email.com"
-                      className="bg-secondary/30 border-border focus:border-primary rounded-xl transition-all duration-300 focus:shadow-lg focus:shadow-primary/5"
+                      id="email" name="email" type="email" required
+                      value={formData.email} onChange={handleInputChange} placeholder="your@email.com"
+                      className="bg-secondary/30 border-border focus:border-primary rounded-md text-sm transition-colors duration-150 h-9"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="subject"
-                    className="block text-sm font-medium mb-2 text-muted-foreground"
-                  >
-                    Subject
-                  </label>
+                  <label htmlFor="subject" className="data-label block mb-1.5">Subject</label>
                   <Input
-                    id="subject"
-                    name="subject"
-                    type="text"
-                    required
-                    minLength={3}
-                    maxLength={200}
-                    value={formData.subject}
-                    onChange={handleInputChange}
-                    placeholder="What's this about?"
-                    className="bg-secondary/30 border-border focus:border-primary rounded-xl transition-all duration-300 focus:shadow-lg focus:shadow-primary/5"
+                    id="subject" name="subject" type="text" required minLength={3} maxLength={200}
+                    value={formData.subject} onChange={handleInputChange} placeholder="What's this about?"
+                    className="bg-secondary/30 border-border focus:border-primary rounded-md text-sm transition-colors duration-150 h-9"
                   />
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium mb-2 text-muted-foreground"
-                  >
-                    Message
-                  </label>
+                  <label htmlFor="message" className="data-label block mb-1.5">Message</label>
                   <Textarea
-                    id="message"
-                    name="message"
-                    required
-                    rows={5}
-                    minLength={10}
-                    maxLength={5000}
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    placeholder="Your message..."
-                    className="bg-secondary/30 border-border focus:border-primary resize-none rounded-xl transition-all duration-300 focus:shadow-lg focus:shadow-primary/5"
+                    id="message" name="message" required rows={4} minLength={10} maxLength={5000}
+                    value={formData.message} onChange={handleInputChange} placeholder="Your message..."
+                    className="bg-secondary/30 border-border focus:border-primary resize-none rounded-md text-sm transition-colors duration-150"
                   />
                 </div>
 
                 <Button
                   type="submit"
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground gap-2 magnetic-btn rounded-xl shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 h-11"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground gap-2 magnetic-btn rounded-md text-sm transition-all duration-150 h-9"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
-                    <>
-                      <span className="w-4 h-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
-                      Sending...
-                    </>
+                    <><span className="w-3.5 h-3.5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" /> Sending...</>
                   ) : (
-                    <>
-                      <Send className="w-4 h-4" />
-                      Send Message
-                    </>
+                    <><Send className="w-3.5 h-3.5" /> Send Message</>
                   )}
                 </Button>
               </form>
             </div>
 
             {/* Contact Info */}
-            <div className="space-y-6">
-              {/* Info Card */}
-              <div className="cyber-card">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-2 bg-primary/10 rounded-xl">
-                    <Shield className="w-5 h-5 text-primary" />
-                  </div>
-                  <h3 className="text-lg font-semibold">Connect With Me</h3>
+            <div className="space-y-4">
+              <div className="intel-card">
+                <div className="flex items-center gap-2 mb-4 pb-3 border-b border-border/60">
+                  <Shield className="w-4 h-4 text-primary" />
+                  <h3 className="text-sm font-semibold">Connect</h3>
                 </div>
 
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Seeking a SOC Analyst Internship to apply blue-team expertise. Open to 
-                  cybersecurity roles, AI opportunities, DFIR positions, collaboration, 
-                  and business development work. I aim to respond within 24-48 hours.
+                <p className="text-xs text-muted-foreground mb-4 leading-relaxed">
+                  Seeking internship opportunities in cybersecurity and software engineering.
+                  Open to SOC Analyst roles, DFIR positions, AI opportunities, and collaboration.
+                  I aim to respond within 24-48 hours.
                 </p>
 
-                <div className="space-y-3">
+                <div className="space-y-1.5">
                   {socialLinks.map((link) => (
                     <a
                       key={link.label}
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-4 p-3 rounded-xl bg-secondary/30 border border-border/50 hover:border-primary/50 transition-all duration-300 group hover:bg-secondary/50 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/5"
+                      className="flex items-center gap-3 p-2 rounded border border-transparent hover:border-border hover:bg-secondary/30 transition-all duration-150 group"
                     >
-                      <div className="p-2 bg-primary/10 rounded-xl transition-all duration-500 group-hover:bg-primary/20 group-hover:scale-110">
-                        <link.icon className="w-5 h-5 text-primary" />
-                      </div>
+                      <link.icon className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors duration-150" />
                       <div>
-                        <div className="text-sm font-medium group-hover:text-primary transition-colors duration-300">
+                        <div className="text-xs font-medium text-foreground group-hover:text-primary transition-colors duration-150">
                           {link.label}
                         </div>
-                        <div className="text-sm text-muted-foreground">
+                        <div className="text-[11px] font-mono text-muted-foreground/60">
                           {link.value}
                         </div>
                       </div>
@@ -290,26 +203,26 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* Security Note */}
+              {/* Terminal */}
               <div className="terminal-panel">
                 <div className="terminal-header">
-                  <div className="terminal-dot bg-accent/70" />
-                  <span className="text-xs text-muted-foreground ml-2 font-mono">
-                    secure_contact.log
+                  <div className="terminal-dot bg-green-500/60" />
+                  <span className="text-[11px] text-muted-foreground ml-2 font-mono">
+                    contact.log
                   </span>
                 </div>
-                <div className="p-4 font-mono text-sm space-y-1">
-                  <div className="flex gap-3 text-muted-foreground">
-                    <span className="text-accent">[SECURE]</span>
+                <div className="p-3 font-mono text-[11px] space-y-0.5">
+                  <div className="flex gap-2 text-muted-foreground">
+                    <span className="text-accent select-none">[SECURE]</span>
                     <span>All communications are confidential</span>
                   </div>
-                  <div className="flex gap-3 text-muted-foreground">
-                    <span className="text-primary">[RESPONSE]</span>
-                    <span>Expected within 24-48 hours</span>
+                  <div className="flex gap-2 text-muted-foreground">
+                    <span className="text-primary select-none">[ETA]</span>
+                    <span>Response within 24-48 hours</span>
                   </div>
-                  <div className="flex gap-3 text-muted-foreground">
-                    <span className="text-accent">[STATUS]</span>
-                    <span>Open to SOC Analyst internship opportunities</span>
+                  <div className="flex gap-2 text-muted-foreground">
+                    <span className="text-accent select-none">[STATUS]</span>
+                    <span>Open to internship opportunities</span>
                   </div>
                 </div>
               </div>
