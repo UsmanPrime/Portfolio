@@ -123,21 +123,23 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
   return (
     <div
       ref={ref}
-      className={`intel-card group ${isScanning ? 'scanning' : ''} ${isRevealed ? 'revealed' : ''} transition-opacity duration-400 ${isRevealed || isScanning ? 'opacity-100' : 'opacity-0'}`}
-      style={{ transitionDelay: `${index * 60}ms` }}
+      className={`intel-card group ${isScanning ? 'scanning' : ''} ${isRevealed ? 'revealed' : ''} transition-all duration-500 ${isRevealed || isScanning ? 'opacity-100' : 'opacity-0 translate-y-4'}`}
+      style={{ transitionDelay: `${index * 70}ms` }}
     >
-      {/* Header Row — incident report style */}
+      {/* Header */}
       <div className="flex items-center justify-between mb-3 pb-3 border-b border-border/60">
         <div className="flex items-center gap-2.5">
-          <project.icon className="w-4 h-4 text-primary" />
+          <div className="p-1.5 bg-primary/10 rounded-lg group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+            <project.icon className="w-4 h-4 text-primary" />
+          </div>
           <div>
             <span className="data-label">{project.category}</span>
-            <h3 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors duration-150">
+            <h3 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors duration-200">
               {project.title}
             </h3>
           </div>
         </div>
-        <span className="font-mono text-[11px] text-muted-foreground tabular-nums">
+        <span className="font-mono text-[11px] text-muted-foreground tabular-nums bg-secondary/50 px-2 py-0.5 rounded">
           {project.year}
         </span>
       </div>
@@ -147,9 +149,9 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
         {project.description}
       </p>
 
-      {/* Key Findings — incident report style */}
+      {/* Highlights */}
       <div className="mb-4 space-y-1.5">
-        {project.highlights.map((h, i) => (
+        {project.highlights.map((h) => (
           <div key={h} className="flex items-start gap-2 text-xs text-muted-foreground/80">
             <span className="font-mono text-primary/60 select-none mt-px">▸</span>
             <span className="leading-relaxed">{h}</span>
@@ -157,13 +159,13 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
         ))}
       </div>
 
-      {/* Footer — Tools & Links */}
+      {/* Footer */}
       <div className="flex items-center justify-between gap-3 pt-3 border-t border-border/60">
         <div className="flex flex-wrap gap-1">
           {project.tools.map((tool) => (
             <span
               key={tool}
-              className="px-1.5 py-0.5 text-[10px] font-mono text-muted-foreground border border-border/60 rounded bg-secondary/40"
+              className="px-1.5 py-0.5 text-[10px] font-mono text-muted-foreground border border-border/60 rounded bg-secondary/40 hover:border-primary/30 hover:text-foreground transition-all duration-200"
             >
               {tool}
             </span>
@@ -171,14 +173,14 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
         </div>
         <div className="flex items-center gap-1.5 shrink-0">
           {project.liveUrl && (
-            <Button variant="ghost" size="sm" className="h-7 px-2 text-primary hover:text-primary hover:bg-primary/8 gap-1 text-xs transition-colors duration-150" asChild>
+            <Button variant="ghost" size="sm" className="h-7 px-2 text-primary hover:text-primary hover:bg-primary/10 gap-1 text-xs transition-all duration-200 hover:scale-105" asChild>
               <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                 Live <ExternalLink className="w-3 h-3" />
               </a>
             </Button>
           )}
           {project.githubUrl && (
-            <Button variant="ghost" size="sm" className="h-7 px-2 text-primary hover:text-primary hover:bg-primary/8 gap-1 text-xs transition-colors duration-150" asChild>
+            <Button variant="ghost" size="sm" className="h-7 px-2 text-primary hover:text-primary hover:bg-primary/10 gap-1 text-xs transition-all duration-200 hover:scale-105" asChild>
               <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                 Source <ExternalLink className="w-3 h-3" />
               </a>
@@ -197,11 +199,10 @@ const Projects = () => {
     <section id="projects" className="py-24 relative">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          {/* Section Header */}
           <div
             ref={headerRef}
-            className={`mb-12 transition-all duration-500 ${
-              headerRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            className={`mb-14 transition-all duration-600 ${
+              headerRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
             <h2 className="section-title">Projects</h2>
@@ -210,7 +211,6 @@ const Projects = () => {
             </p>
           </div>
 
-          {/* Projects Grid */}
           <div className="grid lg:grid-cols-2 gap-4">
             {projects.map((project, index) => (
               <ProjectCard key={project.title} project={project} index={index} />

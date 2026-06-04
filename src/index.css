@@ -5,8 +5,8 @@
 @tailwind utilities;
 
 /* ================================================================
-   DESIGN SYSTEM — SOC Dashboard / Enterprise Security Platform
-   Deep zinc/slate tones. No glassmorphism. No blobs. No pulse.
+   DESIGN SYSTEM — Bespoke Cybersecurity Portfolio
+   Premium dark aesthetic with rich micro-interactions
    ================================================================ */
 
 @layer base {
@@ -39,10 +39,8 @@
     --input: 220 10% 14%;
     --ring: 187 65% 48%;
 
-    --radius: 0.375rem;
-
+    --radius: 0.5rem;
     --terminal-bg: 220 14% 5%;
-    --scan-color: 187 65% 48%;
   }
 
   .dark {
@@ -91,36 +89,55 @@
     font-family: 'JetBrains Mono', 'Fira Code', monospace;
   }
 
-  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: hsl(var(--background)); }
   ::-webkit-scrollbar-thumb {
     background: hsl(var(--border));
     border-radius: 3px;
+    transition: background 0.2s;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--primary) / 0.4);
+    background: hsl(var(--primary) / 0.5);
   }
 
   ::selection {
-    background: hsl(var(--primary) / 0.2);
+    background: hsl(var(--primary) / 0.25);
     color: hsl(var(--foreground));
   }
 }
 
 @layer components {
 
-  /* ──── INTEL CARD — Structured panel with precision borders ──── */
+  /* ──── INTEL CARD — with rich hover lift + glow ──── */
   .intel-card {
-    @apply bg-card border border-border rounded-md p-5 relative overflow-hidden;
-    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    @apply bg-card border border-border rounded-lg p-5 relative overflow-hidden;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease, background-color 0.25s ease;
+    will-change: transform;
+  }
+
+  .intel-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0), transparent);
+    transition: background 0.4s ease;
   }
 
   .intel-card:hover {
-    border-color: hsl(var(--primary) / 0.3);
-    box-shadow: 0 0 0 1px hsl(var(--primary) / 0.08);
+    border-color: hsl(var(--primary) / 0.25);
+    box-shadow: 0 8px 32px -8px hsl(var(--primary) / 0.08), 0 0 0 1px hsl(var(--primary) / 0.05);
+    transform: translateY(-2px);
+    background-color: hsl(220 13% 8%);
   }
 
-  /* Scan-line sweep on reveal */
+  .intel-card:hover::before {
+    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.5), transparent);
+  }
+
+  /* Scan-line on reveal */
   .intel-card.scanning::after {
     content: '';
     position: absolute;
@@ -138,8 +155,14 @@
 
   /* ──── TERMINAL PANEL ──── */
   .terminal-panel {
-    @apply rounded-md border border-border overflow-hidden;
+    @apply rounded-lg border border-border overflow-hidden;
     background: hsl(var(--terminal-bg));
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .terminal-panel:hover {
+    border-color: hsl(var(--primary) / 0.2);
+    box-shadow: 0 4px 24px -4px hsl(var(--primary) / 0.06);
   }
 
   .terminal-header {
@@ -153,27 +176,12 @@
 
   /* ──── SECTION TITLES ──── */
   .section-title {
-    @apply text-3xl md:text-4xl font-bold tracking-tight relative inline-block;
+    @apply text-3xl md:text-4xl font-bold tracking-tight;
     letter-spacing: -0.03em;
   }
 
-  .section-title::after {
-    content: '';
-    position: absolute;
-    bottom: -6px;
-    left: 0;
-    width: 48px;
-    height: 2px;
-    background: hsl(var(--primary));
-    transition: width 0.3s ease;
-  }
-
-  .section-title:hover::after {
-    width: 80px;
-  }
-
   .section-subtitle {
-    @apply text-muted-foreground text-base mb-12 max-w-2xl;
+    @apply text-muted-foreground text-base max-w-2xl;
     line-height: 1.7;
   }
 
@@ -187,32 +195,26 @@
 
   /* ──── GRADIENT TEXT ──── */
   .gradient-text {
-    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
   }
 
   /* ──── NAV LINK ──── */
   .nav-link {
-    @apply text-muted-foreground hover:text-foreground transition-colors duration-150 relative;
+    @apply text-muted-foreground hover:text-foreground transition-all duration-200 relative;
   }
 
-  .nav-link::after {
-    content: '';
-    @apply absolute -bottom-0.5 left-0 w-0 h-px transition-all duration-200;
-    background: hsl(var(--primary));
-  }
-
-  .nav-link:hover::after {
-    @apply w-full;
-  }
-
-  /* ──── SKILL TAG — Monospaced, precise ──── */
+  /* ──── SKILL TAG — Monospaced, interactive ──── */
   .skill-tag {
     @apply px-2.5 py-1 text-xs rounded border border-border bg-secondary/60 text-muted-foreground font-mono;
-    transition: border-color 0.12s ease, color 0.12s ease, background 0.12s ease;
+    transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   }
 
   .skill-tag:hover {
-    @apply border-primary/40 text-foreground bg-primary/10;
+    @apply border-primary/40 text-foreground;
+    background: hsl(var(--primary) / 0.1);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px hsl(var(--primary) / 0.1);
   }
 
   /* ──── STAT NUMBER ──── */
@@ -225,22 +227,22 @@
   /* ──── STAGGER CHILDREN ──── */
   .stagger-children > * {
     opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
+    transform: translateY(20px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .stagger-children.revealed > *:nth-child(1) { transition-delay: 0.03s; opacity: 1; transform: translateY(0); }
-  .stagger-children.revealed > *:nth-child(2) { transition-delay: 0.06s; opacity: 1; transform: translateY(0); }
-  .stagger-children.revealed > *:nth-child(3) { transition-delay: 0.09s; opacity: 1; transform: translateY(0); }
-  .stagger-children.revealed > *:nth-child(4) { transition-delay: 0.12s; opacity: 1; transform: translateY(0); }
-  .stagger-children.revealed > *:nth-child(5) { transition-delay: 0.15s; opacity: 1; transform: translateY(0); }
-  .stagger-children.revealed > *:nth-child(6) { transition-delay: 0.18s; opacity: 1; transform: translateY(0); }
-  .stagger-children.revealed > *:nth-child(7) { transition-delay: 0.21s; opacity: 1; transform: translateY(0); }
-  .stagger-children.revealed > *:nth-child(8) { transition-delay: 0.24s; opacity: 1; transform: translateY(0); }
-  .stagger-children.revealed > *:nth-child(9) { transition-delay: 0.27s; opacity: 1; transform: translateY(0); }
-  .stagger-children.revealed > *:nth-child(10) { transition-delay: 0.30s; opacity: 1; transform: translateY(0); }
-  .stagger-children.revealed > *:nth-child(11) { transition-delay: 0.33s; opacity: 1; transform: translateY(0); }
-  .stagger-children.revealed > *:nth-child(12) { transition-delay: 0.36s; opacity: 1; transform: translateY(0); }
+  .stagger-children.revealed > *:nth-child(1)  { transition-delay: 0.04s; opacity: 1; transform: translateY(0); }
+  .stagger-children.revealed > *:nth-child(2)  { transition-delay: 0.08s; opacity: 1; transform: translateY(0); }
+  .stagger-children.revealed > *:nth-child(3)  { transition-delay: 0.12s; opacity: 1; transform: translateY(0); }
+  .stagger-children.revealed > *:nth-child(4)  { transition-delay: 0.16s; opacity: 1; transform: translateY(0); }
+  .stagger-children.revealed > *:nth-child(5)  { transition-delay: 0.20s; opacity: 1; transform: translateY(0); }
+  .stagger-children.revealed > *:nth-child(6)  { transition-delay: 0.24s; opacity: 1; transform: translateY(0); }
+  .stagger-children.revealed > *:nth-child(7)  { transition-delay: 0.28s; opacity: 1; transform: translateY(0); }
+  .stagger-children.revealed > *:nth-child(8)  { transition-delay: 0.32s; opacity: 1; transform: translateY(0); }
+  .stagger-children.revealed > *:nth-child(9)  { transition-delay: 0.36s; opacity: 1; transform: translateY(0); }
+  .stagger-children.revealed > *:nth-child(10) { transition-delay: 0.40s; opacity: 1; transform: translateY(0); }
+  .stagger-children.revealed > *:nth-child(11) { transition-delay: 0.44s; opacity: 1; transform: translateY(0); }
+  .stagger-children.revealed > *:nth-child(12) { transition-delay: 0.48s; opacity: 1; transform: translateY(0); }
 
   /* ──── TYPING CURSOR ──── */
   .typing-cursor::after {
@@ -253,18 +255,20 @@
   /* ──── MAGNETIC BUTTON ──── */
   .magnetic-btn {
     @apply relative overflow-hidden;
-    transition: transform 0.12s ease, box-shadow 0.12s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
   .magnetic-btn:hover {
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px hsl(var(--primary) / 0.25);
   }
 
   .magnetic-btn:active {
     transform: translateY(0);
+    box-shadow: 0 2px 8px hsl(var(--primary) / 0.15);
   }
 
-  /* ──── DATA LABEL — Used in incident-report style layouts ──── */
+  /* ──── DATA LABEL — Incident-report style ──── */
   .data-label {
     @apply text-[10px] uppercase tracking-[0.12em] text-muted-foreground font-mono font-medium;
   }
@@ -273,9 +277,40 @@
     @apply text-sm text-foreground font-medium;
   }
 
-  /* ──── DIVIDER ──── */
-  .section-divider {
-    @apply border-t border-border/60;
+  /* ──── PROFILE PHOTO ──── */
+  .profile-photo-ring {
+    @apply relative;
+  }
+
+  .profile-photo-ring::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary)));
+    background-size: 200% 200%;
+    animation: gradient-spin 4s linear infinite;
+    z-index: -1;
+  }
+
+  .profile-photo-ring::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 1px solid hsl(var(--primary) / 0.15);
+    animation: rotate-slow 20s linear infinite;
+  }
+
+  /* ──── HOVER GLOW LINK ──── */
+  .glow-link {
+    @apply relative;
+    transition: color 0.2s ease;
+  }
+
+  .glow-link:hover {
+    color: hsl(var(--primary));
+    text-shadow: 0 0 12px hsl(var(--primary) / 0.3);
   }
 }
 
@@ -291,7 +326,7 @@
 }
 
 @keyframes fade-in-up {
-  0% { opacity: 0; transform: translateY(20px); }
+  0% { opacity: 0; transform: translateY(24px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 
@@ -300,9 +335,30 @@
   100% { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes fade-in-left {
+  0% { opacity: 0; transform: translateX(-24px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fade-in-right {
+  0% { opacity: 0; transform: translateX(24px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scale-in {
+  0% { opacity: 0; transform: scale(0.92); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
 @keyframes rotate-slow {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+@keyframes gradient-spin {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 @keyframes border-glow {
@@ -315,21 +371,43 @@
   50% { transform: translateY(-6px); }
 }
 
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 
   .animate-fade-in-up {
-    animation: fade-in-up 0.5s ease forwards;
+    animation: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
   .animate-fade-in-down {
-    animation: fade-in-down 0.4s ease forwards;
+    animation: fade-in-down 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-fade-in-left {
+    animation: fade-in-left 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-fade-in-right {
+    animation: fade-in-right 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
   .animate-rotate-slow {
-    animation: rotate-slow 30s linear infinite;
+    animation: rotate-slow 20s linear infinite;
   }
 
   .animate-border-glow {
@@ -337,6 +415,14 @@
   }
 
   .animate-float {
-    animation: float 6s ease-in-out infinite;
+    animation: float 5s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-subtle {
+    animation: pulse-subtle 3s ease-in-out infinite;
   }
 }

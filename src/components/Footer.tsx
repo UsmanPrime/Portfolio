@@ -1,15 +1,15 @@
-import { Shield, Github, Linkedin, Mail, ChevronUp } from "lucide-react";
+import { Shield, Github, Linkedin, Mail, ChevronUp, Heart } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="py-8 border-t border-border">
+    <footer className="py-10 border-t border-border/60 bg-card/30">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-2">
-              <Shield className="w-4 h-4 text-primary" />
+          <div className="flex flex-col md:flex-row items-center justify-between gap-5">
+            <div className="flex items-center gap-2.5 group">
+              <Shield className="w-5 h-5 text-primary transition-all duration-300 group-hover:text-accent group-hover:scale-110" />
               <span className="text-xs font-mono text-muted-foreground">
                 SOC Operations · DFIR · Threat Detection · Blue Team
               </span>
@@ -26,7 +26,7 @@ const Footer = () => {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 text-muted-foreground hover:text-primary transition-colors duration-150"
+                  className="p-2.5 text-muted-foreground hover:text-primary transition-all duration-250 hover:bg-primary/10 rounded-lg hover:scale-110"
                   aria-label={link.label}
                 >
                   <link.icon className="w-4 h-4" />
@@ -35,13 +35,15 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="mt-6 pt-4 border-t border-border/50 flex items-center justify-between">
-            <p className="text-[11px] font-mono text-muted-foreground/60">
-              © {currentYear} Usman Ibrahim
+          <div className="mt-6 pt-5 border-t border-border/40 flex items-center justify-between">
+            <p className="text-[11px] text-muted-foreground/60 flex items-center gap-1">
+              © {currentYear} Usman Ibrahim · Built with
+              <Heart className="w-3 h-3 text-primary/60 animate-pulse-subtle" />
+              using React & TypeScript
             </p>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="p-1.5 text-muted-foreground hover:text-primary transition-colors duration-150"
+              className="p-2 text-muted-foreground hover:text-primary transition-all duration-250 hover:bg-primary/10 rounded-lg hover:-translate-y-1"
               aria-label="Scroll to top"
             >
               <ChevronUp className="w-4 h-4" />

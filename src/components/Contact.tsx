@@ -88,11 +88,10 @@ const Contact = () => {
     <section id="contact" className="py-24 relative">
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
-          {/* Header */}
           <div
             ref={headerRef}
-            className={`mb-12 transition-all duration-500 ${
-              headerRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            className={`mb-14 transition-all duration-600 ${
+              headerRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
             <h2 className="section-title">Contact</h2>
@@ -103,14 +102,16 @@ const Contact = () => {
 
           <div
             ref={formRef}
-            className={`grid lg:grid-cols-2 gap-8 transition-all duration-500 ${
-              formRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            className={`grid lg:grid-cols-2 gap-8 transition-all duration-600 ${
+              formRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             }`}
           >
             {/* Form */}
             <div className="intel-card">
-              <div className="flex items-center gap-2 mb-5 pb-3 border-b border-border/60">
-                <Send className="w-4 h-4 text-primary" />
+              <div className="flex items-center gap-2.5 mb-5 pb-3 border-b border-border/60">
+                <div className="p-1.5 bg-primary/10 rounded-lg">
+                  <Send className="w-4 h-4 text-primary" />
+                </div>
                 <h3 className="text-sm font-semibold">Send a Message</h3>
               </div>
 
@@ -121,7 +122,7 @@ const Contact = () => {
                     <Input
                       id="name" name="name" type="text" required minLength={2} maxLength={100}
                       value={formData.name} onChange={handleInputChange} placeholder="Your name"
-                      className="bg-secondary/30 border-border focus:border-primary rounded-md text-sm transition-colors duration-150 h-9"
+                      className="bg-secondary/30 border-border focus:border-primary rounded-lg text-sm transition-all duration-200 h-9 focus:shadow-[0_0_0_2px_hsl(var(--primary)/0.1)]"
                     />
                   </div>
                   <div>
@@ -129,7 +130,7 @@ const Contact = () => {
                     <Input
                       id="email" name="email" type="email" required
                       value={formData.email} onChange={handleInputChange} placeholder="your@email.com"
-                      className="bg-secondary/30 border-border focus:border-primary rounded-md text-sm transition-colors duration-150 h-9"
+                      className="bg-secondary/30 border-border focus:border-primary rounded-lg text-sm transition-all duration-200 h-9 focus:shadow-[0_0_0_2px_hsl(var(--primary)/0.1)]"
                     />
                   </div>
                 </div>
@@ -139,7 +140,7 @@ const Contact = () => {
                   <Input
                     id="subject" name="subject" type="text" required minLength={3} maxLength={200}
                     value={formData.subject} onChange={handleInputChange} placeholder="What's this about?"
-                    className="bg-secondary/30 border-border focus:border-primary rounded-md text-sm transition-colors duration-150 h-9"
+                    className="bg-secondary/30 border-border focus:border-primary rounded-lg text-sm transition-all duration-200 h-9 focus:shadow-[0_0_0_2px_hsl(var(--primary)/0.1)]"
                   />
                 </div>
 
@@ -148,13 +149,13 @@ const Contact = () => {
                   <Textarea
                     id="message" name="message" required rows={4} minLength={10} maxLength={5000}
                     value={formData.message} onChange={handleInputChange} placeholder="Your message..."
-                    className="bg-secondary/30 border-border focus:border-primary resize-none rounded-md text-sm transition-colors duration-150"
+                    className="bg-secondary/30 border-border focus:border-primary resize-none rounded-lg text-sm transition-all duration-200 focus:shadow-[0_0_0_2px_hsl(var(--primary)/0.1)]"
                   />
                 </div>
 
                 <Button
                   type="submit"
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground gap-2 magnetic-btn rounded-md text-sm transition-all duration-150 h-9"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground gap-2 magnetic-btn rounded-lg text-sm h-10"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
@@ -166,11 +167,13 @@ const Contact = () => {
               </form>
             </div>
 
-            {/* Contact Info */}
+            {/* Info */}
             <div className="space-y-4">
               <div className="intel-card">
-                <div className="flex items-center gap-2 mb-4 pb-3 border-b border-border/60">
-                  <Shield className="w-4 h-4 text-primary" />
+                <div className="flex items-center gap-2.5 mb-4 pb-3 border-b border-border/60">
+                  <div className="p-1.5 bg-primary/10 rounded-lg">
+                    <Shield className="w-4 h-4 text-primary" />
+                  </div>
                   <h3 className="text-sm font-semibold">Connect</h3>
                 </div>
 
@@ -180,18 +183,20 @@ const Contact = () => {
                   I aim to respond within 24-48 hours.
                 </p>
 
-                <div className="space-y-1.5">
+                <div className="space-y-1">
                   {socialLinks.map((link) => (
                     <a
                       key={link.label}
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-3 p-2 rounded border border-transparent hover:border-border hover:bg-secondary/30 transition-all duration-150 group"
+                      className="flex items-center gap-3 p-2.5 rounded-lg border border-transparent hover:border-primary/20 hover:bg-primary/5 transition-all duration-250 group"
                     >
-                      <link.icon className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors duration-150" />
+                      <div className="p-1.5 bg-primary/10 rounded-lg group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                        <link.icon className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors duration-200" />
+                      </div>
                       <div>
-                        <div className="text-xs font-medium text-foreground group-hover:text-primary transition-colors duration-150">
+                        <div className="text-xs font-medium text-foreground group-hover:text-primary transition-colors duration-200">
                           {link.label}
                         </div>
                         <div className="text-[11px] font-mono text-muted-foreground/60">
@@ -203,7 +208,6 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* Terminal */}
               <div className="terminal-panel">
                 <div className="terminal-header">
                   <div className="terminal-dot bg-green-500/60" />

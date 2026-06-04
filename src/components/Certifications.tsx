@@ -63,7 +63,7 @@ const Certifications = () => {
           {/* Header */}
           <div
             ref={headerRef}
-            className={`mb-12 transition-all duration-500 ${
+            className={`mb-14 transition-all duration-600 ${
               headerRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             }`}
           >
@@ -97,7 +97,7 @@ const Certifications = () => {
                       )}
                     </div>
                   </div>
-                  <h3 className="text-sm font-semibold mb-1 leading-tight group-hover:text-primary transition-colors duration-150">
+                  <h3 className="text-sm font-semibold mb-1 leading-tight group-hover:text-primary transition-colors duration-200">
                     {cert.name}
                   </h3>
                   <p className="text-xs text-muted-foreground">{cert.issuer}</p>

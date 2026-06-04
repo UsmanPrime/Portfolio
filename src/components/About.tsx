@@ -49,8 +49,8 @@ const About = () => {
           {/* Header */}
           <div
             ref={sectionRef}
-            className={`mb-12 transition-all duration-500 ${
-              sectionRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            className={`mb-14 transition-all duration-600 ${
+              sectionRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
             <h2 className="section-title">About</h2>
@@ -60,25 +60,35 @@ const About = () => {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-5 gap-8 items-start">
-            {/* Left Column — Photo + Stats */}
-            <div className="lg:col-span-2 space-y-6">
-              {/* Photo */}
-              <div className="intel-card flex items-center gap-4 p-4">
-                <div className="w-20 h-20 rounded-md overflow-hidden border border-border shrink-0">
-                  <img
-                    src={usmanPhoto}
-                    alt="Usman Ibrahim"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-foreground text-sm">Usman Ibrahim</h3>
-                  <p className="text-xs text-muted-foreground">BS Cyber Security</p>
-                  <p className="text-xs text-muted-foreground">FAST NUCES '28</p>
-                  <div className="flex items-center gap-1.5 mt-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                    <span className="text-[11px] font-mono text-accent">Available</span>
+          <div className="grid lg:grid-cols-5 gap-10 items-start">
+            {/* Left — Photo + Stats + Bio */}
+            <div className="lg:col-span-2 space-y-5">
+              {/* Photo Card */}
+              <div
+                className={`intel-card p-6 transition-all duration-600 ${
+                  sectionRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
+                style={{ transitionDelay: '100ms' }}
+              >
+                <div className="flex flex-col items-center text-center">
+                  <div className="profile-photo-ring mb-4">
+                    <div className="w-28 h-28 rounded-full overflow-hidden border-2 border-background relative z-10">
+                      <img
+                        src={usmanPhoto}
+                        alt="Usman Ibrahim"
+                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                      />
+                    </div>
+                  </div>
+                  <h3 className="font-semibold text-foreground text-base mb-0.5">Usman Ibrahim</h3>
+                  <p className="text-xs text-muted-foreground mb-0.5">BS Cyber Security</p>
+                  <p className="text-xs text-muted-foreground/60 mb-3">FAST NUCES Islamabad '28</p>
+                  <div className="flex items-center gap-1.5">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-60" />
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
+                    </span>
+                    <span className="text-[11px] font-mono text-accent">Available for Internship</span>
                   </div>
                 </div>
               </div>
@@ -86,26 +96,31 @@ const About = () => {
               {/* Stats */}
               <div
                 ref={statsRef}
-                className={`grid grid-cols-3 gap-3 transition-all duration-500 ${
-                  statsRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                className={`grid grid-cols-3 gap-3 transition-all duration-600 ${
+                  statsRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
                 }`}
               >
-                <div className="intel-card text-center py-4" ref={alertRef}>
-                  <div className="stat-number text-2xl">{alertCount}+</div>
+                <div className="intel-card text-center py-4 group" ref={alertRef}>
+                  <div className="stat-number text-2xl group-hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.4)] transition-all duration-300">{alertCount}+</div>
                   <div className="data-label mt-1">Alerts/Day</div>
                 </div>
-                <div className="intel-card text-center py-4" ref={projectRef}>
-                  <div className="stat-number text-2xl">{projectCount}</div>
+                <div className="intel-card text-center py-4 group" ref={projectRef}>
+                  <div className="stat-number text-2xl group-hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.4)] transition-all duration-300">{projectCount}</div>
                   <div className="data-label mt-1">Projects</div>
                 </div>
-                <div className="intel-card text-center py-4" ref={attackRef}>
-                  <div className="stat-number text-2xl">{attackScenarios}+</div>
+                <div className="intel-card text-center py-4 group" ref={attackRef}>
+                  <div className="stat-number text-2xl group-hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.4)] transition-all duration-300">{attackScenarios}+</div>
                   <div className="data-label mt-1">Lab Scenarios</div>
                 </div>
               </div>
 
               {/* Bio */}
-              <div className="intel-card">
+              <div
+                className={`intel-card transition-all duration-600 ${
+                  sectionRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
+                style={{ transitionDelay: '200ms' }}
+              >
                 <p className="text-[13px] text-muted-foreground leading-relaxed mb-3">
                   Pursuing a BS in Cyber Security at FAST NUCES Islamabad (2024–2028) with hands-on experience in SOC operations, full-stack web development, and systems programming.
                 </p>
@@ -121,21 +136,23 @@ const About = () => {
               </div>
             </div>
 
-            {/* Right Column — Focus Areas */}
+            {/* Right — Focus Areas */}
             <div className="lg:col-span-3 space-y-3">
-              <div className="data-label mb-3">Core Competencies</div>
+              <div className="data-label mb-4">Core Competencies</div>
               {focusAreas.map((area, index) => (
                 <div
                   key={area.title}
-                  className={`intel-card group transition-all duration-400 ${
-                    sectionRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                  className={`intel-card group transition-all duration-500 ${
+                    sectionRevealed ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
                   }`}
-                  style={{ transitionDelay: `${index * 60 + 150}ms` }}
+                  style={{ transitionDelay: `${index * 80 + 150}ms` }}
                 >
-                  <div className="flex items-start gap-3">
-                    <area.icon className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                  <div className="flex items-start gap-3.5">
+                    <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300 shrink-0">
+                      <area.icon className="w-4 h-4 text-primary" />
+                    </div>
                     <div>
-                      <h4 className="text-sm font-semibold mb-1 group-hover:text-primary transition-colors duration-150">
+                      <h4 className="text-sm font-semibold mb-1.5 group-hover:text-primary transition-colors duration-200">
                         {area.title}
                       </h4>
                       <p className="text-xs text-muted-foreground leading-relaxed">

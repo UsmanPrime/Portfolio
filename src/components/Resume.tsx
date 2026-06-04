@@ -80,7 +80,7 @@ const Resume = () => {
           {/* Header */}
           <div
             ref={headerRef}
-            className={`mb-12 transition-all duration-500 ${
+            className={`mb-14 transition-all duration-600 ${
               headerRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             }`}
           >
@@ -98,7 +98,9 @@ const Resume = () => {
             }`}
           >
             <div className="flex items-center gap-3">
-              <FileText className="w-5 h-5 text-primary" />
+              <div className="p-2 bg-primary/10 rounded-lg">
+                <FileText className="w-5 h-5 text-primary" />
+              </div>
               <div>
                 <h3 className="text-sm font-semibold">Full Resume</h3>
                 <p className="text-xs text-muted-foreground">
@@ -109,7 +111,7 @@ const Resume = () => {
             <div className="flex gap-2">
               <Button
                 size="sm"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground gap-1.5 magnetic-btn rounded-md text-xs transition-all duration-150"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground gap-1.5 magnetic-btn rounded-lg text-xs"
                 asChild
               >
                 <a href="/Usman_Ibrahim.pdf" download>
@@ -120,7 +122,7 @@ const Resume = () => {
               <Button
                 size="sm"
                 variant="outline"
-                className="gap-1.5 rounded-md text-xs border-border hover:border-primary/40 transition-all duration-150"
+                className="gap-1.5 rounded-lg text-xs border-border hover:border-primary/40 hover:bg-primary/5 transition-all duration-200"
                 asChild
               >
                 <a href="/Usman_Ibrahim.pdf" target="_blank" rel="noopener noreferrer">
@@ -135,9 +137,11 @@ const Resume = () => {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {competencies.map((comp) => (
               <div key={comp.title} className="intel-card group">
-                <div className="flex items-center gap-2 mb-3 pb-2 border-b border-border/60">
-                  <comp.icon className="w-3.5 h-3.5 text-primary" />
-                  <h4 className="text-sm font-semibold group-hover:text-primary transition-colors duration-150">
+                <div className="flex items-center gap-2.5 mb-3 pb-2.5 border-b border-border/60">
+                  <div className="p-1.5 bg-primary/10 rounded-lg group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                    <comp.icon className="w-3.5 h-3.5 text-primary" />
+                  </div>
+                  <h4 className="text-sm font-semibold group-hover:text-primary transition-colors duration-200">
                     {comp.title}
                   </h4>
                 </div>

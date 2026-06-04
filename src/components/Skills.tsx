@@ -111,15 +111,14 @@ const Skills = () => {
 
   return (
     <section id="skills" className="py-24 relative bg-secondary/30">
-      <div className="absolute inset-0 grid-bg opacity-8" />
+      <div className="absolute inset-0 grid-bg opacity-10" />
 
       <div className="container mx-auto px-4 relative">
         <div className="max-w-6xl mx-auto">
-          {/* Header */}
           <div
             ref={headerRef}
-            className={`mb-12 transition-all duration-500 ${
-              headerRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            className={`mb-14 transition-all duration-600 ${
+              headerRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
             <h2 className="section-title">Technical Skills</h2>
@@ -128,34 +127,37 @@ const Skills = () => {
             </p>
           </div>
 
-          {/* Grid */}
           <div
             ref={gridRef}
-            className={`grid md:grid-cols-2 lg:grid-cols-3 gap-3 stagger-children ${gridRevealed ? "revealed" : ""}`}
+            className={`grid md:grid-cols-2 lg:grid-cols-3 gap-4 stagger-children ${gridRevealed ? "revealed" : ""}`}
           >
             {skillCategories.map((category) => (
               <div key={category.title} className="intel-card group">
-                <div className="flex items-center gap-2 mb-3 pb-2.5 border-b border-border/60">
-                  <category.icon className="w-3.5 h-3.5 text-primary" />
+                <div className="flex items-center gap-2.5 mb-4 pb-3 border-b border-border/60">
+                  <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                    <category.icon className="w-4 h-4 text-primary" />
+                  </div>
                   <div>
-                    <h3 className="text-sm font-semibold group-hover:text-primary transition-colors duration-150">
+                    <h3 className="text-sm font-semibold group-hover:text-primary transition-colors duration-200">
                       {category.title}
                     </h3>
                     <p className="text-[10px] text-muted-foreground/60">{category.description}</p>
                   </div>
                 </div>
-                <div className="flex flex-wrap gap-1">
+                <div className="flex flex-wrap gap-1.5">
                   {category.skills.map((skill) => (
-                    <span key={skill} className="skill-tag">{skill}</span>
+                    <span key={skill} className="skill-tag cursor-default">{skill}</span>
                   ))}
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Status */}
           <div className="mt-10 flex items-center gap-2 text-xs text-muted-foreground">
-            <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-50" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
+            </span>
             <span className="font-mono">
               Continuously expanding through hands-on labs, certifications, and CTF competitions
             </span>

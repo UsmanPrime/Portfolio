@@ -131,17 +131,19 @@ const Experience = () => {
               return (
                 <div
                   key={exp.title}
-                  className={`intel-card transition-all duration-400 ${
+                  className={`intel-card transition-all duration-500 ${
                     timelineRevealed
                       ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-4"
+                      : "opacity-0 translate-y-6"
                   }`}
                   style={{ transitionDelay: `${index * 80}ms` }}
                 >
                   {/* Header — structured like a report entry */}
                   <div className="flex items-center justify-between mb-3 pb-3 border-b border-border/60">
                     <div className="flex items-center gap-2.5">
-                      <exp.icon className="w-4 h-4 text-primary" />
+                      <div className="p-1.5 bg-primary/10 rounded-lg group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                        <exp.icon className="w-4 h-4 text-primary" />
+                      </div>
                       <div>
                         <span className="data-label">{exp.type}</span>
                         <h3 className="text-sm font-semibold text-foreground">{exp.title}</h3>
@@ -193,7 +195,7 @@ const Experience = () => {
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="h-7 px-2 text-primary hover:text-primary hover:bg-primary/8 gap-1 text-xs transition-colors duration-150"
+                        className="h-7 px-2 text-primary hover:text-primary hover:bg-primary/10 gap-1 text-xs transition-all duration-200 hover:scale-105"
                         asChild
                       >
                         <a href={exp.certificateUrl} target="_blank" rel="noopener noreferrer">
@@ -242,7 +244,7 @@ const Experience = () => {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="mt-2 h-6 px-1.5 text-primary hover:bg-primary/8 gap-1 text-[11px] transition-colors duration-150"
+                      className="mt-2 h-6 px-1.5 text-primary hover:bg-primary/10 gap-1 text-[11px] transition-all duration-200 hover:scale-105"
                       asChild
                     >
                       <a href={a.certificateUrl} target="_blank" rel="noopener noreferrer">

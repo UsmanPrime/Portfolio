@@ -2,6 +2,7 @@ import { Shield, ChevronDown, FileText, FolderOpen, ArrowRight } from "lucide-re
 import { Button } from "@/components/ui/button";
 import { useTypingEffect, useDecryptText } from "@/hooks/useAnimations";
 import ParticlesBackground from "@/components/ParticlesBackground";
+import usmanPhoto from "@/assets/usman.jpg";
 import { useState, useEffect } from "react";
 
 const Hero = () => {
@@ -41,7 +42,7 @@ const Hero = () => {
       setTimeout(() => {
         setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
         setIsRoleVisible(true);
-      }, 200);
+      }, 250);
     }, 3000);
     return () => clearInterval(interval);
   }, [roles.length]);
@@ -54,114 +55,147 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-24">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 md:pt-20">
       <ParticlesBackground />
-      <div className="absolute inset-0 grid-bg opacity-20" />
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/50 to-background" />
+      <div className="absolute inset-0 grid-bg opacity-15" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/40 to-background" />
+
+      {/* Ambient glow */}
+      <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[120px] animate-pulse-subtle" />
+      <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] rounded-full bg-accent/5 blur-[100px] animate-pulse-subtle" style={{ animationDelay: '1.5s' }} />
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto">
-          {/* Status indicator */}
-          <div className="flex items-center gap-3 mb-8 animate-fade-in-up">
-            <div className="flex items-center gap-2 px-3 py-1.5 border border-border rounded bg-secondary/40">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-              <span className="text-xs font-mono text-muted-foreground">
-                ACTIVE — Seeking Cybersecurity & Software Engineering Internship
-              </span>
+        <div className="max-w-5xl mx-auto">
+          <div className="grid lg:grid-cols-5 gap-10 items-center">
+            {/* Left Content */}
+            <div className="lg:col-span-3">
+              {/* Status */}
+              <div className="flex items-center gap-2.5 mb-6 animate-fade-in-up">
+                <div className="flex items-center gap-2 px-3 py-1.5 border border-primary/20 rounded-full bg-primary/5">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-60" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
+                  </span>
+                  <span className="text-xs font-medium text-muted-foreground">
+                    Open to Opportunities
+                  </span>
+                </div>
+              </div>
+
+              {/* Name */}
+              <h1
+                className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-3 animate-fade-in-up tracking-tighter"
+                style={{ animationDelay: "0.1s" }}
+              >
+                <span className={`font-mono transition-all duration-500 ${nameDecrypted ? 'gradient-text' : 'text-primary/60'}`}>
+                  {nameText}
+                </span>
+              </h1>
+
+              {/* Role */}
+              <div
+                className="h-9 flex items-center gap-2 mb-5 animate-fade-in-up"
+                style={{ animationDelay: "0.2s" }}
+              >
+                <span className="text-lg md:text-xl font-mono text-muted-foreground/50">
+                  {"// "}
+                </span>
+                <span
+                  className={`text-lg md:text-xl font-semibold text-primary transition-all duration-200 inline-block ${
+                    isRoleVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1"
+                  }`}
+                >
+                  {roles[currentRoleIndex]}
+                </span>
+              </div>
+
+              {/* Tagline */}
+              <p
+                className="text-base text-muted-foreground mb-2 animate-fade-in-up"
+                style={{ animationDelay: "0.25s" }}
+              >
+                Cyber Security Student at FAST NUCES '28
+              </p>
+              <p
+                className="text-sm text-muted-foreground/60 max-w-lg mb-6 leading-relaxed animate-fade-in-up"
+                style={{ animationDelay: "0.3s" }}
+              >
+                Hands-on experience in SOC operations, full-stack web development, and systems
+                programming. Proficient in triaging 30+ daily alerts using Splunk & Wazuh, building
+                production MERN apps with secure authentication, and engineering low-level systems
+                in x86 Assembly and C++.
+              </p>
+
+              {/* Skill Badges */}
+              <div
+                className="flex flex-wrap gap-1.5 mb-8 animate-fade-in-up"
+                style={{ animationDelay: "0.35s" }}
+              >
+                {heroSkills.map((skill, i) => (
+                  <span
+                    key={skill}
+                    className="skill-tag cursor-default"
+                    style={{ animationDelay: `${i * 0.03}s` }}
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+
+              {/* CTA */}
+              <div
+                className="flex flex-col sm:flex-row gap-3 animate-fade-in-up"
+                style={{ animationDelay: "0.4s" }}
+              >
+                <Button
+                  size="lg"
+                  onClick={() => scrollToSection("#projects")}
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium px-6 gap-2 group magnetic-btn rounded-lg"
+                >
+                  <FolderOpen className="w-4 h-4 transition-transform duration-200 group-hover:scale-110" />
+                  View Projects
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  onClick={() => scrollToSection("#resume")}
+                  className="border-border hover:border-primary/40 text-foreground font-medium px-6 gap-2 rounded-lg transition-all duration-250 hover:bg-primary/5"
+                >
+                  <FileText className="w-4 h-4" />
+                  Download Resume
+                </Button>
+              </div>
+            </div>
+
+            {/* Right — Photo */}
+            <div className="lg:col-span-2 flex justify-center animate-fade-in-right" style={{ animationDelay: "0.3s" }}>
+              <div className="relative">
+                {/* Photo */}
+                <div className="profile-photo-ring">
+                  <div className="w-52 h-52 md:w-64 md:h-64 rounded-full overflow-hidden border-2 border-background relative z-10">
+                    <img
+                      src={usmanPhoto}
+                      alt="Usman Ibrahim — Cyber Security Professional"
+                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                    />
+                  </div>
+                </div>
+
+                {/* Floating labels */}
+                <div className="absolute -top-2 -right-4 px-3 py-1.5 bg-card border border-border rounded-lg text-xs font-mono text-primary animate-float shadow-lg shadow-background/50">
+                  <Shield className="w-3 h-3 inline mr-1" />
+                  Blue Team
+                </div>
+                <div className="absolute -bottom-2 -left-4 px-3 py-1.5 bg-card border border-primary/20 rounded-lg text-xs font-mono text-accent animate-float shadow-lg shadow-background/50" style={{ animationDelay: '2s' }}>
+                  SOC Analyst
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Name — decrypts into view */}
-          <h1
-            className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-3 animate-fade-in-up font-mono tracking-tighter"
-            style={{ animationDelay: "0.15s" }}
-          >
-            <span className={`transition-colors duration-300 ${nameDecrypted ? 'text-foreground' : 'text-primary/70'}`}>
-              {nameText}
-            </span>
-          </h1>
-
-          {/* Dynamic Role */}
-          <div
-            className="h-9 md:h-10 flex items-center mb-6 animate-fade-in-up"
-            style={{ animationDelay: "0.2s" }}
-          >
-            <span className="text-xl md:text-2xl font-semibold text-primary font-mono">
-              {"// "}
-            </span>
-            <span
-              className={`text-xl md:text-2xl font-semibold text-primary transition-all duration-150 inline-block ${
-                isRoleVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 -translate-y-1"
-              }`}
-            >
-              {roles[currentRoleIndex]}
-            </span>
-          </div>
-
-          {/* Description — tight, authoritative */}
-          <p
-            className="text-base text-muted-foreground max-w-xl mb-4 leading-relaxed animate-fade-in-up"
-            style={{ animationDelay: "0.25s" }}
-          >
-            Cybersecurity & Software Engineering Student at FAST NUCES '28
-          </p>
-          <p
-            className="text-sm text-muted-foreground/70 max-w-2xl mb-8 leading-relaxed animate-fade-in-up"
-            style={{ animationDelay: "0.3s" }}
-          >
-            Hands-on experience in SOC operations, full-stack web development, and systems
-            programming. Proficient in triaging 30+ daily alerts using Splunk & Wazuh, building
-            production MERN apps with secure authentication, and engineering low-level systems
-            in x86 Assembly and C++.
-          </p>
-
-          {/* Skill Badges — monospaced, precise */}
-          <div
-            className="flex flex-wrap items-center gap-1.5 mb-10 animate-fade-in-up"
-            style={{ animationDelay: "0.35s" }}
-          >
-            {heroSkills.map((skill) => (
-              <span
-                key={skill}
-                className="skill-tag cursor-default"
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
-
-          {/* CTA Buttons */}
-          <div
-            className="flex flex-col sm:flex-row items-start gap-3 mb-16 animate-fade-in-up"
-            style={{ animationDelay: "0.4s" }}
-          >
-            <Button
-              size="lg"
-              onClick={() => scrollToSection("#projects")}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium px-6 gap-2 group magnetic-btn rounded-md transition-all duration-150"
-            >
-              <FolderOpen className="w-4 h-4" />
-              View Projects
-              <ArrowRight className="w-3.5 h-3.5 transition-transform duration-150 group-hover:translate-x-0.5" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              onClick={() => scrollToSection("#resume")}
-              className="border-border hover:border-primary/40 text-foreground font-medium px-6 gap-2 rounded-md transition-all duration-150"
-            >
-              <FileText className="w-4 h-4" />
-              Download Resume
-            </Button>
-          </div>
-
           {/* Terminal */}
-          <div
-            className="max-w-2xl animate-fade-in-up"
-            style={{ animationDelay: "0.5s" }}
-          >
+          <div className="mt-16 max-w-2xl animate-fade-in-up" style={{ animationDelay: "0.55s" }}>
             <div className="terminal-panel">
               <div className="terminal-header">
                 <div className="terminal-dot bg-red-500/60" />
@@ -206,11 +240,11 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2">
         <button
           onClick={() => scrollToSection("#about")}
-          className="p-2 text-muted-foreground hover:text-primary transition-colors duration-150"
+          className="p-2 text-muted-foreground hover:text-primary transition-all duration-200 hover:-translate-y-1"
         >
           <ChevronDown className="w-5 h-5 animate-float" />
         </button>
