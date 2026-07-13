@@ -13,6 +13,22 @@ interface Certification {
 
 const certifications: Certification[] = [
   {
+    name: "Advanced SQLite Queries with Belkasoft",
+    issuer: "Belkasoft",
+    status: "completed",
+    date: "2026-06-27",
+    certificateId: "zpnbi76ql4",
+    verifyUrl: "https://belkasoft.thinkific.com/certificates/zpnbi76ql4",
+  },
+  {
+    name: "FOUNDATIONS OF BUSINESS AND ENTREPRENEURSHIP",
+    issuer: "SkillFront",
+    status: "completed",
+    date: "2025-12-14",
+    certificateId: "67086019155943",
+    verifyUrl: "https://www.skillfront.com/Badges/67086019155943",
+  },
+  {
     name: "Certified Defensive Security Analyst (CDSA)",
     issuer: "Hack The Box",
     status: "in-progress",
