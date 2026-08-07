@@ -29,7 +29,7 @@ const Hero = () => {
 
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [isRoleVisible, setIsRoleVisible] = useState(true);
-  const { displayedText: nameText, isComplete: nameDecrypted } = useDecryptText("ALISHBA INAM", { speed: 40, startDelay: 300 });
+  const { displayedText: nameText, isComplete: nameDecrypted } = useDecryptText("USMAN IBRAHIM", { speed: 40, startDelay: 300 });
   const { displayedText, isComplete } = useTypingEffect(
     "$ soc-monitor --init --pipeline=active",
     30,
@@ -173,7 +173,7 @@ const Hero = () => {
                   <div className="w-52 h-52 md:w-64 md:h-64 rounded-full overflow-hidden border-2 border-background relative z-10">
                     <img
                       src={usmanPhoto}
-                      alt="Alishba Inam — Cyber Security Professional"
+                      alt="Usman Ibrahim — Cyber Security Professional"
                       className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                     />
                   </div>
