@@ -12,3 +12,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://usmanprime-portfolio.vercel.app/sitemap.xml

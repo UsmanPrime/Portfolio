@@ -13,23 +13,23 @@ const Hero = () => {
     "MITRE ATT&CK",
     "Splunk",
     "Wazuh",
-    "x86 Assembly",
+    "Threat Detection",
     "Blue Team",
-    "Threat Hunting",
-    "Network Architecture",
+    "Incident Response",
+    "Network Security",
   ];
 
   const roles = [
     "SOC Analyst",
-    "Full-Stack Developer",
+    "Blue Team Specialist",
+    "Cybersecurity Student",
     "DFIR Specialist",
-    "Systems Programmer",
-    "Blue Team Operator",
+    "Full-Stack Developer",
   ];
 
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [isRoleVisible, setIsRoleVisible] = useState(true);
-  const { displayedText: nameText, isComplete: nameDecrypted } = useDecryptText("USMAN IBRAHIM", { speed: 40, startDelay: 300 });
+  const { displayedText: nameText, isComplete: nameDecrypted } = useDecryptText("ALISHBA INAM", { speed: 40, startDelay: 300 });
   const { displayedText, isComplete } = useTypingEffect(
     "$ soc-monitor --init --pipeline=active",
     30,
@@ -120,10 +120,7 @@ const Hero = () => {
                 className="text-sm text-muted-foreground/60 max-w-lg mb-6 leading-relaxed animate-fade-in-up"
                 style={{ animationDelay: "0.3s" }}
               >
-                Hands-on experience in SOC operations, full-stack web development, and systems
-                programming. Proficient in triaging 30+ daily alerts using Splunk & Wazuh, building
-                production MERN apps with secure authentication, and engineering low-level systems
-                in x86 Assembly and C++.
+                Cybersecurity undergraduate at FAST NUCES specializing in SOC operations, DFIR, and proactive threat detection. Hands-on experience triaging 50+ daily SIEM alerts using Wazuh and Splunk, correlating events against MITRE ATT&CK TTPs, and building secure full-stack applications.
               </p>
 
               {/* Skill Badges */}
@@ -176,7 +173,7 @@ const Hero = () => {
                   <div className="w-52 h-52 md:w-64 md:h-64 rounded-full overflow-hidden border-2 border-background relative z-10">
                     <img
                       src={usmanPhoto}
-                      alt="Usman Ibrahim — Cyber Security Professional"
+                      alt="Alishba Inam — Cyber Security Professional"
                       className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                     />
                   </div>
@@ -229,7 +226,7 @@ const Hero = () => {
                     <div className="flex gap-2 animate-fade-in-up" style={{ animationDelay: "0.35s" }}>
                       <span className="text-primary select-none">[●]</span>
                       <span className="text-foreground">
-                        Monitoring 30+ daily security events...
+                        Monitoring 50+ daily security events...
                       </span>
                     </div>
                   </>
