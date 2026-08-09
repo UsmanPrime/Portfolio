@@ -124,18 +124,18 @@ const Experience = () => {
       <div className="absolute inset-0 grid-bg opacity-8" />
       
       {/* Ambient Log / Sequence Motif */}
-      <div className="absolute left-[2%] sm:left-[5%] top-32 bottom-32 w-[1px] bg-border/50 hidden sm:block z-0 pointer-events-none">
+      <div className="absolute left-[2%] sm:left-[5%] top-32 bottom-32 w-[2px] bg-border/50 hidden sm:block z-0 pointer-events-none">
         <motion.div
           animate={{ y: ["0%", "1000%"] }}
           transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          className="absolute top-0 left-[-1px] w-[3px] h-32 bg-gradient-to-b from-transparent via-primary/60 to-transparent"
+          className="absolute top-0 left-[-2px] w-[6px] h-48 bg-gradient-to-b from-transparent via-primary/80 to-transparent"
         />
         {/* Tick marks */}
-        <div className="absolute top-[10%] left-0 w-2 h-[1px] bg-primary/40" />
-        <div className="absolute top-[30%] left-0 w-2 h-[1px] bg-primary/40" />
-        <div className="absolute top-[50%] left-0 w-2 h-[1px] bg-primary/40" />
-        <div className="absolute top-[70%] left-0 w-2 h-[1px] bg-primary/40" />
-        <div className="absolute top-[90%] left-0 w-2 h-[1px] bg-primary/40" />
+        <div className="absolute top-[10%] left-0 w-6 h-[2px] bg-primary/60" />
+        <div className="absolute top-[30%] left-0 w-6 h-[2px] bg-primary/60" />
+        <div className="absolute top-[50%] left-0 w-6 h-[2px] bg-primary/60" />
+        <div className="absolute top-[70%] left-0 w-6 h-[2px] bg-primary/60" />
+        <div className="absolute top-[90%] left-0 w-6 h-[2px] bg-primary/60" />
       </div>
 
       <div className="container mx-auto px-4 relative">

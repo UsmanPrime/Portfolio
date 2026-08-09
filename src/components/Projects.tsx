@@ -200,11 +200,11 @@ const Projects = () => {
     <section id="projects" className="py-24 relative overflow-hidden">
       
       {/* Ambient Structure Motif */}
-      <div className="absolute top-[30%] left-[2%] sm:left-[5%] w-32 sm:w-48 h-48 sm:h-64 hidden sm:block z-0 opacity-30 pointer-events-none">
-        <svg viewBox="0 0 100 150" className="w-full h-full stroke-primary" fill="none" strokeWidth="1.5">
-          <rect x="10" y="10" width="30" height="20" className="fill-primary/20" />
-          <rect x="60" y="60" width="30" height="20" className="fill-primary/20" />
-          <rect x="10" y="110" width="30" height="20" className="fill-primary/20" />
+      <div className="absolute top-[30%] left-[0%] sm:left-[2%] w-48 sm:w-96 h-64 sm:h-96 hidden sm:block z-0 opacity-50 pointer-events-none">
+        <svg viewBox="0 0 100 150" className="w-full h-full stroke-primary" fill="none" strokeWidth="2">
+          <rect x="10" y="10" width="30" height="20" className="fill-primary/30" />
+          <rect x="60" y="60" width="30" height="20" className="fill-primary/30" />
+          <rect x="10" y="110" width="30" height="20" className="fill-primary/30" />
           
           {/* Animated connections */}
           <motion.path 

@@ -77,22 +77,22 @@ const Resume = () => {
       <div className="absolute inset-0 grid-bg opacity-8" />
 
       {/* Ambient Document Motif */}
-      <div className="absolute top-[20%] left-[2%] sm:left-[5%] w-32 sm:w-48 h-48 sm:h-64 z-0 opacity-30 pointer-events-none">
+      <div className="absolute top-[10%] left-[-2%] sm:left-[5%] w-48 sm:w-80 h-64 sm:h-96 z-0 opacity-40 pointer-events-none">
         <motion.div 
-          animate={{ y: [0, 10, 0], rotate: [0, -2, 0] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="w-full h-full border border-primary/20 rounded bg-background/30 relative overflow-hidden backdrop-blur-sm"
+          animate={{ y: [0, 20, 0], rotate: [0, -3, 0] }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          className="w-full h-full border border-primary/30 rounded bg-background/20 relative overflow-hidden backdrop-blur-sm shadow-xl shadow-primary/10"
         >
-          <div className="absolute top-4 left-4 right-4 h-1.5 sm:h-2 bg-primary/20 rounded" />
-          <div className="absolute top-10 left-4 right-12 h-1.5 sm:h-2 bg-primary/20 rounded" />
-          <div className="absolute top-16 left-4 right-8 h-1.5 sm:h-2 bg-primary/20 rounded" />
-          <div className="absolute bottom-4 right-4 w-6 h-6 border border-primary/40 rounded-full flex items-center justify-center">
-            <motion.div animate={{ opacity: [1, 0, 1] }} transition={{ duration: 2, repeat: Infinity }} className="w-2 h-2 bg-primary rounded-full" />
+          <div className="absolute top-6 left-6 right-6 h-2 sm:h-3 bg-primary/30 rounded" />
+          <div className="absolute top-14 left-6 right-16 h-2 sm:h-3 bg-primary/20 rounded" />
+          <div className="absolute top-22 left-6 right-10 h-2 sm:h-3 bg-primary/20 rounded" />
+          <div className="absolute bottom-6 right-6 w-8 h-8 border border-primary/50 rounded-full flex items-center justify-center">
+            <motion.div animate={{ opacity: [1, 0, 1] }} transition={{ duration: 2, repeat: Infinity }} className="w-3 h-3 bg-primary rounded-full" />
           </div>
           <motion.div 
-            animate={{ y: [-100, 300] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-            className="absolute top-0 left-0 right-0 h-4 bg-gradient-to-b from-transparent via-primary/30 to-transparent"
+            animate={{ y: [-150, 400] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+            className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-transparent via-primary/30 to-transparent"
           />
         </motion.div>
       </div>

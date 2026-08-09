@@ -65,29 +65,30 @@ const Hero = () => {
       {/* Cyber Motifs */}
       <motion.div
         animate={{ rotate: 360 }}
-        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        className="absolute top-32 right-[5%] sm:right-[10%] w-32 h-32 cyber-reticle opacity-40 z-0"
+        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+        className="absolute top-24 right-[-10%] sm:right-[5%] w-64 h-64 sm:w-96 sm:h-96 cyber-reticle opacity-50 z-0 pointer-events-none"
       >
-        <div className="absolute inset-[15%] border border-dashed border-primary/40 rounded-full" />
+        <div className="absolute inset-[15%] border-2 border-dashed border-primary/40 rounded-full" />
+        <div className="absolute inset-[30%] border border-primary/20 rounded-full" />
       </motion.div>
       
       <motion.div
-        animate={{ y: [0, -15, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-40 left-[2%] sm:left-[5%] flex items-center gap-2 opacity-40 z-0 font-mono text-primary text-xl"
+        animate={{ y: [0, -30, 0], x: [0, 10, 0] }}
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-32 left-[2%] sm:left-[10%] flex items-center gap-3 opacity-60 z-0 font-mono text-primary text-4xl sm:text-5xl pointer-events-none"
       >
         <span>[</span>
         <motion.span 
           animate={{ opacity: [1, 0, 1] }} 
-          transition={{ duration: 2, repeat: Infinity }}
-          className="w-2 h-4 bg-primary"
+          transition={{ duration: 1.5, repeat: Infinity }}
+          className="w-4 h-8 sm:h-10 bg-primary"
         />
         <span>]</span>
       </motion.div>
 
       {/* Ambient glow */}
-      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-primary/10 blur-[150px] animate-pulse-subtle z-0 pointer-events-none" />
-      <div className="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] rounded-full bg-accent/10 blur-[120px] animate-pulse-subtle z-0 pointer-events-none" style={{ animationDelay: '1.5s' }} />
+      <div className="absolute top-1/4 -left-[10%] w-[800px] h-[800px] rounded-full bg-primary/20 blur-[180px] animate-pulse-subtle z-0 pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-[10%] w-[700px] h-[700px] rounded-full bg-accent/20 blur-[150px] animate-pulse-subtle z-0 pointer-events-none" style={{ animationDelay: '1.5s' }} />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-5xl mx-auto">
@@ -106,7 +107,7 @@ const Hero = () => {
                 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-3 animate-fade-in-up tracking-tighter"
                 style={{ animationDelay: "0.1s" }}
               >
-                <span className={`font-mono transition-all duration-500 ${nameDecrypted ? 'text-foreground' : 'text-primary/60'}`}>
+                <span className={`transition-all duration-500 ${nameDecrypted ? 'text-foreground' : 'text-primary/60'}`}>
                   {nameText}
                 </span>
               </h1>

@@ -89,18 +89,23 @@ const Contact = () => {
     <section id="contact" className="py-24 relative overflow-hidden">
       
       {/* Ambient Signal / Ping Motif */}
-      <div className="absolute top-[20%] right-[5%] sm:right-[15%] w-24 sm:w-32 h-24 sm:h-32 hidden sm:flex items-center justify-center z-0 opacity-30 pointer-events-none">
+      <div className="absolute top-[20%] right-[0%] sm:right-[10%] w-48 sm:w-64 h-48 sm:h-64 hidden sm:flex items-center justify-center z-0 opacity-50 pointer-events-none">
         <motion.div 
-          animate={{ scale: [1, 3], opacity: [0.5, 0] }}
+          animate={{ scale: [1, 3], opacity: [0.6, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeOut" }}
-          className="absolute w-8 h-8 rounded-full border border-primary"
+          className="absolute w-16 h-16 rounded-full border border-primary"
         />
         <motion.div 
-          animate={{ scale: [1, 3], opacity: [0.5, 0] }}
+          animate={{ scale: [1, 3], opacity: [0.6, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeOut", delay: 1 }}
-          className="absolute w-8 h-8 rounded-full border border-primary"
+          className="absolute w-16 h-16 rounded-full border border-primary"
         />
-        <div className="w-2 h-2 rounded-full bg-primary" />
+        <motion.div 
+          animate={{ scale: [1, 3], opacity: [0.6, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeOut", delay: 2 }}
+          className="absolute w-16 h-16 rounded-full border border-primary"
+        />
+        <div className="w-4 h-4 rounded-full bg-primary" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">

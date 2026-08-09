@@ -134,23 +134,23 @@ const Skills = () => {
       <div className="absolute inset-0 grid-bg opacity-10" />
 
       {/* Ambient Visuals */}
-      <div className="absolute top-[20%] right-[5%] sm:right-[10%] w-24 sm:w-32 h-24 sm:h-32 hidden sm:block z-0 opacity-30 pointer-events-none">
-        <svg viewBox="0 0 100 100" className="w-full h-full stroke-primary" fill="none" strokeWidth="1.5">
+      <div className="absolute top-[10%] right-[-5%] sm:right-[10%] w-48 sm:w-64 h-48 sm:h-64 hidden sm:block z-0 opacity-50 pointer-events-none">
+        <svg viewBox="0 0 100 100" className="w-full h-full stroke-primary" fill="none" strokeWidth="2">
           <motion.path 
             d="M 10,90 L 10,50 L 50,50 L 50,10 L 90,10"
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
-            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+            transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
           />
-          <circle cx="90" cy="10" r="3" className="fill-primary" />
-          <circle cx="10" cy="90" r="3" className="fill-primary" />
+          <circle cx="90" cy="10" r="4" className="fill-primary" />
+          <circle cx="10" cy="90" r="4" className="fill-primary" />
         </svg>
       </div>
 
       <motion.div 
         animate={{ opacity: [0, 1, 0] }}
-        transition={{ duration: 1.5, repeat: Infinity, ease: "linear", repeatType: "loop" }}
-        className="absolute bottom-[25%] left-[5%] sm:left-[15%] w-4 h-6 bg-primary/50 hidden sm:block z-0 pointer-events-none"
+        transition={{ duration: 1.2, repeat: Infinity, ease: "linear", repeatType: "loop" }}
+        className="absolute bottom-[20%] left-[5%] sm:left-[10%] w-6 h-8 bg-primary/60 hidden sm:block z-0 pointer-events-none"
       />
 
       <div className="container mx-auto px-4 relative z-10">
