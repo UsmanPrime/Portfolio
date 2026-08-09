@@ -101,7 +101,7 @@ const Certifications = () => {
     <section id="certifications" className="py-24 relative overflow-hidden">
       
       {/* Ambient Verification Motif */}
-      <div className="absolute top-[40%] right-[5%] w-64 h-64 hidden lg:block z-0 opacity-10">
+      <div className="absolute top-[40%] right-[2%] sm:right-[5%] w-48 sm:w-64 h-48 sm:h-64 hidden sm:block z-0 opacity-20 pointer-events-none">
         <motion.svg 
           viewBox="0 0 100 100" 
           className="w-full h-full stroke-primary" 

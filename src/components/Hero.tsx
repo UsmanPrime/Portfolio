@@ -62,21 +62,32 @@ const Hero = () => {
       <div className="absolute inset-0 grid-bg opacity-15" />
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background/40 to-background" />
 
-      {/* Floating Glassy Panels */}
+      {/* Cyber Motifs */}
       <motion.div
-        animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-32 right-[10%] w-32 h-32 glassy-panel opacity-40 hidden lg:block z-0"
-      />
+        animate={{ rotate: 360 }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        className="absolute top-32 right-[5%] sm:right-[10%] w-32 h-32 cyber-reticle opacity-40 z-0"
+      >
+        <div className="absolute inset-[15%] border border-dashed border-primary/40 rounded-full" />
+      </motion.div>
+      
       <motion.div
-        animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="absolute bottom-32 left-[5%] w-24 h-24 glassy-panel opacity-30 hidden lg:block z-0"
-      />
+        animate={{ y: [0, -15, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-40 left-[2%] sm:left-[5%] flex items-center gap-2 opacity-40 z-0 font-mono text-primary text-xl"
+      >
+        <span>[</span>
+        <motion.span 
+          animate={{ opacity: [1, 0, 1] }} 
+          transition={{ duration: 2, repeat: Infinity }}
+          className="w-2 h-4 bg-primary"
+        />
+        <span>]</span>
+      </motion.div>
 
       {/* Ambient glow */}
-      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-primary/10 blur-[150px] animate-pulse-subtle z-0" />
-      <div className="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] rounded-full bg-accent/10 blur-[120px] animate-pulse-subtle z-0" style={{ animationDelay: '1.5s' }} />
+      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-primary/10 blur-[150px] animate-pulse-subtle z-0 pointer-events-none" />
+      <div className="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] rounded-full bg-accent/10 blur-[120px] animate-pulse-subtle z-0 pointer-events-none" style={{ animationDelay: '1.5s' }} />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-5xl mx-auto">

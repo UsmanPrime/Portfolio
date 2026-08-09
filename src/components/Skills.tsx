@@ -134,8 +134,8 @@ const Skills = () => {
       <div className="absolute inset-0 grid-bg opacity-10" />
 
       {/* Ambient Visuals */}
-      <div className="absolute top-[20%] right-[10%] w-32 h-32 hidden lg:block z-0 opacity-20">
-        <svg viewBox="0 0 100 100" className="w-full h-full stroke-primary" fill="none" strokeWidth="1">
+      <div className="absolute top-[20%] right-[5%] sm:right-[10%] w-24 sm:w-32 h-24 sm:h-32 hidden sm:block z-0 opacity-30 pointer-events-none">
+        <svg viewBox="0 0 100 100" className="w-full h-full stroke-primary" fill="none" strokeWidth="1.5">
           <motion.path 
             d="M 10,90 L 10,50 L 50,50 L 50,10 L 90,10"
             initial={{ pathLength: 0 }}
@@ -150,7 +150,7 @@ const Skills = () => {
       <motion.div 
         animate={{ opacity: [0, 1, 0] }}
         transition={{ duration: 1.5, repeat: Infinity, ease: "linear", repeatType: "loop" }}
-        className="absolute bottom-[25%] left-[15%] w-4 h-6 bg-primary/40 hidden lg:block z-0"
+        className="absolute bottom-[25%] left-[5%] sm:left-[15%] w-4 h-6 bg-primary/50 hidden sm:block z-0 pointer-events-none"
       />
 
       <div className="container mx-auto px-4 relative z-10">

@@ -1,4 +1,5 @@
 import { ShieldCheck, Search, Activity, Lock, Code } from "lucide-react";
+import { motion } from "framer-motion";
 import usmanPhoto from "@/assets/usman.jpg";
 import { useScrollReveal, useCountUp } from "@/hooks/useAnimations";
 
@@ -43,8 +44,33 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-24 relative">
-      <div className="container mx-auto px-4">
+    <section id="about" className="py-24 relative overflow-hidden">
+      
+      {/* Ambient Data / Terminal Motif */}
+      <div className="absolute top-[10%] right-[2%] sm:right-[10%] w-48 sm:w-64 h-48 sm:h-64 z-0 opacity-30 pointer-events-none">
+        <motion.div 
+          animate={{ y: [0, 15, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="w-full h-full border border-primary/20 rounded-lg p-4 relative backdrop-blur-sm"
+        >
+          <div className="flex gap-1 mb-4">
+            <div className="w-2 h-2 rounded-full bg-destructive/60" />
+            <div className="w-2 h-2 rounded-full bg-accent/60" />
+            <div className="w-2 h-2 rounded-full bg-primary/60" />
+          </div>
+          <div className="w-1/2 h-1 bg-primary/40 mb-3 rounded" />
+          <div className="w-3/4 h-1 bg-primary/20 mb-3 rounded" />
+          <div className="w-1/3 h-1 bg-primary/20 rounded" />
+          
+          <motion.div 
+            animate={{ opacity: [1, 0, 1] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+            className="absolute bottom-4 right-4 w-3 h-3 bg-primary"
+          />
+        </motion.div>
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div

@@ -89,7 +89,7 @@ const Contact = () => {
     <section id="contact" className="py-24 relative overflow-hidden">
       
       {/* Ambient Signal / Ping Motif */}
-      <div className="absolute top-[20%] right-[15%] w-32 h-32 hidden lg:flex items-center justify-center z-0 opacity-10">
+      <div className="absolute top-[20%] right-[5%] sm:right-[15%] w-24 sm:w-32 h-24 sm:h-32 hidden sm:flex items-center justify-center z-0 opacity-30 pointer-events-none">
         <motion.div 
           animate={{ scale: [1, 3], opacity: [0.5, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeOut" }}

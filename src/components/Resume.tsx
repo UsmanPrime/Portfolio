@@ -1,4 +1,5 @@
 import { FileText, Download, Shield, Monitor, Wrench, GraduationCap, Award, Code } from "lucide-react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/useAnimations";
 
@@ -72,10 +73,31 @@ const Resume = () => {
   ];
 
   return (
-    <section id="resume" className="py-24 relative bg-secondary/30">
+    <section id="resume" className="py-24 relative bg-secondary/30 overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-8" />
 
-      <div className="container mx-auto px-4 relative">
+      {/* Ambient Document Motif */}
+      <div className="absolute top-[20%] left-[2%] sm:left-[5%] w-32 sm:w-48 h-48 sm:h-64 z-0 opacity-30 pointer-events-none">
+        <motion.div 
+          animate={{ y: [0, 10, 0], rotate: [0, -2, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="w-full h-full border border-primary/20 rounded bg-background/30 relative overflow-hidden backdrop-blur-sm"
+        >
+          <div className="absolute top-4 left-4 right-4 h-1.5 sm:h-2 bg-primary/20 rounded" />
+          <div className="absolute top-10 left-4 right-12 h-1.5 sm:h-2 bg-primary/20 rounded" />
+          <div className="absolute top-16 left-4 right-8 h-1.5 sm:h-2 bg-primary/20 rounded" />
+          <div className="absolute bottom-4 right-4 w-6 h-6 border border-primary/40 rounded-full flex items-center justify-center">
+            <motion.div animate={{ opacity: [1, 0, 1] }} transition={{ duration: 2, repeat: Infinity }} className="w-2 h-2 bg-primary rounded-full" />
+          </div>
+          <motion.div 
+            animate={{ y: [-100, 300] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+            className="absolute top-0 left-0 right-0 h-4 bg-gradient-to-b from-transparent via-primary/30 to-transparent"
+          />
+        </motion.div>
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div
