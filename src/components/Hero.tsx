@@ -104,7 +104,7 @@ const Hero = () => {
 
               {/* Name */}
               <h1
-                className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-3 animate-fade-in-up tracking-tighter"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-3 animate-fade-in-up tracking-tighter"
                 style={{ animationDelay: "0.1s" }}
               >
                 <span className={`transition-all duration-500 ${nameDecrypted ? 'text-foreground' : 'text-primary/60'}`}>
@@ -226,7 +226,7 @@ const Hero = () => {
                   threat_monitor.sh
                 </span>
               </div>
-              <div className="p-4 font-mono text-xs space-y-1">
+              <div className="p-4 font-mono text-xs space-y-1 overflow-x-auto whitespace-nowrap scrollbar-none">
                 <div className="flex gap-2 text-muted-foreground">
                   <span className="text-primary select-none">❯</span>
                   <span className={isComplete ? "" : "typing-cursor"}>

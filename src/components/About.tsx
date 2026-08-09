@@ -145,7 +145,7 @@ const About = () => {
               {/* Stats */}
               <div
                 ref={statsRef}
-                className={`grid grid-cols-3 gap-3 mb-6 transition-all duration-600 ${
+                className={`grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6 transition-all duration-600 ${
                   statsRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
                 }`}
               >
