@@ -122,16 +122,13 @@ const About = () => {
                 style={{ transitionDelay: '200ms' }}
               >
                 <p className="text-[13px] text-muted-foreground leading-relaxed mb-3">
-                  I am a Business Development Intern at Intellema, identifying and pursuing enterprise opportunities across advanced AI solutions like RAG, LLMs, Generative AI, and Voice AI. I collaborate with multidisciplinary teams to drive client engagement, architect solution designs, and craft proposals for high-impact AI projects.
+                  I'm currently pursuing my BS in Cyber Security at FAST NUCES Islamabad, with a strong focus on SOC operations, digital forensics, and threat hunting. Right now, I'm working as a Security Research Intern at NetraLink Solutions, where I help develop DeWall, an enterprise DNS firewall. My work involves building out backend pipelines, integrating threat intelligence feeds, and writing high-performance microservices in Golang.
                 </p>
                 <p className="text-[13px] text-muted-foreground leading-relaxed mb-3">
-                  Concurrently, I am a BS Cyber Security student at FAST-NUCES Islamabad specializing in SOC Operations, DFIR, and Threat Hunting. As a Security Research Intern at NetraLink Solutions, I contribute to the development of DeWall, focusing on enterprise DNS firewall systems, threat intelligence integrations, and high-performance Golang microservices.
-                </p>
-                <p className="text-[13px] text-muted-foreground leading-relaxed mb-3">
-                  Previously, as a SOC Analyst at Tech Hierarchy, I triaged security alerts using Splunk and Wazuh, conducting deep-dive incident investigations mapped against MITRE ATT&CK TTPs to significantly reduce false positives.
+                  Before this, I worked as a SOC Analyst Intern at Tech Hierarchy. I spent my time triaging daily security alerts in Splunk and Wazuh and diving deep into incident investigations using the MITRE ATT&CK framework to weed out false positives. I'm also really involved in the local security community. I design hard-level memory forensics challenges for national CTFs and manage the finances for our university's cybersecurity society, Cyber Space Legion.
                 </p>
                 <p className="text-[13px] text-muted-foreground leading-relaxed">
-                  I also actively shape the cybersecurity community by designing national-level CTF challenges—including advanced memory forensics scenarios—and leading financial strategy as Head of Finance for Cyber Space Legion (CSL).
+                  On the side, I work as a Business Development Intern at Intellema. I help the team find and pursue enterprise opportunities for advanced AI solutions like RAG and Voice AI, which gives me a great perspective on how tech solutions are actually pitched and sold to businesses.
                 </p>
               </div>
             </div>

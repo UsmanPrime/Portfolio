@@ -121,7 +121,7 @@ const Hero = () => {
                 className="text-sm text-muted-foreground/60 max-w-lg mb-6 leading-relaxed animate-fade-in-up"
                 style={{ animationDelay: "0.3s" }}
               >
-                Cybersecurity undergraduate merging technical depth in SOC operations and DFIR with strategic business development. Experienced in analyzing enterprise threats, building full-stack applications, and driving AI adoption and client acquisition at Intellema.
+                I'm a cybersecurity student at FAST NUCES '28 specializing in SOC operations, digital forensics, and threat detection. I have hands-on experience triaging alerts using SIEM tools like Splunk and Wazuh, investigating incidents, and building secure full-stack applications. Alongside my core security work, I also help drive enterprise AI solutions and business development at Intellema.
               </p>
 
               {/* Skill Badges */}
