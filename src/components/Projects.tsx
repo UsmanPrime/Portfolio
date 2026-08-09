@@ -1,4 +1,5 @@
 import { ExternalLink, Globe, Code, Gamepad2, ShoppingCart, Building2, Briefcase, Network, Cpu } from "lucide-react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal, useScanReveal } from "@/hooks/useAnimations";
 
@@ -196,8 +197,32 @@ const Projects = () => {
   const { ref: headerRef, isRevealed: headerRevealed } = useScrollReveal();
 
   return (
-    <section id="projects" className="py-24 relative">
-      <div className="container mx-auto px-4">
+    <section id="projects" className="py-24 relative overflow-hidden">
+      
+      {/* Ambient Structure Motif */}
+      <div className="absolute top-[30%] left-[5%] w-48 h-64 hidden lg:block z-0 opacity-20">
+        <svg viewBox="0 0 100 150" className="w-full h-full stroke-primary" fill="none" strokeWidth="1">
+          <rect x="10" y="10" width="30" height="20" className="fill-primary/10" />
+          <rect x="60" y="60" width="30" height="20" className="fill-primary/10" />
+          <rect x="10" y="110" width="30" height="20" className="fill-primary/10" />
+          
+          {/* Animated connections */}
+          <motion.path 
+            d="M 25,30 L 25,70 L 60,70"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.path 
+            d="M 75,80 L 75,120 L 40,120"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          />
+        </svg>
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div
             ref={headerRef}

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { Mail, Github, Linkedin, Send, Shield, Phone, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -85,8 +86,24 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-24 relative">
-      <div className="container mx-auto px-4">
+    <section id="contact" className="py-24 relative overflow-hidden">
+      
+      {/* Ambient Signal / Ping Motif */}
+      <div className="absolute top-[20%] right-[15%] w-32 h-32 hidden lg:flex items-center justify-center z-0 opacity-10">
+        <motion.div 
+          animate={{ scale: [1, 3], opacity: [0.5, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeOut" }}
+          className="absolute w-8 h-8 rounded-full border border-primary"
+        />
+        <motion.div 
+          animate={{ scale: [1, 3], opacity: [0.5, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeOut", delay: 1 }}
+          className="absolute w-8 h-8 rounded-full border border-primary"
+        />
+        <div className="w-2 h-2 rounded-full bg-primary" />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-5xl mx-auto">
           <div
             ref={headerRef}

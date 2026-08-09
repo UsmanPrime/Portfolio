@@ -1,4 +1,5 @@
 import { BookOpen, Monitor, Target, Award, Briefcase, ExternalLink, Trophy } from "lucide-react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/useAnimations";
 
@@ -83,9 +84,10 @@ const experiences: ExperienceItem[] = [
     organization: "Intellema",
     period: "May 2026 - Present",
     highlights: [
-      "Manage the business development cycle for enterprise AI solutions, from researching clients to writing technical proposals that win contracts.",
-      "Set up strategies to find new clients in healthcare, fintech, and AI using CRM tools and data enrichment.",
-      "Create system architecture diagrams for complex pipelines like multi-agent workflows and computer vision systems to help clients understand our solutions.",
+      "Manage the business development cycle for enterprise AI solutions (RAG, LLMs, Voice AI, computer vision, multi-agent, Agentic AI), from researching clients to writing technical proposals.",
+      "Set up strategies to find new clients in healthcare, fintech, and PropTech using CRM tools and data enrichment.",
+      "Create system architecture diagrams and a 14-architecture playbook to help clients understand our solutions.",
+      "Manage the company Upwork profile (Top Rated Plus, 100% Job Success), securing high-value contracts.",
     ],
   },
 ];
@@ -118,8 +120,23 @@ const Experience = () => {
   const { ref: achieveRef, isRevealed: achieveRevealed } = useScrollReveal();
 
   return (
-    <section id="experience" className="py-24 relative bg-secondary/30">
+    <section id="experience" className="py-24 relative bg-secondary/30 overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-8" />
+      
+      {/* Ambient Log / Sequence Motif */}
+      <div className="absolute left-[5%] top-32 bottom-32 w-[1px] bg-border/30 hidden lg:block z-0">
+        <motion.div
+          animate={{ y: ["0%", "1000%"] }}
+          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          className="absolute top-0 left-[-1px] w-[3px] h-32 bg-gradient-to-b from-transparent via-primary/40 to-transparent"
+        />
+        {/* Tick marks */}
+        <div className="absolute top-[10%] left-0 w-2 h-[1px] bg-border/50" />
+        <div className="absolute top-[30%] left-0 w-2 h-[1px] bg-border/50" />
+        <div className="absolute top-[50%] left-0 w-2 h-[1px] bg-border/50" />
+        <div className="absolute top-[70%] left-0 w-2 h-[1px] bg-border/50" />
+        <div className="absolute top-[90%] left-0 w-2 h-[1px] bg-border/50" />
+      </div>
 
       <div className="container mx-auto px-4 relative">
         <div className="max-w-5xl mx-auto">

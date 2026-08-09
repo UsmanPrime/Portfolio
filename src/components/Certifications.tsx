@@ -1,4 +1,5 @@
 import { Award, Clock, CheckCircle, ExternalLink, FileText, Hash, Calendar } from "lucide-react";
+import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useAnimations";
 
 interface Certification {
@@ -97,8 +98,33 @@ const Certifications = () => {
   const { ref: gridRef, isRevealed: gridRevealed } = useScrollReveal({ threshold: 0.05 });
 
   return (
-    <section id="certifications" className="py-24 relative">
-      <div className="container mx-auto px-4">
+    <section id="certifications" className="py-24 relative overflow-hidden">
+      
+      {/* Ambient Verification Motif */}
+      <div className="absolute top-[40%] right-[5%] w-64 h-64 hidden lg:block z-0 opacity-10">
+        <motion.svg 
+          viewBox="0 0 100 100" 
+          className="w-full h-full stroke-primary" 
+          fill="none" 
+          strokeWidth="1.5"
+          animate={{ scale: [1, 1.05, 1], rotate: [0, 5, 0] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        >
+          {/* Hexagon badge */}
+          <polygon points="50,10 85,30 85,70 50,90 15,70 15,30" className="stroke-primary/50" />
+          <polygon points="50,15 80,32 80,68 50,85 20,68 20,32" className="stroke-primary/30" />
+          
+          {/* Checkmark inside */}
+          <motion.path 
+            d="M 35,50 L 45,60 L 65,40"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", repeatDelay: 1 }}
+          />
+        </motion.svg>
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div

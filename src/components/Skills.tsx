@@ -1,4 +1,5 @@
 import { Shield, Monitor, Code, Terminal, Cpu, Network, Target } from "lucide-react";
+import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useAnimations";
 
 interface SkillCategory {
@@ -24,6 +25,8 @@ const skillCategories: SkillCategory[] = [
       "Elastic Stack (ELK)",
       "Wireshark",
       "Volatility 3",
+      "Autopsy",
+      "Belkasoft",
       "MITRE ATT&CK",
     ],
   },
@@ -33,6 +36,7 @@ const skillCategories: SkillCategory[] = [
     description: "From high-level to low-level systems programming",
     skills: [
       "Python",
+      "Golang",
       "C++",
       "x86 Assembly (MASM32)",
       "JavaScript",
@@ -51,6 +55,7 @@ const skillCategories: SkillCategory[] = [
       "MongoDB",
       "REST APIs",
       "Tailwind CSS",
+      "Helmet.js",
       "JWT Authentication",
       "HTML",
       "CSS",
@@ -114,6 +119,7 @@ const skillCategories: SkillCategory[] = [
       "Proposal Writing",
       "AI Strategy",
       "Enterprise RAG Solutions",
+      "Agentic AI",
       "B2B Sales",
     ],
   },
@@ -124,10 +130,30 @@ const Skills = () => {
   const { ref: gridRef, isRevealed: gridRevealed } = useScrollReveal({ threshold: 0.05 });
 
   return (
-    <section id="skills" className="py-24 relative bg-secondary/30">
+    <section id="skills" className="py-24 relative bg-secondary/30 overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-10" />
 
-      <div className="container mx-auto px-4 relative">
+      {/* Ambient Visuals */}
+      <div className="absolute top-[20%] right-[10%] w-32 h-32 hidden lg:block z-0 opacity-20">
+        <svg viewBox="0 0 100 100" className="w-full h-full stroke-primary" fill="none" strokeWidth="1">
+          <motion.path 
+            d="M 10,90 L 10,50 L 50,50 L 50,10 L 90,10"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+          />
+          <circle cx="90" cy="10" r="3" className="fill-primary" />
+          <circle cx="10" cy="90" r="3" className="fill-primary" />
+        </svg>
+      </div>
+
+      <motion.div 
+        animate={{ opacity: [0, 1, 0] }}
+        transition={{ duration: 1.5, repeat: Infinity, ease: "linear", repeatType: "loop" }}
+        className="absolute bottom-[25%] left-[15%] w-4 h-6 bg-primary/40 hidden lg:block z-0"
+      />
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div
             ref={headerRef}
