@@ -117,9 +117,6 @@ const Hero = () => {
                 className="h-9 flex items-center gap-2 mb-5 animate-fade-in-up"
                 style={{ animationDelay: "0.2s" }}
               >
-                <span className="text-lg md:text-xl font-mono text-muted-foreground/50">
-                  {"// "}
-                </span>
                 <span
                   className={`text-lg md:text-xl font-semibold transition-all duration-200 inline-block ${
                     isRoleVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1"
