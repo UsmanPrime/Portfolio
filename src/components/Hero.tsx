@@ -1,4 +1,5 @@
 import { Shield, ChevronDown, FileText, FolderOpen, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useTypingEffect, useDecryptText } from "@/hooks/useAnimations";
 import ParticlesBackground from "@/components/ParticlesBackground";
@@ -61,9 +62,21 @@ const Hero = () => {
       <div className="absolute inset-0 grid-bg opacity-15" />
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background/40 to-background" />
 
+      {/* Floating Glassy Panels */}
+      <motion.div
+        animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-32 right-[10%] w-32 h-32 glassy-panel opacity-40 hidden lg:block z-0"
+      />
+      <motion.div
+        animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        className="absolute bottom-32 left-[5%] w-24 h-24 glassy-panel opacity-30 hidden lg:block z-0"
+      />
+
       {/* Ambient glow */}
-      <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[120px] animate-pulse-subtle" />
-      <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] rounded-full bg-accent/5 blur-[100px] animate-pulse-subtle" style={{ animationDelay: '1.5s' }} />
+      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-primary/10 blur-[150px] animate-pulse-subtle z-0" />
+      <div className="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] rounded-full bg-accent/10 blur-[120px] animate-pulse-subtle z-0" style={{ animationDelay: '1.5s' }} />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-5xl mx-auto">
@@ -71,15 +84,9 @@ const Hero = () => {
             {/* Left Content */}
             <div className="lg:col-span-3">
               {/* Status */}
-              <div className="flex items-center gap-2.5 mb-6 animate-fade-in-up">
-                <div className="flex items-center gap-2 px-3 py-1.5 border border-primary/20 rounded-full bg-primary/5">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-60" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
-                  </span>
-                  <span className="text-xs font-medium text-muted-foreground">
-                    Open to Opportunities
-                  </span>
+              <div className="animate-fade-in-up">
+                <div className="eyebrow-badge">
+                  Open to Opportunities
                 </div>
               </div>
 
@@ -88,7 +95,7 @@ const Hero = () => {
                 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-3 animate-fade-in-up tracking-tighter"
                 style={{ animationDelay: "0.1s" }}
               >
-                <span className={`font-mono transition-all duration-500 ${nameDecrypted ? 'gradient-text' : 'text-primary/60'}`}>
+                <span className={`font-mono transition-all duration-500 ${nameDecrypted ? 'text-foreground' : 'text-primary/60'}`}>
                   {nameText}
                 </span>
               </h1>
@@ -102,11 +109,15 @@ const Hero = () => {
                   {"// "}
                 </span>
                 <span
-                  className={`text-lg md:text-xl font-semibold text-primary transition-all duration-200 inline-block ${
+                  className={`text-lg md:text-xl font-semibold transition-all duration-200 inline-block ${
                     isRoleVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1"
-                  }`}
+                  } text-foreground`}
                 >
-                  {roles[currentRoleIndex]}
+                  {roles[currentRoleIndex].split(' ').map((word, index) => 
+                    ['Blue', 'Team', 'SOC', 'DFIR', 'Security'].includes(word) ? 
+                    <span key={index} className="text-primary mr-1.5">{word}</span> : 
+                    <span key={index} className="mr-1.5">{word}</span>
+                  )}
                 </span>
               </div>
 

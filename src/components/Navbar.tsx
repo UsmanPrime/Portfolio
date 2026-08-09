@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Shield, Menu, X } from "lucide-react";
 
+import { motion } from "framer-motion";
+
 const navLinks = [
   { href: "#about", label: "About" },
   { href: "#skills", label: "Skills" },
@@ -57,11 +59,15 @@ const Navbar = () => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
-            className="flex items-center gap-2.5 group"
+            className="flex items-center gap-3 group"
           >
-            <div className="relative">
-              <Shield className="w-5 h-5 text-primary transition-all duration-300 group-hover:text-accent group-hover:scale-110" />
-              <div className="absolute inset-0 bg-primary/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="relative flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 border border-primary/20">
+              <motion.div
+                animate={{ scale: [1, 1.4, 1], opacity: [0.5, 0, 0.5] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute inset-0 rounded-lg bg-primary/30"
+              />
+              <Shield className="w-4 h-4 text-primary relative z-10" />
             </div>
             <span className="font-semibold text-sm tracking-tight">
               <span className="text-foreground">Usman</span>
