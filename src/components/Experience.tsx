@@ -16,26 +16,41 @@ interface ExperienceItem {
 
 const experiences: ExperienceItem[] = [
   {
+    icon: Monitor,
+    type: "Internship",
+    title: "Security Research Intern",
+    organization: "NetraLink Solutions",
+    period: "Jul 2026 – Present",
+    highlights: [
+      "Contribute to the core development of DeWall, a self-hosted enterprise DNS Firewall and Management Platform, focusing on security engineering and functional testing.",
+      "Scaffold backend pipelines to ingest external threat intelligence feeds and design secure data models for network security components.",
+      "Develop high-performance, stateless Golang microservices for real-time DNS query evaluation and architect scalable domain structures in React and TypeScript.",
+      "Engineer a sophisticated API interception layer to simulate live backend environments, enabling realistic data generation for secure offline product demonstrations.",
+    ],
+  },
+  {
     icon: Briefcase,
     type: "Internship",
     title: "Business Development Intern",
     organization: "Intellema",
     period: "May 2026 – Present",
     highlights: [
-      "Collaborated with a cross-functional team of 8+ professionals to identify opportunities for advanced AI solutions including RAG, LLM, Deep Learning, Generative AI, and Voice AI.",
-      "Contributed to proposal preparation and AI-driven project initiatives, demonstrating understanding of enterprise AI integration approaches and best practices across industries.",
+      "Handle the full business development cycle for enterprise AI solutions, from researching prospective clients to drafting highly technical proposals that secure high-value contracts.",
+      "Develop structured client acquisition strategies targeting healthcare, fintech, PropTech, and AI verticals using CRM tracking and data enrichment.",
+      "Architect and illustrate system architecture diagrams for complex pipelines including multi-agent workflows, text-to-SQL flows, and computer vision systems.",
+      "Built a 14-architecture playbook from verified case studies to ground project proposals in tangible, proven results.",
     ],
   },
   {
     icon: Target,
     type: "Internship",
-    title: "SOC Analyst Intern",
+    title: "SOC Analyst",
     organization: "Tech Hierarchy",
-    period: "March 2026",
+    period: "Mar 2026 – Mar 2026",
     highlights: [
-      "Triaged and investigated 30+ daily security alerts in Wazuh and Splunk, correlating events against MITRE ATT&CK TTPs to classify IOCs, reduce false-positive rates by 20%, and escalate confirmed incidents per established SOC runbooks.",
-      "Conducted in-depth analysis of 500+ endpoint telemetry records, machine behavior patterns, and network logs per week to detect IOCs; documented findings in structured incident reports, improving documentation quality by 30%.",
-      "Constructed a personal SOC lab using Wazuh and ELK Stack to simulate 5+ attack scenarios (lateral movement, privilege escalation, credential dumping), then refined detection rules, cutting MTTD by 30%.",
+      "Triaged and investigated 30+ daily security alerts in Wazuh and Splunk, correlating events against MITRE ATT&CK TTPs to classify IOCs and reduce false-positive rates.",
+      "Analyzed endpoint telemetry, machine behavior, and network logs to detect compromise indicators and document findings in formal incident reports.",
+      "Deployed a personal SOC lab using Wazuh and ELK Stack to simulate and validate detection rules for lateral movement, privilege escalation, and credential dumping.",
     ],
     certificateUrl: "/Tech%20Hierarchy%20Internship%20Certificate.pdf",
     certificateLabel: "Certificate of Completion",
@@ -45,10 +60,11 @@ const experiences: ExperienceItem[] = [
     type: "Challenge Author",
     title: "NASCON 2026 Forensics Arena",
     organization: "FAST NUCES Islamabad",
-    period: "Feb 2026 – Apr 2026",
+    period: "Feb 2026 – Aug 2026",
     highlights: [
-      "Authored a hard-category memory forensics challenge simulating a fileless credential dumping attack (MITRE T1003.001).",
-      "Required participants to analyse a Windows memory image with Volatility 3 to identify process injection, extract NTLM hashes, and recover plaintext credentials — completed by fewer than 10% of competitors.",
+      "Designed a hard-category memory forensics challenge simulating a fileless credential dumping attack (MITRE T1003.001).",
+      "Developed a PowerShell-based build script simulating real-world attacker TTPs including WDigest enablement, C2 beacon simulation, and embedded Mimikatz artifacts.",
+      "Required participants to analyze Windows memory images via Volatility 3 to identify process injection and extract NTLM hashes.",
     ],
   },
   {
@@ -63,14 +79,14 @@ const experiences: ExperienceItem[] = [
     ],
   },
   {
-    icon: Monitor,
+    icon: BookOpen,
     type: "Technical Team & Head of Finance",
     title: "Cyber Space Legion (CSL)",
-    organization: "FAST NUCES - University Cybersecurity Society",
+    organization: "FAST NUCES",
     period: "Sep 2024 – Present",
     highlights: [
-      "Technical Team Member: CTF participation, forensics challenge authoring, and blue-team skills workshops for junior members.",
-      "Head of Finance (2025 – Present): Led finance team for flagship events, managed sponsor relations, and oversaw budgeting and financial reporting.",
+      "Technical Team Member: Contribute to cybersecurity initiatives through workshops and CTFs focused on threat detection, incident response, and forensic analysis.",
+      "Head of Finance (2025 – Present): Lead the finance team in budgeting and resource allocation, ensuring effective financial planning for society operations and flagship events.",
     ],
   },
 ];

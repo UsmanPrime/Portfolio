@@ -1,4 +1,4 @@
-import { Shield, Monitor, Code, Terminal, Cpu, Network } from "lucide-react";
+import { Shield, Monitor, Code, Terminal, Cpu, Network, Target } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useAnimations";
 
 interface SkillCategory {
@@ -14,6 +14,7 @@ const skillCategories: SkillCategory[] = [
     title: "Security & Forensics",
     description: "SOC operations, incident handling, and forensic analysis",
     skills: [
+      "Application Security",
       "SOC Operations",
       "Alert Triage",
       "Incident Response",
@@ -101,6 +102,19 @@ const skillCategories: SkillCategory[] = [
       "CMake",
       "Vercel",
       "Visual Studio",
+    ],
+  },
+  {
+    icon: Target,
+    title: "Business & Strategy",
+    description: "Client acquisition, proposal writing, and market analysis",
+    skills: [
+      "Market Research",
+      "Client Acquisition",
+      "Proposal Writing",
+      "AI Strategy",
+      "Enterprise RAG Solutions",
+      "B2B Sales",
     ],
   },
 ];

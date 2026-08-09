@@ -21,6 +21,7 @@ const Hero = () => {
 
   const roles = [
     "SOC Analyst",
+    "Business Development Intern",
     "Blue Team Specialist",
     "Cybersecurity Student",
     "DFIR Specialist",
@@ -120,7 +121,7 @@ const Hero = () => {
                 className="text-sm text-muted-foreground/60 max-w-lg mb-6 leading-relaxed animate-fade-in-up"
                 style={{ animationDelay: "0.3s" }}
               >
-                Cybersecurity undergraduate at FAST NUCES specializing in SOC operations, DFIR, and proactive threat detection. Hands-on experience triaging 50+ daily SIEM alerts using Wazuh and Splunk, correlating events against MITRE ATT&CK TTPs, and building secure full-stack applications.
+                Cybersecurity undergraduate merging technical depth in SOC operations and DFIR with strategic business development. Experienced in analyzing enterprise threats, building full-stack applications, and driving AI adoption and client acquisition at Intellema.
               </p>
 
               {/* Skill Badges */}

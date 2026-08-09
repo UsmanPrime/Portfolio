@@ -77,10 +77,10 @@ const Contact = () => {
   };
 
   const socialLinks = [
-    { icon: Phone, label: "Phone", href: "tel:+923342226620", value: "+92 334 2226620" },
-    { icon: Mail, label: "Email", href: "mailto:i242038@isb.nu.edu.pk", value: "i242038@isb.nu.edu.pk" },
+    { icon: Phone, label: "Phone", href: "tel:+923342226620", value: "0334 2226620" },
+    { icon: Mail, label: "Email", href: "mailto:uarmy285@gmail.com", value: "uarmy285@gmail.com" },
     { icon: Github, label: "GitHub", href: "https://github.com/UsmanPrime", value: "github.com/UsmanPrime" },
-    { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/usman-ibrahim-992253276/", value: "linkedin.com/in/usman-ibrahim" },
+    { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/usman-ibrahim-992253276", value: "linkedin.com/in/usman-ibrahim-992253276" },
     { icon: Globe, label: "Portfolio", href: "https://usmanprime-portfolio.vercel.app/", value: "usmanprime-portfolio.vercel.app" },
   ];
 

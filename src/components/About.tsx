@@ -122,16 +122,16 @@ const About = () => {
                 style={{ transitionDelay: '200ms' }}
               >
                 <p className="text-[13px] text-muted-foreground leading-relaxed mb-3">
-                  Pursuing a BS in Cyber Security at FAST NUCES Islamabad (2024–2028) with hands-on experience in SOC operations, full-stack web development, and systems programming.
+                  I am a Business Development Intern at Intellema, identifying and pursuing enterprise opportunities across advanced AI solutions like RAG, LLMs, Generative AI, and Voice AI. I collaborate with multidisciplinary teams to drive client engagement, architect solution designs, and craft proposals for high-impact AI projects.
                 </p>
                 <p className="text-[13px] text-muted-foreground leading-relaxed mb-3">
-                  As a Business Development Intern at Intellema, I collaborate with a cross-functional team of 8+ professionals to identify opportunities for advanced AI solutions including RAG, LLM, Deep Learning, Generative AI, and Voice AI.
+                  Concurrently, I am a BS Cyber Security student at FAST-NUCES Islamabad specializing in SOC Operations, DFIR, and Threat Hunting. As a Security Research Intern at NetraLink Solutions, I contribute to the development of DeWall, focusing on enterprise DNS firewall systems, threat intelligence integrations, and high-performance Golang microservices.
                 </p>
                 <p className="text-[13px] text-muted-foreground leading-relaxed mb-3">
-                  As a SOC Analyst Intern at Tech Hierarchy, I triaged and investigated 30+ daily alerts in Wazuh and Splunk, correlating events against MITRE ATT&CK TTPs to reduce false-positive rates by 20% and escalate confirmed incidents per SOC runbooks.
+                  Previously, as a SOC Analyst at Tech Hierarchy, I triaged security alerts using Splunk and Wazuh, conducting deep-dive incident investigations mapped against MITRE ATT&CK TTPs to significantly reduce false positives.
                 </p>
                 <p className="text-[13px] text-muted-foreground leading-relaxed">
-                  Strong foundation in OOP, data structures, network architecture, and MITRE ATT&CK-mapped threat analysis. Seeking an internship to apply cross-domain technical expertise in a professional engineering environment.
+                  I also actively shape the cybersecurity community by designing national-level CTF challenges—including advanced memory forensics scenarios—and leading financial strategy as Head of Finance for Cyber Space Legion (CSL).
                 </p>
               </div>
             </div>
