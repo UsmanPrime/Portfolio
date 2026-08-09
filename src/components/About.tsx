@@ -119,26 +119,7 @@ const About = () => {
                 </div>
               </div>
 
-              {/* Stats */}
-              <div
-                ref={statsRef}
-                className={`grid grid-cols-3 gap-3 transition-all duration-600 ${
-                  statsRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-                }`}
-              >
-                <div className="intel-card text-center py-4 group" ref={alertRef}>
-                  <div className="stat-number text-2xl group-hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.4)] transition-all duration-300">{alertCount}+</div>
-                  <div className="data-label mt-1">Alerts/Day</div>
-                </div>
-                <div className="intel-card text-center py-4 group" ref={projectRef}>
-                  <div className="stat-number text-2xl group-hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.4)] transition-all duration-300">{projectCount}</div>
-                  <div className="data-label mt-1">Projects</div>
-                </div>
-                <div className="intel-card text-center py-4 group" ref={attackRef}>
-                  <div className="stat-number text-2xl group-hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.4)] transition-all duration-300">{attackScenarios}+</div>
-                  <div className="data-label mt-1">Lab Scenarios</div>
-                </div>
-              </div>
+
 
               {/* Bio */}
               <div
@@ -161,6 +142,27 @@ const About = () => {
 
             {/* Right — Focus Areas */}
             <div className="lg:col-span-3 space-y-3">
+              {/* Stats */}
+              <div
+                ref={statsRef}
+                className={`grid grid-cols-3 gap-3 mb-6 transition-all duration-600 ${
+                  statsRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+                }`}
+              >
+                <div className="intel-card text-center py-4 group" ref={alertRef}>
+                  <div className="stat-number text-2xl group-hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.4)] transition-all duration-300">{alertCount}+</div>
+                  <div className="data-label mt-1">Alerts/Day</div>
+                </div>
+                <div className="intel-card text-center py-4 group" ref={projectRef}>
+                  <div className="stat-number text-2xl group-hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.4)] transition-all duration-300">{projectCount}</div>
+                  <div className="data-label mt-1">Projects</div>
+                </div>
+                <div className="intel-card text-center py-4 group" ref={attackRef}>
+                  <div className="stat-number text-2xl group-hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.4)] transition-all duration-300">{attackScenarios}+</div>
+                  <div className="data-label mt-1">Lab Scenarios</div>
+                </div>
+              </div>
+
               <div className="data-label mb-4">Core Competencies</div>
               {focusAreas.map((area, index) => (
                 <div
