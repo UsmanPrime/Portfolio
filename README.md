@@ -145,18 +145,21 @@ src/
 ### 💼 Projects
 | Project | Stack | Highlights |
 |---------|-------|------------|
-| Smart Housing Society Portal | React, Node.js, MongoDB | JWT auth, 200+ resident records, 40% faster resolution |
-| OSIM - Organizational Simulation | C++, OOP | 12+ class hierarchies, 1,000+ records, SOLID principles |
-| SecureShop | C++, File I/O | Multi-factor auth, O(log n) search, injection prevention |
-| Cybersecurity Portfolio | React, TypeScript | 95+ Lighthouse score, full responsive design |
-| Xonix Game | C++, Data Structures | 60 FPS physics engine, 35% memory reduction |
+| **NextGen Residency — Smart Housing Society** | React, Node.js, Express, MongoDB | RBAC, JWT auth with fingerprinting, Helmet.js security, 2FA, CI/CD deployed |
+| **Xonix Game — Professional Edition** | C++11, SFML | Multiplayer arcade game, 10+ custom data structures (Hash Tables, AVL Trees) |
+| **Enterprise Multi-Area Network Architecture** | Cisco Packet Tracer | 11 LANs, 22 WAN links, OSPF, EIGRP, RIPv2, Static NAT, Extended ACLs |
+| **Dizzy Walk — Maze Adventure Game** | x86 Assembly, MASM32 | 2,700+ lines, Win32 API, GDI rendering, STDCALL convention |
+| **Cybersecurity Portfolio** | React, TypeScript | 95+ Lighthouse score, full responsive dark-themed design |
+| **OSIM — Organizational Simulation** | C++, OOP | 12+ class hierarchies, 1,000+ records, SOLID principles |
+| **SecureShop** | C++, File I/O | Multi-factor auth, O(log n) search, injection prevention |
 
 ### 📜 Experience
+- **Security Research Intern** — NetraLink Solutions (Jul 2026 – Present)
 - **Business Development Intern** — Intellema (May 2026 – Present)
-- **SOC Analyst Intern** — Tech Hierarchy (March 2026)
-- **Challenge Author** — NASCON 2026 Forensics Arena
-- **Organizer & Author** — RDX National CTF (100+ participants)
-- **Technical Team & Head of Finance** — Cyber Space Legion (FAST NUCES)
+- **SOC Analyst Intern** — Tech Hierarchy (Mar 2026)
+- **Challenge Author** — NASCON 2026 Forensics Arena (Feb 2026 – Aug 2026)
+- **Organizer & Author** — RDX National CTF (Jun 2025 – Jul 2025)
+- **Technical Team & Head of Finance** — Cyber Space Legion (FAST NUCES) (Sep 2024 – Present)
 
 ### 🏆 Achievements
 - 🥉 **3rd Place** — SudoFuzzers CTF (top 6% of 50+ teams)
