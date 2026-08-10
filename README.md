@@ -26,6 +26,25 @@ A **modern, high-performance cybersecurity portfolio** built with React, TypeScr
 
 ---
 
+## 🚀 Recent Upgrades (August 2026)
+
+**🎨 UI/UX & Visual Polish**
+- Upgraded global typography to **Outfit** for a premium, modern aesthetic.
+- Scaled up ambient cyber-motifs (reticles, data terminals, circuit traces) for higher visibility and engagement.
+- Re-architected section layouts (e.g., balancing the About page) for flawless responsiveness across all screen sizes.
+
+**🔒 Security Hardening (A+ Rating)**
+- **Strict HTTP Headers:** Enforced `Strict-Transport-Security` (HSTS), `X-Frame-Options` (Clickjacking prevention), and `X-Content-Type-Options`.
+- **Content Security Policy (CSP):** Implemented a rigorous CSP to prevent unauthorized script execution and cross-site injections.
+- **API Protection:** Engineered robust server-side input validation and strict rate-limiting on the serverless contact API to eliminate spam and abuse vectors.
+- **CORS Scoping:** Tightly scoped cross-origin resource sharing specifically to the production domain.
+
+**🌐 SEO & AI Search Readiness**
+- **Rich Meta Data:** Integrated JSON-LD Schema Markup, Open Graph tags, and Twitter Cards for flawless rich previews.
+- **Bot Traffic Management:** Configured `robots.txt` to seamlessly allow modern AI Search Agents (like Perplexity and SearchGPT) and standard search engines, while explicitly opting out of unauthorized mass data scraping for core AI model training.
+
+---
+
 ## ✨ Key Features
 
 | Feature | Description |
@@ -214,5 +233,5 @@ This project is open source and available under the [MIT License](LICENSE).
 <p align="center">
   <strong>Built with 🛡️ by Usman Ibrahim</strong><br/>
   <em>SOC Operations · DFIR · Threat Detection · Blue Team</em><br/><br/>
-  <sub>Last Updated: May 2026</sub>
+  <sub>Last Updated: August 2026</sub>
 </p>
