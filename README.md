@@ -130,17 +130,19 @@ src/
 
 ### 👤 About
 - Animated profile photo with orbital rings and availability indicator
-- Count-up statistics: **30+** daily alerts, **5+** attack scenarios, **20%** false positive reduction
-- 4 focus area cards: SOC Operations, Digital Forensics, Threat Detection, AI Solution Support
+- Count-up statistics: **30+** Alerts/Day, **7** Projects, **5+** Lab Scenarios
+- 5 focus area cards: SOC Operations, Digital Forensics, Full-Stack Development, Systems Programming, AI Solution Support
+- Professional bio detailing current work at NetraLink Solutions and past experience at Tech Hierarchy and Intellema
 
 ### 🔧 Skills
-6 categories matching resume exactly:
-1. **Security Operations** — SOC, Alert Triage, DFIR, Threat Hunting, IOC Analysis
-2. **SIEM & Security Tools** — Splunk, Wazuh, ELK, Wireshark, Volatility 3, Autopsy, Belkasoft
-3. **Digital Forensics** — Memory, Windows, PCAP, Log Analysis, OSINT
-4. **Frameworks & Standards** — MITRE ATT&CK, ISO/IEC 27001, NIST CSF
-5. **Programming Languages** — Python, Bash, C++, JavaScript, TypeScript
-6. **Core Concepts & Web Tools** — TCP/IP, OOP, React, Node.js, MongoDB
+7 comprehensive categories:
+1. **Security & Forensics** — Application Security, SOC Operations, DFIR, Splunk, Wazuh, Volatility 3, MITRE ATT&CK
+2. **Programming Languages** — Golang, Python, C++, x86 Assembly, TypeScript
+3. **Web & Full-Stack** — React 18, Node.js, Express.js, MongoDB, JWT Auth
+4. **Software Engineering** — OOP, Data Structures, SOLID Principles, Agile
+5. **Networking** — TCP/IP, OSPF, EIGRP, RIPv2, NAT, ACLs
+6. **Tools & Platforms** — Docker, Linux, Vercel, Git
+7. **Business & Strategy** — Enterprise RAG Solutions, Agentic AI, Client Acquisition
 
 ### 💼 Projects
 | Project | Stack | Highlights |
