@@ -85,8 +85,17 @@ export default async function handler(req: any, res: any) {
   }
 
   // Rate Limiting Check
-  const clientIp = req.headers['x-forwarded-for'] || req.socket?.remoteAddress || 'unknown';
-  if (!checkRateLimit(clientIp as string)) {
+  // Note: Vercel functions scale concurrently, so this in-memory map is scoped per-container.
+  // For true global rate-limiting, a shared store like Upstash Redis / Vercel KV is required.
+  const forwardedFor = req.headers['x-forwarded-for'];
+  let clientIp = 'unknown';
+  if (typeof forwardedFor === 'string') {
+    clientIp = forwardedFor.split(',')[0].trim();
+  } else if (req.socket?.remoteAddress) {
+    clientIp = req.socket.remoteAddress;
+  }
+  
+  if (!checkRateLimit(clientIp)) {
     console.warn(`Rate limit exceeded for IP: ${clientIp}`);
     return res.status(429).json({ error: 'Too many requests. Please try again later.' });
   }
