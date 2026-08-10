@@ -50,9 +50,45 @@ function validateContactForm(data: ContactRequest): ValidationError[] {
   return errors;
 }
 
+// Simple in-memory rate limiter to prevent spam abuse
+// Note: In serverless environments, this state resets on cold starts, but it effectively 
+// mitigates rapid-fire scripting attacks on warm instances.
+const rateLimitMap = new Map<string, { count: number; timestamp: number }>();
+
+function checkRateLimit(ip: string): boolean {
+  const now = Date.now();
+  const windowMs = 60 * 1000; // 1 minute window
+  const maxRequests = 3; // Max 3 requests per minute per IP
+
+  const record = rateLimitMap.get(ip);
+  if (!record) {
+    rateLimitMap.set(ip, { count: 1, timestamp: now });
+    return true;
+  }
+
+  if (now - record.timestamp > windowMs) {
+    rateLimitMap.set(ip, { count: 1, timestamp: now });
+    return true;
+  }
+
+  if (record.count >= maxRequests) {
+    return false;
+  }
+
+  record.count += 1;
+  return true;
+}
+
 export default async function handler(req: any, res: any) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  // Rate Limiting Check
+  const clientIp = req.headers['x-forwarded-for'] || req.socket?.remoteAddress || 'unknown';
+  if (!checkRateLimit(clientIp as string)) {
+    console.warn(`Rate limit exceeded for IP: ${clientIp}`);
+    return res.status(429).json({ error: 'Too many requests. Please try again later.' });
   }
 
   // Check if API key is set
