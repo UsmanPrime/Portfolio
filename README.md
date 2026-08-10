@@ -20,7 +20,7 @@
 
 ## 📋 Overview
 
-A **modern, high-performance cybersecurity portfolio** built with React, TypeScript, and Tailwind CSS. Featuring interactive particle backgrounds, scroll-reveal animations, glassmorphism UI, and a cybersecurity-themed dark design — showcasing my skills, projects, certifications, and professional experience in SOC operations, DFIR, and threat detection.
+Cybersecurity Portfolio — SOC Analyst & DFIR Specialist. Built with React, TypeScript, Tailwind CSS & Vite. Features interactive particle backgrounds, scroll-reveal animations, glassmorphism UI, typing terminal effects, and animated stats. Fully responsive dark-themed design.
 
 > **Status:** Seeking SOC Analyst Internship — Open to Cybersecurity Opportunities
 
