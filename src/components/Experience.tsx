@@ -79,7 +79,7 @@ const experiences: ExperienceItem[] = [
   },
   {
     icon: Briefcase,
-    type: "Internship (Additional)",
+    type: "Internship",
     title: "Business Development Intern",
     organization: "Intellema",
     period: "May 2026 - Present",
