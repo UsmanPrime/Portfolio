@@ -78,14 +78,14 @@ const experiences: ExperienceItem[] = [
 const achievements = [
   {
     icon: Trophy,
-    title: "3rd Place — SudoFuzzers CTF",
+    title: "3rd Place - SudoFuzzers CTF",
     detail: "Forensics & OSINT | 2025",
     description: "Ranked 3rd out of 50+ teams solving digital forensics and OSINT challenges under a 4-hour time constraint, placing in the top 6%.",
     certificateUrl: "/SudoFuzzers%20CTF%20certificate.pdf",
   },
   {
     icon: Trophy,
-    title: "7th Place — CyberFest 2025",
+    title: "7th Place - CyberFest 2025",
     detail: "National CTF | 2025",
     description: "Secured 7th place in a highly competitive national CTF with 100+ teams, finishing in the top 7% across forensics, OSINT, and network analysis.",
   },
@@ -136,7 +136,7 @@ const Experience = () => {
             </p>
           </div>
 
-          {/* Timeline — structured list, not alternating */}
+          {/* Timeline - structured list, not alternating */}
           <div
             ref={timelineRef}
             className="space-y-3"
@@ -153,7 +153,7 @@ const Experience = () => {
                   }`}
                   style={{ transitionDelay: `${index * 80}ms` }}
                 >
-                  {/* Header — structured like a report entry */}
+                  {/* Header - structured like a report entry */}
                   <div className="flex items-center justify-between mb-3 pb-3 border-b border-border/60">
                     <div className="flex items-center gap-2.5">
                       <div className="p-1.5 bg-primary/10 rounded-lg group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">

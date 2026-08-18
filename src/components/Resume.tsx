@@ -22,19 +22,19 @@ const Resume = () => {
       icon: Monitor,
       title: "Experience",
       items: [
-        "Business Development Intern — Intellema | May 2026 – Present",
-        "SOC Analyst Intern — Tech Hierarchy | Mar 2026",
-        "Challenge Author — NASCON 2026 Forensics Arena",
-        "Organizer & Author — RDX National CTF",
+        "Business Development Intern - Intellema | May 2026 – Present",
+        "SOC Analyst Intern - Tech Hierarchy | Mar 2026",
+        "Challenge Author - NASCON 2026 Forensics Arena",
+        "Organizer & Author - RDX National CTF",
       ],
     },
     {
       icon: Award,
       title: "Achievements",
       items: [
-        "3rd Place — SudoFuzzers CTF (Forensics & OSINT)",
-        "7th Place — CyberFest 2025 (National CTF)",
-        "Star of CyberFest '25 — Individual Recognition Award",
+        "3rd Place - SudoFuzzers CTF (Forensics & OSINT)",
+        "7th Place - CyberFest 2025 (National CTF)",
+        "Star of CyberFest '25 - Individual Recognition Award",
       ],
     },
     {
@@ -127,7 +127,7 @@ const Resume = () => {
               <div>
                 <h3 className="text-sm font-semibold">Full Resume</h3>
                 <p className="text-xs text-muted-foreground">
-                  SOC Analyst | Cybersecurity Professional — Complete background
+                  SOC Analyst | Cybersecurity Professional - Complete background
                 </p>
               </div>
             </div>

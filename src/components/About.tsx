@@ -87,7 +87,7 @@ const About = () => {
           </div>
 
           <div className="grid lg:grid-cols-5 gap-10 items-start">
-            {/* Left — Photo + Stats + Bio */}
+            {/* Left - Photo + Stats + Bio */}
             <div className="lg:col-span-2 space-y-5">
               {/* Photo Card */}
               <div
@@ -129,18 +129,18 @@ const About = () => {
                 style={{ transitionDelay: '200ms' }}
               >
                 <p className="text-[13px] text-muted-foreground leading-relaxed mb-3">
-                  I'm a Cybersecurity student specializing in application security, SOC operations, and Digital Forensics and Incident Response (DFIR). I have hands-on experience hardening production platforms—such as a POS Inventory System—against SQL injection, XSS, privilege escalation, and session hijacking through layered RBAC, Row Level Security, and strict input validation.
+                  I'm currently pursuing my BS in Cyber Security at FAST NUCES Islamabad. I specialize in application security, SOC operations, and digital forensics. Most recently, I've been heavily focused on hardening production platforms, like a POS Inventory System, against SQL injection, XSS, and privilege escalation using layered RBAC and strict input validation.
                 </p>
                 <p className="text-[13px] text-muted-foreground leading-relaxed mb-3">
-                  My background includes working as a Security Research Intern at NetraLink Solutions, where I owned analytics and security testing for an enterprise DNS firewall, finding and mitigating authentication gaps and CORS misconfigurations. Previously, as a SOC Analyst Intern at Tech Hierarchy, I triaged 30+ daily alerts in Splunk and Wazuh, correlating events against MITRE ATT&CK TTPs.
+                  My hands-on experience includes working as a Security Research Intern at NetraLink Solutions, where I led the analytics and security testing for an enterprise DNS firewall, actively finding and patching authentication gaps and CORS misconfigurations. Before that, as a SOC Analyst Intern at Tech Hierarchy, I spent my days triaging security alerts in Splunk and Wazuh, mapping IOCs back to the MITRE ATT&CK framework to weed out false positives.
                 </p>
                 <p className="text-[13px] text-muted-foreground leading-relaxed">
-                  I am also a national-level CTF challenge author with expertise in memory forensics (Volatility 3), and I bring business development experience from Intellema, where I manage B2B sales cycles for enterprise AI solutions. I am actively seeking a SOC Analyst, AppSec, or Defensive Security Internship.
+                  I am also deeply involved in the security community. I design hard-level memory forensics challenges for national CTFs, and I bring practical business development experience from Intellema, where I manage B2B sales cycles for enterprise AI solutions. Right now, I am actively seeking a SOC Analyst, AppSec, or Defensive Security Internship where I can put these skills to work.
                 </p>
               </div>
             </div>
 
-            {/* Right — Focus Areas */}
+            {/* Right - Focus Areas */}
             <div className="lg:col-span-3 space-y-3">
               {/* Stats */}
               <div

@@ -18,7 +18,7 @@ interface Project {
 const projects: Project[] = [
   {
     icon: Database,
-    title: "PIMS — POS Inventory Management System",
+    title: "PIMS - POS Inventory Management System",
     category: "Full-Stack Security Architecture",
     description: "Designed and engineered a full-stack POS Inventory system with a heavy focus on multi-layer security, granular access controls, and strict data isolation.",
     highlights: [
@@ -33,7 +33,7 @@ const projects: Project[] = [
   },
   {
     icon: Building2,
-    title: "NextGen Residency — Smart Housing Society",
+    title: "NextGen Residency - Smart Housing Society",
     category: "Full-Stack MERN Application",
     description:
       "Designed and developed a full-stack MERN web application with triple-portal architecture (Resident, Admin, Vendor), implementing role-based access control (RBAC) and JWT authentication with refresh tokens and token fingerprinting.",
@@ -47,7 +47,7 @@ const projects: Project[] = [
   },
   {
     icon: Gamepad2,
-    title: "Xonix Game — Professional Edition",
+    title: "Xonix Game - Professional Edition",
     category: "Multiplayer Arcade Game",
     description:
       "Engineered a multiplayer arcade game in C++11 utilizing SFML for graphics, audio, and physics, supporting single-player AI and local competitive gameplay.",
@@ -74,7 +74,7 @@ const projects: Project[] = [
   },
   {
     icon: Cpu,
-    title: "Dizzy Walk — Maze Adventure Game",
+    title: "Dizzy Walk - Maze Adventure Game",
     category: "x86 Assembly Application",
     description:
       "Developed a real-time graphical maze-adventure game entirely in x86 Assembly Language (2,700+ lines of MASM32), featuring a 20×30 obstacle grid rendered through the Windows GDI.",
@@ -102,7 +102,7 @@ const projects: Project[] = [
   },
   {
     icon: Briefcase,
-    title: "OSIM — Organizational Simulation System",
+    title: "OSIM - Organizational Simulation System",
     category: "Enterprise Simulation",
     description:
       "Architected an enterprise-style simulation with 12+ class hierarchies following SOLID principles; persisted 1,000+ records with zero data loss.",

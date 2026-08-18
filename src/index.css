@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 /* ================================================================
-   DESIGN SYSTEM — Bespoke Cybersecurity Portfolio
+   DESIGN SYSTEM - Bespoke Cybersecurity Portfolio
    Premium dark aesthetic with rich micro-interactions
    ================================================================ */
 
@@ -108,7 +108,7 @@
 
 @layer components {
 
-  /* ──── INTEL CARD — with rich hover lift + glow ──── */
+  /* ──── INTEL CARD - with rich hover lift + glow ──── */
   .intel-card {
     @apply bg-card border border-border rounded-lg p-5 relative overflow-hidden;
     border-left: 2px solid hsl(var(--primary) / 0.2);
@@ -228,7 +228,7 @@
     @apply text-muted-foreground hover:text-foreground transition-all duration-200 relative;
   }
 
-  /* ──── SKILL TAG — Monospaced, interactive ──── */
+  /* ──── SKILL TAG - Monospaced, interactive ──── */
   .skill-tag {
     @apply px-2.5 py-1 text-xs rounded border border-border bg-secondary/60 text-muted-foreground font-mono;
     transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
@@ -292,7 +292,7 @@
     box-shadow: 0 2px 8px hsl(var(--primary) / 0.15);
   }
 
-  /* ──── DATA LABEL — Incident-report style ──── */
+  /* ──── DATA LABEL - Incident-report style ──── */
   .data-label {
     @apply text-[10px] uppercase tracking-[0.12em] text-muted-foreground font-mono font-medium;
   }

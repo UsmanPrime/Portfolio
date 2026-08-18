@@ -4,7 +4,7 @@
   <img src="https://img.shields.io/badge/FAST_NUCES-2024--2028-1e293b?style=for-the-badge&logo=university&logoColor=white" />
 </p>
 
-<h1 align="center">🛡️ Usman Ibrahim — Cybersecurity Portfolio</h1>
+<h1 align="center">🛡️ Usman Ibrahim - Cybersecurity Portfolio</h1>
 
 <p align="center">
   <strong>SOC Analyst · DFIR Specialist · Threat Hunter · Blue Team Operator</strong>
@@ -20,9 +20,9 @@
 
 ## 📋 Overview
 
-Cybersecurity Portfolio — SOC Analyst & DFIR Specialist. Built with React, TypeScript, Tailwind CSS & Vite. Features interactive particle backgrounds, scroll-reveal animations, glassmorphism UI, typing terminal effects, and animated stats. Fully responsive dark-themed design.
+Cybersecurity Portfolio - SOC Analyst & DFIR Specialist. Built with React, TypeScript, Tailwind CSS & Vite. Features interactive particle backgrounds, scroll-reveal animations, glassmorphism UI, typing terminal effects, and animated stats. Fully responsive dark-themed design.
 
-> **Status:** Seeking SOC Analyst Internship — Open to Cybersecurity Opportunities
+> **Status:** Seeking SOC Analyst Internship - Open to Cybersecurity Opportunities
 
 ---
 
@@ -136,46 +136,46 @@ src/
 
 ### 🔧 Skills
 7 comprehensive categories:
-1. **Security & Forensics** — Application Security, SOC Operations, DFIR, Splunk, Wazuh, Volatility 3, MITRE ATT&CK
-2. **Programming Languages** — Golang, Python, C++, x86 Assembly, TypeScript
-3. **Web & Full-Stack** — React 18, Node.js, Express.js, MongoDB, JWT Auth
-4. **Software Engineering** — OOP, Data Structures, SOLID Principles, Agile
-5. **Networking** — TCP/IP, OSPF, EIGRP, RIPv2, NAT, ACLs
-6. **Tools & Platforms** — Docker, Linux, Vercel, Git
-7. **Business & Strategy** — Enterprise RAG Solutions, Agentic AI, Client Acquisition
+1. **Security & Forensics** - Application Security, SOC Operations, DFIR, Splunk, Wazuh, Volatility 3, MITRE ATT&CK
+2. **Programming Languages** - Golang, Python, C++, x86 Assembly, TypeScript
+3. **Web & Full-Stack** - React 18, Node.js, Express.js, MongoDB, JWT Auth
+4. **Software Engineering** - OOP, Data Structures, SOLID Principles, Agile
+5. **Networking** - TCP/IP, OSPF, EIGRP, RIPv2, NAT, ACLs
+6. **Tools & Platforms** - Docker, Linux, Vercel, Git
+7. **Business & Strategy** - Enterprise RAG Solutions, Agentic AI, Client Acquisition
 
 ### 💼 Projects
 | Project | Stack | Highlights |
 |---------|-------|------------|
-| **PIMS — POS Inventory Management System** | Next.js, Supabase, TypeScript | Granular RBAC, RLS policies, Zod validation, JWT hardening, CSP |
-| **NextGen Residency — Smart Housing Society** | React, Node.js, Express, MongoDB | Hardened API (Helmet, CSRF), TOTP 2FA, JWT refresh, triple-portal RBAC |
-| **Xonix Game — Professional Edition** | C++11, SFML | Multiplayer arcade game, 10+ custom data structures (Hash Tables, AVL Trees) |
+| **PIMS - POS Inventory Management System** | Next.js, Supabase, TypeScript | Granular RBAC, RLS policies, Zod validation, JWT hardening, CSP |
+| **NextGen Residency - Smart Housing Society** | React, Node.js, Express, MongoDB | Hardened API (Helmet, CSRF), TOTP 2FA, JWT refresh, triple-portal RBAC |
+| **Xonix Game - Professional Edition** | C++11, SFML | Multiplayer arcade game, 10+ custom data structures (Hash Tables, AVL Trees) |
 | **Enterprise Multi-Area Network Architecture** | Cisco Packet Tracer | 19 routers, 11 switches, mutual route redistribution, Static NAT, Extended ACLs |
-| **Dizzy Walk — Maze Adventure Game** | x86 Assembly, MASM32 | 2,700+ lines, Win32 API, GDI rendering, STDCALL convention |
+| **Dizzy Walk - Maze Adventure Game** | x86 Assembly, MASM32 | 2,700+ lines, Win32 API, GDI rendering, STDCALL convention |
 | **Cybersecurity Portfolio** | React, TypeScript | Hardened security headers (CSP, HSTS), scoped CORS, serverless API with rate limiting |
-| **OSIM — Organizational Simulation** | C++, OOP | 12+ class hierarchies, 1,000+ records, SOLID principles |
+| **OSIM - Organizational Simulation** | C++, OOP | 12+ class hierarchies, 1,000+ records, SOLID principles |
 | **SecureShop** | C++, File I/O | Multi-factor auth, O(log n) search, injection prevention |
 
 ### 📜 Experience
-- **Security Research Intern** — NetraLink Solutions (Jul 2026 – Present)
-- **Business Development Intern** — Intellema (May 2026 – Present)
-- **SOC Analyst Intern** — Tech Hierarchy (Mar 2026)
-- **Challenge Author** — NASCON 2026 Forensics Arena (Feb 2026 – Aug 2026)
-- **Organizer & Author** — RDX National CTF (Jun 2025 – Jul 2025)
-- **Technical Team & Head of Finance** — Cyber Space Legion (FAST NUCES) (Sep 2024 – Present)
+- **Security Research Intern** - NetraLink Solutions (Jul 2026 – Present)
+- **Business Development Intern** - Intellema (May 2026 – Present)
+- **SOC Analyst Intern** - Tech Hierarchy (Mar 2026)
+- **Challenge Author** - NASCON 2026 Forensics Arena (Feb 2026 – Aug 2026)
+- **Organizer & Author** - RDX National CTF (Jun 2025 – Jul 2025)
+- **Technical Team & Head of Finance** - Cyber Space Legion (FAST NUCES) (Sep 2024 – Present)
 
 ### 🏆 Achievements
-- 🥉 **3rd Place** — SudoFuzzers CTF (top 6% of 50+ teams)
-- 🏅 **7th Place** — CyberFest 2025 National CTF (top 7% of 100+ teams)
-- ⭐ **Star of CyberFest '25** — Individual Recognition Award
+- 🥉 **3rd Place** - SudoFuzzers CTF (top 6% of 50+ teams)
+- 🏅 **7th Place** - CyberFest 2025 National CTF (top 7% of 100+ teams)
+- ⭐ **Star of CyberFest '25** - Individual Recognition Award
 
 ### 📜 Certifications
-- CDSA — Hack The Box *(In Progress)*
-- SOC & Network Security — Cisco
-- ISO/IEC 27001:2022 — SkillFront
-- Computer Networks & Network Security — IBM
+- CDSA - Hack The Box *(In Progress)*
+- SOC & Network Security - Cisco
+- ISO/IEC 27001:2022 - SkillFront
+- Computer Networks & Network Security - IBM
 - Advanced Digital Forensics Techniques
-- Windows Forensics — Belkasoft (6 CPE Credits)
+- Windows Forensics - Belkasoft (6 CPE Credits)
 
 ---
 

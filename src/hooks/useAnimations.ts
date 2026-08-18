@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 
 // ─────────────────────────────────────────────────────────────
-// SCROLL REVEAL — IntersectionObserver-driven visibility toggle
+// SCROLL REVEAL - IntersectionObserver-driven visibility toggle
 // ─────────────────────────────────────────────────────────────
 interface UseScrollRevealOptions {
   threshold?: number;
@@ -38,7 +38,7 @@ export const useScrollReveal = (options: UseScrollRevealOptions = {}) => {
 };
 
 // ─────────────────────────────────────────────────────────────
-// DECRYPT TEXT — Characters scramble then resolve to final text
+// DECRYPT TEXT - Characters scramble then resolve to final text
 // Mimics a forensic data-decode / intel decryption effect
 // ─────────────────────────────────────────────────────────────
 const CIPHER_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
@@ -104,7 +104,7 @@ export const useDecryptText = (
 };
 
 // ─────────────────────────────────────────────────────────────
-// TYPING EFFECT — Classic terminal character-by-character
+// TYPING EFFECT - Classic terminal character-by-character
 // ─────────────────────────────────────────────────────────────
 export const useTypingEffect = (text: string, speed: number = 50, startDelay: number = 0) => {
   const [displayedText, setDisplayedText] = useState("");
@@ -135,7 +135,7 @@ export const useTypingEffect = (text: string, speed: number = 50, startDelay: nu
 };
 
 // ─────────────────────────────────────────────────────────────
-// COUNT UP — Numeric counter with eased animation
+// COUNT UP - Numeric counter with eased animation
 // ─────────────────────────────────────────────────────────────
 export const useCountUp = (end: number, duration: number = 2000, startOnReveal: boolean = true) => {
   const [count, setCount] = useState(0);
@@ -186,7 +186,7 @@ export const useCountUp = (end: number, duration: number = 2000, startOnReveal: 
 };
 
 // ─────────────────────────────────────────────────────────────
-// SCAN LINE — Animated scan-line reveal for cards
+// SCAN LINE - Animated scan-line reveal for cards
 // Returns a CSS variable for the scan-line position
 // ─────────────────────────────────────────────────────────────
 export const useScanReveal = (duration: number = 600) => {
