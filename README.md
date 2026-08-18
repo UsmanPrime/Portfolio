@@ -148,11 +148,11 @@ src/
 | Project | Stack | Highlights |
 |---------|-------|------------|
 | **PIMS — POS Inventory Management System** | Next.js, Supabase, TypeScript | Granular RBAC, RLS policies, Zod validation, JWT hardening, CSP |
-| **NextGen Residency — Smart Housing Society** | React, Node.js, Express, MongoDB | RBAC, JWT auth with fingerprinting, Helmet.js security, 2FA, CI/CD deployed |
+| **NextGen Residency — Smart Housing Society** | React, Node.js, Express, MongoDB | Hardened API (Helmet, CSRF), TOTP 2FA, JWT refresh, triple-portal RBAC |
 | **Xonix Game — Professional Edition** | C++11, SFML | Multiplayer arcade game, 10+ custom data structures (Hash Tables, AVL Trees) |
-| **Enterprise Multi-Area Network Architecture** | Cisco Packet Tracer | 11 LANs, 22 WAN links, OSPF, EIGRP, RIPv2, Static NAT, Extended ACLs |
+| **Enterprise Multi-Area Network Architecture** | Cisco Packet Tracer | 19 routers, 11 switches, mutual route redistribution, Static NAT, Extended ACLs |
 | **Dizzy Walk — Maze Adventure Game** | x86 Assembly, MASM32 | 2,700+ lines, Win32 API, GDI rendering, STDCALL convention |
-| **Cybersecurity Portfolio** | React, TypeScript | 95+ Lighthouse score, full responsive dark-themed design |
+| **Cybersecurity Portfolio** | React, TypeScript | Hardened security headers (CSP, HSTS), scoped CORS, serverless API with rate limiting |
 | **OSIM — Organizational Simulation** | C++, OOP | 12+ class hierarchies, 1,000+ records, SOLID principles |
 | **SecureShop** | C++, File I/O | Multi-factor auth, O(log n) search, injection prevention |
 

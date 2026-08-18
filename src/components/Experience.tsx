@@ -23,10 +23,10 @@ const experiences: ExperienceItem[] = [
     organization: "NetraLink Solutions",
     period: "Jul 2026 - Present",
     highlights: [
-      "Help develop DeWall, a self-hosted enterprise DNS Firewall and Management Platform, focusing mostly on security engineering and testing.",
-      "Build backend pipelines to pull in external threat intelligence feeds and create secure data models for network security.",
-      "Write fast, stateless microservices in Golang to evaluate DNS queries in real-time, and build out the frontend domain structures using React and TypeScript.",
-      "Built an API interception layer to simulate our live backend, which lets us generate realistic data for offline product demos safely.",
+      "Owned Analytics, Audit, and Reporting for DeWall, a self-hosted DNS Firewall platform (Go microservices, PostgreSQL, ClickHouse, React/TypeScript), combining security research with hands-on testing and development.",
+      "Conducted comprehensive security and functional testing on the analytics pipeline, finding and fixing production-blocking issues including silent data loss in event handling and a hidden mock-data flag that was masking a real CORS misconfiguration.",
+      "Identified and flagged an authentication gap in the API gateway allowing header-based user impersonation.",
+      "Produced technical documentation including API documentation and internal security testing reports.",
     ],
   },
   {
@@ -36,9 +36,7 @@ const experiences: ExperienceItem[] = [
     organization: "Tech Hierarchy",
     period: "Mar 2026 - Mar 2026",
     highlights: [
-      "Investigated over 30 daily security alerts using Wazuh and Splunk. I mapped events to MITRE ATT&CK TTPs to classify indicators of compromise and cut down on false positives.",
-      "Looked through endpoint telemetry, machine behavior, and network logs to spot signs of compromise and wrote up formal incident reports.",
-      "Set up my own SOC lab with Wazuh and the ELK Stack to simulate attacks like lateral movement and credential dumping, which helped me test and validate detection rules.",
+      "Triaged 30+ daily security alerts in Wazuh and Splunk, correlating IOCs against MITRE ATT&CK TTPs to classify indicators of compromise and escalate confirmed incidents per established SOC runbooks.",
     ],
     certificateUrl: "/Tech%20Hierarchy%20Internship%20Certificate.pdf",
     certificateLabel: "Certificate of Completion",
@@ -46,24 +44,11 @@ const experiences: ExperienceItem[] = [
   {
     icon: Monitor,
     type: "Challenge Author",
-    title: "NASCON 2026 Forensics Arena",
+    title: "NASCON 2026 Forensics Arena & RDX National CTF",
     organization: "FAST NUCES Islamabad",
-    period: "Feb 2026 - Aug 2026",
+    period: "Jun 2025 - Aug 2026",
     highlights: [
-      "Designed a hard-level memory forensics challenge that simulated a fileless credential dumping attack based on MITRE T1003.001.",
-      "Wrote a PowerShell script to simulate real attacker behaviors, including enabling WDigest, faking C2 beacons, and embedding Mimikatz artifacts.",
-      "Participants had to use Volatility 3 to analyze Windows memory images, find the process injection, and extract NTLM hashes.",
-    ],
-  },
-  {
-    icon: Award,
-    type: "Organizer & Author",
-    title: "RDX National CTF",
-    organization: "RDX",
-    period: "Jun 2025 - Jul 2025",
-    highlights: [
-      "Created 6 challenges focusing on log analysis, network traffic, suspicious artifacts, and file-embedded forensics for a national CTF.",
-      "Tested the blue-team and DFIR skills of over 100 participants in a time-constrained environment.",
+      "Authored a hard-category memory forensics challenge (MITRE T1003.001) requiring Volatility 3 analysis, and 6 additional challenges for RDX National CTF (100+ participants combined).",
     ],
   },
   {
@@ -84,10 +69,8 @@ const experiences: ExperienceItem[] = [
     organization: "Intellema",
     period: "May 2026 - Present",
     highlights: [
-      "Manage the business development cycle for enterprise AI solutions (RAG, LLMs, Voice AI, computer vision, multi-agent, Agentic AI), from researching clients to writing technical proposals.",
-      "Set up strategies to find new clients in healthcare, fintech, and PropTech using CRM tools and data enrichment.",
-      "Create system architecture diagrams and a 14-architecture playbook to help clients understand our solutions.",
-      "Manage the company Upwork profile (Top Rated Plus, 100% Job Success), securing high-value contracts.",
+      "Manage the full B2B sales cycle for enterprise AI solutions (RAG, LLM, Voice AI, computer vision) at an AI consultancy, from client research to technical proposal writing and system architecture diagram design.",
+      "Manage the company's Upwork profile, which holds Top Rated Plus status with 100% Job Success.",
     ],
   },
 ];

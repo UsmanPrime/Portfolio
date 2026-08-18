@@ -12,22 +12,34 @@ interface SkillCategory {
 const skillCategories: SkillCategory[] = [
   {
     icon: Shield,
-    title: "Security & Forensics",
-    description: "SOC operations, incident handling, and forensic analysis",
+    title: "Application Security",
+    description: "RBAC, RLS, input validation, and session hardening",
     skills: [
-      "Application Security",
+      "RBAC",
+      "Row Level Security (RLS)",
+      "Input Validation (Zod)",
+      "SQLi/XSS Prevention",
+      "JWT Session Hardening",
+      "CSP/HSTS",
+      "Rate Limiting"
+    ],
+  },
+  {
+    icon: Target,
+    title: "Security Operations",
+    description: "SOC operations, incident handling, and forensics",
+    skills: [
       "SOC Operations",
       "Alert Triage",
       "Incident Response",
       "DFIR",
+      "Threat Hunting",
+      "IOC Analysis",
       "Splunk",
       "Wazuh",
       "Elastic Stack (ELK)",
       "Wireshark",
-      "Volatility 3",
-      "Autopsy",
-      "Belkasoft",
-      "MITRE ATT&CK",
+      "Volatility 3"
     ],
   },
   {
@@ -79,18 +91,15 @@ const skillCategories: SkillCategory[] = [
   },
   {
     icon: Network,
-    title: "Networking",
+    title: "Network Security",
     description: "Enterprise network design and routing protocols",
     skills: [
       "TCP/IP",
       "OSPF",
       "EIGRP",
       "RIPv2",
-      "VLSM",
       "NAT",
-      "ACLs",
-      "DHCP",
-      "DNS",
+      "Extended ACLs",
       "Cisco Packet Tracer",
     ],
   },

@@ -38,9 +38,7 @@ const projects: Project[] = [
     description:
       "Designed and developed a full-stack MERN web application with triple-portal architecture (Resident, Admin, Vendor), implementing role-based access control (RBAC) and JWT authentication with refresh tokens and token fingerprinting.",
     highlights: [
-      "Hardened backend API with Helmet.js security headers, CSRF protection, rate limiting, and NoSQL injection prevention",
-      "Integrated Two-Factor Authentication (TOTP) with backup codes, Google reCAPTCHA v2, and bcrypt password hashing",
-      "Deployed frontend on Vercel and backend on Render with MongoDB Atlas, CI/CD auto-deploy from GitHub",
+      "Hardened backend API with Helmet.js security headers, CSRF protection, and NoSQL injection prevention; integrated TOTP-based two-factor authentication and JWT with refresh tokens across a triple-portal RBAC architecture."
     ],
     tools: ["React 18", "Node.js", "Express.js", "MongoDB", "JWT", "Helmet.js"],
     year: "2026",
@@ -68,8 +66,7 @@ const projects: Project[] = [
     description:
       "Engineered a complex enterprise-grade multi-area network topology supporting 11 LANs and 22 WAN links across 19 routers and 11 switches.",
     highlights: [
-      "Implemented OSPF, EIGRP, RIPv2 with mutual route redistribution across 3 border routers",
-      "Deployed Static NAT for public IP translation and Extended ACLs for host/subnet-level security",
+      "Engineered a multi-area network topology across 19 routers and 11 switches with mutual route redistribution, Static NAT, and Extended ACLs for host and subnet-level security policies."
     ],
     tools: ["Cisco Packet Tracer", "OSPF", "EIGRP", "RIPv2", "NAT", "ACLs"],
     year: "2026",
@@ -96,8 +93,8 @@ const projects: Project[] = [
     description:
       "Architected and launched a portfolio website achieving a 95+ Lighthouse score with full mobile responsiveness across all breakpoints.",
     highlights: [
-      "TypeScript for type-safe coding, eliminating runtime errors",
-      "Interactive particle backgrounds, scroll-reveal animations, bespoke dark UI",
+      "Hardened the platform with strict HTTP security headers (CSP, HSTS, X-Frame-Options) and CORS scoped tightly to the production domain.",
+      "Engineered a serverless backend API with server-side input validation and custom IP-based rate limiting to mitigate spam and automated abuse."
     ],
     tools: ["React", "TypeScript", "Tailwind CSS", "Vite"],
     year: "2025",

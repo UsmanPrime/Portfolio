@@ -129,13 +129,13 @@ const About = () => {
                 style={{ transitionDelay: '200ms' }}
               >
                 <p className="text-[13px] text-muted-foreground leading-relaxed mb-3">
-                  I'm currently pursuing my BS in Cyber Security at FAST NUCES Islamabad, with a strong focus on SOC operations, digital forensics, and threat hunting. Right now, I'm working as a Security Research Intern at NetraLink Solutions, where I help develop DeWall, an enterprise DNS firewall. My work involves building out backend pipelines, integrating threat intelligence feeds, and writing high-performance microservices in Golang.
+                  I'm a Cybersecurity student specializing in application security, SOC operations, and Digital Forensics and Incident Response (DFIR). I have hands-on experience hardening production platforms—such as a POS Inventory System—against SQL injection, XSS, privilege escalation, and session hijacking through layered RBAC, Row Level Security, and strict input validation.
                 </p>
                 <p className="text-[13px] text-muted-foreground leading-relaxed mb-3">
-                  Before this, I worked as a SOC Analyst Intern at Tech Hierarchy. I spent my time triaging daily security alerts in Splunk and Wazuh and diving deep into incident investigations using the MITRE ATT&CK framework to weed out false positives. I'm also really involved in the local security community. I design hard-level memory forensics challenges for national CTFs and manage the finances for our university's cybersecurity society, Cyber Space Legion.
+                  My background includes working as a Security Research Intern at NetraLink Solutions, where I owned analytics and security testing for an enterprise DNS firewall, finding and mitigating authentication gaps and CORS misconfigurations. Previously, as a SOC Analyst Intern at Tech Hierarchy, I triaged 30+ daily alerts in Splunk and Wazuh, correlating events against MITRE ATT&CK TTPs.
                 </p>
                 <p className="text-[13px] text-muted-foreground leading-relaxed">
-                  On the side, I work as a Business Development Intern at Intellema. I help the team find and pursue enterprise opportunities for advanced AI solutions like RAG and Voice AI, which gives me a great perspective on how tech solutions are actually pitched and sold to businesses.
+                  I am also a national-level CTF challenge author with expertise in memory forensics (Volatility 3), and I bring business development experience from Intellema, where I manage B2B sales cycles for enterprise AI solutions. I am actively seeking a SOC Analyst, AppSec, or Defensive Security Internship.
                 </p>
               </div>
             </div>

@@ -39,11 +39,12 @@ const Resume = () => {
     },
     {
       icon: Shield,
-      title: "Security & Forensics",
+      title: "Application Security & SOC",
       items: [
-        "SOC Operations, Alert Triage, Incident Response, DFIR",
-        "Splunk, Wazuh, Elastic Stack (ELK), Wireshark, Volatility 3",
-        "MITRE ATT&CK, Memory Forensics, PCAP Analysis, OSINT",
+        "AppSec: RBAC, RLS, Zod, JWT Hardening, CSP/HSTS, Rate Limiting",
+        "SOC: Alert Triage, Incident Response, DFIR, Threat Hunting, IOCs",
+        "SIEM/Forensics: Splunk, Wazuh, ELK, Volatility 3, Autopsy, Belkasoft",
+        "Standards: MITRE ATT&CK, ISO/IEC 27001, NIST CSF",
       ],
     },
     {
@@ -66,8 +67,8 @@ const Resume = () => {
       icon: Code,
       title: "Networking & Tools",
       items: [
-        "OSPF, EIGRP, RIPv2, VLSM, NAT, ACLs",
-        "Docker, Linux, Git, SFML, CMake, Cisco Packet Tracer",
+        "Network: TCP/IP, OSPF, EIGRP, RIPv2, NAT, Extended ACLs",
+        "Tools: Docker, Linux, Git, SFML, CMake, Cisco Packet Tracer",
       ],
     },
   ];
