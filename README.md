@@ -130,7 +130,7 @@ src/
 
 ### 👤 About
 - Animated profile photo with orbital rings and availability indicator
-- Count-up statistics: **30+** Alerts/Day, **7** Projects, **5+** Lab Scenarios
+- Count-up statistics: **30+** Alerts/Day, **8** Projects, **5+** Lab Scenarios
 - 5 focus area cards: SOC Operations, Digital Forensics, Full-Stack Development, Systems Programming, AI Solution Support
 - Professional bio detailing current work at NetraLink Solutions and past experience at Tech Hierarchy and Intellema
 
@@ -147,6 +147,7 @@ src/
 ### 💼 Projects
 | Project | Stack | Highlights |
 |---------|-------|------------|
+| **PIMS — POS Inventory Management System** | Next.js, Supabase, TypeScript | Granular RBAC, RLS policies, Zod validation, JWT hardening, CSP |
 | **NextGen Residency — Smart Housing Society** | React, Node.js, Express, MongoDB | RBAC, JWT auth with fingerprinting, Helmet.js security, 2FA, CI/CD deployed |
 | **Xonix Game — Professional Edition** | C++11, SFML | Multiplayer arcade game, 10+ custom data structures (Hash Tables, AVL Trees) |
 | **Enterprise Multi-Area Network Architecture** | Cisco Packet Tracer | 11 LANs, 22 WAN links, OSPF, EIGRP, RIPv2, Static NAT, Extended ACLs |

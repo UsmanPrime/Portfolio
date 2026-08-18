@@ -8,7 +8,7 @@ const About = () => {
   const { ref: statsRef, isRevealed: statsRevealed } = useScrollReveal();
   const { count: alertCount, ref: alertRef } = useCountUp(30, 2000);
   const { count: attackScenarios, ref: attackRef } = useCountUp(5, 1500);
-  const { count: projectCount, ref: projectRef } = useCountUp(7, 1800);
+  const { count: projectCount, ref: projectRef } = useCountUp(8, 1800);
 
   const focusAreas = [
     {

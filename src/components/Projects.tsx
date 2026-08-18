@@ -1,4 +1,4 @@
-import { ExternalLink, Globe, Code, Gamepad2, ShoppingCart, Building2, Briefcase, Network, Cpu } from "lucide-react";
+import { ExternalLink, Globe, Code, Gamepad2, ShoppingCart, Building2, Briefcase, Network, Cpu, Database } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal, useScanReveal } from "@/hooks/useAnimations";
@@ -16,6 +16,21 @@ interface Project {
 }
 
 const projects: Project[] = [
+  {
+    icon: Database,
+    title: "PIMS — POS Inventory Management System",
+    category: "Full-Stack Security Architecture",
+    description: "Designed and engineered a full-stack POS Inventory system with a heavy focus on multi-layer security, granular access controls, and strict data isolation.",
+    highlights: [
+      "Engineered a granular RBAC system enforced across client UI, edge middleware, and server APIs to prevent privilege escalation",
+      "Implemented PostgreSQL Row Level Security (RLS) policies for strict tenant data isolation",
+      "Eliminated SQLi and XSS vectors via Zod schema validation, parameterized queries, and global error-sanitization",
+      "Hardened sessions with strict JWTs, CSP, HSTS, X-Frame-Options, and protected cron jobs against DoS/SSRF"
+    ],
+    tools: ["Next.js", "Supabase", "PostgreSQL", "TypeScript", "Vercel", "Zod", "RBAC", "RLS"],
+    year: "2025",
+    liveUrl: "https://pos-inventory-management-system-pims.vercel.app/",
+  },
   {
     icon: Building2,
     title: "NextGen Residency — Smart Housing Society",
