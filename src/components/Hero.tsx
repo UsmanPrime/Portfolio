@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useTypingEffect, useDecryptText } from "@/hooks/useAnimations";
 import ParticlesBackground from "@/components/ParticlesBackground";
-import usmanPhoto from "@/assets/usman.jpg";
+import usmanPhoto from "@/assets/Usman.jpg";
 import { useState, useEffect } from "react";
 
 const Hero = () => {
@@ -195,7 +195,12 @@ const Hero = () => {
                     <img
                       src={usmanPhoto}
                       alt="Usman Ibrahim - Cyber Security Professional"
-                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                      className="w-full h-full object-cover transition-transform duration-700"
+                      style={{
+                        objectPosition: "center 15%",
+                        transform: "scale(1.4)",
+                        transformOrigin: "center 20%",
+                      }}
                     />
                   </div>
                 </div>

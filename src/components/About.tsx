@@ -1,6 +1,6 @@
 import { ShieldCheck, Search, Activity, Lock, Code } from "lucide-react";
 import { motion } from "framer-motion";
-import usmanPhoto from "@/assets/usman.jpg";
+import usmanPhoto from "@/assets/Usman.jpg";
 import { useScrollReveal, useCountUp } from "@/hooks/useAnimations";
 
 const About = () => {
@@ -102,7 +102,12 @@ const About = () => {
                       <img
                         src={usmanPhoto}
                         alt="Usman Ibrahim"
-                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                        className="w-full h-full object-cover transition-transform duration-500"
+                        style={{
+                          objectPosition: "center 15%",
+                          transform: "scale(1.4)",
+                          transformOrigin: "center 20%",
+                        }}
                       />
                     </div>
                   </div>
