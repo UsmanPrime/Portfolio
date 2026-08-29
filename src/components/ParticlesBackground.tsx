@@ -84,8 +84,14 @@ const ParticlesBackground = () => {
             ctx!.beginPath();
             ctx!.moveTo(particles[i].x, particles[i].y);
             ctx!.lineTo(particles[j].x, particles[j].y);
-            ctx!.strokeStyle = `rgba(56, 189, 248, ${0.08 * (1 - dist / 150)})`;
-            ctx!.lineWidth = 0.5;
+            
+            // Add a subtle pulsing effect over time
+            const timePulse = (Math.sin(Date.now() * 0.0015 + i + j) + 1) / 2; 
+            const baseOpacity = 0.05 * (1 - dist / 150);
+            const pulsedOpacity = baseOpacity + (baseOpacity * timePulse * 0.8);
+            
+            ctx!.strokeStyle = `rgba(56, 189, 248, ${pulsedOpacity})`;
+            ctx!.lineWidth = 0.8;
             ctx!.stroke();
           }
         }

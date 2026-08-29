@@ -585,6 +585,61 @@
   .animate-pulse-subtle {
     animation: pulse-subtle 3s ease-in-out infinite;
   }
+
+  /* Ambient section animations */
+  .animate-heartbeat-scroll {
+    animation: heartbeat-scroll 8s linear infinite;
+  }
+  .animate-grid-pulse {
+    animation: grid-pulse 6s ease-in-out infinite;
+  }
+  .animate-stacking-blocks {
+    animation: stacking-blocks 4s ease-in-out infinite;
+  }
+  .animate-rail-signal {
+    animation: rail-signal 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+  .animate-scanner-sweep {
+    animation: scanner-sweep 6s linear infinite;
+  }
+  .animate-radar-sweep {
+    animation: radar-sweep 4s linear infinite;
+  }
+}
+
+/* ──── AMBIENT ANIMATION KEYFRAMES ──── */
+@keyframes heartbeat-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes grid-pulse {
+  0%, 100% { opacity: 0.05; }
+  50% { opacity: 0.15; }
+}
+
+@keyframes stacking-blocks {
+  0%, 100% { transform: translateY(0); opacity: 0.05; }
+  50% { transform: translateY(-10px); opacity: 0.12; }
+}
+
+@keyframes rail-signal {
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+@keyframes scanner-sweep {
+  0%, 100% { transform: translateY(0); opacity: 0; }
+  10% { opacity: 0.15; }
+  90% { opacity: 0.15; }
+  50% { transform: translateY(100%); opacity: 0.2; }
+}
+
+@keyframes radar-sweep {
+  0% { transform: scale(0.8); opacity: 0; }
+  50% { opacity: 0.15; }
+  100% { transform: scale(1.5); opacity: 0; }
 }
 
 /* ──── REDUCED MOTION ──── */

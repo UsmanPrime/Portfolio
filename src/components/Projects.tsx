@@ -248,6 +248,17 @@ const Projects = () => {
 
   return (
     <section id="projects" className="py-24 relative overflow-hidden">
+      {/* Ambient Stacking Blocks */}
+      <div className="absolute top-0 right-[5%] w-96 h-96 pointer-events-none z-0 opacity-50 overflow-hidden">
+        <div className="absolute top-20 right-10 flex flex-col items-end gap-2 -rotate-12 origin-right scale-125">
+          <div className="w-32 h-5 border border-primary/30 bg-primary/10 rounded animate-stacking-blocks" style={{ animationDelay: '0s' }} />
+          <div className="w-48 h-5 border border-primary/30 bg-primary/10 rounded animate-stacking-blocks" style={{ animationDelay: '0.4s' }} />
+          <div className="w-40 h-5 border border-primary/30 bg-primary/10 rounded animate-stacking-blocks" style={{ animationDelay: '0.8s' }} />
+          <div className="w-56 h-5 border border-primary/30 bg-primary/10 rounded animate-stacking-blocks" style={{ animationDelay: '1.2s' }} />
+          <div className="w-24 h-5 border border-primary/30 bg-primary/10 rounded animate-stacking-blocks" style={{ animationDelay: '1.6s' }} />
+        </div>
+      </div>
+
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div

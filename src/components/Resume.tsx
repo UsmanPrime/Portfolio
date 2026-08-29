@@ -25,9 +25,9 @@ const Resume = () => {
             <motion.div animate={{ opacity: [1, 0, 1] }} transition={{ duration: 2, repeat: Infinity }} className="w-3 h-3 bg-primary rounded-full" />
           </div>
           <motion.div 
-            animate={{ y: [-150, 400] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-            className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-transparent via-primary/30 to-transparent"
+            animate={{ top: ["-20%", "120%", "-20%"] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute left-0 right-0 h-16 bg-gradient-to-b from-transparent via-primary/20 to-transparent"
           />
         </motion.div>
       </div>

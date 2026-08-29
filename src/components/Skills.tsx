@@ -40,7 +40,35 @@ const Skills = () => {
 
   return (
     <section id="skills" className="py-24 relative bg-secondary/30 overflow-hidden">
-      <div className="absolute inset-0 grid-bg opacity-10" />
+      <div className="absolute inset-0 grid-bg opacity-10 animate-grid-pulse" />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="grid-pulse-x" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="transparent" />
+              <stop offset="50%" stopColor="hsl(var(--primary))" />
+              <stop offset="100%" stopColor="transparent" />
+            </linearGradient>
+            <linearGradient id="grid-pulse-y" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="transparent" />
+              <stop offset="50%" stopColor="hsl(var(--cyan))" />
+              <stop offset="100%" stopColor="transparent" />
+            </linearGradient>
+          </defs>
+          <rect x="-30%" y="30%" width="30%" height="1" fill="url(#grid-pulse-x)" opacity="0.4">
+            <animate attributeName="x" values="-30%;100%" dur="8s" repeatCount="indefinite" />
+          </rect>
+          <rect x="-20%" y="70%" width="20%" height="1" fill="url(#grid-pulse-x)" opacity="0.5">
+            <animate attributeName="x" values="-20%;100%" dur="12s" begin="3s" repeatCount="indefinite" />
+          </rect>
+          <rect x="40%" y="-30%" width="1" height="30%" fill="url(#grid-pulse-y)" opacity="0.5">
+            <animate attributeName="y" values="-30%;100%" dur="10s" begin="1s" repeatCount="indefinite" />
+          </rect>
+          <rect x="80%" y="-20%" width="1" height="20%" fill="url(#grid-pulse-y)" opacity="0.4">
+            <animate attributeName="y" values="-20%;100%" dur="14s" begin="6s" repeatCount="indefinite" />
+          </rect>
+        </svg>
+      </div>
 
       {/* Ambient cursor motif */}
       <motion.div

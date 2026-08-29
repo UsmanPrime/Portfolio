@@ -108,15 +108,6 @@ const Experience = () => {
     <section id="experience" className="py-24 relative bg-secondary/30 overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-8" />
 
-      {/* Ambient log stream motif */}
-      <div className="absolute left-[2%] sm:left-[5%] top-32 bottom-32 w-[2px] bg-border/50 hidden sm:block z-0 pointer-events-none">
-        <motion.div
-          animate={{ y: ["0%", "1000%"] }}
-          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          className="absolute top-0 left-[-2px] w-[6px] h-48 bg-gradient-to-b from-transparent via-primary/60 to-transparent"
-        />
-      </div>
-
       <div className="container mx-auto px-4 relative">
         <div className="max-w-5xl mx-auto">
           {/* Header */}
@@ -132,6 +123,11 @@ const Experience = () => {
 
           {/* Timeline rail */}
           <div ref={timelineRef} className="timeline-rail">
+            {/* Ambient traveling pulse on the rail */}
+            <div className="absolute left-[0px] top-0 w-[2px] bottom-0 overflow-hidden pointer-events-none">
+              <div className="absolute left-0 top-0 w-full h-48 bg-gradient-to-b from-transparent via-primary to-transparent animate-rail-signal shadow-[0_0_8px_hsl(var(--primary))]" />
+            </div>
+            
             {experiences.map((exp, index) => {
               const isCSL = exp.title === "Cyber Space Legion (CSL)";
               return (

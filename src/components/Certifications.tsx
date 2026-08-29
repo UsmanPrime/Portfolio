@@ -138,10 +138,15 @@ const Certifications = () => {
           {/* Credential ledger */}
           <div
             ref={tableRef}
-            className={`intel-card transition-all duration-600 ${tableRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+            className={`intel-card relative transition-all duration-600 ${tableRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
           >
+            {/* Ambient Scanning Line */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-lg z-0">
+              <div className="absolute top-0 left-0 right-0 h-[20%] bg-gradient-to-b from-transparent to-primary/10 animate-scanner-sweep border-b border-primary/20" />
+            </div>
+
             {/* Table column headers */}
-            <div className="hidden sm:grid grid-cols-[1fr_auto_auto_auto] gap-4 px-2 pb-3 border-b border-border/50 mb-2">
+            <div className="hidden sm:grid grid-cols-[1fr_auto_auto_auto] gap-4 px-2 pb-3 border-b border-border/50 mb-2 relative z-10">
               <span className="data-label">Credential</span>
               <span className="data-label text-right">Issuer</span>
               <span className="data-label text-right">Date</span>

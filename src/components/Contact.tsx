@@ -87,27 +87,6 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
-      
-      {/* Ambient Signal / Ping Motif */}
-      <div className="absolute top-[20%] right-[0%] sm:right-[10%] w-48 sm:w-64 h-48 sm:h-64 hidden sm:flex items-center justify-center z-0 opacity-50 pointer-events-none">
-        <motion.div 
-          animate={{ scale: [1, 3], opacity: [0.6, 0] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeOut" }}
-          className="absolute w-16 h-16 rounded-full border border-primary"
-        />
-        <motion.div 
-          animate={{ scale: [1, 3], opacity: [0.6, 0] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeOut", delay: 1 }}
-          className="absolute w-16 h-16 rounded-full border border-primary"
-        />
-        <motion.div 
-          animate={{ scale: [1, 3], opacity: [0.6, 0] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeOut", delay: 2 }}
-          className="absolute w-16 h-16 rounded-full border border-primary"
-        />
-        <div className="w-4 h-4 rounded-full bg-primary" />
-      </div>
-
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-5xl mx-auto">
           <div
@@ -191,13 +170,21 @@ const Contact = () => {
 
             {/* Info */}
             <div className="space-y-4">
-              <div className="p-7 rounded-2xl bg-card/20 border border-border/40 shadow-[0_0_40px_-15px_hsl(var(--primary)/0.03)] backdrop-blur-md">
-                <div className="flex items-center gap-2.5 mb-4 pb-3 border-b border-border/60">
-                  <div className="p-1.5 bg-primary/10 rounded-lg">
-                    <Shield className="w-4 h-4 text-primary" />
-                  </div>
-                  <h3 className="text-sm font-semibold">Connect</h3>
+              <div className="relative p-7 rounded-2xl bg-card/20 border border-border/40 shadow-[0_0_40px_-15px_hsl(var(--primary)/0.03)] backdrop-blur-md overflow-hidden">
+                {/* Ambient Radar Sweep */}
+                <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none opacity-20">
+                  <div className="absolute w-32 h-32 rounded-full border border-primary animate-radar-sweep" />
+                  <div className="absolute w-32 h-32 rounded-full border border-primary animate-radar-sweep" style={{ animationDelay: '1.3s' }} />
+                  <div className="absolute w-32 h-32 rounded-full border border-primary animate-radar-sweep" style={{ animationDelay: '2.6s' }} />
                 </div>
+
+                <div className="relative z-10">
+                  <div className="flex items-center gap-2.5 mb-4 pb-3 border-b border-border/60">
+                    <div className="p-1.5 bg-primary/10 rounded-lg">
+                      <Shield className="w-4 h-4 text-primary" />
+                    </div>
+                    <h3 className="text-sm font-semibold">Connect</h3>
+                  </div>
 
                 <p className="text-xs text-muted-foreground mb-4 leading-relaxed">
                   Open to conversations about SOC operations, DFIR, secure development, or security research collaboration.
@@ -228,6 +215,7 @@ const Contact = () => {
                   ))}
                 </div>
               </div>
+            </div>
 
               <div className="terminal-panel">
                 <div className="terminal-header">

@@ -116,10 +116,21 @@ const About = () => {
             <div className="space-y-6">
               
               {/* System Status Panel */}
-              <div 
-                className={`terminal-panel transition-all duration-600 ${
-                  sectionRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                }`}
+              <div className="relative">
+                {/* Ambient Heartbeat Waveform */}
+                <div className="absolute top-1/2 -left-[10%] w-[120%] h-32 -translate-y-1/2 overflow-hidden pointer-events-none opacity-[0.08] z-0">
+                  <div className="absolute top-1/2 left-0 w-[200%] h-full -translate-y-1/2 flex animate-heartbeat-scroll">
+                    <svg width="200%" height="100%" viewBox="0 0 1000 100" preserveAspectRatio="none" stroke="hsl(var(--primary))" strokeWidth="2" fill="none">
+                      <path d="M0,50 L300,50 L320,10 L340,90 L360,50 L1000,50" vectorEffect="non-scaling-stroke" />
+                      <path d="M1000,50 L1300,50 L1320,10 L1340,90 L1360,50 L2000,50" vectorEffect="non-scaling-stroke" />
+                    </svg>
+                  </div>
+                </div>
+
+                <div 
+                  className={`terminal-panel relative z-10 bg-background/60 backdrop-blur-sm transition-all duration-600 ${
+                    sectionRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                  }`}
                 style={{ transitionDelay: '150ms' }}
               >
                 <div className="terminal-header">
@@ -150,6 +161,7 @@ const About = () => {
                     <span className="text-muted-foreground">CDSA Certification (In Progress)</span>
                   </div>
                 </div>
+              </div>
               </div>
 
               {/* Stats Grid */}
