@@ -1,4 +1,4 @@
-import { ShieldCheck, Search, Activity, Lock, Code } from "lucide-react";
+import { ShieldCheck, Search, Activity, Lock, Code, ArrowRight, Database, Building2, BadgeCheck, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 import usmanPhoto from "@/assets/usman.jpg";
 import { useScrollReveal, useCountUp } from "@/hooks/useAnimations";
@@ -143,6 +143,56 @@ const About = () => {
                   I am also deeply involved in the security community — designing hard-level memory forensics challenges for national CTFs and bringing experience driving B2B sales cycles for enterprise AI solutions at Intellema. I focus on the intersection of detection engineering and secure software development, building the tools SOC teams rely on while staying sharp on the analyst side.
                 </p>
               </div>
+
+              {/* Featured Work */}
+              <div
+                className={`intel-card transition-all duration-600 ${
+                  sectionRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
+                style={{ transitionDelay: '300ms' }}
+              >
+                <div className="flex items-center gap-2 mb-3 pb-2.5 border-b border-border/60">
+                  <span className="data-label">Featured Work</span>
+                </div>
+                <div className="space-y-2">
+                  {/* PIMS */}
+                  <div className="group flex items-start justify-between gap-3 p-2.5 rounded-lg border border-border/40 hover:border-primary/30 hover:bg-primary/5 transition-all duration-200">
+                    <div className="flex items-start gap-2.5 min-w-0">
+                      <div className="p-1.5 bg-primary/10 rounded-md shrink-0 mt-0.5">
+                        <Database className="w-3 h-3 text-primary" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-[12px] font-semibold text-foreground group-hover:text-primary transition-colors duration-200 truncate">PIMS — POS Inventory System</p>
+                        <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">Full-stack POS with RBAC, PostgreSQL RLS, and hardened session security</p>
+                      </div>
+                    </div>
+                    <button
+                      onClick={() => document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })}
+                      className="shrink-0 flex items-center gap-0.5 text-[11px] font-mono text-primary/70 hover:text-primary transition-colors duration-150 mt-0.5 whitespace-nowrap"
+                    >
+                      View <ArrowRight className="w-3 h-3" />
+                    </button>
+                  </div>
+                  {/* NextGen Residency */}
+                  <div className="group flex items-start justify-between gap-3 p-2.5 rounded-lg border border-border/40 hover:border-primary/30 hover:bg-primary/5 transition-all duration-200">
+                    <div className="flex items-start gap-2.5 min-w-0">
+                      <div className="p-1.5 bg-primary/10 rounded-md shrink-0 mt-0.5">
+                        <Building2 className="w-3 h-3 text-primary" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-[12px] font-semibold text-foreground group-hover:text-primary transition-colors duration-200 truncate">NextGen Residency — Smart Housing</p>
+                        <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">Triple-portal MERN app with RBAC, JWT refresh tokens, and TOTP 2FA</p>
+                      </div>
+                    </div>
+                    <button
+                      onClick={() => document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })}
+                      className="shrink-0 flex items-center gap-0.5 text-[11px] font-mono text-primary/70 hover:text-primary transition-colors duration-150 mt-0.5 whitespace-nowrap"
+                    >
+                      View <ArrowRight className="w-3 h-3" />
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* Right - Focus Areas */}
@@ -166,6 +216,20 @@ const About = () => {
                   <div className="stat-number text-2xl group-hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.4)] transition-all duration-300">{attackScenarios}+</div>
                   <div className="data-label mt-1">Lab Scenarios</div>
                 </div>
+              </div>
+
+              {/* Cert badges */}
+              <div className={`flex flex-wrap gap-1.5 transition-all duration-600 ${
+                statsRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}>
+                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-md border border-primary/20 bg-primary/5 text-[10px] font-mono text-primary/80">
+                  <BadgeCheck className="w-3 h-3" />
+                  ISO/IEC 27001:2022
+                </span>
+                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-md border border-accent/20 bg-accent/5 text-[10px] font-mono text-accent/80">
+                  <Clock className="w-3 h-3" />
+                  CDSA — In Progress
+                </span>
               </div>
 
               <div className="data-label mb-4">Core Competencies</div>

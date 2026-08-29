@@ -64,7 +64,7 @@ const experiences: ExperienceItem[] = [
   },
   {
     icon: Briefcase,
-    type: "Experience",
+    type: "Business Development",
     title: "Business Development Executive",
     organization: "Intellema",
     period: "May 2026 - August 2026",
