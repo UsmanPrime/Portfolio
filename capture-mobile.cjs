@@ -3,7 +3,7 @@ const path = require('path');
 
 (async () => {
   const browser = await chromium.launch();
-  const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 2 });
+  const page = await browser.newPage({ viewport: { width: 375, height: 812 }, deviceScaleFactor: 3 });
   
   await page.goto('http://localhost:8080');
   
@@ -34,7 +34,7 @@ const path = require('path');
     try {
       const section = await page.locator(id);
       await section.scrollIntoViewIfNeeded();
-      await page.waitForTimeout(500); // give time for any lazy loads
+      await page.waitForTimeout(500);
       await section.screenshot({ path: path.join(__dirname, 'ss', filename) });
       console.log(`Captured ${filename}`);
     } catch (err) {
@@ -43,23 +43,15 @@ const path = require('path');
   };
 
   const sections = [
-    { id: '#home', file: '1-hero.png' }, // Hero section uses id="home"
-    { id: '#about', file: '2-about.png' },
-    { id: '#skills', file: '3-skills.png' },
-    { id: '#projects', file: '4-projects.png' },
-    { id: '#experience', file: '5-experience.png' },
-    { id: '#certifications', file: '6-certifications.png' },
-    { id: '#resume', file: '7-resume.png' },
-    { id: '#contact', file: '8-contact.png' }
+    { id: '#home', file: '1-hero-mobile.png' },
+    { id: '#skills', file: '3-skills-mobile.png' },
+    { id: '#experience', file: '5-experience-mobile.png' },
+    { id: '#certifications', file: '6-certifications-mobile.png' },
   ];
 
   for (const s of sections) {
     await captureSection(s.id, s.file);
   }
-  
-  // Capture the full page as well just in case
-  await page.screenshot({ path: path.join(__dirname, 'ss', '0-full-page.png'), fullPage: true });
-  console.log(`Captured full page`);
 
   await browser.close();
 })();

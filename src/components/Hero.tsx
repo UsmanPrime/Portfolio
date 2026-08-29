@@ -1,8 +1,9 @@
 import { Shield, ChevronDown, FileText, FolderOpen, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { useTypingEffect, useDecryptText } from "@/hooks/useAnimations";
+import { useDecryptText } from "@/hooks/useAnimations";
 import ParticlesBackground from "@/components/ParticlesBackground";
+import LiveTerminal from "@/components/LiveTerminal";
 import usmanPhoto from "@/assets/usman.jpg";
 import { useState, useEffect } from "react";
 
@@ -32,11 +33,6 @@ const Hero = () => {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [isRoleVisible, setIsRoleVisible] = useState(true);
   const { displayedText: nameText, isComplete: nameDecrypted } = useDecryptText("USMAN IBRAHIM", { speed: 40, startDelay: 300 });
-  const { displayedText, isComplete } = useTypingEffect(
-    "$ soc-monitor --init --pipeline=active",
-    30,
-    1200
-  );
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -57,7 +53,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 md:pt-20">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 md:pt-20">
       <ParticlesBackground />
       <div className="absolute inset-0 grid-bg opacity-15" />
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background/40 to-background" />
@@ -226,47 +222,8 @@ const Hero = () => {
           </div>
 
           {/* Terminal */}
-          <div className="mt-16 max-w-2xl animate-fade-in-up" style={{ animationDelay: "0.55s" }}>
-            <div className="terminal-panel">
-              <div className="terminal-header">
-                <div className="terminal-dot bg-red-500/60" />
-                <div className="terminal-dot bg-yellow-500/60" />
-                <div className="terminal-dot bg-green-500/60" />
-                <span className="text-[11px] text-muted-foreground ml-2 font-mono">
-                  threat_monitor.sh
-                </span>
-              </div>
-              <div className="p-4 font-mono text-xs space-y-1 overflow-x-auto whitespace-nowrap scrollbar-none">
-                <div className="flex gap-2 text-muted-foreground">
-                  <span className="text-primary select-none">❯</span>
-                  <span className={isComplete ? "" : "typing-cursor"}>
-                    {displayedText}
-                  </span>
-                </div>
-                {isComplete && (
-                  <>
-                    <div className="flex gap-2 text-muted-foreground animate-fade-in-up" style={{ animationDelay: "0.05s" }}>
-                      <span className="text-accent select-none">[✓]</span>
-                      <span>Wazuh + Splunk + ELK telemetry pipelines active</span>
-                    </div>
-                    <div className="flex gap-2 text-muted-foreground animate-fade-in-up" style={{ animationDelay: "0.15s" }}>
-                      <span className="text-accent select-none">[✓]</span>
-                      <span>MITRE ATT&CK TTP correlation engine online</span>
-                    </div>
-                    <div className="flex gap-2 text-muted-foreground animate-fade-in-up" style={{ animationDelay: "0.25s" }}>
-                      <span className="text-accent select-none">[✓]</span>
-                      <span>IOC analysis & alert triage workflow synchronized</span>
-                    </div>
-                    <div className="flex gap-2 animate-fade-in-up" style={{ animationDelay: "0.35s" }}>
-                      <span className="text-primary select-none">[●]</span>
-                      <span className="text-foreground">
-                        Monitoring 50+ daily security events...
-                      </span>
-                    </div>
-                  </>
-                )}
-              </div>
-            </div>
+          <div className="mt-16 sm:mt-24 w-full flex justify-center">
+            <LiveTerminal />
           </div>
         </div>
       </div>
