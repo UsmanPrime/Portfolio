@@ -104,9 +104,9 @@ const About = () => {
                         alt="Usman Ibrahim"
                         className="w-full h-full object-cover transition-transform duration-500"
                         style={{
-                          objectPosition: "center 15%",
+                          objectPosition: "center 20%",
                           transform: "scale(1.4)",
-                          transformOrigin: "center 20%",
+                          transformOrigin: "center center",
                         }}
                       />
                     </div>

@@ -197,9 +197,9 @@ const Hero = () => {
                       alt="Usman Ibrahim - Cyber Security Professional"
                       className="w-full h-full object-cover transition-transform duration-700"
                       style={{
-                        objectPosition: "center 15%",
+                        objectPosition: "center 20%",
                         transform: "scale(1.4)",
-                        transformOrigin: "center 20%",
+                        transformOrigin: "center center",
                       }}
                     />
                   </div>
