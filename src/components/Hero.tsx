@@ -95,8 +95,11 @@ const Hero = () => {
           <div className="grid lg:grid-cols-5 gap-10 items-center">
             {/* Left Content */}
             <div className="lg:col-span-3">
-              {/* Status */}
-              <div className="animate-fade-in-up">
+              {/* Status badge — spring easing */}
+              <div
+                className="animate-fade-in-up"
+                style={{ animationDelay: "0ms", animationTimingFunction: "cubic-bezier(0.34,1.56,0.64,1)" }}
+              >
                 <div className="eyebrow-badge">
                   Blue Team | SOC &amp; DFIR
                 </div>
@@ -114,8 +117,10 @@ const Hero = () => {
 
               {/* Role */}
               <div
-                className="h-9 flex items-center gap-2 mb-5 animate-fade-in-up"
-                style={{ animationDelay: "0.2s" }}
+                className="h-9 flex items-center gap-2 mb-5"
+                style={{
+                  animation: "fade-in-up 0.6s cubic-bezier(0.16,1,0.3,1) 0.4s both",
+                }}
               >
                 <span
                   className={`text-lg md:text-xl font-semibold transition-all duration-200 inline-block ${
@@ -132,22 +137,22 @@ const Hero = () => {
 
               {/* Tagline */}
               <p
-                className="text-base text-muted-foreground mb-2 animate-fade-in-up"
-                style={{ animationDelay: "0.25s" }}
+                className="text-base text-muted-foreground mb-2"
+                style={{ animation: "fade-in-up 0.5s ease-out 0.5s both" }}
               >
                 Cyber Security Student at FAST NUCES '28
               </p>
               <p
-                className="text-sm text-muted-foreground/60 max-w-lg mb-6 leading-relaxed animate-fade-in-up"
-                style={{ animationDelay: "0.3s" }}
+                className="text-sm text-muted-foreground/60 max-w-lg mb-6 leading-relaxed"
+                style={{ animation: "fade-in-up 0.5s ease-out 0.55s both" }}
               >
                 I'm a cybersecurity student at FAST NUCES '28 specializing in SOC operations, digital forensics, and threat detection. I have hands-on experience triaging alerts using SIEM tools like Splunk and Wazuh, investigating incidents, and building secure full-stack applications.
               </p>
 
-              {/* Skill Badges */}
+              {/* Skill Badges — stagger left to right */}
               <div
-                className="flex flex-wrap gap-1.5 mb-8 animate-fade-in-up"
-                style={{ animationDelay: "0.35s" }}
+                className="flex flex-wrap gap-1.5 mb-8"
+                style={{ animation: "fade-in-up 0.6s cubic-bezier(0.16,1,0.3,1) 0.6s both" }}
               >
                 {heroSkills.map((skill, i) => (
                   <span
@@ -160,10 +165,10 @@ const Hero = () => {
                 ))}
               </div>
 
-              {/* CTA */}
+              {/* CTA — scale + fade */}
               <div
-                className="flex flex-col sm:flex-row gap-3 animate-fade-in-up"
-                style={{ animationDelay: "0.4s" }}
+                className="flex flex-col sm:flex-row gap-3"
+                style={{ animation: "scale-in 0.5s cubic-bezier(0.34,1.56,0.64,1) 0.8s both" }}
               >
                 <Button
                   size="lg"
@@ -186,8 +191,11 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Right - Photo */}
-            <div className="lg:col-span-2 flex justify-center animate-fade-in-right" style={{ animationDelay: "0.3s" }}>
+            {/* Right — Photo, enters from right at 300ms */}
+            <div
+              className="lg:col-span-2 flex justify-center"
+              style={{ animation: "fade-in-right 0.7s cubic-bezier(0.16,1,0.3,1) 0.3s both" }}
+            >
               <div className="relative">
                 {/* Photo */}
                 <div className="profile-photo-ring">

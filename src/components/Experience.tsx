@@ -1,4 +1,4 @@
-import { BookOpen, Monitor, Target, Award, Briefcase, ExternalLink, Trophy } from "lucide-react";
+import { Award, ExternalLink, Trophy, BookOpen, Monitor, Target, Briefcase } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/useAnimations";
@@ -8,8 +8,8 @@ interface ExperienceItem {
   type: string;
   title: string;
   organization: string;
-  location?: string;
   period: string;
+  isActive?: boolean;
   highlights: string[];
   certificateUrl?: string;
   certificateLabel?: string;
@@ -21,7 +21,8 @@ const experiences: ExperienceItem[] = [
     type: "Internship",
     title: "Security Research Intern",
     organization: "NetraLink Solutions",
-    period: "Jul 2026 - Present",
+    period: "Jul 2026 — Present",
+    isActive: true,
     highlights: [
       "Owned Analytics, Audit, and Reporting for DeWall, a self-hosted DNS Firewall platform (Go microservices, PostgreSQL, ClickHouse, React/TypeScript), combining security research with hands-on testing and development.",
       "Conducted comprehensive security and functional testing on the analytics pipeline, finding and fixing production-blocking issues including silent data loss in event handling and a hidden mock-data flag that was masking a real CORS misconfiguration.",
@@ -34,7 +35,7 @@ const experiences: ExperienceItem[] = [
     type: "Internship",
     title: "SOC Analyst",
     organization: "Tech Hierarchy",
-    period: "Mar 2026 - Mar 2026",
+    period: "Mar 2026",
     highlights: [
       "Triaged 30+ daily security alerts in Wazuh and Splunk, correlating IOCs against MITRE ATT&CK TTPs to classify indicators of compromise and escalate confirmed incidents per established SOC runbooks.",
     ],
@@ -46,7 +47,7 @@ const experiences: ExperienceItem[] = [
     type: "Challenge Author",
     title: "NASCON 2026 Forensics Arena & RDX National CTF",
     organization: "FAST NUCES Islamabad",
-    period: "Jun 2025 - Aug 2026",
+    period: "Jun 2025 — Aug 2026",
     highlights: [
       "Authored a hard-category memory forensics challenge (MITRE T1003.001) requiring Volatility 3 analysis, and 6 additional challenges for RDX National CTF (100+ participants combined).",
     ],
@@ -56,10 +57,11 @@ const experiences: ExperienceItem[] = [
     type: "Technical Team & Head of Finance",
     title: "Cyber Space Legion (CSL)",
     organization: "FAST NUCES",
-    period: "Sep 2024 - Present",
+    period: "Sep 2024 — Present",
+    isActive: true,
     highlights: [
       "Technical Team Member: Help run cybersecurity workshops and CTFs that focus on threat detection, incident response, and forensics.",
-      "Head of Finance (2025 - Present): Manage the finance team, handle budgeting, and plan finances for our society's operations and major events.",
+      "Head of Finance (2025 – Present): Manage the finance team, handle budgeting, and plan finances for our society's operations and major events.",
     ],
   },
   {
@@ -67,7 +69,7 @@ const experiences: ExperienceItem[] = [
     type: "Business Development",
     title: "Business Development Executive",
     organization: "Intellema",
-    period: "May 2026 - August 2026",
+    period: "May 2026 — Aug 2026",
     highlights: [
       "Managed the full B2B sales cycle for enterprise AI solutions (RAG, LLM, Voice AI, computer vision) at an AI consultancy, from client research to technical proposal writing and system architecture diagram design.",
       "Managed the company's Upwork profile, which holds Top Rated Plus status with 100% Job Success.",
@@ -78,14 +80,14 @@ const experiences: ExperienceItem[] = [
 const achievements = [
   {
     icon: Trophy,
-    title: "3rd Place - SudoFuzzers CTF",
+    title: "3rd Place — SudoFuzzers CTF",
     detail: "Forensics & OSINT | 2025",
     description: "Ranked 3rd out of 50+ teams solving digital forensics and OSINT challenges under a 4-hour time constraint, placing in the top 6%.",
     certificateUrl: "/SudoFuzzers%20CTF%20certificate.pdf",
   },
   {
     icon: Trophy,
-    title: "7th Place - CyberFest 2025",
+    title: "7th Place — CyberFest 2025",
     detail: "National CTF | 2025",
     description: "Secured 7th place in a highly competitive national CTF with 100+ teams, finishing in the top 7% across forensics, OSINT, and network analysis.",
   },
@@ -105,30 +107,22 @@ const Experience = () => {
   return (
     <section id="experience" className="py-24 relative bg-secondary/30 overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-8" />
-      
-      {/* Ambient Log / Sequence Motif */}
+
+      {/* Ambient log stream motif */}
       <div className="absolute left-[2%] sm:left-[5%] top-32 bottom-32 w-[2px] bg-border/50 hidden sm:block z-0 pointer-events-none">
         <motion.div
           animate={{ y: ["0%", "1000%"] }}
           transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          className="absolute top-0 left-[-2px] w-[6px] h-48 bg-gradient-to-b from-transparent via-primary/80 to-transparent"
+          className="absolute top-0 left-[-2px] w-[6px] h-48 bg-gradient-to-b from-transparent via-primary/60 to-transparent"
         />
-        {/* Tick marks */}
-        <div className="absolute top-[10%] left-0 w-6 h-[2px] bg-primary/60" />
-        <div className="absolute top-[30%] left-0 w-6 h-[2px] bg-primary/60" />
-        <div className="absolute top-[50%] left-0 w-6 h-[2px] bg-primary/60" />
-        <div className="absolute top-[70%] left-0 w-6 h-[2px] bg-primary/60" />
-        <div className="absolute top-[90%] left-0 w-6 h-[2px] bg-primary/60" />
       </div>
 
       <div className="container mx-auto px-4 relative">
         <div className="max-w-5xl mx-auto">
-          {/* Section Header */}
+          {/* Header */}
           <div
             ref={headerRef}
-            className={`mb-12 transition-all duration-500 ${
-              headerRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-            }`}
+            className={`mb-12 transition-all duration-500 ${headerRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
           >
             <h2 className="section-title">Experience & Achievements</h2>
             <p className="section-subtitle mt-4">
@@ -136,101 +130,73 @@ const Experience = () => {
             </p>
           </div>
 
-          {/* Timeline - structured list, not alternating */}
-          <div
-            ref={timelineRef}
-            className="space-y-3"
-          >
+          {/* Timeline rail */}
+          <div ref={timelineRef} className="timeline-rail">
             {experiences.map((exp, index) => {
               const isCSL = exp.title === "Cyber Space Legion (CSL)";
               return (
                 <div
                   key={exp.title}
-                  className={`intel-card transition-all duration-500 ${
-                    timelineRevealed
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-6"
-                  }`}
-                  style={{ transitionDelay: `${index * 80}ms` }}
+                  className={`timeline-entry transition-all duration-500 ${timelineRevealed ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"}`}
+                  style={{ transitionDelay: `${index * 90}ms` }}
                 >
-                  {/* Header - structured like a report entry */}
-                  <div className="flex items-center justify-between mb-3 pb-3 border-b border-border/60">
-                    <div className="flex items-center gap-2.5">
-                      <div className="p-1.5 bg-primary/10 rounded-lg group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
-                        <exp.icon className="w-4 h-4 text-primary" />
-                      </div>
-                      <div>
-                        <span className="data-label">{exp.type}</span>
-                        <h3 className="text-sm font-semibold text-foreground">{exp.title}</h3>
-                      </div>
+                  {/* Node */}
+                  <span className={`timeline-node ${exp.isActive ? "timeline-node-active" : ""}`}>❯</span>
+
+                  {/* Timestamp */}
+                  <div className="timeline-timestamp">[{exp.period}]</div>
+
+                  {/* Header row */}
+                  <div className="flex items-start justify-between gap-3 mb-2">
+                    <div>
+                      <span className="data-label block">{exp.type}</span>
+                      <h3 className="text-sm font-semibold text-foreground leading-snug">{exp.title}</h3>
+                      <span className="text-[12px] text-muted-foreground/70">{exp.organization}</span>
                     </div>
-                    <div className="text-right shrink-0">
-                      <div className="font-mono text-[11px] text-muted-foreground tabular-nums">
-                        {exp.period}
-                      </div>
-                      <div className="text-[11px] text-muted-foreground/60">
-                        {exp.organization}
-                      </div>
-                    </div>
+                    {exp.certificateUrl && (
+                      <Button
+                        variant="ghost" size="sm"
+                        className="h-7 px-2 text-primary hover:text-primary hover:bg-primary/10 gap-1 text-xs shrink-0"
+                        asChild
+                      >
+                        <a href={exp.certificateUrl} target="_blank" rel="noopener noreferrer">
+                          {exp.certificateLabel ?? "Certificate"} <ExternalLink className="w-3 h-3" />
+                        </a>
+                      </Button>
+                    )}
                   </div>
 
-                  {/* Body */}
+                  {/* Highlights */}
                   <div className="space-y-1.5">
-                    {exp.highlights.map((item, i) => {
-                      // Special formatting for CSL Head of Finance bullet
+                    {exp.highlights.map((item) => {
                       const isFinanceBullet = isCSL && item.includes("Head of Finance");
-
                       return (
                         <div
                           key={item}
-                          className={`flex items-start gap-2 text-[13px] ${
-                            isFinanceBullet ? 'text-foreground' : 'text-muted-foreground'
-                          }`}
+                          className={`flex items-start gap-2 text-[13px] ${isFinanceBullet ? "text-foreground" : "text-muted-foreground"}`}
                         >
-                          <span className="font-mono text-primary/60 select-none mt-px">▸</span>
+                          <span className="font-mono text-primary/40 select-none mt-px text-xs shrink-0">▸</span>
                           <span className="leading-relaxed">
                             {isFinanceBullet ? (
                               <>
                                 <span className="font-semibold text-primary">Head of Finance (2025 – Present):</span>
-                                {" "}Directed a cross-functional finance team for flagship events including NASCON and internal competitions.
-                                Managed end-to-end sponsorship acquisition and partner relations, securing funding for society operations.
-                                Oversaw team duty allocation, budgeting workflows, and financial reporting to society leadership.
+                                {" "}Directed a cross-functional finance team for flagship events including NASCON and internal competitions. Managed end-to-end sponsorship acquisition and partner relations, securing funding for society operations. Oversaw team duty allocation, budgeting workflows, and financial reporting to society leadership.
                               </>
-                            ) : (
-                              item
-                            )}
+                            ) : item}
                           </span>
                         </div>
                       );
                     })}
                   </div>
-
-                  {exp.certificateUrl && (
-                    <div className="mt-3 pt-3 border-t border-border/40">
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="h-7 px-2 text-primary hover:text-primary hover:bg-primary/10 gap-1 text-xs transition-all duration-200 hover:scale-105"
-                        asChild
-                      >
-                        <a href={exp.certificateUrl} target="_blank" rel="noopener noreferrer">
-                          {exp.certificateLabel ?? "View Certificate"}
-                          <ExternalLink className="w-3 h-3" />
-                        </a>
-                      </Button>
-                    </div>
-                  )}
                 </div>
               );
             })}
           </div>
 
-          {/* Achievements */}
+          {/* Competition Achievements */}
           <div
             ref={achieveRef}
-            className={`mt-16 transition-all duration-500 ${
-              achieveRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-            }`}
+            className={`mt-16 transition-all duration-500 ${achieveRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
           >
             <h3 className="text-lg font-semibold mb-6 text-foreground">
               <span className="text-primary font-mono text-sm mr-2">▎</span>
@@ -249,17 +215,12 @@ const Experience = () => {
                       {a.title}
                     </h4>
                   </div>
-                  <p className="text-[11px] font-mono text-primary/70 mb-2">
-                    {a.detail}
-                  </p>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    {a.description}
-                  </p>
+                  <p className="text-[11px] font-mono text-primary/70 mb-2">{a.detail}</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{a.description}</p>
                   {a.certificateUrl && (
                     <Button
-                      variant="ghost"
-                      size="sm"
-                      className="mt-2 h-6 px-1.5 text-primary hover:bg-primary/10 gap-1 text-[11px] transition-all duration-200 hover:scale-105"
+                      variant="ghost" size="sm"
+                      className="mt-2 h-6 px-1.5 text-primary hover:bg-primary/10 gap-1 text-[11px]"
                       asChild
                     >
                       <a href={a.certificateUrl} target="_blank" rel="noopener noreferrer">

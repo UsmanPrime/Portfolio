@@ -1,245 +1,221 @@
-import { Award, Clock, CheckCircle, ExternalLink, FileText, Hash, Calendar } from "lucide-react";
-import { motion } from "framer-motion";
+import { CheckCircle, Clock, ExternalLink, FileText } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useAnimations";
 
 interface Certification {
   name: string;
   issuer: string;
-  status: "completed" | "in-progress" | "planned";
+  status: "completed" | "in-progress";
   date?: string;
   certificateId?: string;
   verifyUrl?: string;
   pdfPath?: string;
 }
 
-const certifications: Certification[] = [
+interface CertDomain {
+  domain: string;
+  certs: Certification[];
+}
+
+const certDomains: CertDomain[] = [
   {
-    name: "Advanced SQLite Queries with Belkasoft",
-    issuer: "Belkasoft",
-    status: "completed",
-    date: "2026-06-27",
-    certificateId: "zpnbi76ql4",
-    verifyUrl: "https://belkasoft.thinkific.com/certificates/zpnbi76ql4",
+    domain: "Digital Forensics",
+    certs: [
+      {
+        name: "Advanced Digital Forensics Techniques",
+        issuer: "Belkasoft",
+        status: "completed",
+        date: "2025-01-31",
+        certificateId: "ouj5wej8a5",
+        pdfPath: "/Advanced Digital Forensics Techniques.pdf",
+      },
+      {
+        name: "Windows Forensics",
+        issuer: "Belkasoft",
+        status: "completed",
+        date: "2025-02-15",
+        certificateId: "zj4polqhxb",
+        pdfPath: "/Windows Forensics.pdf",
+      },
+      {
+        name: "Advanced SQLite Queries",
+        issuer: "Belkasoft",
+        status: "completed",
+        date: "2026-06-27",
+        certificateId: "zpnbi76ql4",
+        verifyUrl: "https://belkasoft.thinkific.com/certificates/zpnbi76ql4",
+      },
+    ],
   },
   {
-    name: "FOUNDATIONS OF BUSINESS AND ENTREPRENEURSHIP",
-    issuer: "SkillFront",
-    status: "completed",
-    date: "2025-12-14",
-    certificateId: "67086019155943",
-    verifyUrl: "https://www.skillfront.com/Badges/67086019155943",
+    domain: "Security Operations",
+    certs: [
+      {
+        name: "Security Operations Center (SOC)",
+        issuer: "Cisco Networking Academy",
+        status: "completed",
+        date: "2025-07-14",
+        certificateId: "91E5K3WV26JN",
+        verifyUrl: "https://www.coursera.org/account/accomplishments/verify/91E5K3WV26JN",
+      },
+      {
+        name: "Certified Defensive Security Analyst (CDSA)",
+        issuer: "Hack The Box",
+        status: "in-progress",
+      },
+    ],
   },
   {
-    name: "Certified Defensive Security Analyst (CDSA)",
-    issuer: "Hack The Box",
-    status: "in-progress",
+    domain: "Network & Infrastructure",
+    certs: [
+      {
+        name: "Network Security",
+        issuer: "Cisco Networking Academy",
+        status: "completed",
+        date: "2025-10-04",
+        certificateId: "8DAHTAJ77LDD",
+        verifyUrl: "https://www.coursera.org/account/accomplishments/verify/8DAHTAJ77LDD",
+      },
+      {
+        name: "Computer Networks and Network Security",
+        issuer: "IBM",
+        status: "completed",
+        date: "2025-08-14",
+        certificateId: "99LSL4EZGGW8",
+        verifyUrl: "https://www.coursera.org/account/accomplishments/verify/99LSL4EZGGW8",
+      },
+    ],
   },
   {
-    name: "Security Operations Center (SOC)",
-    issuer: "Cisco Networking Academy",
-    status: "completed",
-    date: "2025-07-14",
-    certificateId: "91E5K3WV26JN",
-    verifyUrl: "https://www.coursera.org/account/accomplishments/verify/91E5K3WV26JN",
+    domain: "Standards & Compliance",
+    certs: [
+      {
+        name: "ISO/IEC 27001:2022 Information Security Associate",
+        issuer: "SkillFront",
+        status: "completed",
+        date: "2025-12-14",
+        certificateId: "86998107514629",
+        verifyUrl: "https://www.skillfront.com/Badges/86998107514629",
+      },
+    ],
   },
   {
-    name: "Network Security",
-    issuer: "Cisco Networking Academy",
-    status: "completed",
-    date: "2025-10-04",
-    certificateId: "8DAHTAJ77LDD",
-    verifyUrl: "https://www.coursera.org/account/accomplishments/verify/8DAHTAJ77LDD",
-  },
-  {
-    name: "ISO/IEC 27001:2022 Information Security Associate",
-    issuer: "SkillFront",
-    status: "completed",
-    date: "2025-12-14",
-    certificateId: "86998107514629",
-    verifyUrl: "https://www.skillfront.com/Badges/86998107514629",
-  },
-  {
-    name: "Computer Networks and Network Security",
-    issuer: "IBM",
-    status: "completed",
-    date: "2025-08-14",
-    certificateId: "99LSL4EZGGW8",
-    verifyUrl: "https://www.coursera.org/account/accomplishments/verify/99LSL4EZGGW8",
-  },
-  {
-    name: "Windows Forensics with Belkasoft",
-    issuer: "Belkasoft",
-    status: "completed",
-    date: "2025-02-15",
-    certificateId: "zj4polqhxb",
-    pdfPath: "/Windows Forensics.pdf",
-  },
-  {
-    name: "Advanced Digital Forensics Techniques",
-    issuer: "Belkasoft",
-    status: "completed",
-    date: "2025-01-31",
-    certificateId: "ouj5wej8a5",
-    pdfPath: "/Advanced Digital Forensics Techniques.pdf",
+    domain: "Professional Development",
+    certs: [
+      {
+        name: "Foundations of Business & Entrepreneurship",
+        issuer: "SkillFront",
+        status: "completed",
+        date: "2025-12-14",
+        certificateId: "67086019155943",
+        verifyUrl: "https://www.skillfront.com/Badges/67086019155943",
+      },
+    ],
   },
 ];
 
-const formatDate = (dateStr: string) => {
-  const date = new Date(dateStr);
-  return date.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
-};
+const fmtDate = (d: string) =>
+  new Date(d).toLocaleDateString("en-US", { year: "numeric", month: "short" });
 
 const Certifications = () => {
   const { ref: headerRef, isRevealed: headerRevealed } = useScrollReveal();
-  const { ref: gridRef, isRevealed: gridRevealed } = useScrollReveal({ threshold: 0.05 });
+  const { ref: tableRef, isRevealed: tableRevealed } = useScrollReveal({ threshold: 0.05 });
 
   return (
     <section id="certifications" className="py-24 relative overflow-hidden">
-      
-      {/* Ambient Verification Motif */}
-      <div className="absolute top-[40%] right-[0%] sm:right-[5%] w-64 sm:w-96 h-64 sm:h-96 hidden sm:block z-0 opacity-50 pointer-events-none">
-        <motion.svg 
-          viewBox="0 0 100 100" 
-          className="w-full h-full stroke-primary" 
-          fill="none" 
-          strokeWidth="2"
-          animate={{ scale: [1, 1.05, 1], rotate: [0, 5, 0] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        >
-          {/* Hexagon badge */}
-          <polygon points="50,10 85,30 85,70 50,90 15,70 15,30" className="stroke-primary/50" />
-          <polygon points="50,15 80,32 80,68 50,85 20,68 20,32" className="stroke-primary/30" />
-          
-          {/* Checkmark inside */}
-          <motion.path 
-            d="M 35,50 L 45,60 L 65,40"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", repeatDelay: 1 }}
-          />
-        </motion.svg>
-      </div>
-
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div
             ref={headerRef}
-            className={`mb-14 transition-all duration-600 ${
-              headerRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-            }`}
+            className={`mb-14 transition-all duration-600 ${headerRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
           >
             <h2 className="section-title">Certifications</h2>
             <p className="section-subtitle mt-4">
-              Industry certifications and continuous learning path across defensive security and forensics
+              Industry certifications and continuous learning across defensive security, forensics, and networking
             </p>
           </div>
 
-          {/* Grid */}
+          {/* Credential ledger */}
           <div
-            ref={gridRef}
-            className={`grid sm:grid-cols-2 lg:grid-cols-3 gap-3 stagger-children ${gridRevealed ? "revealed" : ""}`}
+            ref={tableRef}
+            className={`intel-card transition-all duration-600 ${tableRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
           >
-            {certifications.map((cert) => {
-              const isInProgress = cert.status === "in-progress";
-              const linkUrl = cert.verifyUrl || cert.pdfPath;
-              const isPdf = !!cert.pdfPath;
+            {/* Table column headers */}
+            <div className="hidden sm:grid grid-cols-[1fr_auto_auto_auto] gap-4 px-2 pb-3 border-b border-border/50 mb-2">
+              <span className="data-label">Credential</span>
+              <span className="data-label text-right">Issuer</span>
+              <span className="data-label text-right">Date</span>
+              <span className="data-label text-right">Verify</span>
+            </div>
 
-              return (
-                <div
-                  key={cert.name}
-                  className={`intel-card group ${isInProgress ? 'animate-border-glow' : ''}`}
-                >
-                  {/* Status Badge */}
-                  <div className="flex items-center justify-between mb-3">
-                    <Award className="w-4 h-4 text-primary" />
-                    <div className={`flex items-center gap-1 text-[10px] font-mono ${
-                      isInProgress ? 'text-primary' : 'text-accent'
-                    }`}>
-                      {isInProgress ? (
-                        <><Clock className="w-2.5 h-2.5" /> IN PROGRESS</>
-                      ) : (
-                        <><CheckCircle className="w-2.5 h-2.5" /> COMPLETED</>
-                      )}
-                    </div>
-                  </div>
+            {certDomains.map((group) => (
+              <div key={group.domain}>
+                <div className="cert-domain-header">{group.domain}</div>
+                {group.certs.map((cert) => {
+                  const linkUrl = cert.verifyUrl || cert.pdfPath;
+                  const isPdf = !!cert.pdfPath;
+                  const isInProgress = cert.status === "in-progress";
 
-                  {/* Title */}
-                  <h3 className="text-sm font-semibold mb-1 leading-tight group-hover:text-primary transition-colors duration-200">
-                    {cert.name}
-                  </h3>
-                  <p className="text-xs text-muted-foreground">{cert.issuer}</p>
-
-                  {/* Certificate Details */}
-                  {cert.certificateId && (
-                    <div className="mt-3 pt-3 border-t border-border/50 space-y-1.5">
-                      {/* Certificate ID */}
-                      <div className="flex items-center gap-1.5">
-                        <Hash className="w-3 h-3 text-muted-foreground/60 flex-shrink-0" />
-                        <span className="text-[10px] font-mono text-muted-foreground/70 truncate" title={cert.certificateId}>
-                          {cert.certificateId}
-                        </span>
+                  return (
+                    <div key={cert.name} className="cert-row">
+                      {/* Status pill */}
+                      <div className="shrink-0 mt-0.5">
+                        {isInProgress ? (
+                          <span className="inline-flex items-center gap-1 text-[9px] font-mono px-1.5 py-0.5 rounded border border-amber-500/30 bg-amber-500/10 text-amber-400 whitespace-nowrap">
+                            <Clock className="w-2.5 h-2.5" />
+                            PENDING
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center gap-1 text-[9px] font-mono px-1.5 py-0.5 rounded border border-emerald-500/30 bg-emerald-500/10 whitespace-nowrap" style={{ color: "hsl(152 68% 46%)" }}>
+                            <CheckCircle className="w-2.5 h-2.5" />
+                            VERIFIED
+                          </span>
+                        )}
                       </div>
 
-                      {/* Completion Date */}
-                      {cert.date && (
-                        <div className="flex items-center gap-1.5">
-                          <Calendar className="w-3 h-3 text-muted-foreground/60 flex-shrink-0" />
-                          <span className="text-[10px] font-mono text-muted-foreground/70">
-                            {formatDate(cert.date)}
-                          </span>
-                        </div>
-                      )}
+                      {/* Name + issuer */}
+                      <div className="flex-1 min-w-0">
+                        <p className="text-[13px] font-medium text-foreground leading-snug">{cert.name}</p>
+                        <p className="text-[11px] text-muted-foreground/60 sm:hidden">{cert.issuer}{cert.date && ` · ${fmtDate(cert.date)}`}</p>
+                      </div>
 
-                      {/* Verify / View Link */}
-                      {linkUrl && (
-                        <a
-                          href={linkUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 mt-1 text-[10px] font-mono text-primary/70 hover:text-primary transition-colors duration-200"
-                        >
-                          {isPdf ? (
-                            <>
-                              <FileText className="w-3 h-3" />
-                              <span>View Certificate</span>
-                            </>
-                          ) : (
-                            <>
-                              <ExternalLink className="w-3 h-3" />
-                              <span>Verify Credential</span>
-                            </>
-                          )}
-                        </a>
-                      )}
+                      {/* Issuer */}
+                      <span className="hidden sm:block text-[11px] font-mono text-muted-foreground/60 text-right shrink-0 whitespace-nowrap">{cert.issuer}</span>
+
+                      {/* Date */}
+                      <span className="hidden sm:block text-[11px] font-mono text-muted-foreground/50 text-right shrink-0 whitespace-nowrap w-20">
+                        {isInProgress ? (
+                          <span className="text-amber-400/60">in progress</span>
+                        ) : cert.date ? fmtDate(cert.date) : "—"}
+                      </span>
+
+                      {/* Link */}
+                      <div className="shrink-0">
+                        {linkUrl ? (
+                          <a
+                            href={linkUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-0.5 text-[11px] font-mono text-primary/60 hover:text-primary transition-colors duration-200"
+                          >
+                            {isPdf ? <FileText className="w-3 h-3" /> : <ExternalLink className="w-3 h-3" />}
+                          </a>
+                        ) : (
+                          <span className="w-4 inline-block" />
+                        )}
+                      </div>
                     </div>
-                  )}
-
-                  {/* Fallback date for in-progress certs */}
-                  {!cert.certificateId && cert.date && (
-                    <p className="text-[11px] font-mono text-muted-foreground/50 mt-1.5">{cert.date}</p>
-                  )}
-                </div>
-              );
-            })}
+                  );
+                })}
+              </div>
+            ))}
           </div>
 
-          {/* Note */}
-          <div className="mt-10 intel-card">
-            <div className="flex items-center gap-2 text-sm">
-              <Award className="w-4 h-4 text-primary" />
-              <span className="font-semibold text-foreground">Continuous Learning</span>
-            </div>
-            <p className="text-xs text-muted-foreground mt-2 leading-relaxed max-w-lg">
-              Committed to ongoing professional development through industry
-              certifications, hands-on labs, CTF competitions, and staying
-              current with evolving security threats and best practices.
-            </p>
-          </div>
+          {/* Footer */}
+          <p className="mt-6 text-xs font-mono text-muted-foreground/40 flex items-center gap-2">
+            <span className="text-primary/40">❯</span>
+            Continuous learning through hands-on labs, HTB, and CTF competitions
+          </p>
         </div>
       </div>
     </section>
