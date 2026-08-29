@@ -1,4 +1,4 @@
-import { ShieldCheck, Search, Activity, Lock, Code, ArrowRight, Database, Building2, BadgeCheck, Clock } from "lucide-react";
+import { ShieldCheck, Search, Activity, Lock, Code, ArrowRight, Database, Building2, BadgeCheck, Clock, Terminal } from "lucide-react";
 import { motion } from "framer-motion";
 import usmanPhoto from "@/assets/usman.jpg";
 import { useScrollReveal, useCountUp } from "@/hooks/useAnimations";
@@ -12,66 +12,32 @@ const About = () => {
 
   const focusAreas = [
     {
-      icon: ShieldCheck,
       title: "SOC Operations",
-      description:
-        "Triaged 30+ daily alerts in Wazuh and Splunk, correlating events against MITRE ATT&CK TTPs to classify IOCs and escalate incidents.",
+      description: "Triaged 30+ daily alerts in Wazuh and Splunk, correlating events against MITRE ATT&CK TTPs to classify IOCs and escalate incidents.",
     },
     {
-      icon: Search,
       title: "Digital Forensics",
-      description:
-        "Analyzed memory, endpoint telemetry, and network artifacts using Volatility 3, Autopsy, and Belkasoft to identify compromise indicators.",
+      description: "Analyzed memory, endpoint telemetry, and network artifacts using Volatility 3, Autopsy, and Belkasoft to identify compromise indicators.",
     },
     {
-      icon: Code,
       title: "Full-Stack Development",
-      description:
-        "Building production MERN applications with secure authentication (JWT, TOTP, reCAPTCHA), RBAC, and hardened APIs with Helmet.js and CSRF protection.",
+      description: "Building production MERN applications with secure authentication (JWT, TOTP, reCAPTCHA), RBAC, and hardened APIs with Helmet.js and CSRF protection.",
     },
     {
-      icon: Activity,
       title: "Systems Programming",
-      description:
-        "Engineering low-level systems in x86 Assembly and C++ with custom data structures, Win32 API integration, and SFML-based game physics.",
+      description: "Engineering low-level systems in x86 Assembly and C++ with custom data structures, Win32 API integration, and SFML-based game physics.",
     },
     {
-      icon: Lock,
       title: "AI Solution Support",
-      description:
-        "Supporting AI opportunity discovery and proposal preparation across RAG, LLMs, Deep Learning, Generative AI, Voice AI, and Agentic AI.",
+      description: "Supporting AI opportunity discovery and proposal preparation across RAG, LLMs, Deep Learning, Generative AI, Voice AI, and Agentic AI.",
     },
   ];
 
   return (
     <section id="about" className="py-24 relative overflow-hidden">
-      
-      {/* Ambient Data / Terminal Motif */}
-      <div className="absolute top-[10%] right-[-5%] sm:right-[5%] w-64 sm:w-96 h-64 sm:h-96 z-0 opacity-50 pointer-events-none">
-        <motion.div 
-          animate={{ y: [0, 30, 0], rotate: [0, 2, 0] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="w-full h-full border border-primary/30 rounded-lg p-6 relative backdrop-blur-sm bg-background/20"
-        >
-          <div className="flex gap-2 mb-6">
-            <div className="w-3 h-3 rounded-full bg-destructive/60" />
-            <div className="w-3 h-3 rounded-full bg-accent/60" />
-            <div className="w-3 h-3 rounded-full bg-primary/60" />
-          </div>
-          <div className="w-1/2 h-2 bg-primary/40 mb-4 rounded" />
-          <div className="w-3/4 h-2 bg-primary/20 mb-4 rounded" />
-          <div className="w-1/3 h-2 bg-primary/20 rounded" />
-          
-          <motion.div 
-            animate={{ opacity: [1, 0, 1] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="absolute bottom-6 right-6 w-4 h-4 bg-primary"
-          />
-        </motion.div>
-      </div>
-
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
+          
           {/* Header */}
           <div
             ref={sectionRef}
@@ -86,9 +52,12 @@ const About = () => {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-5 gap-10 items-start">
-            {/* Left - Photo + Stats + Bio */}
-            <div className="lg:col-span-2 space-y-5">
+          {/* Top Section: 2 Column Split */}
+          <div className="grid lg:grid-cols-2 gap-10 items-start mb-16">
+            
+            {/* Left - Photo + Bio */}
+            <div className="space-y-6">
+              
               {/* Photo Card */}
               <div
                 className={`intel-card p-6 transition-all duration-600 ${
@@ -124,140 +93,128 @@ const About = () => {
                 </div>
               </div>
 
-
-
-              {/* Bio */}
+              {/* Bio Narrative (No Card) */}
               <div
-                className={`intel-card transition-all duration-600 ${
+                className={`transition-all duration-600 ${
                   sectionRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                 }`}
                 style={{ transitionDelay: '200ms' }}
               >
-                <p className="text-[13px] text-muted-foreground leading-relaxed mb-3">
+                <p className="text-[14px] text-muted-foreground leading-relaxed mb-4">
                   I'm currently pursuing my BS in Cyber Security at FAST NUCES Islamabad. I specialize in application security, SOC operations, and digital forensics. Most recently, I've been heavily focused on hardening production platforms, like a POS Inventory System, against SQL injection, XSS, and privilege escalation using layered RBAC and strict input validation.
                 </p>
-                <p className="text-[13px] text-muted-foreground leading-relaxed mb-3">
-                  My hands-on experience includes working as a Security Research Intern at NetraLink Solutions, where I led the analytics and security testing for an enterprise DNS firewall, actively finding and patching authentication gaps and CORS misconfigurations. Before that, as a SOC Analyst Intern at Tech Hierarchy, I spent my days triaging security alerts in Splunk and Wazuh, mapping IOCs back to the MITRE ATT&CK framework to weed out false positives.
+                <p className="text-[14px] text-muted-foreground leading-relaxed mb-4">
+                  My hands-on experience includes working as a <span className="text-foreground font-medium">Security Research Intern at NetraLink Solutions</span>, where I led the analytics and security testing for an enterprise DNS firewall, actively finding and patching authentication gaps and CORS misconfigurations. Before that, as a <span className="text-foreground font-medium">SOC Analyst Intern at Tech Hierarchy</span>, I spent my days triaging security alerts in Splunk and Wazuh, mapping IOCs back to the MITRE ATT&CK framework to weed out false positives.
                 </p>
-                <p className="text-[13px] text-muted-foreground leading-relaxed">
+                <p className="text-[14px] text-muted-foreground leading-relaxed">
                   I am also deeply involved in the security community — designing hard-level memory forensics challenges for national CTFs and bringing experience driving B2B sales cycles for enterprise AI solutions at Intellema. I focus on the intersection of detection engineering and secure software development, building the tools SOC teams rely on while staying sharp on the analyst side.
                 </p>
               </div>
+            </div>
 
-              {/* Featured Work */}
-              <div
-                className={`intel-card transition-all duration-600 ${
+            {/* Right - System Status + Stats + Certs */}
+            <div className="space-y-6">
+              
+              {/* System Status Panel */}
+              <div 
+                className={`terminal-panel transition-all duration-600 ${
                   sectionRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                 }`}
-                style={{ transitionDelay: '300ms' }}
+                style={{ transitionDelay: '150ms' }}
               >
-                <div className="flex items-center gap-2 mb-3 pb-2.5 border-b border-border/60">
-                  <span className="data-label">Featured Work</span>
-                </div>
-                <div className="space-y-2">
-                  {/* PIMS */}
-                  <div className="group flex items-start justify-between gap-3 p-2.5 rounded-lg border border-border/40 hover:border-primary/30 hover:bg-primary/5 transition-all duration-200">
-                    <div className="flex items-start gap-2.5 min-w-0">
-                      <div className="p-1.5 bg-primary/10 rounded-md shrink-0 mt-0.5">
-                        <Database className="w-3 h-3 text-primary" />
-                      </div>
-                      <div className="min-w-0">
-                        <p className="text-[12px] font-semibold text-foreground group-hover:text-primary transition-colors duration-200 truncate">PIMS — POS Inventory System</p>
-                        <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">Full-stack POS with RBAC, PostgreSQL RLS, and hardened session security</p>
-                      </div>
-                    </div>
-                    <button
-                      onClick={() => document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })}
-                      className="shrink-0 flex items-center gap-0.5 text-[11px] font-mono text-primary/70 hover:text-primary transition-colors duration-150 mt-0.5 whitespace-nowrap"
-                    >
-                      View <ArrowRight className="w-3 h-3" />
-                    </button>
+                <div className="terminal-header">
+                  <div className="flex gap-2">
+                    <div className="w-2.5 h-2.5 rounded-full bg-destructive/80" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
                   </div>
-                  {/* NextGen Residency */}
-                  <div className="group flex items-start justify-between gap-3 p-2.5 rounded-lg border border-border/40 hover:border-primary/30 hover:bg-primary/5 transition-all duration-200">
-                    <div className="flex items-start gap-2.5 min-w-0">
-                      <div className="p-1.5 bg-primary/10 rounded-md shrink-0 mt-0.5">
-                        <Building2 className="w-3 h-3 text-primary" />
-                      </div>
-                      <div className="min-w-0">
-                        <p className="text-[12px] font-semibold text-foreground group-hover:text-primary transition-colors duration-200 truncate">NextGen Residency — Smart Housing</p>
-                        <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">Triple-portal MERN app with RBAC, JWT refresh tokens, and TOTP 2FA</p>
-                      </div>
-                    </div>
-                    <button
-                      onClick={() => document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })}
-                      className="shrink-0 flex items-center gap-0.5 text-[11px] font-mono text-primary/70 hover:text-primary transition-colors duration-150 mt-0.5 whitespace-nowrap"
-                    >
-                      View <ArrowRight className="w-3 h-3" />
-                    </button>
+                  <span className="text-[11px] text-muted-foreground ml-auto font-mono flex items-center gap-1.5">
+                    <Terminal className="w-3 h-3" /> system_status.sh
+                  </span>
+                </div>
+                <div className="p-5 font-mono text-[12px] space-y-3 bg-card/50">
+                  <div className="flex items-start gap-4">
+                    <span className="text-emerald-400 w-20 shrink-0">[UPTIME]</span>
+                    <span className="text-muted-foreground">99.9% Operational</span>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <span className="text-primary w-20 shrink-0">[FOCUS]</span>
+                    <span className="text-muted-foreground">Application Security & DefSec</span>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <span className="text-cyan-400 w-20 shrink-0">[ROLE]</span>
+                    <span className="text-muted-foreground">Detection Engineering</span>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <span className="text-amber-400 w-20 shrink-0">[LATEST]</span>
+                    <span className="text-muted-foreground">CDSA Certification (In Progress)</span>
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* Right - Focus Areas */}
-            <div className="lg:col-span-3 space-y-3">
-              {/* Stats */}
+              {/* Stats Grid */}
               <div
                 ref={statsRef}
-                className={`grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6 transition-all duration-600 ${
+                className={`grid grid-cols-3 gap-3 transition-all duration-600 ${
                   statsRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
                 }`}
+                style={{ transitionDelay: '250ms' }}
               >
-                <div className="intel-card text-center py-4 group" ref={alertRef}>
+                <div className="intel-card text-center py-5 group" ref={alertRef}>
                   <div className="stat-number text-2xl group-hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.4)] transition-all duration-300">{alertCount}+</div>
                   <div className="data-label mt-1">Alerts/Day</div>
                 </div>
-                <div className="intel-card text-center py-4 group" ref={projectRef}>
+                <div className="intel-card text-center py-5 group" ref={projectRef}>
                   <div className="stat-number text-2xl group-hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.4)] transition-all duration-300">{projectCount}</div>
                   <div className="data-label mt-1">Projects</div>
                 </div>
-                <div className="intel-card text-center py-4 group" ref={attackRef}>
+                <div className="intel-card text-center py-5 group" ref={attackRef}>
                   <div className="stat-number text-2xl group-hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.4)] transition-all duration-300">{attackScenarios}+</div>
                   <div className="data-label mt-1">Lab Scenarios</div>
                 </div>
               </div>
 
-              {/* Cert badges */}
-              <div className={`flex flex-wrap gap-1.5 transition-all duration-600 ${
+              {/* Cert Badges */}
+              <div className={`flex flex-wrap gap-2 transition-all duration-600 ${
                 statsRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-              }`}>
-                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-md border border-primary/20 bg-primary/5 text-[10px] font-mono text-primary/80">
-                  <BadgeCheck className="w-3 h-3" />
+              }`} style={{ transitionDelay: '350ms' }}>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-emerald-500/20 bg-emerald-500/5 text-[11px] font-mono text-emerald-500/90">
+                  <BadgeCheck className="w-3.5 h-3.5" />
                   ISO/IEC 27001:2022
                 </span>
-                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-md border border-accent/20 bg-accent/5 text-[10px] font-mono text-accent/80">
-                  <Clock className="w-3 h-3" />
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-amber-500/20 bg-amber-500/5 text-[11px] font-mono text-amber-500/90">
+                  <Clock className="w-3.5 h-3.5" />
                   CDSA — In Progress
                 </span>
               </div>
 
-              <div className="data-label mb-4">Core Competencies</div>
+            </div>
+          </div>
+
+          {/* Bottom Section: Core Competencies (Full Width Editorial) */}
+          <div 
+            className={`transition-all duration-700 ${
+              sectionRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+            }`}
+            style={{ transitionDelay: '300ms' }}
+          >
+            <h3 className="text-lg font-semibold mb-6 text-foreground flex items-center">
+              <span className="text-primary font-mono text-sm mr-3">▎</span>
+              Core Competencies
+            </h3>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-8">
               {focusAreas.map((area, index) => (
-                <div
-                  key={area.title}
-                  className={`intel-card group transition-all duration-500 ${
-                    sectionRevealed ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
-                  }`}
-                  style={{ transitionDelay: `${index * 80 + 150}ms` }}
-                >
-                  <div className="flex items-start gap-3.5">
-                    <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300 shrink-0">
-                      <area.icon className="w-4 h-4 text-primary" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-semibold mb-1.5 group-hover:text-primary transition-colors duration-200">
-                        {area.title}
-                      </h4>
-                      <p className="text-xs text-muted-foreground leading-relaxed">
-                        {area.description}
-                      </p>
-                    </div>
-                  </div>
+                <div key={area.title}>
+                  <div className="skill-group-header !mb-3">// {area.title}</div>
+                  <p className="text-[13px] text-muted-foreground leading-relaxed">
+                    {area.description}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
+
         </div>
       </div>
     </section>

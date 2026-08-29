@@ -129,7 +129,7 @@ const Contact = () => {
             }`}
           >
             {/* Form */}
-            <div className="intel-card">
+            <div className="p-7 rounded-2xl bg-card/20 border border-border/40 shadow-[0_0_40px_-15px_hsl(var(--primary)/0.03)] backdrop-blur-md">
               <div className="flex items-center gap-2.5 mb-5 pb-3 border-b border-border/60">
                 <div className="p-1.5 bg-primary/10 rounded-lg">
                   <Send className="w-4 h-4 text-primary" />
@@ -191,7 +191,7 @@ const Contact = () => {
 
             {/* Info */}
             <div className="space-y-4">
-              <div className="intel-card">
+              <div className="p-7 rounded-2xl bg-card/20 border border-border/40 shadow-[0_0_40px_-15px_hsl(var(--primary)/0.03)] backdrop-blur-md">
                 <div className="flex items-center gap-2.5 mb-4 pb-3 border-b border-border/60">
                   <div className="p-1.5 bg-primary/10 rounded-lg">
                     <Shield className="w-4 h-4 text-primary" />

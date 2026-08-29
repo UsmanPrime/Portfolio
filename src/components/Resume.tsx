@@ -1,4 +1,4 @@
-import { FileText, Download, Shield, Monitor, Wrench, GraduationCap, Award, Code } from "lucide-react";
+import { FileText, Download, GraduationCap } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/useAnimations";
@@ -6,72 +6,6 @@ import { useScrollReveal } from "@/hooks/useAnimations";
 const Resume = () => {
   const { ref: headerRef, isRevealed: headerRevealed } = useScrollReveal();
   const { ref: contentRef, isRevealed: contentRevealed } = useScrollReveal();
-
-  const competencies = [
-    {
-      icon: GraduationCap,
-      title: "Education",
-      items: [
-        "BS Cyber Security",
-        "FAST NUCES Islamabad",
-        "Aug 2024 – Jun 2028",
-        "Coursework: Software Engineering, Cybersecurity-I, Computer Networks",
-      ],
-    },
-    {
-      icon: Monitor,
-      title: "Experience",
-      items: [
-        "Security Research Intern - NetraLink Solutions | Jul 2026",
-        "Business Development Executive - Intellema | May – Aug 2026",
-        "SOC Analyst Intern - Tech Hierarchy | Mar 2026",
-        "Challenge Author - NASCON 2026 & RDX National CTF",
-      ],
-    },
-    {
-      icon: Award,
-      title: "Achievements",
-      items: [
-        "3rd Place - SudoFuzzers CTF (Forensics & OSINT)",
-        "7th Place - CyberFest 2025 (National CTF)",
-        "Star of CyberFest '25 - Individual Recognition Award",
-      ],
-    },
-    {
-      icon: Shield,
-      title: "Application Security & SOC",
-      items: [
-        "AppSec: RBAC, RLS, Zod, JWT Hardening, CSP/HSTS, Rate Limiting",
-        "SOC: Alert Triage, Incident Response, DFIR, Threat Hunting, IOCs",
-        "SIEM/Forensics: Splunk, Wazuh, ELK, Volatility 3, Autopsy, Belkasoft",
-        "Standards: MITRE ATT&CK, ISO/IEC 27001, NIST CSF",
-      ],
-    },
-    {
-      icon: Code,
-      title: "Programming Languages",
-      items: [
-        "Python, C++, x86 Assembly (MASM32)",
-        "JavaScript, TypeScript, Bash",
-      ],
-    },
-    {
-      icon: Wrench,
-      title: "Web & Full-Stack",
-      items: [
-        "React 18, Node.js, Express.js, MongoDB",
-        "REST APIs, JWT Auth, Tailwind CSS, Vercel",
-      ],
-    },
-    {
-      icon: Code,
-      title: "Networking & Tools",
-      items: [
-        "Network: TCP/IP, OSPF, EIGRP, RIPv2, NAT, Extended ACLs",
-        "Tools: Docker, Linux, Git, SFML, CMake, Cisco Packet Tracer",
-      ],
-    },
-  ];
 
   return (
     <section id="resume" className="py-24 relative bg-secondary/30 overflow-hidden">
@@ -109,76 +43,92 @@ const Resume = () => {
           >
             <h2 className="section-title">Resume</h2>
             <p className="section-subtitle mt-4">
-              Download my full resume or review key competencies across cybersecurity, AI support, and development
+              Download my full professional resume for a complete academic and career history
             </p>
           </div>
 
-          {/* Download Card */}
+          {/* Download Card (Updated to match Contact form style instead of intel-card) */}
           <div
             ref={contentRef}
-            className={`intel-card mb-8 flex flex-col sm:flex-row items-center justify-between gap-4 transition-all duration-500 ${
+            className={`p-7 rounded-xl bg-card/30 border border-primary/10 shadow-[0_0_40px_-15px_hsl(var(--primary)/0.05)] backdrop-blur-md mb-12 flex flex-col sm:flex-row items-center justify-between gap-4 transition-all duration-500 ${
               contentRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-primary/10 rounded-lg">
-                <FileText className="w-5 h-5 text-primary" />
+            <div className="flex items-center gap-4">
+              <div className="p-3 bg-primary/10 rounded-xl">
+                <FileText className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <h3 className="text-sm font-semibold">Full Resume</h3>
-                <p className="text-xs text-muted-foreground">
-                  SOC Analyst | Cybersecurity Professional - Complete background
+                <h3 className="text-base font-semibold text-foreground">Full Resume</h3>
+                <p className="text-[13px] text-muted-foreground mt-0.5">
+                  SOC Analyst | Cybersecurity Professional
                 </p>
               </div>
             </div>
             <div className="flex gap-2">
               <Button
                 size="sm"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground gap-1.5 magnetic-btn rounded-lg text-xs"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground gap-1.5 magnetic-btn rounded-lg text-sm px-4 h-10"
                 asChild
               >
                 <a href="/Usman_Ibrahim.pdf" download>
-                  <Download className="w-3.5 h-3.5" />
+                  <Download className="w-4 h-4" />
                   Download PDF
                 </a>
               </Button>
               <Button
                 size="sm"
                 variant="outline"
-                className="gap-1.5 rounded-lg text-xs border-border hover:border-primary/40 hover:bg-primary/5 transition-all duration-200"
+                className="gap-1.5 rounded-lg text-sm px-4 h-10 border-border hover:border-primary/40 hover:bg-primary/5 transition-all duration-200"
                 asChild
               >
                 <a href="/Usman_Ibrahim.pdf" target="_blank" rel="noopener noreferrer">
-                  <FileText className="w-3.5 h-3.5" />
+                  <FileText className="w-4 h-4" />
                   View Online
                 </a>
               </Button>
             </div>
           </div>
 
-          {/* Competencies */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            {competencies.map((comp) => (
-              <div key={comp.title} className="intel-card group">
-                <div className="flex items-center gap-2.5 mb-3 pb-2.5 border-b border-border/60">
-                  <div className="p-1.5 bg-primary/10 rounded-lg group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
-                    <comp.icon className="w-3.5 h-3.5 text-primary" />
-                  </div>
-                  <h4 className="text-sm font-semibold group-hover:text-primary transition-colors duration-200">
-                    {comp.title}
-                  </h4>
+          {/* Minimalist Academic & Key Timeline Summary */}
+          <div 
+            className={`max-w-2xl transition-all duration-700 ${
+              contentRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+            style={{ transitionDelay: '150ms' }}
+          >
+            <div className="flex items-center gap-4 mb-8 opacity-60">
+              <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest flex items-center gap-2">
+                <GraduationCap className="w-3.5 h-3.5" /> Academic & Professional Timeline
+              </span>
+              <div className="flex-1 h-px bg-border" />
+            </div>
+            
+            <div className="space-y-6">
+              <div className="flex items-start gap-4">
+                <span className="font-mono text-[12px] text-muted-foreground w-28 shrink-0 pt-0.5">2024 — 2028</span>
+                <div>
+                  <h4 className="text-sm font-semibold text-foreground">BS Cyber Security</h4>
+                  <p className="text-[13px] text-muted-foreground mt-1">FAST NUCES Islamabad</p>
                 </div>
-                <ul className="space-y-1.5">
-                  {comp.items.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-xs text-muted-foreground">
-                      <span className="font-mono text-primary/50 select-none mt-px">▸</span>
-                      <span className="leading-relaxed">{item}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
-            ))}
+              <div className="flex items-start gap-4">
+                <span className="font-mono text-[12px] text-muted-foreground w-28 shrink-0 pt-0.5">Jul 2026 — Pres</span>
+                <div>
+                  <h4 className="text-sm font-semibold text-foreground">Security Research Intern</h4>
+                  <p className="text-[13px] text-muted-foreground mt-1">NetraLink Solutions</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <span className="font-mono text-[12px] text-muted-foreground w-28 shrink-0 pt-0.5">Mar 2026</span>
+                <div>
+                  <h4 className="text-sm font-semibold text-foreground">SOC Analyst Intern</h4>
+                  <p className="text-[13px] text-muted-foreground mt-1">Tech Hierarchy</p>
+                </div>
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
     </section>
