@@ -200,8 +200,7 @@ const Contact = () => {
                 </div>
 
                 <p className="text-xs text-muted-foreground mb-4 leading-relaxed">
-                  Seeking internship opportunities in cybersecurity and software engineering.
-                  Open to SOC Analyst roles, DFIR positions, AI opportunities, and collaboration.
+                  Open to conversations about SOC operations, DFIR, secure development, or security research collaboration.
                   I aim to respond within 24-48 hours.
                 </p>
 
@@ -248,7 +247,7 @@ const Contact = () => {
                   </div>
                   <div className="flex gap-2 text-muted-foreground">
                     <span className="text-accent select-none">[STATUS]</span>
-                    <span>Open to internship opportunities</span>
+                    <span>Security practitioner · Blue Team focus</span>
                   </div>
                 </div>
               </div>

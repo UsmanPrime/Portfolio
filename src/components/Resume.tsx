@@ -22,10 +22,10 @@ const Resume = () => {
       icon: Monitor,
       title: "Experience",
       items: [
-        "Business Development Intern - Intellema | May 2026 – Present",
+        "Security Research Intern - NetraLink Solutions | Jul 2026",
+        "Business Development Executive - Intellema | May – Aug 2026",
         "SOC Analyst Intern - Tech Hierarchy | Mar 2026",
-        "Challenge Author - NASCON 2026 Forensics Arena",
-        "Organizer & Author - RDX National CTF",
+        "Challenge Author - NASCON 2026 & RDX National CTF",
       ],
     },
     {

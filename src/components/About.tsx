@@ -111,10 +111,10 @@ const About = () => {
                   <p className="text-xs text-muted-foreground/60 mb-3">FAST NUCES Islamabad '28</p>
                   <div className="flex items-center gap-1.5">
                     <span className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-60" />
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-60" />
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
                     </span>
-                    <span className="text-[11px] font-mono text-accent">Available for Internship</span>
+                    <span className="text-[11px] font-mono text-primary">Blue Team · Detection Engineering</span>
                   </div>
                 </div>
               </div>
@@ -135,7 +135,7 @@ const About = () => {
                   My hands-on experience includes working as a Security Research Intern at NetraLink Solutions, where I led the analytics and security testing for an enterprise DNS firewall, actively finding and patching authentication gaps and CORS misconfigurations. Before that, as a SOC Analyst Intern at Tech Hierarchy, I spent my days triaging security alerts in Splunk and Wazuh, mapping IOCs back to the MITRE ATT&CK framework to weed out false positives.
                 </p>
                 <p className="text-[13px] text-muted-foreground leading-relaxed">
-                  I am also deeply involved in the security community. I design hard-level memory forensics challenges for national CTFs, and I bring practical business development experience from Intellema, where I manage B2B sales cycles for enterprise AI solutions. Right now, I am actively seeking a SOC Analyst, AppSec, or Defensive Security Internship where I can put these skills to work.
+                  I am also deeply involved in the security community — designing hard-level memory forensics challenges for national CTFs and bringing experience driving B2B sales cycles for enterprise AI solutions at Intellema. I focus on the intersection of detection engineering and secure software development, building the tools SOC teams rely on while staying sharp on the analyst side.
                 </p>
               </div>
             </div>

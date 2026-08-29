@@ -22,11 +22,11 @@ const Hero = () => {
 
   const roles = [
     "SOC Analyst",
-    "Business Development Intern",
     "Blue Team Specialist",
     "Cybersecurity Student",
     "DFIR Specialist",
     "Full-Stack Developer",
+    "Detection Engineer",
   ];
 
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
@@ -98,7 +98,7 @@ const Hero = () => {
               {/* Status */}
               <div className="animate-fade-in-up">
                 <div className="eyebrow-badge">
-                  Open to Opportunities
+                  Blue Team | SOC &amp; DFIR
                 </div>
               </div>
 
@@ -141,7 +141,7 @@ const Hero = () => {
                 className="text-sm text-muted-foreground/60 max-w-lg mb-6 leading-relaxed animate-fade-in-up"
                 style={{ animationDelay: "0.3s" }}
               >
-                I'm a cybersecurity student at FAST NUCES '28 specializing in SOC operations, digital forensics, and threat detection. I have hands-on experience triaging alerts using SIEM tools like Splunk and Wazuh, investigating incidents, and building secure full-stack applications. Alongside my core security work, I also help drive enterprise AI solutions and business development at Intellema.
+                I'm a cybersecurity student at FAST NUCES '28 specializing in SOC operations, digital forensics, and threat detection. I have hands-on experience triaging alerts using SIEM tools like Splunk and Wazuh, investigating incidents, and building secure full-stack applications.
               </p>
 
               {/* Skill Badges */}

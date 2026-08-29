@@ -64,13 +64,13 @@ const experiences: ExperienceItem[] = [
   },
   {
     icon: Briefcase,
-    type: "Internship",
-    title: "Business Development Intern",
+    type: "Experience",
+    title: "Business Development Executive",
     organization: "Intellema",
-    period: "May 2026 - Present",
+    period: "May 2026 - August 2026",
     highlights: [
-      "Manage the full B2B sales cycle for enterprise AI solutions (RAG, LLM, Voice AI, computer vision) at an AI consultancy, from client research to technical proposal writing and system architecture diagram design.",
-      "Manage the company's Upwork profile, which holds Top Rated Plus status with 100% Job Success.",
+      "Managed the full B2B sales cycle for enterprise AI solutions (RAG, LLM, Voice AI, computer vision) at an AI consultancy, from client research to technical proposal writing and system architecture diagram design.",
+      "Managed the company's Upwork profile, which holds Top Rated Plus status with 100% Job Success.",
     ],
   },
 ];
