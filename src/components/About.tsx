@@ -1,6 +1,6 @@
 import { ShieldCheck, Search, Activity, Lock, Code } from "lucide-react";
 import { motion } from "framer-motion";
-import usmanPhoto from "@/assets/Usman.jpg";
+import usmanPhoto from "@/assets/usman.jpg";
 import { useScrollReveal, useCountUp } from "@/hooks/useAnimations";
 
 const About = () => {

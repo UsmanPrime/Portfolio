@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useTypingEffect, useDecryptText } from "@/hooks/useAnimations";
 import ParticlesBackground from "@/components/ParticlesBackground";
-import usmanPhoto from "@/assets/Usman.jpg";
+import usmanPhoto from "@/assets/usman.jpg";
 import { useState, useEffect } from "react";
 
 const Hero = () => {
