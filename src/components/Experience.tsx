@@ -54,14 +54,14 @@ const experiences: ExperienceItem[] = [
   },
   {
     icon: BookOpen,
-    type: "Technical Team & Head of Finance",
+    type: "Technical Team Member",
     title: "Cyber Space Legion (CSL)",
     organization: "FAST NUCES",
     period: "Sep 2024 — Present",
     isActive: true,
     highlights: [
       "Technical Team Member: Help run cybersecurity workshops and CTFs that focus on threat detection, incident response, and forensics.",
-      "Head of Finance (2025 – Present): Manage the finance team, handle budgeting, and plan finances for our society's operations and major events.",
+      "Head of Finance (Sep 2025 – Aug 2026): Manage the finance team, handle budgeting, and plan finances for our society's operations and major events.",
     ],
   },
   {
@@ -175,7 +175,7 @@ const Experience = () => {
                           <span className="leading-relaxed">
                             {isFinanceBullet ? (
                               <>
-                                <span className="font-semibold text-primary">Head of Finance (2025 – Present):</span>
+                                <span className="font-semibold text-primary">Head of Finance (Sep 2025 – Aug 2026):</span>
                                 {" "}Directed a cross-functional finance team for flagship events including NASCON and internal competitions. Managed end-to-end sponsorship acquisition and partner relations, securing funding for society operations. Oversaw team duty allocation, budgeting workflows, and financial reporting to society leadership.
                               </>
                             ) : item}

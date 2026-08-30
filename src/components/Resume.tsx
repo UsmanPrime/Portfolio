@@ -106,7 +106,7 @@ const Resume = () => {
             
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <span className="font-mono text-[12px] text-muted-foreground w-28 shrink-0 pt-0.5">2024 — 2028</span>
+                <span className="font-mono text-[12px] text-muted-foreground w-28 shrink-0 pt-0.5">Aug 2024 — Jun 2028</span>
                 <div>
                   <h4 className="text-sm font-semibold text-foreground">BS Cyber Security</h4>
                   <p className="text-[13px] text-muted-foreground mt-1">FAST NUCES Islamabad</p>
@@ -122,7 +122,7 @@ const Resume = () => {
               <div className="flex items-start gap-4">
                 <span className="font-mono text-[12px] text-muted-foreground w-28 shrink-0 pt-0.5">Mar 2026</span>
                 <div>
-                  <h4 className="text-sm font-semibold text-foreground">SOC Analyst Intern</h4>
+                  <h4 className="text-sm font-semibold text-foreground">SOC Analyst</h4>
                   <p className="text-[13px] text-muted-foreground mt-1">Tech Hierarchy</p>
                 </div>
               </div>

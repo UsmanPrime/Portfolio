@@ -14,22 +14,37 @@ const About = () => {
     {
       title: "SOC Operations",
       description: "Triaged 30+ daily alerts in Wazuh and Splunk, correlating events against MITRE ATT&CK TTPs to classify IOCs and escalate incidents.",
+      metric: "30+ alerts/day",
+      icon: ShieldCheck,
+      primary: true,
     },
     {
       title: "Digital Forensics",
       description: "Analyzed memory, endpoint telemetry, and network artifacts using Volatility 3, Autopsy, and Belkasoft to identify compromise indicators.",
+      metric: "5+ lab scenarios",
+      icon: Search,
+      primary: true,
     },
     {
       title: "Full-Stack Development",
       description: "Building production MERN applications with secure authentication (JWT, TOTP, reCAPTCHA), RBAC, and hardened APIs with Helmet.js and CSRF protection.",
+      metric: "Next.js / MERN",
+      icon: Code,
+      primary: false,
     },
     {
       title: "Systems Programming",
       description: "Engineering low-level systems in x86 Assembly and C++ with custom data structures, Win32 API integration, and SFML-based game physics.",
+      metric: "x86 MASM / C++",
+      icon: Terminal,
+      primary: false,
     },
     {
       title: "AI Solution Support",
       description: "Supporting AI opportunity discovery and proposal preparation across RAG, LLMs, Deep Learning, Generative AI, Voice AI, and Agentic AI.",
+      metric: "B2B / RAG",
+      icon: Activity,
+      primary: false,
     },
   ];
 
@@ -215,15 +230,36 @@ const About = () => {
               Core Competencies
             </h3>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-8">
-              {focusAreas.map((area, index) => (
-                <div key={area.title}>
-                  <div className="skill-group-header !mb-3">// {area.title}</div>
-                  <p className="text-[13px] text-muted-foreground leading-relaxed">
-                    {area.description}
-                  </p>
-                </div>
-              ))}
+            <div className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-x-10 gap-y-8">
+              {focusAreas.map((area) => {
+                const Icon = area.icon;
+                return (
+                  <div key={area.title} className="relative group">
+                    {/* Left Accent Bar */}
+                    <div className={`absolute left-0 top-1 bottom-1 w-[2px] rounded-full transition-colors duration-300 ${area.primary ? 'bg-cyan-400/50' : 'bg-border group-hover:bg-primary/30'}`} />
+                    
+                    <div className="pl-4">
+                      {/* Header + Metric */}
+                      <div className="flex items-center justify-between gap-3 mb-2.5">
+                        <div className="flex items-center gap-2">
+                          <Icon className={`w-3.5 h-3.5 ${area.primary ? "text-cyan-400" : "text-muted-foreground/70"}`} />
+                          <div className={`skill-group-header !mb-0 ${area.primary ? "text-foreground drop-shadow-[0_0_8px_hsl(var(--cyan)/0.2)]" : "text-muted-foreground"}`}>
+                            // {area.title}
+                          </div>
+                        </div>
+                        <span className={`shrink-0 text-[9px] uppercase tracking-wider font-mono px-1.5 py-0.5 rounded border ${area.primary ? 'border-cyan-400/30 bg-cyan-400/10 text-cyan-400' : 'border-border/50 bg-secondary/50 text-muted-foreground/70'}`}>
+                          {area.metric}
+                        </span>
+                      </div>
+                      
+                      {/* Description */}
+                      <p className={`text-[13px] leading-relaxed ${area.primary ? "text-muted-foreground" : "text-muted-foreground/70"}`}>
+                        {area.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
