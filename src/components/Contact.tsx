@@ -97,7 +97,7 @@ const Contact = () => {
           >
             <h2 className="section-title">Contact</h2>
             <p className="section-subtitle mt-4">
-              Open to discussing cybersecurity, SOC operations, AI solutions, or collaboration opportunities
+              Connect to discuss cybersecurity architecture, SOC operations, AI solutions, or specialized research initiatives
             </p>
           </div>
 
@@ -187,7 +187,7 @@ const Contact = () => {
                   </div>
 
                 <p className="text-xs text-muted-foreground mb-4 leading-relaxed">
-                  Open to conversations about SOC operations, DFIR, secure development, or security research collaboration.
+                  Reach out to discuss SOC operations, DFIR engagements, secure development practices, or security research collaboration.
                   I aim to respond within 24-48 hours.
                 </p>
 

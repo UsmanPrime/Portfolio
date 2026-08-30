@@ -5,34 +5,112 @@ const skillGroups = [
   {
     comment: "// Security Operations",
     domain: "security" as const,
-    skills: ["SOC Operations", "Alert Triage", "Incident Response", "DFIR", "Threat Hunting", "IOC Analysis", "Splunk", "Wazuh", "Elastic Stack (ELK)", "Wireshark", "Volatility 3"],
+    skills: [
+      { name: "SOC Operations", level: 4 },
+      { name: "Alert Triage", level: 5 },
+      { name: "Incident Response", level: 4 },
+      { name: "DFIR", level: 3 },
+      { name: "Threat Hunting", level: 3 },
+      { name: "IOC Analysis", level: 4 },
+      { name: "Splunk", level: 5 },
+      { name: "Wazuh", level: 5 },
+      { name: "Elastic Stack (ELK)", level: 4 },
+      { name: "Wireshark", level: 4 },
+      { name: "Volatility 3", level: 4 },
+      { name: "MITRE ATT&CK", level: 5 },
+    ],
   },
   {
     comment: "// Application Security",
     domain: "security" as const,
-    skills: ["RBAC", "Row Level Security (RLS)", "Input Validation (Zod)", "SQLi/XSS Prevention", "JWT Session Hardening", "CSP / HSTS", "Rate Limiting"],
+    skills: [
+      { name: "RBAC", level: 5 },
+      { name: "Row Level Security (RLS)", level: 4 },
+      { name: "Input Validation (Zod)", level: 5 },
+      { name: "SQLi/XSS Prevention", level: 4 },
+      { name: "JWT Session Hardening", level: 4 },
+      { name: "CSP / HSTS", level: 3 },
+      { name: "Rate Limiting", level: 4 },
+    ],
   },
   {
     comment: "// Full-Stack Development",
     domain: "dev" as const,
-    skills: ["React 18", "Node.js", "Express.js", "MongoDB", "REST APIs", "Tailwind CSS", "Helmet.js", "JWT Authentication", "Next.js", "Vercel"],
+    skills: [
+      { name: "React 18", level: 5 },
+      { name: "Node.js", level: 4 },
+      { name: "Express.js", level: 4 },
+      { name: "MongoDB", level: 4 },
+      { name: "REST APIs", level: 4 },
+      { name: "Tailwind CSS", level: 5 },
+      { name: "Helmet.js", level: 3 },
+      { name: "JWT Authentication", level: 4 },
+      { name: "Next.js", level: 4 },
+      { name: "Vercel", level: 4 },
+    ],
   },
   {
     comment: "// Systems & Languages",
     domain: "dev" as const,
-    skills: ["Python", "Golang", "C++", "x86 Assembly (MASM32)", "JavaScript", "TypeScript", "Bash"],
+    skills: [
+      { name: "Python", level: 4 },
+      { name: "Golang", level: 3 },
+      { name: "C++", level: 4 },
+      { name: "x86 Assembly (MASM32)", level: 3 },
+      { name: "JavaScript", level: 5 },
+      { name: "TypeScript", level: 4 },
+      { name: "Bash", level: 3 },
+    ],
   },
   {
     comment: "// Network & Infrastructure",
     domain: "security" as const,
-    skills: ["TCP/IP", "OSPF", "EIGRP", "RIPv2", "NAT", "Extended ACLs", "Cisco Packet Tracer", "Docker", "Linux"],
+    skills: [
+      { name: "TCP/IP", level: 4 },
+      { name: "OSPF", level: 3 },
+      { name: "EIGRP", level: 3 },
+      { name: "RIPv2", level: 2 },
+      { name: "NAT", level: 4 },
+      { name: "Extended ACLs", level: 3 },
+      { name: "Cisco Packet Tracer", level: 4 },
+      { name: "Docker", level: 3 },
+      { name: "Linux", level: 4 },
+    ],
   },
   {
     comment: "// Software Engineering",
     domain: "dev" as const,
-    skills: ["OOP", "Data Structures & Algorithms", "SOLID Principles", "Design Patterns", "Git", "CMake", "Agile"],
+    skills: [
+      { name: "OOP", level: 4 },
+      { name: "Data Structures & Algorithms", level: 4 },
+      { name: "SOLID Principles", level: 3 },
+      { name: "Design Patterns", level: 3 },
+      { name: "Git", level: 4 },
+      { name: "CMake", level: 2 },
+      { name: "Agile", level: 4 },
+    ],
   },
 ];
+
+const topSkills = [
+  { name: "Splunk", level: 5, domain: "security" },
+  { name: "Wazuh", level: 5, domain: "security" },
+  { name: "MITRE ATT&CK", level: 5, domain: "security" },
+  { name: "React", level: 5, domain: "dev" },
+  { name: "RBAC", level: 5, domain: "security" },
+  { name: "Volatility 3", level: 4, domain: "security" },
+];
+
+const SkillIndicator = ({ level, max = 5 }: { level: number; max?: number }) => (
+  <div className="flex gap-[2px] ml-1.5 opacity-70 mt-[1px]">
+    {Array.from({ length: max }).map((_, i) => (
+      <div 
+        key={i} 
+        className={`w-[3px] h-1.5 rounded-sm ${i < level ? "bg-current" : "bg-current opacity-20"}`}
+      />
+    ))}
+  </div>
+);
 
 const Skills = () => {
   const { ref: headerRef, isRevealed: headerRevealed } = useScrollReveal();
@@ -96,7 +174,29 @@ const Skills = () => {
           ref={gridRef}
           className="px-4 sm:px-10 lg:px-20 xl:px-32 max-w-screen-2xl mx-auto"
         >
-          <div className="grid md:grid-cols-2 gap-x-20 gap-y-10">
+          {/* Top / Featured Skills Anchor Row */}
+          <div 
+            className={`mb-12 transition-all duration-500 ${gridRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <span className="text-primary font-mono text-sm">▎</span>
+              <h3 className="text-sm font-semibold text-foreground tracking-wide">Primary Expertise</h3>
+            </div>
+            <div className="flex flex-wrap gap-2.5">
+              {topSkills.map((skill, i) => (
+                <div 
+                  key={skill.name}
+                  className="flex items-center px-3 py-1.5 rounded-md border border-primary/20 bg-primary/10 text-primary text-sm font-medium shadow-[0_0_15px_hsl(var(--primary)/0.15)]"
+                  style={{ transitionDelay: `${i * 50}ms` }}
+                >
+                  {skill.name}
+                  <SkillIndicator level={skill.level} />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-x-20 gap-y-10 border-t border-border/40 pt-10">
             {skillGroups.map((group, gi) => (
               <div
                 key={group.comment}
@@ -107,11 +207,12 @@ const Skills = () => {
                 <div className="flex flex-wrap gap-1.5">
                   {group.skills.map((skill, si) => (
                     <span
-                      key={skill}
-                      className={group.domain === "security" ? "skill-tag-security" : "skill-tag"}
+                      key={skill.name}
+                      className={group.domain === "security" ? "skill-tag-security flex items-center" : "skill-tag flex items-center"}
                       style={{ transitionDelay: `${gi * 50 + si * 15}ms` }}
                     >
-                      {skill}
+                      {skill.name}
+                      <SkillIndicator level={skill.level} />
                     </span>
                   ))}
                 </div>
