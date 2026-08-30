@@ -22,12 +22,12 @@ const Hero = () => {
   ];
 
   const roles = [
+    "Detection Engineer",
     "SOC Analyst",
     "Blue Team Specialist",
-    "Cybersecurity Student",
     "DFIR Specialist",
     "Full-Stack Developer",
-    "Detection Engineer",
+    "Cybersecurity Student",
   ];
 
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
