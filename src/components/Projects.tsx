@@ -21,7 +21,7 @@ const projects: Project[] = [
     icon: Database,
     title: "PIMS — POS Inventory Management System",
     category: "Full-Stack Security Architecture",
-    description: "Designed and engineered a full-stack POS Inventory system with a heavy focus on multi-layer security, granular access controls, and strict data isolation.",
+    description: "Collaborated on a full-stack POS Inventory system as the security architect, owning the multi-layer access controls, strict data isolation, and hardened session security across the full stack.",
     highlights: [
       "Engineered a granular RBAC system enforced across client UI, edge middleware, and server APIs to prevent privilege escalation",
       "Implemented PostgreSQL Row Level Security (RLS) policies for strict tenant data isolation",
@@ -37,7 +37,7 @@ const projects: Project[] = [
     icon: Building2,
     title: "NextGen Residency — Smart Housing Society",
     category: "Full-Stack MERN Application",
-    description: "Designed and developed a full-stack MERN web application with triple-portal architecture (Resident, Admin, Vendor), implementing role-based access control (RBAC) and JWT authentication with refresh tokens and token fingerprinting.",
+    description: "Led backend architecture and security design for a full-stack MERN application with triple-portal access (Resident, Admin, Vendor), owning JWT authentication, RBAC enforcement, rate limiting, audit logging, and the full deployment pipeline. Built alongside a frontend developer and a UI/UX & QA lead.",
     highlights: [
       "Hardened backend API with Helmet.js security headers, CSRF protection, and NoSQL injection prevention; integrated TOTP-based two-factor authentication and JWT with refresh tokens across a triple-portal RBAC architecture.",
     ],
