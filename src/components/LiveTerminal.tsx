@@ -7,7 +7,7 @@ const SEQUENCES = [
     output: [
       { text: "[OK] Packets captured: 14,203", delay: 200, color: "text-emerald-400" },
       { text: "[*] Analyzing signatures...", delay: 400, color: "text-muted-foreground" },
-      { text: "[!] Suspicious payload (CVE-2024-38063) detected", delay: 800, color: "text-amber-400" },
+      { text: "[!] Suspicious payload (SIM-2026-00137) detected", delay: 800, color: "text-amber-400" },
       { text: ">> Escalate to Incident Response team? (Y/n)", delay: 300, color: "text-foreground font-bold" }
     ]
   },
