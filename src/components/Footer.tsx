@@ -1,4 +1,4 @@
-import { Shield, Github, Linkedin, Mail, ChevronUp, Heart } from "lucide-react";
+import { Shield, Github, Linkedin, Mail, ChevronUp } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -37,9 +37,7 @@ const Footer = () => {
 
           <div className="mt-6 pt-5 border-t border-border/40 flex items-center justify-between">
             <p className="text-[11px] text-muted-foreground flex items-center gap-1">
-              © {currentYear} Usman Ibrahim · Built with
-              <Heart className="w-3 h-3 text-foreground/60" />
-              using React & TypeScript
+              © {currentYear} Usman Ibrahim · Built with React &amp; TypeScript.
             </p>
             <button
               onClick={() => window.scrollTo({ top: 0 })}

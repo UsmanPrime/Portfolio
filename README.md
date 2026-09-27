@@ -4,6 +4,31 @@ Personal portfolio focused on Security Engineering, SOC/DFIR, and Detection Engi
 
 [Live portfolio](https://usmanprime-portfolio.vercel.app/) · [GitHub](https://github.com/UsmanPrime) · [LinkedIn](https://www.linkedin.com/in/usman-ibrahim-992253276/) · [Email](mailto:i242038@isb.nu.edu.pk)
 
+## Portfolio tour
+
+The portfolio is organized around operational security and the engineering that supports it:
+
+| Section | What it covers |
+| --- | --- |
+| Hero | Security focus and an interactive network defense demonstration |
+| About | Background, current focus, system status, and a portfolio-aware terminal |
+| Skills | Security operations, application security, development, systems, and infrastructure |
+| Experience | Security internships, technical work, and competition achievements |
+| Certifications | Completed credentials and linked evidence |
+| Projects | PIMS and NextGen Residency case studies, architecture decisions, and supporting work |
+| Resume | Current downloadable and browser-viewable CV |
+| Contact | Validated contact form and direct contact links |
+
+### Interaction and accessibility
+
+The incident walkthrough advances through a short investigation using simulated evidence. It remains usable when WebGL is unavailable. The Three.js globe loads on demand, pauses when offscreen, and is disposed when its component unmounts.
+
+The site preserves native anchor navigation, visible keyboard focus, responsive layouts, and the shared section reveal behavior. Animations follow the operating system's reduced-motion preference and can also be paused with the Motion control.
+
+### Project presentation
+
+The featured PIMS and NextGen Residency entries explain the problem, contribution, architecture, and technology choices alongside frontend screenshots and expandable diagrams. Supporting Work groups additional applications, network engineering, systems, and game projects by domain.
+
 ## About
 
 The site presents hands-on security work, experience, certifications, and software projects. Its interactive incident investigation keeps a static SVG fallback; the Three.js scene is lazy-loaded, pauses while offscreen, and respects reduced-motion and Motion-off preferences. The About section includes a terminal with commands based on portfolio content.

@@ -29,7 +29,7 @@ const Resume = () => {
               <div>
                 <h3 className="text-base font-semibold text-foreground">Full Resume</h3>
                 <p className="text-[13px] text-muted-foreground mt-0.5">
-                  SOC Analyst | Cybersecurity Professional
+                  Security Engineering | SOC/DFIR | Detection Engineering
                 </p>
               </div>
             </div>

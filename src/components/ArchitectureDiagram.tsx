@@ -12,7 +12,7 @@ function Layer({ title, summary, detail, kind }: { title: string; summary: strin
   const expanded = reduced || pinned || hovered || focused;
   return (
     <div className="architecture-layer-frame">
-    <div ref={tiltRef} className={`architecture-layer layer-${kind} panel-interactive`}>
+    <div ref={tiltRef} data-expanded={expanded} className={`architecture-layer layer-${kind} panel-interactive`}>
       <button type="button" aria-expanded={expanded} aria-controls={id}
         onPointerEnter={event => { if (event.pointerType === "mouse") setHovered(true); }}
         onPointerLeave={() => setHovered(false)}
@@ -47,23 +47,34 @@ export default function ArchitectureDiagram({ system }: { system: "pims" | "resi
   useEffect(() => {
     const figure = ref.current;
     if (!figure) return;
-    if (reduced) { played.current = true; return; }
-    if (played.current) return;
+    if (reduced) return;
     const animations: Animation[] = [];
-    const observer = new IntersectionObserver(([entry]) => {
-      if (!entry.isIntersecting) return;
-      played.current = true;
-      observer.disconnect();
+    const playFlow = () => {
+      animations.splice(0).forEach(animation => animation.cancel());
       figure.querySelectorAll(".flow-packet").forEach((packet, index) => {
         animations.push(packet.animate([
           { transform: "translateY(0px)", opacity: 0 },
           { transform: "translateY(8px)", opacity: 1, offset: 0.2 },
           { transform: "translateY(38px)", opacity: 0 },
-        ], { duration: 600, delay: index * 280, easing: "linear" }));
+        ], { duration: 800, delay: index * 180, easing: "linear" }));
       });
+    };
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      if (played.current) { observer.disconnect(); return; }
+      played.current = true;
+      observer.disconnect();
+      playFlow();
     }, { threshold: 0.25 });
     observer.observe(figure);
-    return () => { observer.disconnect(); animations.forEach(animation => animation.cancel()); };
+    figure.addEventListener("pointerenter", playFlow);
+    figure.addEventListener("focusin", playFlow);
+    return () => {
+      observer.disconnect();
+      figure.removeEventListener("pointerenter", playFlow);
+      figure.removeEventListener("focusin", playFlow);
+      animations.forEach(animation => animation.cancel());
+    };
   }, [reduced]);
   return (
     <figure ref={ref} className={`architecture-diagram ${system === "pims" ? "pims-path" : "residency-map"} panel-static`}>

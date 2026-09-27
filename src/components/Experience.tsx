@@ -23,6 +23,8 @@ const experiences: ExperienceItem[] = [
     relevance: 4,
     organization: "NetraLink Solutions",
     period: netraLinkPeriod,
+    certificateUrl: "/Netralink%20Internship%20Completion.pdf",
+    certificateLabel: "Completion letter",
     highlights: [
       "Owned Analytics, Audit, and Reporting for DeWall, a self-hosted DNS Firewall platform (Go microservices, PostgreSQL, ClickHouse, React/TypeScript), combining security research with hands-on testing and development.",
       "Conducted comprehensive security and functional testing on the analytics pipeline, finding and fixing production-blocking issues including silent data loss in event handling and a hidden mock-data flag that was masking a real CORS misconfiguration.",
@@ -35,6 +37,8 @@ const experiences: ExperienceItem[] = [
     type: "Internship · Remote",
     title: "SOC Team Intern",
     organization: "ITSOLERA",
+    certificateUrl: "/Itsolera%20Internship%20Completion.pdf",
+    certificateLabel: "Completion letter",
     period: "Jul — Aug 2026",
     relevance: 3,
     highlights: [
@@ -89,8 +93,10 @@ const experiences: ExperienceItem[] = [
   {
     icon: Briefcase,
     type: "Business Development",
-    title: "Business Development Executive",
+    title: "Business Development Intern",
     organization: "Intellema",
+    certificateUrl: "/Intellema%20Internship%20Completion.pdf",
+    certificateLabel: "Completion letter",
     period: "May 2026 — Aug 2026",
     highlights: [
       "Managed the full B2B sales cycle for enterprise AI solutions (RAG, LLM, Voice AI, computer vision) at an AI consultancy, from client research to technical proposal writing and system architecture diagram design.",
@@ -154,7 +160,7 @@ const Experience = () => {
                   <div className="timeline-timestamp">[{exp.period}]</div>
 
                   {/* Header row */}
-                  <div className="flex items-start justify-between gap-3 mb-2">
+                  <div className="experience-entry-header flex items-start justify-between gap-3 mb-2">
                     <div>
                       <span className="data-label block">{exp.type}</span>
                       <h3 className={`font-semibold leading-snug ${exp.relevance ? "text-lg text-primary" : "text-sm text-foreground"}`}>{exp.title}</h3>
@@ -166,7 +172,7 @@ const Experience = () => {
                         className="h-7 px-2 text-primary hover:text-primary hover:bg-primary/10 gap-1 text-xs shrink-0"
                         asChild
                       >
-                        <a href={exp.certificateUrl} target="_blank" rel="noopener noreferrer">
+                        <a href={exp.certificateUrl} target="_blank" rel="noopener noreferrer" aria-label={`${exp.certificateLabel ?? "Certificate"}: ${exp.organization}`}>
                           {exp.certificateLabel ?? "Certificate"} <ExternalLink className="w-3 h-3" />
                         </a>
                       </Button>

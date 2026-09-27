@@ -76,7 +76,10 @@ export function useSectionEntrances() {
         registered.add(element);
         element.dataset.revealKind = entranceKind(element);
         // Above-the-fold content is never hidden waiting for an observer/animation.
-        if (!observer || element.closest('#home') || seen.current.has(element) || element.contains(document.activeElement)) finish(element);
+        // The server motion snapshot is conservative. Do not consume offscreen
+        // entrances before hydration supplies the real motion preference.
+        if (!observer) element.dataset.reveal = 'complete';
+        else if (element.closest('#home') || seen.current.has(element) || element.contains(document.activeElement)) finish(element);
         else { element.dataset.reveal = 'pending'; observer.observe(element); }
       });
       registered.forEach(element => {

@@ -18,6 +18,22 @@ interface Project {
 const projects: Project[] = [
   {
     domain: "Secure applications",
+    title: "Cybersecurity Portfolio",
+    result: "Prerendered content with an interactive security lab",
+    category: "Frontend Portfolio",
+    description: "Designed and deployed a cybersecurity portfolio with responsive UI and type-safe React components.",
+    highlights: [
+      "Configured HTTP security headers (CSP, HSTS, X-Frame-Options) and CORS scoped to the production domain.",
+      "Built a serverless contact API with server-side input validation and IP-based rate limiting on each warm instance.",
+      "Prerendered the homepage and added an interactive incident simulation with an SVG fallback and reduced-motion support.",
+    ],
+    tools: ["React", "TypeScript", "Tailwind CSS", "Vite"],
+    year: "2025",
+    liveUrl: "https://usmanprime-portfolio.vercel.app/",
+    githubUrl: "https://github.com/UsmanPrime/Portfolio",
+  },
+  {
+    domain: "Secure applications",
     title: "PIMS — POS Inventory Management System",
     result: "Layered access control. Tenant-isolated data",
     category: "Full-Stack Security Architecture",

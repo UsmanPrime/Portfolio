@@ -73,6 +73,8 @@ export default function SkillGraph({ groups }: { groups: Group[] }) {
               return <g key={skill.name}><title>{skill.name}</title><line x1={cx} y1={cy} x2={x} y2={y} /><circle className="skill-satellite" cx={x} cy={y} r="2.5" /></g>;
             })}
             <a href={`#skills-${group.title.toLowerCase().replace(/[^a-z]+/g, "-")}`} className="panel-interactive" aria-label={`Explore ${group.title}: ${group.skills.length} skills`}>
+              <rect className="skill-cluster-hitarea" x={cx - 95} y={cy - 52} width="190" height="135" aria-hidden="true" />
+              <circle className="skill-cluster-halo" cx={cx} cy={cy} r="25" aria-hidden="true" />
               <circle className="skill-cluster-target" cx={cx} cy={cy} r="17" />
               <text x={cx} y={cy + 4} textAnchor="middle">{group.skills.length}</text>
               <text className="skill-cluster-label" x={cx} y={cy + 66} textAnchor="middle">{group.title}</text>

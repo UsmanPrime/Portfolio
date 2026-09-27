@@ -174,6 +174,9 @@ export default function DefenseScene() {
         </span>
       </div>
       <div className="incident-panel panel-interactive">
+        <div className="incident-progress" aria-hidden="true">
+          {stages.map((item, index) => <span key={item.label} data-complete={index <= stage} />)}
+        </div>
         <div aria-live="polite" aria-atomic="true">
           <div className="incident-status">
           <span>
@@ -181,7 +184,7 @@ export default function DefenseScene() {
           </span>
           <span className="font-mono" aria-label={`Simulation step ${stage + 1} of ${stages.length}`}>{stage + 1} / {stages.length}</span>
           </div>
-          <h2>{current.heading}</h2>
+          <h2 key={stage} className="incident-heading">{current.heading}</h2>
           <p>{current.detail}</p>
           <code className="incident-event">
             <svg key={stage} className="incident-event-dot" viewBox="0 0 10 10" aria-hidden="true"><circle cx="5" cy="5" r="3" /></svg>

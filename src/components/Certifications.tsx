@@ -26,7 +26,7 @@ const certDomains: CertDomain[] = [
         status: "completed",
         date: "2025-01-31",
         certificateId: "ouj5wej8a5",
-        pdfPath: "/Advanced Digital Forensics Techniques.pdf",
+        pdfPath: "/Advanced%20Digital%20Forensics%20Techniques.pdf",
       },
       {
         name: "Windows Forensics",
@@ -34,7 +34,7 @@ const certDomains: CertDomain[] = [
         status: "completed",
         date: "2025-02-15",
         certificateId: "zj4polqhxb",
-        pdfPath: "/Windows Forensics.pdf",
+        pdfPath: "/Windows%20Forensics.pdf",
       },
       {
         name: "Advanced SQLite Queries",
