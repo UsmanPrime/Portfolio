@@ -9,23 +9,28 @@ import Resume from "@/components/Resume";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import SectionDivider from "@/components/SectionDivider";
+import SectionMesh from "@/components/SectionMesh";
+import { useMotionPreference } from "@/hooks/useMotionPreference";
+import { useSectionEntrances } from "@/hooks/useSectionEntrances";
+import { useAnchorNavigation } from "@/hooks/useAnchorNavigation";
 
 const Index = () => {
+  const reduced = useMotionPreference();
+  const entranceRef = useSectionEntrances();
+  useAnchorNavigation();
   return (
-    <main className="min-h-screen bg-background">
+    <main ref={entranceRef} className="agency-page min-h-screen bg-background" data-mesh-motion={reduced ? "static" : "live"}>
+      <SectionMesh reduced={reduced} />
+      <a href="#about" className="skip-link">Skip to portfolio content</a>
       <Navbar />
       <Hero />
       <SectionDivider label="about" />
       <About />
-      <SectionDivider label="skills" />
       <Skills />
+      <Experience />
+      <Certifications />
       <SectionDivider label="projects" />
       <Projects />
-      <SectionDivider label="experience" />
-      <Experience />
-      <SectionDivider label="certifications" />
-      <Certifications />
-      <SectionDivider label="resume" />
       <Resume />
       <SectionDivider label="contact" />
       <Contact />
@@ -35,4 +40,3 @@ const Index = () => {
 };
 
 export default Index;
-

@@ -3,11 +3,11 @@ interface SectionDividerProps {
 }
 
 const SectionDivider = ({ label }: SectionDividerProps) => (
-  <div className="section-divider container mx-auto px-4">
-    <span className="text-[10px] font-mono text-muted-foreground whitespace-nowrap select-none">
-      <span className="text-primary/50 mr-1.5">❯</span>
+  <div className="section-divider layout-container">
+    <a href={`#${label}`} aria-label={`Go to ${label}`} className="text-[10px] font-mono text-muted-foreground whitespace-nowrap">
+      <span className="text-muted-foreground mr-1.5">❯</span>
       cd /sections/{label}
-    </span>
+    </a>
   </div>
 );
 

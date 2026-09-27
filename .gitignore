@@ -24,3 +24,17 @@ dist-ssr
 *.sw?
 
 SECURITY_PLAYBOOK.md
+.playwright-cli/
+.playwright-mcp/
+output/
+ss/
+coverage/
+test-results/
+playwright-report/
+.vercel/
+.env
+.env.*
+!.env.example
+**/phase*-*.js
+**/phase*-*.png
+**/phase*-*.ps1

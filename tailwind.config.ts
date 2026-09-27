@@ -1,23 +1,29 @@
 import type { Config } from "tailwindcss";
+import tailwindAnimate from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
   content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
   prefix: "",
   theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
+    borderRadius: { sm: "var(--radius-sm)", md: "var(--radius-md)" },
+    boxShadow: {
+      sm: "0 1px 2px hsl(var(--color-shadow) / 0.1)",
+      DEFAULT: "0 2px 4px hsl(var(--color-shadow) / 0.15)",
+      md: "0 4px 12px hsl(var(--color-shadow) / 0.2)",
+      lg: "0 8px 24px hsl(var(--color-shadow) / 0.2)",
+      xl: "0 16px 40px hsl(var(--color-shadow) / 0.25)",
+      none: "none",
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+        sans: ['DM Sans', 'DM Fallback', 'system-ui', '-apple-system', 'sans-serif'],
+        mono: ['JetBrains Mono', 'Mono Fallback', 'Fira Code', 'monospace'],
       },
       colors: {
+        warning: "hsl(var(--color-warning))",
+        success: "hsl(var(--color-success))",
+        shadow: "hsl(var(--color-shadow))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -63,11 +69,6 @@ export default {
           ring: "hsl(var(--sidebar-ring, var(--ring)))",
         },
       },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -84,5 +85,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindAnimate],
 } satisfies Config;

@@ -1,6 +1,6 @@
 # =========================================
 # ALLOW SEARCH ENGINES & AI SEARCH AGENTS
-# (This ensures you show up in Google, Perplexity, and ChatGPT Search)
+# Crawling permission does not guarantee indexing or search visibility.
 # =========================================
 User-agent: Googlebot
 Allow: /
@@ -26,7 +26,7 @@ Allow: /
 
 # =========================================
 # BLOCK AI MODEL TRAINING CRAWLERS
-# (Prevents your data from being ingested into core AI models)
+# Requests opt-out from these crawlers; compliance depends on the operator.
 # =========================================
 
 # Block OpenAI Training Crawler

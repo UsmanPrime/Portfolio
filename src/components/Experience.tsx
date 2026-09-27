@@ -1,7 +1,6 @@
 import { Award, ExternalLink, Trophy, BookOpen, Monitor, Target, Briefcase } from "lucide-react";
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { useScrollReveal } from "@/hooks/useAnimations";
+import { netraLinkPeriod } from "@/data/profile";
 
 interface ExperienceItem {
   icon: typeof BookOpen;
@@ -10,6 +9,7 @@ interface ExperienceItem {
   organization: string;
   period: string;
   isActive?: boolean;
+  relevance?: number;
   highlights: string[];
   certificateUrl?: string;
   certificateLabel?: string;
@@ -19,10 +19,10 @@ const experiences: ExperienceItem[] = [
   {
     icon: Monitor,
     type: "Internship",
-    title: "Security Research Intern",
+    title: "Security Engineering Intern",
+    relevance: 4,
     organization: "NetraLink Solutions",
-    period: "Jul 2026 — Present",
-    isActive: true,
+    period: netraLinkPeriod,
     highlights: [
       "Owned Analytics, Audit, and Reporting for DeWall, a self-hosted DNS Firewall platform (Go microservices, PostgreSQL, ClickHouse, React/TypeScript), combining security research with hands-on testing and development.",
       "Conducted comprehensive security and functional testing on the analytics pipeline, finding and fixing production-blocking issues including silent data loss in event handling and a hidden mock-data flag that was masking a real CORS misconfiguration.",
@@ -32,12 +32,32 @@ const experiences: ExperienceItem[] = [
   },
   {
     icon: Target,
+    type: "Internship · Remote",
+    title: "SOC Team Intern",
+    organization: "ITSOLERA",
+    period: "Jul — Aug 2026",
+    relevance: 3,
+    highlights: [
+      "Deployed Wazuh/ELK SIEM across Windows and Linux endpoints.",
+      "Ingested Sysmon, Windows Defender, and file integrity monitoring (FIM) telemetry.",
+      "Developed custom XML and YARA detection rules.",
+      "Built a Python IOC-enrichment tool using VirusTotal and AbuseIPDB APIs, with CDB threat-intelligence lists.",
+      "Automated Wazuh alerts through n8n workflows.",
+      "Deployed pfSense with network segmentation.",
+      "Investigated a live Lumma Stealer PCAP.",
+      "Developed a NIST-aligned five-phase incident response plan.",
+    ],
+  },
+  {
+    icon: Target,
     type: "Internship",
     title: "SOC Analyst",
+    relevance: 2,
     organization: "Tech Hierarchy",
     period: "Mar 2026",
     highlights: [
       "Triaged 30+ daily security alerts in Wazuh and Splunk, correlating IOCs against MITRE ATT&CK TTPs to classify indicators of compromise and escalate confirmed incidents per established SOC runbooks.",
+      "Built a personal SOC lab with Wazuh and ELK, simulating lateral movement, privilege escalation, and credential dumping.",
     ],
     certificateUrl: "/Tech%20Hierarchy%20Internship%20Certificate.pdf",
     certificateLabel: "Certificate of Completion",
@@ -45,21 +65,23 @@ const experiences: ExperienceItem[] = [
   {
     icon: Monitor,
     type: "Challenge Author",
+    relevance: 1,
     title: "NASCON 2026 Forensics Arena & RDX National CTF",
     organization: "FAST NUCES Islamabad",
     period: "Jun 2025 — Aug 2026",
     highlights: [
-      "Authored a hard-category memory forensics challenge (MITRE T1003.001) requiring Volatility 3 analysis, and 6 additional challenges for RDX National CTF (100+ participants combined).",
+      "Authored Silent Harvest, a hard-category memory forensics challenge (MITRE T1003.001) requiring Volatility 3 analysis and NTLM hash extraction, and 6 additional challenges for RDX National CTF (100+ participants combined).",
     ],
   },
   {
     icon: BookOpen,
-    type: "Technical Team Member",
+    type: "Head of Operations",
     title: "Cyber Space Legion (CSL)",
     organization: "FAST NUCES",
     period: "Sep 2024 — Present",
     isActive: true,
     highlights: [
+      "Head of Operations (Sep 2026 – Present).",
       "Technical Team Member: Help run cybersecurity workshops and CTFs that focus on threat detection, incident response, and forensics.",
       "Head of Finance (Sep 2025 – Aug 2026): Manage the finance team, handle budgeting, and plan finances for our society's operations and major events.",
     ],
@@ -100,20 +122,15 @@ const achievements = [
 ];
 
 const Experience = () => {
-  const { ref: headerRef, isRevealed: headerRevealed } = useScrollReveal();
-  const { ref: timelineRef, isRevealed: timelineRevealed } = useScrollReveal({ threshold: 0.05 });
-  const { ref: achieveRef, isRevealed: achieveRevealed } = useScrollReveal();
 
   return (
-    <section id="experience" className="py-24 relative bg-secondary/30 overflow-hidden">
-      <div className="absolute inset-0 grid-bg opacity-8" />
+    <section id="experience" className="section-standard relative bg-secondary/30 overflow-hidden">
 
-      <div className="container mx-auto px-4 relative">
-        <div className="max-w-5xl mx-auto">
+      <div className="layout-container relative">
+        <div className="content-standard">
           {/* Header */}
           <div
-            ref={headerRef}
-            className={`mb-12 transition-all duration-500 ${headerRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+            className="section-heading"
           >
             <h2 className="section-title">Experience & Achievements</h2>
             <p className="section-subtitle mt-4">
@@ -122,19 +139,13 @@ const Experience = () => {
           </div>
 
           {/* Timeline rail */}
-          <div ref={timelineRef} className="timeline-rail">
-            {/* Ambient traveling pulse on the rail */}
-            <div className="absolute left-[0px] top-0 w-[2px] bottom-0 overflow-hidden pointer-events-none">
-              <div className="absolute left-0 top-0 w-full h-48 bg-gradient-to-b from-transparent via-primary to-transparent animate-rail-signal shadow-[0_0_8px_hsl(var(--primary))]" />
-            </div>
-            
-            {experiences.map((exp, index) => {
+          <div className="timeline-rail">
+            {[...experiences].sort((a, b) => (b.relevance ?? 0) - (a.relevance ?? 0)).map((exp) => {
               const isCSL = exp.title === "Cyber Space Legion (CSL)";
               return (
                 <div
                   key={exp.title}
-                  className={`timeline-entry transition-all duration-500 ${timelineRevealed ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"}`}
-                  style={{ transitionDelay: `${index * 90}ms` }}
+                  className="timeline-entry"
                 >
                   {/* Node */}
                   <span className={`timeline-node ${exp.isActive ? "timeline-node-active" : ""}`}>❯</span>
@@ -146,8 +157,8 @@ const Experience = () => {
                   <div className="flex items-start justify-between gap-3 mb-2">
                     <div>
                       <span className="data-label block">{exp.type}</span>
-                      <h3 className="text-sm font-semibold text-foreground leading-snug">{exp.title}</h3>
-                      <span className="text-[12px] text-muted-foreground/70">{exp.organization}</span>
+                      <h3 className={`font-semibold leading-snug ${exp.relevance ? "text-lg text-primary" : "text-sm text-foreground"}`}>{exp.title}</h3>
+                      <span className="text-[12px] text-muted-foreground">{exp.organization}</span>
                     </div>
                     {exp.certificateUrl && (
                       <Button
@@ -163,7 +174,7 @@ const Experience = () => {
                   </div>
 
                   {/* Highlights */}
-                  <div className="space-y-1.5">
+                  <div className="experience-highlights space-y-1.5">
                     {exp.highlights.map((item) => {
                       const isFinanceBullet = isCSL && item.includes("Head of Finance");
                       return (
@@ -171,11 +182,11 @@ const Experience = () => {
                           key={item}
                           className={`flex items-start gap-2 text-[13px] ${isFinanceBullet ? "text-foreground" : "text-muted-foreground"}`}
                         >
-                          <span className="font-mono text-primary/40 select-none mt-px text-xs shrink-0">▸</span>
+                          <span className="font-mono text-foreground/40 select-none mt-px text-xs shrink-0">▸</span>
                           <span className="leading-relaxed">
                             {isFinanceBullet ? (
                               <>
-                                <span className="font-semibold text-primary">Head of Finance (Sep 2025 – Aug 2026):</span>
+                                <span className="font-semibold text-foreground">Head of Finance (Sep 2025 – Aug 2026):</span>
                                 {" "}Directed a cross-functional finance team for flagship events including NASCON and internal competitions. Managed end-to-end sponsorship acquisition and partner relations, securing funding for society operations. Oversaw team duty allocation, budgeting workflows, and financial reporting to society leadership.
                               </>
                             ) : item}
@@ -191,27 +202,25 @@ const Experience = () => {
 
           {/* Competition Achievements */}
           <div
-            ref={achieveRef}
-            className={`mt-16 transition-all duration-500 ${achieveRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+            className="experience-achievements"
           >
             <h3 className="text-lg font-semibold mb-6 text-foreground">
-              <span className="text-primary font-mono text-sm mr-2">▎</span>
+              <span className="text-foreground font-mono text-sm mr-2">▎</span>
               Competition Achievements
             </h3>
             <div className="grid md:grid-cols-3 gap-3">
-              {achievements.map((a, i) => (
+              {achievements.map((a) => (
                 <div
                   key={a.title}
-                  className="intel-card group"
-                  style={{ transitionDelay: `${i * 80}ms` }}
+                  className="panel-static p-5"
                 >
                   <div className="flex items-center gap-2 mb-2">
-                    <a.icon className="w-4 h-4 text-primary" />
-                    <h4 className="text-sm font-semibold group-hover:text-primary transition-colors duration-150">
+                    <a.icon className="w-4 h-4 text-foreground" />
+                    <h4 className="text-sm font-semibold transition-colors duration-150">
                       {a.title}
                     </h4>
                   </div>
-                  <p className="text-[11px] font-mono text-primary/70 mb-2">{a.detail}</p>
+                  <p className="text-[11px] font-mono text-foreground/70 mb-2">{a.detail}</p>
                   <p className="text-xs text-muted-foreground leading-relaxed">{a.description}</p>
                   {a.certificateUrl && (
                     <Button

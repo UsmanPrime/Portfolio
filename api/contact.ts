@@ -1,12 +1,11 @@
 import { Resend } from 'resend';
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+import type { VercelRequest, VercelResponse } from '@vercel/node';
 
 interface ContactRequest {
-  name?: string;
-  email?: string;
-  subject?: string;
-  message?: string;
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
 }
 
 interface ValidationError {
@@ -14,36 +13,45 @@ interface ValidationError {
   message: string;
 }
 
-function validateContactForm(data: ContactRequest): ValidationError[] {
+function validateContactForm(data: Record<string, unknown>): ValidationError[] {
   const errors: ValidationError[] = [];
 
-  if (!data.name || data.name.trim() === '') {
+  for (const field of ['name', 'email', 'subject', 'message'] as const) {
+    if (typeof data[field] !== 'string') {
+      errors.push({ field, message: `${field.charAt(0).toUpperCase() + field.slice(1)} must be a string` });
+    }
+  }
+  if (errors.length) return errors;
+  // All four fields have passed runtime type validation before string operations.
+  const fields = data as unknown as ContactRequest;
+
+  if (!fields.name || fields.name.trim() === '') {
     errors.push({ field: 'name', message: 'Name is required' });
-  } else if (data.name.trim().length < 2) {
+  } else if (fields.name.trim().length < 2) {
     errors.push({ field: 'name', message: 'Name must be at least 2 characters' });
-  } else if (data.name.trim().length > 100) {
+  } else if (fields.name.trim().length > 100) {
     errors.push({ field: 'name', message: 'Name must not exceed 100 characters' });
   }
 
-  if (!data.email || data.email.trim() === '') {
+  if (!fields.email || fields.email.trim() === '') {
     errors.push({ field: 'email', message: 'Email is required' });
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim())) {
+  } else if (fields.email.trim().length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email.trim())) {
     errors.push({ field: 'email', message: 'Invalid email format' });
   }
 
-  if (!data.subject || data.subject.trim() === '') {
+  if (!fields.subject || fields.subject.trim() === '') {
     errors.push({ field: 'subject', message: 'Subject is required' });
-  } else if (data.subject.trim().length < 3) {
+  } else if (fields.subject.trim().length < 3) {
     errors.push({ field: 'subject', message: 'Subject must be at least 3 characters' });
-  } else if (data.subject.trim().length > 200) {
+  } else if (fields.subject.trim().length > 200) {
     errors.push({ field: 'subject', message: 'Subject must not exceed 200 characters' });
   }
 
-  if (!data.message || data.message.trim() === '') {
+  if (!fields.message || fields.message.trim() === '') {
     errors.push({ field: 'message', message: 'Message is required' });
-  } else if (data.message.trim().length < 10) {
+  } else if (fields.message.trim().length < 10) {
     errors.push({ field: 'message', message: 'Message must be at least 10 characters' });
-  } else if (data.message.trim().length > 5000) {
+  } else if (fields.message.trim().length > 5000) {
     errors.push({ field: 'message', message: 'Message must not exceed 5000 characters' });
   }
 
@@ -79,7 +87,7 @@ function checkRateLimit(ip: string): boolean {
   return true;
 }
 
-export default async function handler(req: any, res: any) {
+export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -100,26 +108,33 @@ export default async function handler(req: any, res: any) {
     return res.status(429).json({ error: 'Too many requests. Please try again later.' });
   }
 
-  // Check if API key is set
-  if (!process.env.RESEND_API_KEY) {
-    console.error('RESEND_API_KEY environment variable is not set');
-    return res.status(500).json({ error: 'Email service is not configured' });
+  let parsedBody: unknown;
+  try {
+    parsedBody = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+  } catch {
+    return res.status(400).json({ error: 'Request body must contain valid JSON' });
+  }
+  if (!parsedBody || typeof parsedBody !== 'object' || Array.isArray(parsedBody)) {
+    return res.status(400).json({ error: 'Request body must be a JSON object' });
+  }
+  const validationErrors = validateContactForm(parsedBody as Record<string, unknown>);
+  if (validationErrors.length) {
+    return res.status(400).json({ error: 'Validation failed', details: validationErrors });
+  }
+
+  const apiKey = process.env.RESEND_API_KEY?.trim();
+  if (!apiKey) {
+    console.error('Contact email service is not configured');
+    return res.status(503).json({ error: 'Email service is temporarily unavailable. Please use the email link to contact me.' });
   }
 
   try {
-    // Some runtimes can pass req.body as a JSON string; normalize to an object.
-    const parsedBody =
-      typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
-    const { name, email, subject, message } = (parsedBody ?? {}) as ContactRequest;
-
-    // Server-side validation
-    const validationErrors = validateContactForm({ name, email, subject, message });
-    if (validationErrors.length > 0) {
-      return res.status(400).json({ 
-        error: 'Validation failed', 
-        details: validationErrors 
-      });
-    }
+    const resend = new Resend(apiKey);
+    const validated = parsedBody as ContactRequest;
+    const name = validated.name.trim();
+    const email = validated.email.trim();
+    const subject = validated.subject.trim();
+    const message = validated.message.trim();
 
     // Format email content
     const emailContent = `New Contact Form Submission
@@ -138,14 +153,14 @@ Sent from portfolio website`;
     const result = await resend.emails.send({
       from: 'Contact Form <onboarding@resend.dev>',
       to: 'i242038@isb.nu.edu.pk',
-      replyTo: email!,
+      replyTo: email,
       subject: `New Message: ${subject}`,
       text: emailContent,
     });
 
     if (result.error) {
       console.error('Resend error:', result.error);
-      return res.status(500).json({ error: 'Failed to send email', details: result.error });
+      return res.status(502).json({ error: 'Email delivery failed. Please try again or use the email link.' });
     }
 
     return res.status(200).json({ 
@@ -155,6 +170,6 @@ Sent from portfolio website`;
     });
   } catch (error) {
     console.error('Contact form error:', error);
-    return res.status(500).json({ error: 'Internal server error', details: String(error) });
+    return res.status(500).json({ error: 'Unable to send your message. Please try again or use the email link.' });
   }
 }

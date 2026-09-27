@@ -1,11 +1,10 @@
-import { ExternalLink, Globe, Code, Gamepad2, ShoppingCart, Building2, Briefcase, Network, Cpu, Database, Star } from "lucide-react";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { useScrollReveal, useScanReveal } from "@/hooks/useAnimations";
+import { useState } from "react";
+import ArchitectureDiagram from "@/components/ArchitectureDiagram";
 
 interface Project {
-  icon: typeof Code;
+  domain: "Secure applications" | "Networks" | "Systems";
   title: string;
+  result: string;
   category: string;
   description: string;
   highlights: string[];
@@ -18,8 +17,9 @@ interface Project {
 
 const projects: Project[] = [
   {
-    icon: Database,
+    domain: "Secure applications",
     title: "PIMS — POS Inventory Management System",
+    result: "Layered access control. Tenant-isolated data",
     category: "Full-Stack Security Architecture",
     description: "Collaborated on a full-stack POS Inventory system as the security architect, owning the multi-layer access controls, strict data isolation, and hardened session security across the full stack.",
     highlights: [
@@ -34,8 +34,9 @@ const projects: Project[] = [
     featured: true,
   },
   {
-    icon: Building2,
+    domain: "Secure applications",
     title: "NextGen Residency — Smart Housing Society",
+    result: "Three portals, one hardened backend",
     category: "Full-Stack MERN Application",
     description: "Led backend architecture and security design for a full-stack MERN application with triple-portal access (Resident, Admin, Vendor), owning JWT authentication, RBAC enforcement, rate limiting, audit logging, and the full deployment pipeline. Built alongside a frontend developer and a UI/UX & QA lead.",
     highlights: [
@@ -48,8 +49,9 @@ const projects: Project[] = [
     featured: true,
   },
   {
-    icon: Gamepad2,
+    domain: "Systems",
     title: "Xonix Game — Professional Edition",
+    result: "10+ custom data structures powering multiplayer gameplay.",
     category: "Multiplayer Arcade Game",
     description: "Engineered a multiplayer arcade game in C++11 utilizing SFML for graphics, audio, and physics, supporting single-player AI and local competitive gameplay.",
     highlights: [
@@ -61,8 +63,9 @@ const projects: Project[] = [
     githubUrl: "https://github.com/UsmanPrime/Xonix-Game",
   },
   {
-    icon: Network,
+    domain: "Networks",
     title: "Enterprise Multi-Area Network Architecture",
+    result: "11 LANs and 22 WAN links across 19 routers.",
     category: "Network Engineering",
     description: "Engineered a complex enterprise-grade multi-area network topology supporting 11 LANs and 22 WAN links across 19 routers and 11 switches.",
     highlights: [
@@ -73,8 +76,9 @@ const projects: Project[] = [
     githubUrl: "https://github.com/UsmanPrime/Multi-Area-Network-Design-Implementation",
   },
   {
-    icon: Cpu,
+    domain: "Systems",
     title: "Dizzy Walk — Maze Adventure Game",
+    result: "A graphical maze game in 2,700+ lines of assembly.",
     category: "x86 Assembly Application",
     description: "Developed a real-time graphical maze-adventure game entirely in x86 Assembly Language (2,700+ lines of MASM32), featuring a 20×30 obstacle grid rendered through the Windows GDI.",
     highlights: [
@@ -86,21 +90,9 @@ const projects: Project[] = [
     githubUrl: "https://github.com/UsmanPrime/Dizzy-Walk",
   },
   {
-    icon: Globe,
-    title: "Cybersecurity Portfolio",
-    category: "Frontend Portfolio",
-    description: "Architected and launched a portfolio website achieving a 95+ Lighthouse score with full mobile responsiveness across all breakpoints.",
-    highlights: [
-      "Hardened the platform with strict HTTP security headers (CSP, HSTS, X-Frame-Options) and CORS scoped tightly to the production domain.",
-      "Engineered a serverless backend API with server-side input validation and custom IP-based rate limiting to mitigate spam and automated abuse.",
-    ],
-    tools: ["React", "TypeScript", "Tailwind CSS", "Vite"],
-    year: "2025",
-    liveUrl: "https://usmanprime-portfolio.vercel.app/",
-  },
-  {
-    icon: Briefcase,
+    domain: "Systems",
     title: "OSIM — Organizational Simulation System",
+    result: "1,000+ records persisted across 12+ class hierarchies.",
     category: "Enterprise Simulation",
     description: "Architected an enterprise-style simulation with 12+ class hierarchies following SOLID principles; persisted 1,000+ records with zero data loss.",
     highlights: [
@@ -112,8 +104,9 @@ const projects: Project[] = [
     githubUrl: "https://github.com/UsmanPrime/OSIM---Organizational-Simulation",
   },
   {
-    icon: ShoppingCart,
+    domain: "Secure applications",
     title: "SecureShop",
+    result: "Multi-factor authentication and injection-resistant input handling.",
     category: "Secure Shopping Platform",
     description: "Constructed a secure shopping platform with multi-factor authentication and input-sanitization routines blocking injection-style attacks.",
     highlights: [
@@ -126,171 +119,156 @@ const projects: Project[] = [
   },
 ];
 
-const SupportingCard = ({ project, index }: { project: Project; index: number }) => {
-  const { ref, isScanning, isRevealed } = useScanReveal(500);
-  return (
-    <div
-      ref={ref}
-      className={`intel-card group ${isScanning ? "scanning" : ""} ${isRevealed ? "revealed" : ""} transition-all duration-500 ${isRevealed || isScanning ? "opacity-100" : "opacity-0 translate-y-4"}`}
-      style={{ transitionDelay: `${index * 70}ms` }}
-    >
-      <div className="flex items-center justify-between mb-3 pb-3 border-b border-border/60">
-        <div className="flex items-center gap-2.5">
-          <div className="p-1.5 bg-primary/10 rounded-lg group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
-            <project.icon className="w-4 h-4 text-primary" />
-          </div>
-          <div>
-            <span className="data-label">{project.category}</span>
-            <h3 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors duration-200">{project.title}</h3>
-          </div>
-        </div>
-        <span className="font-mono text-[11px] text-muted-foreground tabular-nums bg-secondary/50 px-2 py-0.5 rounded">{project.year}</span>
-      </div>
-      <p className="text-[13px] text-muted-foreground mb-3 leading-relaxed">{project.description}</p>
-      <div className="mb-4 space-y-1.5">
-        {project.highlights.map((h) => (
-          <div key={h} className="flex items-start gap-2 text-xs text-muted-foreground/80">
-            <span className="font-mono text-primary/60 select-none mt-px">▸</span>
-            <span className="leading-relaxed">{h}</span>
-          </div>
-        ))}
-      </div>
-      <div className="flex items-center justify-between gap-3 pt-3 border-t border-border/60">
-        <div className="flex flex-wrap gap-1">
-          {project.tools.map((tool) => (
-            <span key={tool} className="px-1.5 py-0.5 text-[10px] font-mono text-muted-foreground border border-border/60 rounded bg-secondary/40 hover:border-primary/30 hover:text-foreground transition-all duration-200">{tool}</span>
-          ))}
-        </div>
-        <div className="flex items-center gap-1.5 shrink-0">
-          {project.liveUrl && (
-            <Button variant="ghost" size="sm" className="h-7 px-2 text-primary hover:text-primary hover:bg-primary/10 gap-1 text-xs" asChild>
-              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">Live <ExternalLink className="w-3 h-3" /></a>
-            </Button>
-          )}
-          {project.githubUrl && (
-            <Button variant="ghost" size="sm" className="h-7 px-2 text-primary hover:text-primary hover:bg-primary/10 gap-1 text-xs" asChild>
-              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">Source <ExternalLink className="w-3 h-3" /></a>
-            </Button>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-};
 
-const FeaturedCard = ({ project, index }: { project: Project; index: number }) => {
-  const { ref: revealRef, isRevealed } = useScrollReveal();
-  return (
-    <div
-      ref={revealRef}
-      className={`featured-project p-6 transition-all duration-600 ${isRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-      style={{ transitionDelay: `${index * 120}ms` }}
-    >
-      {/* Featured badge */}
-      <div className="flex items-center justify-between mb-5 pb-4 border-b border-border/50">
-        <div className="flex items-center gap-3">
-          <div className="p-2 bg-primary/10 rounded-lg">
-            <project.icon className="w-5 h-5 text-primary" />
-          </div>
-          <div>
-            <div className="flex items-center gap-2 mb-0.5">
-              <span className="data-label">{project.category}</span>
-              <span className="inline-flex items-center gap-0.5 text-[9px] font-mono px-1.5 py-0.5 rounded border border-primary/20 bg-primary/10 text-primary/80">
-                <Star className="w-2.5 h-2.5" /> Featured
-              </span>
-            </div>
-            <h3 className="text-base font-bold text-foreground">{project.title}</h3>
-          </div>
-        </div>
-        <span className="font-mono text-[11px] text-muted-foreground tabular-nums bg-secondary/50 px-2 py-0.5 rounded shrink-0">{project.year}</span>
-      </div>
+const domains = ["Secure applications", "Networks", "Systems"] as const;
 
-      <div className="grid sm:grid-cols-2 gap-6">
-        {/* Left */}
-        <div>
-          <p className="text-[13px] text-muted-foreground mb-4 leading-relaxed">{project.description}</p>
-          <div className="flex flex-wrap gap-1">
-            {project.tools.map((tool) => (
-              <span key={tool} className="px-1.5 py-0.5 text-[10px] font-mono text-muted-foreground border border-border/60 rounded bg-secondary/40 hover:border-primary/30 hover:text-foreground transition-all duration-200">{tool}</span>
-            ))}
-          </div>
-        </div>
-        {/* Right — highlights */}
-        <div className="space-y-2">
-          {project.highlights.map((h) => (
-            <div key={h} className="flex items-start gap-2 text-[12px] text-muted-foreground/80">
-              <span className="font-mono text-primary/60 select-none mt-px shrink-0">▸</span>
-              <span className="leading-relaxed">{h}</span>
-            </div>
-          ))}
-          <div className="flex gap-2 pt-3 border-t border-border/40 mt-3">
-            {project.liveUrl && (
-              <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground gap-1.5 rounded-lg text-xs h-8" asChild>
-                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">Live Demo <ExternalLink className="w-3 h-3" /></a>
-              </Button>
-            )}
-            {project.githubUrl && (
-              <Button variant="outline" size="sm" className="gap-1.5 rounded-lg text-xs h-8 border-border hover:border-primary/40" asChild>
-                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">Source <ExternalLink className="w-3 h-3" /></a>
-              </Button>
-            )}
-          </div>
-        </div>
+const ProjectLinks = ({ project }: { project: Project }) => (
+  <div className="project-links">
+    {project.liveUrl && <a className="panel-interactive" href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Live demo: ${project.title}`}>Live</a>}
+    {project.githubUrl && <a className="panel-interactive" href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label={`Source: ${project.title}`}>Source</a>}
+  </div>
+);
+
+const ProjectMeta = ({ project }: { project: Project }) => (
+  <p className="project-meta">{project.category} / {project.year}</p>
+);
+
+const ProjectTools = ({ project }: { project: Project }) => (
+  <p className="project-tools"><span className="sr-only">Tools: </span>{project.tools.join(", ")}</p>
+);
+
+const PimsCaseStudy = ({ project }: { project: Project }) => (
+  <article className="project-case project-case-pims panel-interactive" aria-labelledby="pims-title">
+    <header>
+      <ProjectMeta project={project} />
+      <h3 id="pims-title">{project.title}</h3>
+      <p className="project-result">{project.result}</p>
+    </header>
+    <div className="project-case-body">
+      <div className="project-story">
+    <figure className="project-homepage-preview panel-static">
+      <a className="project-homepage-link" href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Open live demo: ${project.title}`}>
+        <img src="/projects/pims-frontend.jpg" width={1910} height={916} loading="lazy" decoding="async" alt="PIMS administrator dashboard showing inventory navigation, revenue, sales, and stock summaries" />
+      </a>
+      <figcaption className="text-xs text-muted-foreground">PIMS · administrator dashboard</figcaption>
+    </figure>
+      <div className="case-narrative">
+        <h4>The problem</h4>
+        <p>A shared POS inventory platform needs to keep tenant data isolated and prevent privilege escalation across the full request path.</p>
+        <h4>My contribution</h4>
+        <p>{project.description}</p>
+        <h4>Architecture decisions</h4>
+        <ul>{project.highlights.map(item => <li key={item}>{item}</li>)}</ul>
       </div>
+      </div>
+      <ArchitectureDiagram system="pims" />
     </div>
-  );
-};
+    <footer><ProjectTools project={project} /><ProjectLinks project={project} /></footer>
+  </article>
+);
+
+const ResidencyCaseStudy = ({ project }: { project: Project }) => (
+  <article className="project-case project-case-residency panel-interactive" aria-labelledby="residency-title">
+    <header>
+      <ProjectMeta project={project} />
+      <h3 id="residency-title">{project.title}</h3>
+      <p className="project-result">{project.result}</p>
+    </header>
+    <div className="project-case-body">
+      <div className="project-story">
+    <figure className="project-homepage-preview panel-static">
+      <a className="project-homepage-link" href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Open live demo: ${project.title}`}>
+        <img src="/projects/nextgen-residency-frontend.jpg" width={1240} height={696} loading="lazy" decoding="async" alt="NextGen Residency homepage introducing its smart housing society management platform" />
+      </a>
+      <figcaption className="text-xs text-muted-foreground">NextGen Residency · homepage</figcaption>
+    </figure>
+    <div className="residency-brief case-narrative">
+      <div><h4>The problem</h4><p>Resident, Admin, and Vendor portals need shared services without sharing unrestricted access. Authentication, authorization, and API protection must work across all three.</p></div>
+      <div><h4>My contribution</h4><p>{project.description}</p></div>
+    </div>
+      </div>
+      <ArchitectureDiagram system="residency" />
+    </div>
+    <div className="residency-architecture">
+    <section className="residency-ledger panel-static" aria-labelledby="residency-decisions">
+      <h4 id="residency-decisions">Backend architecture decisions</h4>
+      <dl>
+        <div><dt>Identity &amp; sessions</dt><dd>TOTP-based two-factor authentication; JWT authentication with refresh tokens.</dd></div>
+        <div><dt>Portal authorization</dt><dd>RBAC across Resident, Admin, and Vendor access.</dd></div>
+        <div><dt>API hardening</dt><dd>Helmet.js security headers, CSRF protection, NoSQL injection prevention, and rate limiting.</dd></div>
+        <div><dt>Operations</dt><dd>Audit logging and ownership of the deployment pipeline.</dd></div>
+      </dl>
+    </section>
+    </div>
+    <div className="case-narrative residency-outcome">
+      <h4>Delivered</h4>
+      {project.highlights.map(item => <p key={item}>{item}</p>)}
+    </div>
+    <footer><ProjectTools project={project} /><ProjectLinks project={project} /></footer>
+  </article>
+);
+
+const SupportingRow = ({ project }: { project: Project }) => (
+  <article className="project-row panel-interactive">
+    <div className="project-row-main">
+      <header><h4>{project.title}</h4><ProjectMeta project={project} /></header>
+      <p className="project-row-result">{project.result}</p>
+      <ProjectLinks project={project} />
+    </div>
+    <details className="project-row-details">
+      <summary>Project details<span className="sr-only">: {project.title}</span></summary>
+      <div>
+        <p>{project.description}</p>
+        <ul>{project.highlights.map(item => <li key={item}>{item}</li>)}</ul>
+        <ProjectTools project={project} />
+      </div>
+    </details>
+  </article>
+);
 
 const Projects = () => {
-  const { ref: headerRef, isRevealed: headerRevealed } = useScrollReveal();
-  const featured = projects.filter((p) => p.featured);
-  const supporting = projects.filter((p) => !p.featured);
+  const [filter, setFilter] = useState("All work");
+  const visible = projects.filter(project => filter === "All work" || project.domain === filter);
+  const featured = visible.filter(project => project.featured);
+  const supporting = visible.filter(project => !project.featured);
 
   return (
-    <section id="projects" className="py-24 relative overflow-hidden">
-      {/* Ambient Stacking Blocks */}
-      <div className="absolute top-0 right-[5%] w-96 h-96 pointer-events-none z-0 opacity-50 overflow-hidden">
-        <div className="absolute top-20 right-10 flex flex-col items-end gap-2 -rotate-12 origin-right scale-125">
-          <div className="w-32 h-5 border border-primary/30 bg-primary/10 rounded animate-stacking-blocks" style={{ animationDelay: '0s' }} />
-          <div className="w-48 h-5 border border-primary/30 bg-primary/10 rounded animate-stacking-blocks" style={{ animationDelay: '0.4s' }} />
-          <div className="w-40 h-5 border border-primary/30 bg-primary/10 rounded animate-stacking-blocks" style={{ animationDelay: '0.8s' }} />
-          <div className="w-56 h-5 border border-primary/30 bg-primary/10 rounded animate-stacking-blocks" style={{ animationDelay: '1.2s' }} />
-          <div className="w-24 h-5 border border-primary/30 bg-primary/10 rounded animate-stacking-blocks" style={{ animationDelay: '1.6s' }} />
-        </div>
-      </div>
-
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-6xl mx-auto">
-          <div
-            ref={headerRef}
-            className={`mb-14 transition-all duration-600 ${headerRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-          >
-            <h2 className="section-title">Projects</h2>
-            <p className="section-subtitle mt-4">
-              Full-stack web apps, cybersecurity tools, enterprise network design, systems programming, and game development
-            </p>
-          </div>
-
-          {/* Featured projects — full width */}
-          <div className="space-y-5 mb-10">
-            {featured.map((project, index) => (
-              <FeaturedCard key={project.title} project={project} index={index} />
+    <section id="projects" aria-labelledby="projects-heading" className="section-standard">
+      <div className="layout-container">
+        <div className="content-standard">
+          <header className="projects-introduction">
+            <h2 id="projects-heading" className="section-title">Projects</h2>
+            <p className="section-subtitle">Full-stack web apps, cybersecurity tools, enterprise network design, systems programming, and game development</p>
+          </header>
+          <div className="project-filters" role="group" aria-label="Filter projects">
+            {["All work", ...domains].map(item => (
+              <button className="panel-interactive" key={item} onClick={() => setFilter(item)} aria-pressed={filter === item}>{item}</button>
             ))}
+            <span role="status">{visible.length} {visible.length === 1 ? "project" : "projects"}</span>
           </div>
-
-          {/* Divider */}
-          <div className="flex items-center gap-4 mb-8 opacity-40">
-            <div className="flex-1 h-px bg-border" />
-            <span className="text-[10px] font-mono text-muted-foreground whitespace-nowrap">Supporting Work</span>
-            <div className="flex-1 h-px bg-border" />
-          </div>
-
-          {/* Supporting grid */}
-          <div className="grid lg:grid-cols-2 gap-4">
-            {supporting.map((project, index) => (
-              <SupportingCard key={project.title} project={project} index={index} />
-            ))}
-          </div>
+          {featured.length > 0 && (
+            <div className="project-case-studies">
+              {featured.map(project => project.title.startsWith("PIMS")
+                ? <PimsCaseStudy key={project.title} project={project} />
+                : <ResidencyCaseStudy key={project.title} project={project} />)}
+            </div>
+          )}
+          {supporting.length > 0 && (
+            <section className="project-supporting" aria-labelledby="supporting-heading">
+              <h2 id="supporting-heading">Supporting Work</h2>
+              {domains.map(domain => {
+                const group = supporting.filter(project => project.domain === domain);
+                return group.length > 0 ? (
+                  <section key={domain} className="project-domain" aria-label={domain}>
+                    <h3>{domain}</h3>
+                    <div className="project-supporting-grid">
+                      {group.map(project => <SupportingRow key={project.title} project={project} />)}
+                    </div>
+                  </section>
+                ) : null;
+              })}
+            </section>
+          )}
         </div>
       </div>
     </section>

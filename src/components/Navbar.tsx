@@ -1,137 +1,176 @@
-import { useState, useEffect } from "react";
-import { Shield, Menu, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Menu, Pause, Play, Shield, X } from "lucide-react";
+import { toggleMotion, useMotionPreference } from "@/hooks/useMotionPreference";
 
-import { motion } from "framer-motion";
-
-const navLinks = [
-  { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#projects", label: "Projects" },
-  { href: "#experience", label: "Experience" },
-  { href: "#certifications", label: "Certifications" },
-  { href: "#resume", label: "Resume" },
-  { href: "#contact", label: "Contact" },
+const links = [
+  ["about", "About"],
+  ["skills", "Skills"],
+  ["experience", "Experience"],
+  ["certifications", "Certifications"],
+  ["projects", "Projects"],
+  ["resume", "Resume"],
+  ["contact", "Contact"],
 ];
-
-const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
-
+export default function Navbar() {
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("");
+  const reduced = useMotionPreference();
+  const progress = useRef<HTMLDivElement>(null);
+  const menuButton = useRef<HTMLButtonElement>(null);
+  const desktopLinks = useRef<HTMLDivElement>(null);
+  const underline = useRef<HTMLSpanElement>(null);
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
-      const sections = navLinks.map((l) => l.href.substring(1));
-      let current = "";
-      for (const id of sections) {
-        const el = document.getElementById(id);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= 100) current = id;
-        }
+    const update = () => {
+      const parent = desktopLinks.current;
+      const line = underline.current;
+      const link = parent?.querySelector<HTMLElement>('[aria-current="location"]');
+      if (!parent || !line) return;
+      // Read geometry before writing styles; the underline scales instead of
+      // animating width (which caused layout on active-section changes).
+      const width = link?.offsetWidth ?? 0;
+      const left = link?.offsetLeft ?? 0;
+      line.style.opacity = link ? "1" : "0";
+      if (link) {
+        line.style.transform = `translateX(${left}px) scaleX(${width})`;
       }
-      setActiveSection(current);
     };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    update();
+    const observer = new ResizeObserver(update);
+    if (desktopLinks.current) observer.observe(desktopLinks.current);
+    return () => observer.disconnect();
+  }, [active]);
+  useEffect(() => {
+    let frame = 0;
+    let dirty = true;
+    let started = false;
+    let height = 0;
+    let tops: number[] = [];
+    let previous = "";
+    const update = () => {
+      frame = 0;
+      const scrollY = window.scrollY;
+      if (dirty) {
+        height = document.documentElement.scrollHeight - window.innerHeight;
+        tops = links.map(([id]) => (document.getElementById(id)?.getBoundingClientRect().top ?? Infinity) + scrollY);
+        dirty = false;
+      }
+      if (progress.current)
+        progress.current.style.transform = `scaleX(${height > 0 ? scrollY / height : 0})`;
+      let current = "";
+      links.forEach(([id], index) => {
+        if (tops[index] - scrollY <= 140)
+          current = id;
+      });
+      if (current !== previous) { previous = current; setActive(current); }
+    };
+    const scroll = () => {
+      if (started && !frame) frame = requestAnimationFrame(update);
+    };
+    let startupFrame = requestAnimationFrame(() => {
+      startupFrame = requestAnimationFrame(() => { started = true; scroll(); });
+    });
+    const invalidate = () => { dirty = true; scroll(); };
+    const resize = new ResizeObserver(invalidate);
+    document.querySelectorAll('main > section[id]').forEach(section => resize.observe(section));
+    window.addEventListener("scroll", scroll, { passive: true });
+    window.addEventListener("resize", invalidate);
+    return () => {
+      cancelAnimationFrame(startupFrame);
+      cancelAnimationFrame(frame);
+      resize.disconnect();
+      window.removeEventListener("scroll", scroll);
+      window.removeEventListener("resize", invalidate);
+    };
   }, []);
-
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) element.scrollIntoView({ behavior: "smooth" });
-    setIsMobileMenuOpen(false);
-  };
-
+  useEffect(() => {
+    if (!open) return;
+    const escape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        menuButton.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", escape);
+    return () => document.removeEventListener("keydown", escape);
+  }, [open]);
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/90 backdrop-blur-md border-b border-border/60 shadow-lg shadow-background/30"
-          : "bg-transparent"
-      }`}
+      className="portfolio-nav fixed top-0 inset-x-0 z-50"
+      aria-label="Main navigation"
     >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+      <div className="layout-container">
+        <div className="flex items-center justify-between h-[72px] gap-4">
           <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
-            className="flex items-center gap-3 group"
+            href="#home"
+            className="panel-interactive flex items-center gap-2.5 shrink-0"
+            aria-label="Usman Ibrahim home"
           >
-            <div className="relative flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 border border-primary/20">
-              <motion.div
-                animate={{ scale: [1, 1.4, 1], opacity: [0.5, 0, 0.5] }}
-                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute inset-0 rounded-lg bg-primary/30"
-              />
-              <Shield className="w-4 h-4 text-primary relative z-10" />
-            </div>
-            <span className="font-semibold text-sm tracking-tight">
-              <span className="text-foreground">Usman</span>
-              <span className="text-primary"> Ibrahim</span>
+            <Shield size={21} className="text-primary" />
+            <span className="font-semibold text-sm">
+              usman<span className="text-primary">.ibrahim</span>
             </span>
           </a>
-
-          <div className="hidden md:flex items-center gap-0.5">
-            {navLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => scrollToSection(link.href)}
-                className={`relative text-xs font-medium px-3 py-2 rounded-lg transition-all duration-200 ${
-                  activeSection === link.href.substring(1)
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
-                }`}
+          <div ref={desktopLinks} className="desktop-nav-links hidden lg:flex gap-5">
+            <span ref={underline} className="active-section-underline" aria-hidden="true" />
+            {links.map(([id, label]) => (
+              <a
+                key={id}
+                href={`#${id}`}
+                aria-current={active === id ? "location" : undefined}
+                className={`text-[11px] transition-colors hover:text-primary ${active === id ? "text-primary" : "text-muted-foreground"}`}
               >
-                {activeSection === link.href.substring(1) && (
-                  <span className="absolute inset-0 bg-primary/10 rounded-lg" />
-                )}
-                <span className="relative">{link.label}</span>
-              </button>
+                {label}
+              </a>
             ))}
           </div>
-
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-muted-foreground hover:text-foreground transition-all duration-200 hover:bg-secondary/50 rounded-lg"
-          >
-            <div className="relative w-5 h-5">
-              <X className={`absolute inset-0 w-5 h-5 transition-all duration-300 ${isMobileMenuOpen ? 'opacity-100 rotate-0' : 'opacity-0 rotate-90'}`} />
-              <Menu className={`absolute inset-0 w-5 h-5 transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0 -rotate-90' : 'opacity-100 rotate-0'}`} />
-            </div>
-          </button>
-        </div>
-
-        <div
-          className={`md:hidden overflow-hidden transition-all duration-400 ease-out ${
-            isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-          }`}
-        >
-          <div className="py-3 border-t border-border/50 bg-background/95 backdrop-blur-md">
-            <div className="flex flex-col gap-0.5">
-              {navLinks.map((link, i) => (
-                <button
-                  key={link.href}
-                  onClick={() => scrollToSection(link.href)}
-                  className={`text-left px-4 py-2.5 rounded-lg text-sm transition-all duration-200 ${
-                    activeSection === link.href.substring(1)
-                      ? "text-primary bg-primary/10 font-medium"
-                      : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
-                  }`}
-                  style={{ transitionDelay: `${i * 30}ms` }}
-                >
-                  {link.label}
-                </button>
-              ))}
-            </div>
+          <div className="flex items-center gap-3">
+            <button
+              className="panel-interactive motion-control"
+              onClick={toggleMotion}
+              aria-pressed={reduced}
+              aria-label={
+                reduced
+                  ? "Resume animations (respects system preference)"
+                  : "Pause animations"
+              }
+            >
+              {reduced ? <Play size={12} /> : <Pause size={12} />}
+              <span className="hidden sm:inline">
+                {reduced ? "Motion off" : "Motion on"}
+              </span>
+            </button>
+            <button
+              ref={menuButton}
+              className="panel-interactive lg:hidden p-2 text-muted-foreground"
+              onClick={() => setOpen(!open)}
+              aria-expanded={open}
+              aria-controls="mobile-navigation"
+              aria-label={open ? "Close navigation" : "Open navigation"}
+            >
+              {open ? <X size={21} /> : <Menu size={21} />}
+            </button>
           </div>
         </div>
+        {open && (
+          <div
+            id="mobile-navigation"
+            className="lg:hidden grid grid-cols-2 gap-1 pb-5 border-t border-border pt-3"
+          >
+            {links.map(([id, label]) => (
+              <a
+                key={id}
+                href={`#${id}`}
+                onClick={() => setOpen(false)}
+                aria-current={active === id ? "location" : undefined}
+                className="p-3 text-sm text-muted-foreground hover:text-primary"
+              >
+                {label}
+              </a>
+            ))}
+          </div>
+        )}
       </div>
+      <div ref={progress} className="nav-progress" aria-hidden="true" />
     </nav>
   );
-};
-
-export default Navbar;
+}

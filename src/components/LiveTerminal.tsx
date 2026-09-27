@@ -1,109 +1,139 @@
-import { useState, useEffect } from "react";
-import { Terminal as TerminalIcon } from "lucide-react";
+import { useRef, useState } from "react";
+import { CornerDownLeft, Terminal } from "lucide-react";
 
-const SEQUENCES = [
-  {
-    command: "./analyze_pcap --deep",
-    output: [
-      { text: "[OK] Packets captured: 14,203", delay: 200, color: "text-emerald-400" },
-      { text: "[*] Analyzing signatures...", delay: 400, color: "text-muted-foreground" },
-      { text: "[!] Suspicious payload (SIM-2026-00137) detected", delay: 800, color: "text-amber-400" },
-      { text: ">> Escalate to Incident Response team? (Y/n)", delay: 300, color: "text-foreground font-bold" }
-    ]
-  },
-  {
-    command: "tail -f /var/log/wazuh/alerts.log",
-    output: [
-      { text: "Listening for events...", delay: 300, color: "text-muted-foreground" },
-      { text: "!! Rule 1002 (Level 12) -> Multiple authentication failures", delay: 900, color: "text-destructive" },
-      { text: "   Src: 192.168.1.45 | User: admin", delay: 100, color: "text-muted-foreground" },
-      { text: ">> ACTION: IP auto-banned via active response", delay: 600, color: "text-emerald-400" }
-    ]
-  },
-  {
-    command: "nmap -sV -T4 10.0.0.12",
-    output: [
-      { text: "Starting Nmap 7.93 at 2026-08-29 EDT", delay: 300, color: "text-muted-foreground" },
-      { text: "PORT     STATE SERVICE VERSION", delay: 500, color: "text-foreground" },
-      { text: "22/tcp   open  ssh     OpenSSH 8.9p1", delay: 200, color: "text-emerald-400" },
-      { text: "443/tcp  open  https   nginx 1.18.0", delay: 200, color: "text-emerald-400" },
-      { text: "Nmap done: 1 IP scanned in 1.34 sec", delay: 600, color: "text-primary" }
-    ]
-  }
-];
-
+const commands: Record<string, string | (() => string)> = {
+  help: () => `Available commands: ${Object.keys(commands).join(", ")}, clear. Use ↑ and ↓ for command history.`,
+  whoami:
+    "Usman Ibrahim — BS Cyber Security, FAST NUCES Islamabad ’28. Focus: Security Engineering, SOC/DFIR, and Detection Engineering.",
+  skills: () => Array.from(document.querySelectorAll('#skills .skills-tag'), item => item.textContent).join(', '),
+  certifications: () => Array.from(document.querySelectorAll('#certifications .cert-row'), row => {
+    const name = row.querySelector('.flex-1 p')?.textContent?.trim();
+    const status = row.textContent?.includes('In Progress') ? 'in progress' : 'completed';
+    return `${name} — ${status}`;
+  }).join('\n'),
+  email: "i242038@isb.nu.edu.pk",
+  socials: () => Array.from(document.querySelectorAll<HTMLAnchorElement>('.portfolio-footer a[aria-label]'), link => `${link.getAttribute('aria-label')}: ${link.href}`).join('\n'),
+  education: "BS Cyber Security · FAST NUCES Islamabad · Aug 2024 — Jun 2028",
+  projects:
+    "Opening my projects: PIMS, NextGen Residency, enterprise networking, systems programming, and more.",
+  contact:
+    "Email: i242038@isb.nu.edu.pk · GitHub: github.com/UsmanPrime. Opening the contact section.",
+  resume: "Opening the resume section. View or download the PDF there.",
+};
+interface Entry {
+  command: string;
+  result: string;
+}
 export default function LiveTerminal() {
-  const [seqIndex, setSeqIndex] = useState(0);
-  const [step, setStep] = useState<"typing" | "running" | "done">("typing");
-  const [typedCommand, setTypedCommand] = useState("");
-  const [outputLines, setOutputLines] = useState<any[]>([]);
-
-  useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
-    const seq = SEQUENCES[seqIndex];
-
-    if (step === "typing") {
-      if (typedCommand.length < seq.command.length) {
-        timeoutId = setTimeout(() => {
-          setTypedCommand(seq.command.slice(0, typedCommand.length + 1));
-        }, Math.random() * 40 + 40); // 40-80ms per char
-      } else {
-        timeoutId = setTimeout(() => setStep("running"), 500);
-      }
-    } else if (step === "running") {
-      if (outputLines.length < seq.output.length) {
-        const nextLine = seq.output[outputLines.length];
-        timeoutId = setTimeout(() => {
-          setOutputLines([...outputLines, nextLine]);
-        }, nextLine.delay);
-      } else {
-        timeoutId = setTimeout(() => setStep("done"), 4000); // Wait before clearing
-      }
-    } else if (step === "done") {
-      setTypedCommand("");
-      setOutputLines([]);
-      setSeqIndex((prev) => (prev + 1) % SEQUENCES.length);
-      setStep("typing");
+  const [input, setInput] = useState("");
+  const [entries, setEntries] = useState<Entry[]>([]);
+  const history = useRef<string[]>([]);
+  const cursor = useRef(0);
+  const output = useRef<HTMLDivElement>(null);
+  function run(value: string) {
+    const command = value.trim().toLowerCase();
+    if (!command) return;
+    history.current = [...history.current, value.trim()].slice(-30);
+    cursor.current = history.current.length;
+    setInput("");
+    if (command === "clear") {
+      setEntries([]);
+      return;
     }
-
-    return () => clearTimeout(timeoutId);
-  }, [seqIndex, step, typedCommand, outputLines]);
-
+    const response = commands[command];
+    const result = typeof response === "function" ? response() : response;
+    setEntries((old) => [
+      ...old.slice(-11),
+      {
+        command: value.trim(),
+        result:
+          result ||
+          `Command not found: ${value.trim()}. Type help to see available commands.`,
+      },
+    ]);
+    if (["projects", "contact", "resume"].includes(command))
+      window.location.hash = command;
+    requestAnimationFrame(() => {
+      if (output.current)
+        output.current.scrollTop = output.current.scrollHeight;
+    });
+  }
   return (
-    <div className="terminal-panel shadow-2xl shadow-primary/5 w-full max-w-2xl animate-fade-in-up" style={{ animationDelay: "0.55s" }}>
-      <div className="terminal-header">
-        <div className="flex gap-1.5">
-          <div className="w-2.5 h-2.5 rounded-full bg-destructive/80" />
-          <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
-          <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
-        </div>
-        <span className="text-[11px] text-muted-foreground ml-2 font-mono flex items-center gap-1.5">
-          <TerminalIcon className="w-3 h-3 hidden sm:block" /> threat_monitor.sh
+    <div id="terminal" className="interactive-terminal panel-interactive">
+      <div className="terminal-titlebar">
+        <span>
+          <Terminal size={15} /> usman@portfolio: ~
         </span>
+        <span>Portfolio shell</span>
       </div>
-      <div className="p-4 sm:p-5 font-mono text-[11px] sm:text-[13px] space-y-2 bg-card/50 h-[220px] sm:h-[200px] overflow-hidden flex flex-col">
-        <div className="flex items-center gap-2 mb-2">
-          <span className="text-primary font-medium shrink-0">usman@soc:~$</span>
-          <span className="text-foreground flex items-center whitespace-pre-wrap break-all">
-            {typedCommand}
-            {step === "typing" && (
-              <span className="inline-block w-1.5 h-3.5 sm:h-4 bg-primary ml-1 animate-pulse" />
-            )}
+      <div className="terminal-content">
+        <div className="terminal-welcome">
+          <p>A little more comfortable in a terminal?</p>
+          <span>
+            Type <button onClick={() => run("help")}>help</button> to explore.
+            This shell navigates the portfolio.
           </span>
         </div>
-        <div className="flex-1 flex flex-col gap-2 overflow-hidden text-[11px] sm:text-[13px] leading-relaxed break-words whitespace-pre-wrap">
-          {outputLines.map((line, i) => (
-            <div key={i} className={line.color}>
-              {line.text}
+        <div
+          className="terminal-output"
+          ref={output}
+          role="log"
+          aria-live="polite"
+          aria-label="Terminal output"
+        >
+          {entries.map((entry, index) => (
+            <div key={index}>
+              <p>
+                <span>❯</span> {entry.command}
+              </p>
+              <p>{entry.result}</p>
             </div>
           ))}
-          {step === "running" && outputLines.length === SEQUENCES[seqIndex].output.length && (
-            <div className="flex items-center gap-2 mt-1">
-              <span className="text-primary font-medium shrink-0">usman@soc:~$</span>
-              <span className="inline-block w-1.5 h-3 bg-primary ml-0.5 animate-pulse" />
-            </div>
-          )}
         </div>
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+            run(input);
+          }}
+          className="terminal-input-row"
+        >
+          <span className="terminal-prompt" aria-hidden="true">❯</span>
+          <label className="sr-only" htmlFor="terminal-command">
+            Terminal command
+          </label>
+          <input
+            id="terminal-command"
+            value={input}
+            onChange={(event) => setInput(event.target.value)}
+            maxLength={150}
+            spellCheck={false}
+            autoComplete="off"
+            placeholder="Type a command…"
+            onKeyDown={(event) => {
+              if (event.key !== "ArrowUp" && event.key !== "ArrowDown") return;
+              event.preventDefault();
+              cursor.current = Math.max(
+                0,
+                Math.min(
+                  history.current.length,
+                  cursor.current + (event.key === "ArrowUp" ? -1 : 1),
+                ),
+              );
+              setInput(history.current[cursor.current] || "");
+            }}
+          />
+          <button type="submit" aria-label="Run command">
+            <CornerDownLeft size={17} />
+          </button>
+        </form>
+      </div>
+      <div className="terminal-shortcuts">
+        {["whoami", "skills", "certifications", "contact"].map((command) => (
+          <button key={command} onClick={() => run(command)}>
+            {command}
+          </button>
+        ))}
+        <span>No installation required.</span>
       </div>
     </div>
   );

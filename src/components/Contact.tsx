@@ -1,11 +1,9 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { Mail, Github, Linkedin, Send, Shield, Phone, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { useScrollReveal } from "@/hooks/useAnimations";
 
 interface ContactErrorDetail {
   field: string;
@@ -13,14 +11,13 @@ interface ContactErrorDetail {
 }
 
 interface ContactApiErrorResponse {
+  success?: boolean;
   error?: string;
   details?: ContactErrorDetail[];
 }
 
 const Contact = () => {
   const { toast } = useToast();
-  const { ref: headerRef, isRevealed: headerRevealed } = useScrollReveal();
-  const { ref: formRef, isRevealed: formRevealed } = useScrollReveal();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -28,52 +25,81 @@ const Contact = () => {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const revision = useRef(0);
+  const activeRequest = useRef<AbortController | null>(null);
+  useEffect(() => () => {
+    activeRequest.current?.abort();
+    activeRequest.current = null;
+  }, []);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
+    revision.current += 1;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (activeRequest.current) return;
+    const controller = new AbortController();
+    activeRequest.current = controller;
+    const submittedRevision = revision.current;
+    const submittedData = { ...formData };
+    let timedOut = false;
+    const timeout = window.setTimeout(() => {
+      timedOut = true;
+      controller.abort();
+    }, 15000);
     setIsSubmitting(true);
 
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(submittedData),
+        signal: controller.signal,
       });
 
       const data = (await response.json()) as ContactApiErrorResponse;
+      if (activeRequest.current !== controller) return;
 
-      if (response.ok) {
+      if (response.ok && data?.success === true) {
+        const edited = revision.current !== submittedRevision;
         toast({
           title: "Message Sent",
-          description: "Thank you for reaching out. I'll respond as soon as possible.",
+          description: edited
+            ? "Your submitted message was sent. Your newer edits are still in the form."
+            : "Thank you for reaching out. I'll respond as soon as possible.",
         });
-        setFormData({ name: "", email: "", subject: "", message: "" });
+        if (!edited) setFormData({ name: "", email: "", subject: "", message: "" });
       } else {
         const validationMessage =
-          Array.isArray(data.details) && data.details.length > 0
+          Array.isArray(data?.details) && typeof data.details[0]?.message === 'string'
             ? data.details[0].message
             : undefined;
         toast({
           title: "Error",
-          description: validationMessage || data.error || "Failed to send message. Please try again.",
+          description: validationMessage || (typeof data?.error === 'string' ? data.error : "Delivery could not be confirmed. Your message is still in the form; please try again or use the email link."),
           variant: "destructive",
         });
       }
-    } catch (error) {
+    } catch {
+      if (activeRequest.current !== controller) return;
       toast({
-        title: "Error",
-        description: "An error occurred. Please try again.",
+        title: timedOut ? "Delivery not confirmed" : "Connection error",
+        description: timedOut
+          ? "The request timed out. Your message may have been received; your draft is preserved. Please use the email link if you need to follow up."
+          : "Delivery could not be confirmed. Your draft is preserved; check your connection or use the email link.",
         variant: "destructive",
       });
     } finally {
-      setIsSubmitting(false);
+      window.clearTimeout(timeout);
+      if (activeRequest.current === controller) {
+        activeRequest.current = null;
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -86,14 +112,11 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-5xl mx-auto">
+    <section id="contact" className="section-standard relative overflow-hidden">
+      <div className="layout-container relative z-10">
+        <div className="content-standard">
           <div
-            ref={headerRef}
-            className={`mb-14 transition-all duration-600 ${
-              headerRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            className="section-heading"
           >
             <h2 className="section-title">Contact</h2>
             <p className="section-subtitle mt-4">
@@ -102,36 +125,33 @@ const Contact = () => {
           </div>
 
           <div
-            ref={formRef}
-            className={`grid lg:grid-cols-2 gap-8 transition-all duration-600 ${
-              formRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-            }`}
+            className="contact-layout grid lg:grid-cols-2 gap-8"
           >
             {/* Form */}
-            <div className="p-7 rounded-2xl bg-card/20 border border-border/40 shadow-[0_0_40px_-15px_hsl(var(--primary)/0.03)] backdrop-blur-md">
+            <div className="contact-form-panel panel-interactive">
               <div className="flex items-center gap-2.5 mb-5 pb-3 border-b border-border/60">
-                <div className="p-1.5 bg-primary/10 rounded-lg">
-                  <Send className="w-4 h-4 text-primary" />
+                <div className="p-1.5 bg-secondary/10 rounded-md">
+                  <Send className="w-4 h-4 text-foreground" />
                 </div>
-                <h3 className="text-sm font-semibold">Send a Message</h3>
+                <h3 className="contact-primary">Send a Message</h3>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-3">
+              <form onSubmit={handleSubmit} aria-busy={isSubmitting} className="panel-interactive space-y-3">
                 <div className="grid sm:grid-cols-2 gap-3">
                   <div>
                     <label htmlFor="name" className="data-label block mb-1.5">Name</label>
                     <Input
-                      id="name" name="name" type="text" required minLength={2} maxLength={100}
+                      id="name" name="name" type="text" autoComplete="name" required minLength={2} maxLength={100}
                       value={formData.name} onChange={handleInputChange} placeholder="Your name"
-                      className="bg-secondary/30 border-border focus:border-primary rounded-lg text-sm transition-all duration-200 h-9 focus:shadow-[0_0_0_2px_hsl(var(--primary)/0.1)]"
+                      className="bg-secondary/30 border-border focus:border-primary rounded-sm text-sm transition-all duration-200 h-9 focus:shadow-[0_0_0_2px_hsl(var(--primary)/0.1)]"
                     />
                   </div>
                   <div>
                     <label htmlFor="email" className="data-label block mb-1.5">Email</label>
                     <Input
-                      id="email" name="email" type="email" required
+                      id="email" name="email" type="email" autoComplete="email" spellCheck={false} maxLength={254} required
                       value={formData.email} onChange={handleInputChange} placeholder="your@email.com"
-                      className="bg-secondary/30 border-border focus:border-primary rounded-lg text-sm transition-all duration-200 h-9 focus:shadow-[0_0_0_2px_hsl(var(--primary)/0.1)]"
+                      className="bg-secondary/30 border-border focus:border-primary rounded-sm text-sm transition-all duration-200 h-9 focus:shadow-[0_0_0_2px_hsl(var(--primary)/0.1)]"
                     />
                   </div>
                 </div>
@@ -141,7 +161,7 @@ const Contact = () => {
                   <Input
                     id="subject" name="subject" type="text" required minLength={3} maxLength={200}
                     value={formData.subject} onChange={handleInputChange} placeholder="What's this about?"
-                    className="bg-secondary/30 border-border focus:border-primary rounded-lg text-sm transition-all duration-200 h-9 focus:shadow-[0_0_0_2px_hsl(var(--primary)/0.1)]"
+                    className="bg-secondary/30 border-border focus:border-primary rounded-sm text-sm transition-all duration-200 h-9 focus:shadow-[0_0_0_2px_hsl(var(--primary)/0.1)]"
                   />
                 </div>
 
@@ -150,17 +170,17 @@ const Contact = () => {
                   <Textarea
                     id="message" name="message" required rows={4} minLength={10} maxLength={5000}
                     value={formData.message} onChange={handleInputChange} placeholder="Your message..."
-                    className="bg-secondary/30 border-border focus:border-primary resize-none rounded-lg text-sm transition-all duration-200 focus:shadow-[0_0_0_2px_hsl(var(--primary)/0.1)]"
+                    className="bg-secondary/30 border-border focus:border-primary resize-none rounded-sm text-sm transition-all duration-200 focus:shadow-[0_0_0_2px_hsl(var(--primary)/0.1)]"
                   />
                 </div>
 
                 <Button
                   type="submit"
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground gap-2 magnetic-btn rounded-lg text-sm h-10"
+                  className="contact-send panel-interactive w-full bg-primary hover:bg-primary/90 text-primary-foreground gap-2 rounded-sm text-sm h-10"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
-                    <><span className="w-3.5 h-3.5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" /> Sending...</>
+                    <><span className="w-3.5 h-3.5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-sm animate-spin" /> Sending...</>
                   ) : (
                     <><Send className="w-3.5 h-3.5" /> Send Message</>
                   )}
@@ -170,18 +190,11 @@ const Contact = () => {
 
             {/* Info */}
             <div className="space-y-4">
-              <div className="relative p-7 rounded-2xl bg-card/20 border border-border/40 shadow-[0_0_40px_-15px_hsl(var(--primary)/0.03)] backdrop-blur-md overflow-hidden">
-                {/* Ambient Radar Sweep */}
-                <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none opacity-20">
-                  <div className="absolute w-32 h-32 rounded-full border border-primary animate-radar-sweep" />
-                  <div className="absolute w-32 h-32 rounded-full border border-primary animate-radar-sweep" style={{ animationDelay: '1.3s' }} />
-                  <div className="absolute w-32 h-32 rounded-full border border-primary animate-radar-sweep" style={{ animationDelay: '2.6s' }} />
-                </div>
-
+              <div className="contact-info-panel relative panel-static overflow-hidden">
                 <div className="relative z-10">
                   <div className="flex items-center gap-2.5 mb-4 pb-3 border-b border-border/60">
-                    <div className="p-1.5 bg-primary/10 rounded-lg">
-                      <Shield className="w-4 h-4 text-primary" />
+                    <div className="p-1.5 bg-secondary/10 rounded-md">
+                      <Shield className="w-4 h-4 text-foreground" />
                     </div>
                     <h3 className="text-sm font-semibold">Connect</h3>
                   </div>
@@ -198,9 +211,9 @@ const Contact = () => {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-3 p-2.5 rounded-lg border border-transparent hover:border-primary/20 hover:bg-primary/5 transition-all duration-250 group"
+                      className="panel-interactive flex items-center gap-3 p-2.5 rounded-sm border border-transparent hover:border-primary/20 hover:bg-primary/5 transition-all duration-250 group"
                     >
-                      <div className="p-1.5 bg-primary/10 rounded-lg group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                      <div className="p-1.5 bg-primary/10 rounded-md group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
                         <link.icon className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors duration-200" />
                       </div>
                       <div>
@@ -217,24 +230,20 @@ const Contact = () => {
               </div>
             </div>
 
-              <div className="terminal-panel">
+              <div className="terminal-panel panel-static">
                 <div className="terminal-header">
-                  <div className="terminal-dot bg-green-500/60" />
+                  <div className="terminal-dot bg-muted-foreground/60" />
                   <span className="text-[11px] text-muted-foreground ml-2 font-mono">
                     contact.log
                   </span>
                 </div>
                 <div className="p-3 font-mono text-[11px] space-y-0.5">
                   <div className="flex gap-2 text-muted-foreground">
-                    <span className="text-accent select-none">[SECURE]</span>
-                    <span>All communications are confidential</span>
+                    <span className="text-foreground select-none">[ETA]</span>
+                    <span>Aim: respond within 24-48 hours</span>
                   </div>
                   <div className="flex gap-2 text-muted-foreground">
-                    <span className="text-primary select-none">[ETA]</span>
-                    <span>Response within 24-48 hours</span>
-                  </div>
-                  <div className="flex gap-2 text-muted-foreground">
-                    <span className="text-accent select-none">[STATUS]</span>
+                    <span className="text-foreground select-none">[STATUS]</span>
                     <span>Security practitioner · Blue Team focus</span>
                   </div>
                 </div>
