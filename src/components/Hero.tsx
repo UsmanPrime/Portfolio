@@ -12,14 +12,13 @@ export default function Hero() {
       <div className="hero-shell layout-container">
         <div className="hero-layout">
           <div className="hero-copy">
+            <p className="hero-kicker"><span aria-hidden="true">[</span> Cybersecurity student <span aria-hidden="true">]</span></p>
             <h1>
               Usman
               <br />
               Ibrahim
             </h1>
             <p className="hero-statement">
-              Cybersecurity student.
-              <br />
               Security Engineering · SOC/DFIR · Detection Engineering.
             </p>
             <p className="hero-description">

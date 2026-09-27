@@ -35,7 +35,7 @@ export function createDefenseCore(canvas: HTMLCanvasElement | OffscreenCanvas, v
       opacity: 0.48,
     }),
   );
-  const globeGeometry = track(new THREE.IcosahedronGeometry(1.65, 2));
+  const globeGeometry = track(new THREE.IcosahedronGeometry(1.65, 1));
   const edges = new THREE.LineSegments(
     track(new THREE.WireframeGeometry(globeGeometry)),
     edgeMaterial,
@@ -43,16 +43,46 @@ export function createDefenseCore(canvas: HTMLCanvasElement | OffscreenCanvas, v
   root.add(edges);
   root.add(
     new THREE.Mesh(
-      track(new THREE.SphereGeometry(1.59, 32, 24)),
+      track(new THREE.IcosahedronGeometry(1.48, 2)),
       track(new THREE.MeshPhongMaterial({
-        color: palette.surface.clone().lerp(palette.accent, 0.16),
+        color: palette.surface.clone().lerp(palette.accent, 0.06),
         emissive: palette.accent,
         emissiveIntensity: 0.035,
         specular: palette.accent.clone().multiplyScalar(0.3),
-        shininess: 16,
+        shininess: 48,
       })),
     ),
   );
+  // Orbital defense layers share the existing visibility-controlled renderer.
+  // Shared buffers keep this to a few draw calls without textures or extra passes.
+  const orbitMaterial = track(new THREE.LineBasicMaterial({ color: palette.accent, transparent: true, opacity: 0.5 }));
+  const orbitGeometry = track(new THREE.BufferGeometry().setFromPoints(
+    Array.from({ length: 96 }, (_, i) => {
+      const theta = i / 96 * Math.PI * 2;
+      return new THREE.Vector3(Math.cos(theta) * 2.05, Math.sin(theta) * 2.05, 0);
+    }),
+  ));
+  const orbits = [0.9, -0.75].map((inclination, i) => {
+    const orbit = new THREE.LineLoop(orbitGeometry, orbitMaterial);
+    orbit.rotation.set(inclination, i ? 0.8 : -0.3, i ? 0.45 : -0.4);
+    root.add(orbit);
+    return orbit;
+  });
+  const ticks: THREE.Vector3[] = [];
+  for (let i = 0; i < 48; i++) {
+    const theta = i / 48 * Math.PI * 2;
+    const outer = i % 4 === 0 ? 2.29 : 2.23;
+    ticks.push(new THREE.Vector3(Math.cos(theta) * 2.18, Math.sin(theta) * 2.18, 0));
+    ticks.push(new THREE.Vector3(Math.cos(theta) * outer, Math.sin(theta) * outer, 0));
+  }
+  const reticle = new THREE.LineSegments(track(new THREE.BufferGeometry().setFromPoints(ticks)), orbitMaterial);
+  reticle.rotation.set(0.3, -0.3, 0);
+  root.add(reticle);
+  const containmentMaterial = track(new THREE.LineBasicMaterial({ color: palette.success, transparent: true, opacity: 0 }));
+  const containment = new THREE.LineSegments(track(new THREE.WireframeGeometry(track(new THREE.IcosahedronGeometry(1.86, 1)))), containmentMaterial);
+  root.add(containment);
+  let stage = 0;
+  let introduction = 4;
   // Three real surface anchors; coordinates are scene geometry, not UI tokens.
   // The same SVG leaders also have static coordinates for the no-WebGL view.
   const anchorGeometry = track(new THREE.SphereGeometry(0.035, 6, 6));
@@ -84,7 +114,7 @@ export function createDefenseCore(canvas: HTMLCanvasElement | OffscreenCanvas, v
     const curve = new THREE.QuadraticBezierCurve3(position, midpoint, destination);
     const line = new THREE.Line(track(new THREE.BufferGeometry().setFromPoints(curve.getPoints(32))), edgeMaterial);
     const packet = new THREE.Mesh(anchorGeometry, anchorMaterial);
-    packet.scale.setScalar(0.65);
+    packet.scale.setScalar(1.25);
     packet.visible = false;
     root.add(marker, line, packet);
     return { curve, packet, phase: index / sources.length };
@@ -108,8 +138,16 @@ export function createDefenseCore(canvas: HTMLCanvasElement | OffscreenCanvas, v
     }
     const delta = last ? Math.min((now - last) / 1000, 0.05) : 0;
     last = now;
-    const flowing = interacting || now < burstUntil;
+    introduction = Math.max(0, introduction - delta);
+    const flowing = interacting || now < burstUntil || introduction > 0;
     if (flowing) flowTime += delta * 0.22;
+    if (flowing) {
+      orbits[0].rotation.z += delta * 0.15;
+      orbits[1].rotation.z -= delta * 0.1;
+      reticle.rotation.z += delta * 0.05;
+    }
+    containmentMaterial.opacity = THREE.MathUtils.damp(containmentMaterial.opacity, stage === 3 ? 0.45 : 0, 6, delta);
+    orbitMaterial.color.lerp(stage === 3 ? palette.success : stage ? palette.warning : palette.accent, 1 - Math.exp(-5 * delta));
     flows.forEach(({ curve, packet, phase }) => {
       packet.visible = flowing;
       if (flowing) curve.getPoint((flowTime + phase) % 1, packet.position);
@@ -160,7 +198,8 @@ export function createDefenseCore(canvas: HTMLCanvasElement | OffscreenCanvas, v
     setVisible(value: boolean) { visible = value; if (visible) start(); else stop(); },
     setPointer(x: number, y: number, active: boolean) { target.set(x, y); interacting = active; start(); },
     setStage(value: number) {
-      burstUntil = value ? performance.now() + 2400 : 0;
+      stage = value;
+      burstUntil = performance.now() + 2400;
       activeMaterial.color.copy(value === 3 ? palette.success : palette.warning);
       annotations.forEach((annotation, index) => { annotation.marker.material = value === index + 1 ? activeMaterial : anchorMaterial; });
       start();

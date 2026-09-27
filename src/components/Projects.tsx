@@ -227,7 +227,7 @@ const ResidencyCaseStudy = ({ project }: { project: Project }) => (
 const SupportingRow = ({ project }: { project: Project }) => (
   <article className="project-row panel-interactive">
     <div className="project-row-main">
-      <header><h4>{project.title}</h4><ProjectMeta project={project} /></header>
+      <header><p className="project-domain-label">{project.domain}</p><h4>{project.title}</h4><ProjectMeta project={project} /></header>
       <p className="project-row-result">{project.result}</p>
       <ProjectLinks project={project} />
     </div>
@@ -272,17 +272,10 @@ const Projects = () => {
           {supporting.length > 0 && (
             <section className="project-supporting" aria-labelledby="supporting-heading">
               <h2 id="supporting-heading">Supporting Work</h2>
-              {domains.map(domain => {
-                const group = supporting.filter(project => project.domain === domain);
-                return group.length > 0 ? (
-                  <section key={domain} className="project-domain" aria-label={domain}>
-                    <h3>{domain}</h3>
-                    <div className="project-supporting-grid">
-                      {group.map(project => <SupportingRow key={project.title} project={project} />)}
-                    </div>
-                  </section>
-                ) : null;
-              })}
+              <div className="project-supporting-grid">
+                {domains.flatMap(domain => supporting.filter(project => project.domain === domain))
+                  .map(project => <SupportingRow key={project.title} project={project} />)}
+              </div>
             </section>
           )}
         </div>

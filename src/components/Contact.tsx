@@ -165,7 +165,7 @@ const Contact = () => {
                   />
                 </div>
 
-                <div>
+                <div className="contact-message-field">
                   <label htmlFor="message" className="data-label block mb-1.5">Message</label>
                   <Textarea
                     id="message" name="message" required rows={4} minLength={10} maxLength={5000}
@@ -189,7 +189,7 @@ const Contact = () => {
             </div>
 
             {/* Info */}
-            <div className="space-y-4">
+            <div className="contact-details space-y-4">
               <div className="contact-info-panel relative panel-static overflow-hidden">
                 <div className="relative z-10">
                   <div className="flex items-center gap-2.5 mb-4 pb-3 border-b border-border/60">

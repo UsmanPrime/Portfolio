@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { useMotionPreference } from "./useMotionPreference";
 
 /** Pointer-only progressive enhancement; no React renders or idle animation loop. */
-export function useSurfaceTilt() {
+export function useSurfaceTilt(angle = 7) {
   const ref = useRef<HTMLDivElement>(null);
   const reduced = useMotionPreference();
   useEffect(() => {
@@ -26,8 +26,8 @@ export function useSurfaceTilt() {
       if (frame) return;
       frame = requestAnimationFrame(() => {
         frame = 0;
-        element.style.setProperty("--tilt-x", `${-y * 7}deg`);
-        element.style.setProperty("--tilt-y", `${x * 7}deg`);
+        element.style.setProperty("--tilt-x", `${-y * angle}deg`);
+        element.style.setProperty("--tilt-y", `${x * angle}deg`);
         element.dataset.tilting = "true";
       });
     };
@@ -47,6 +47,6 @@ export function useSurfaceTilt() {
       pointer.removeEventListener("change", reset);
       document.removeEventListener("visibilitychange", visibility);
     };
-  }, [reduced]);
+  }, [reduced, angle]);
   return ref;
 }

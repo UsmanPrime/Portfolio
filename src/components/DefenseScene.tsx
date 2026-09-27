@@ -7,6 +7,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { useMotionPreference } from "@/hooks/useMotionPreference";
+import { useSurfaceTilt } from "@/hooks/useSurfaceTilt";
 import type { DefenseRenderer } from "@/lib/defenseRenderer";
 
 const stages = [
@@ -49,6 +50,7 @@ const stages = [
 ];
 
 export default function DefenseScene() {
+  const surface = useSurfaceTilt(2.5);
   const fallbackGradient = useId();
   const host = useRef<HTMLDivElement>(null);
   const renderer = useRef<DefenseRenderer | null>(null);
@@ -134,7 +136,7 @@ export default function DefenseScene() {
   }, [stage, ready]);
 
   return (
-    <div className={`defense-console panel-interactive defense-stage-${stage}`} role="region" aria-label="Interactive incident simulation">
+    <div ref={surface} className={`defense-console panel-interactive defense-stage-${stage}`} role="region" aria-label="Interactive incident simulation">
       <div className="scene-heading">
         <span>Network defense lab</span>
         <span className="demo-tag">Interactive demo</span>
@@ -149,7 +151,9 @@ export default function DefenseScene() {
                   <stop offset="100%" className="fallback-shadow" />
                 </radialGradient>
               </defs>
-              <circle className="fallback-surface" cx="50" cy="50" r="32" fill={`url(#${fallbackGradient})`} />
+              <ellipse className="fallback-orbit" cx="50" cy="50" rx="43" ry="17" transform="rotate(-28 50 50)" />
+              <ellipse className="fallback-orbit" cx="50" cy="50" rx="20" ry="42" transform="rotate(-28 50 50)" />
+              <circle className="fallback-surface" cx="50" cy="50" r="29" fill={`url(#${fallbackGradient})`} />
               <ellipse cx="50" cy="50" rx="16" ry="32" />
               <path d="M18 50H82M25 30H75M25 70H75" />
               <path d="M27 43L40 39M42 23L40 39M72 34L63 54M75 63L63 54M33 72L46 70M54 45L46 70" />
@@ -175,7 +179,7 @@ export default function DefenseScene() {
       </div>
       <div className="incident-panel panel-interactive">
         <div className="incident-progress" aria-hidden="true">
-          {stages.map((item, index) => <span key={item.label} data-complete={index <= stage} />)}
+          {["Monitor", "Detect", "Investigate", "Contain"].map((label, index) => <span key={label} data-complete={index <= stage} data-current={index === stage}><i />{label}</span>)}
         </div>
         <div aria-live="polite" aria-atomic="true">
           <div className="incident-status">
