@@ -47,7 +47,7 @@ const Resume = () => {
               <Button
                 size="sm"
                 variant="outline"
-                className="gap-1.5 rounded-sm text-sm px-4 h-10 border-border hover:border-primary/40 hover:bg-primary/5 transition-all duration-200"
+                className="gap-1.5 rounded-sm text-sm px-4 h-10 border-border hover:border-primary/40 hover:bg-primary/5 transition duration-200"
                 asChild
               >
                 <a href="/Usman_Ibrahim.pdf" target="_blank" rel="noopener noreferrer">

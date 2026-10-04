@@ -122,7 +122,7 @@ const Skills = () => (
         <div className="skills-exploration">
         <div className="skills-inventory">
           {skillGroups.map((group) => (
-            <section key={group.title} className="skills-category" aria-labelledby={`skills-${group.title.toLowerCase().replace(/[^a-z]+/g, "-")}`}>
+            <section key={group.title} className="skills-category" data-domain={group.domain} aria-labelledby={`skills-${group.title.toLowerCase().replace(/[^a-z]+/g, "-")}`}>
               <header>
                 <h3 id={`skills-${group.title.toLowerCase().replace(/[^a-z]+/g, "-")}`}>{group.title}</h3>
                 <p>{group.domain === "security" ? "Security / Defensive" : "Development / Systems"}</p>

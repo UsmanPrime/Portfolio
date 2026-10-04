@@ -153,8 +153,10 @@ const Experience = () => {
                   key={exp.title}
                   className="timeline-entry"
                 >
-                  {/* Node */}
-                  <span className={`timeline-node ${exp.isActive ? "timeline-node-active" : ""}`}>❯</span>
+                  {/* Node — glowing dot instead of ASCII character */}
+                  <span className={`timeline-node ${exp.isActive ? "timeline-node-active" : ""}`} aria-hidden="true">
+                    <span className="timeline-node-dot" />
+                  </span>
 
                   {/* Timestamp */}
                   <div className="timeline-timestamp">[{exp.period}]</div>
@@ -219,9 +221,10 @@ const Experience = () => {
                 <div
                   key={a.title}
                   className="panel-static p-5"
+                  style={{ borderTop: '2px solid hsl(35 78% 68% / 0.7)' }}
                 >
                   <div className="flex items-center gap-2 mb-2">
-                    <a.icon className="w-4 h-4 text-foreground" />
+                    <a.icon className="w-6 h-6 text-warning" />
                     <h4 className="text-sm font-semibold transition-colors duration-150">
                       {a.title}
                     </h4>

@@ -168,24 +168,24 @@ const Certifications = () => {
                       {/* Only externally verifiable credentials receive a linked Verified status. */}
                       <div className="shrink-0 mt-0.5 w-24">
                         {isInProgress ? (
-                          <span className="inline-flex items-center gap-1 text-[9px] font-mono text-warning">
-                            <Clock className="w-2.5 h-2.5" /> In Progress
+                          <span className="inline-flex items-center gap-1.5 text-[10px] font-mono px-2 py-0.5 rounded-sm bg-warning/10 text-warning/90 border border-warning/20">
+                            <Clock className="w-3 h-3" /> In Progress
                           </span>
                         ) : cert.verifyUrl ? (
                           <a href={cert.verifyUrl} target="_blank" rel="noopener noreferrer"
                             aria-label={`Verify ${cert.name}`}
-                            className="panel-interactive inline-flex items-center gap-1 text-[9px] font-mono px-1.5 py-0.5 border border-success/30 bg-success/10 text-success">
-                            <CheckCircle className="w-2.5 h-2.5" /> VERIFIED
+                            className="panel-interactive inline-flex items-center gap-1.5 text-[10px] font-mono px-2 py-0.5 rounded-sm border border-success/40 bg-success/15 text-success shadow-[0_0_8px_hsl(var(--success)/0.2)] hover:shadow-[0_0_12px_hsl(var(--success)/0.35)] transition">
+                            <CheckCircle className="w-3 h-3" /> VERIFIED
                           </a>
                         ) : (
-                          <span className="inline-flex items-center gap-1 text-[9px] font-mono text-success">
-                            <CheckCircle className="w-2.5 h-2.5" /> Completed
+                          <span className="inline-flex items-center gap-1.5 text-[10px] font-mono px-2 py-0.5 rounded-sm bg-primary/10 text-primary/90 border border-primary/20">
+                            <CheckCircle className="w-3 h-3" /> Completed
                           </span>
                         )}
                       </div>
 
                       {/* Issuer Monogram */}
-                      <div className="hidden sm:flex w-7 h-7 rounded-md bg-secondary/80 border border-border/50 items-center justify-center shrink-0 text-[10px] font-bold text-muted-foreground font-mono">
+                      <div className="hidden sm:flex w-8 h-8 rounded bg-secondary/40 border border-primary/20 items-center justify-center shrink-0 text-[11px] font-bold text-primary/80 font-mono shadow-[inset_0_0_8px_hsl(var(--primary)/0.1)]">
                         {monogram}
                       </div>
 

@@ -130,20 +130,20 @@ const Contact = () => {
             {/* Form */}
             <div className="contact-form-panel panel-interactive">
               <div className="flex items-center gap-2.5 mb-5 pb-3 border-b border-border/60">
-                <div className="p-1.5 bg-secondary/10 rounded-md">
-                  <Send className="w-4 h-4 text-foreground" />
+                <div className="p-2 bg-primary/10 rounded-md">
+                  <Send className="w-5 h-5 text-primary" />
                 </div>
                 <h3 className="contact-primary">Send a Message</h3>
               </div>
 
-              <form onSubmit={handleSubmit} aria-busy={isSubmitting} className="panel-interactive space-y-3">
+              <form onSubmit={handleSubmit} aria-busy={isSubmitting} className="space-y-3">
                 <div className="grid sm:grid-cols-2 gap-3">
                   <div>
                     <label htmlFor="name" className="data-label block mb-1.5">Name</label>
                     <Input
                       id="name" name="name" type="text" autoComplete="name" required minLength={2} maxLength={100}
                       value={formData.name} onChange={handleInputChange} placeholder="Your name"
-                      className="bg-secondary/30 border-border focus:border-primary rounded-sm text-sm transition-all duration-200 h-9 focus:shadow-[0_0_0_2px_hsl(var(--primary)/0.1)]"
+                      className="bg-secondary/30 border-border focus:border-primary rounded-sm text-sm transition duration-200 h-9 focus:shadow-[0_0_0_2px_hsl(var(--primary)/0.1)]"
                     />
                   </div>
                   <div>
@@ -151,7 +151,7 @@ const Contact = () => {
                     <Input
                       id="email" name="email" type="email" autoComplete="email" spellCheck={false} maxLength={254} required
                       value={formData.email} onChange={handleInputChange} placeholder="your@email.com"
-                      className="bg-secondary/30 border-border focus:border-primary rounded-sm text-sm transition-all duration-200 h-9 focus:shadow-[0_0_0_2px_hsl(var(--primary)/0.1)]"
+                      className="bg-secondary/30 border-border focus:border-primary rounded-sm text-sm transition duration-200 h-9 focus:shadow-[0_0_0_2px_hsl(var(--primary)/0.1)]"
                     />
                   </div>
                 </div>
@@ -161,7 +161,7 @@ const Contact = () => {
                   <Input
                     id="subject" name="subject" type="text" required minLength={3} maxLength={200}
                     value={formData.subject} onChange={handleInputChange} placeholder="What's this about?"
-                    className="bg-secondary/30 border-border focus:border-primary rounded-sm text-sm transition-all duration-200 h-9 focus:shadow-[0_0_0_2px_hsl(var(--primary)/0.1)]"
+                    className="bg-secondary/30 border-border focus:border-primary rounded-sm text-sm transition duration-200 h-9 focus:shadow-[0_0_0_2px_hsl(var(--primary)/0.1)]"
                   />
                 </div>
 
@@ -169,8 +169,8 @@ const Contact = () => {
                   <label htmlFor="message" className="data-label block mb-1.5">Message</label>
                   <Textarea
                     id="message" name="message" required rows={4} minLength={10} maxLength={5000}
-                    value={formData.message} onChange={handleInputChange} placeholder="Your message..."
-                    className="bg-secondary/30 border-border focus:border-primary resize-none rounded-sm text-sm transition-all duration-200 focus:shadow-[0_0_0_2px_hsl(var(--primary)/0.1)]"
+                    value={formData.message} onChange={handleInputChange} placeholder="Your message…"
+                    className="bg-secondary/30 border-border focus:border-primary resize-none rounded-sm text-sm transition duration-200 focus:shadow-[0_0_0_2px_hsl(var(--primary)/0.1)]"
                   />
                 </div>
 
@@ -180,7 +180,7 @@ const Contact = () => {
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
-                    <><span className="w-3.5 h-3.5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-sm animate-spin" /> Sending...</>
+                    <>{" "}<span className="w-3.5 h-3.5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-sm animate-spin" /> Sending…{" "}</>
                   ) : (
                     <><Send className="w-3.5 h-3.5" /> Send Message</>
                   )}
@@ -193,10 +193,10 @@ const Contact = () => {
               <div className="contact-info-panel relative panel-static overflow-hidden">
                 <div className="relative z-10">
                   <div className="flex items-center gap-2.5 mb-4 pb-3 border-b border-border/60">
-                    <div className="p-1.5 bg-secondary/10 rounded-md">
-                      <Shield className="w-4 h-4 text-foreground" />
+                    <div className="p-2 bg-primary/10 rounded-md">
+                      <Shield className="w-5 h-5 text-primary" />
                     </div>
-                    <h3 className="text-sm font-semibold">Connect</h3>
+                    <h3 className="contact-primary">Connect</h3>
                   </div>
 
                 <p className="text-xs text-muted-foreground mb-4 leading-relaxed">
@@ -211,10 +211,10 @@ const Contact = () => {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="panel-interactive flex items-center gap-3 p-2.5 rounded-sm border border-transparent hover:border-primary/20 hover:bg-primary/5 transition-all duration-250 group"
+                      className="panel-interactive flex items-center gap-3 p-2.5 rounded-sm border border-transparent hover:border-primary/20 hover:bg-primary/5 transition duration-250 group"
                     >
-                      <div className="p-1.5 bg-primary/10 rounded-md group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
-                        <link.icon className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors duration-200" />
+                      <div className="p-2 bg-primary/10 rounded-md group-hover:bg-primary/20 transition duration-300 flex-shrink-0">
+                        <link.icon className="w-5 h-5 text-primary/70 group-hover:text-primary transition-colors duration-200" />
                       </div>
                       <div>
                         <div className="text-xs font-medium text-foreground group-hover:text-primary transition-colors duration-200">
